@@ -1,0 +1,45 @@
+package com.purefun.fstp.core.bo;
+
+import java.io.Serializable;
+
+import com.purefun.fstp.core.tool.UUID;
+
+public class ServerStatsBO implements BaseBO  {
+	private static final long serialVersionUID = 1L;
+		
+	public String uuid = UUID.createUuid();					//bo实体的唯一标识，key
+	
+	public long boid = serialVersionUID;					//bo的唯一标识，key
+	
+	public static int msgtype = 1;				//bo的类型（1:manger，2:trade，3:marketdata）
+	
+	public String destination = "pilot.core.manager.serverstatus";
+	
+	public String servername = null;
+	
+	public int status = -1;
+	
+	public ServerStatsBO(String serverName,int status){
+		this.servername = serverName;
+		this.status = status;
+	}
+
+	public String toString() {		
+		return "uuid:"+this.uuid ;	
+	}
+
+	public int getStatus() {
+		return status;
+	}
+	
+	public String getServername() {
+		return servername;
+	}
+
+	@Override
+	public String getDestination() {
+		// TODO Auto-generated method stub
+		return destination;
+	}
+		
+}

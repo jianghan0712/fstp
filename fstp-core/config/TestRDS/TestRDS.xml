@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 引入jedis的properties配置文件 -->
+    <!--如果你有多个数据源需要通过<context:property-placeholder管理，且不愿意放在一个配置文件里，那么一定要加上ignore-unresolvable=“true"-->
+    <context:property-placeholder location="classpath:redis.properties" ignore-unresolvable="true" />
+
+    <bean id="MainServer" class="com.cicc.pilot.ace.rds.RDSBase">  
+		<constructor-arg name="serverName" value="RDSBase"></constructor-arg>
+        <constructor-arg name="isServer" value="true"></constructor-arg>
+        <constructor-arg name="zmqport" value="5555"></constructor-arg>
+   	</bean>
+</beans>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+   <bean id="BOinstance" class="com.cicc.pilot.core.bo.model.BOinstance">     
+       <property name="boid" value="2"/>
+       <property name="name" value="TestBO"/>
+       <property name="destination" value="pilot.core.rpc.testone"/>
+       <property name="boEntry" value="com.cicc.pilot.core.bo.TestBO"/>
+       <property name="serverList">
+       		<list>
+       			 <value>StockRDS</value>  
+       		</list>
+       </property>     
+   </bean>
+   
+
+</beans>

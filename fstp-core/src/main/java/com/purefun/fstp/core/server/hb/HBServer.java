@@ -1,0 +1,92 @@
+package com.purefun.fstp.core.server.hb;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.jms.DeliveryMode;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageConsumer;
+import javax.jms.MessageProducer;
+import javax.jms.ObjectMessage;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+
+import org.slf4j.Logger;
+
+import com.purefun.fstp.core.bo.ServerStatsBO;
+import com.purefun.fstp.core.constant.RpcConstant;
+import com.purefun.fstp.core.server.monitor.MonitorService;
+
+import redis.clients.jedis.Jedis;
+
+public class HBServer{
+	Logger log = null;
+	Session session = null;
+	Jedis cache = null;	
+	MonitorService monitor = null;
+	String desname = null;
+	
+	public HBServer(Logger log,Session session,Jedis cache,MonitorService server,String topic) {
+		this.log = log;
+		this.session = session;
+		this.cache = cache;
+		this.monitor = server;
+		this.desname = topic;
+	}
+	
+	public void publish() {
+		if(session == null) {
+			log.error("There is no useful connect to broker");
+			return;
+		}			
+		try {
+			Destination destination = session.createTopic(desname);
+			MessageConsumer messageConsumer = session.createConsumer(destination);
+	        MessageProducer messageProducer = session.createProducer(null);
+			
+	        while (true) {
+	        	ObjectMessage message = (ObjectMessage) messageConsumer.receive();
+	        	ServerStatsBO reveivebo = (ServerStatsBO)message.getObject();
+				String serverFullName = reveivebo.getServername();
+				String serverName = serverFullName.substring(0,serverFullName.indexOf("_"));
+				int status = reveivebo.getStatus();
+				Map<String,Integer> onlineServerMap = monitor.getOnlineServerMap();//在线服务列表
+				
+				TextMessage responseMessage = null;
+	        	if(status == RpcConstant.ONLINE_SERVER) {
+	        		log.info("receive status bo：serverName:{},status:{}",serverName,status);
+	    			
+	    			if(onlineServerMap.putIfAbsent(serverFullName, status)==null) {
+	    				log.info("server {} online ",serverName);
+	    				responseMessage = session.createTextMessage("0");		        		
+	    			}else {
+	    				log.info("server {} online failure",serverName);
+	    				responseMessage = session.createTextMessage("-1");
+	    			}	        		        		
+	        	}else if(status == RpcConstant.HEART_BEAT) {
+	        		log.info("[HB] Received HB from service: {}", serverFullName);
+	        		responseMessage = session.createTextMessage("2");
+	        		messageProducer.send(message.getJMSReplyTo(), responseMessage, DeliveryMode.NON_PERSISTENT, Message.DEFAULT_PRIORITY, Message.DEFAULT_TIME_TO_LIVE);
+	        	}else if(status == RpcConstant.OFFLINE_SERVER) {
+	        		onlineServerMap.remove(serverFullName);
+	        		
+	        		log.info("[HB] service {} status change to offline", serverFullName);
+	        		continue;
+	        	}   
+	        	
+	        	messageProducer.send(message.getJMSReplyTo(), responseMessage, DeliveryMode.NON_PERSISTENT, Message.DEFAULT_PRIORITY, Message.DEFAULT_TIME_TO_LIVE);
+	       }
+
+	   } catch (Exception exp) {
+	           System.out.println("[SERVER] Caught exception, exiting.");
+	           exp.printStackTrace(System.out);
+//	           System.exit(1);
+	   }          
+	}
+		
+}
