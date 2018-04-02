@@ -6,13 +6,19 @@ import java.util.List;
 import javax.jms.DeliveryMode;
 import javax.jms.Destination;
 import javax.jms.JMSException;
+import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
 import javax.jms.ObjectMessage;
 import javax.jms.Session;
+import javax.jms.TemporaryQueue;
+import javax.jms.TextMessage;
+
 import org.slf4j.Logger;
 
 import com.purefun.fstp.core.bo.BaseBO;
+import com.purefun.fstp.core.bo.QNSRequestBO;
 import com.purefun.fstp.core.cache.ObjectTransCoder;
+import com.purefun.fstp.core.rpc.qns.QNSClient;
 
 import redis.clients.jedis.Jedis;
 
@@ -41,6 +47,7 @@ public class Publisher{
         	      	
             messageProducer.send(message);
             durableInCache(bo);
+            log.info("publish BO:[{}]",bo.toString());
             
 		} catch (JMSException e) {
 			// TODO Auto-generated catch block
@@ -51,14 +58,7 @@ public class Publisher{
 	public void durableInCache(BaseBO bo) {
 		String mapName = bo.getClass().getName();
 		cache.rpush(mapName.getBytes(), ObjectTransCoder.serialize(bo));
-//		if(cache.exists(mapName.getBytes())) {
-//			
-//		}else {
-//			cache.rpush(mapName.getBytes(), ObjectTransCoder.serialize(bo));
-//			List insert = new ArrayList();
-////			insert.add(bo);
-//			cache.set(mapName.getBytes(), insert);
-//		}		
-		log.info(mapName);
+		
+//		log.info(mapName);
 	}	
 }

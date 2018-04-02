@@ -54,6 +54,7 @@ public class QNSService{
 	        	
 	        	log.info("receive ServerName:{},QNSTopic:{}",reveivebo.getServername(),reveivebo.getRequest());
 	        	String reply = analysis(reveivebo.getRequest());
+	        	log.info(reveivebo.getRequest());
 	        	TextMessage responseMessage = session.createTextMessage(reply);
 	        	messageProducer.send(message.getJMSReplyTo(), responseMessage, DeliveryMode.NON_PERSISTENT, Message.DEFAULT_PRIORITY, Message.DEFAULT_TIME_TO_LIVE);	        
 	        }

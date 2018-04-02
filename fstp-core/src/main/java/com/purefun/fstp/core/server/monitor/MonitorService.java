@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.Executors;
@@ -17,6 +19,7 @@ import javax.jms.ObjectMessage;
 import org.apache.xbean.spring.context.ClassPathXmlApplicationContext;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import com.purefun.fstp.core.bo.model.BOinstance;
 import com.purefun.fstp.core.logging.PLogger;
@@ -25,28 +28,24 @@ import com.purefun.fstp.core.server.PService;
 import com.purefun.fstp.core.server.hb.HBServer;
 
 public class MonitorService extends PService{
-	private Map<String,String> boDestinationMap = null;//bo与destination的map，从config文件中读取
-//	protected MyTask QNSAnalysisTask = null;		   //QNS解析服务
-	public ScheduledExecutorService scheduledQNSThread = Executors.newScheduledThreadPool(1); 
-	public ScheduledExecutorService scheduledHBThread = Executors.newScheduledThreadPool(1); 
+	
+	public ScheduledExecutorService scheduledQNSThread = Executors.newScheduledThreadPool(1); //QNS解析服务
+	public ScheduledExecutorService scheduledHBThread = Executors.newScheduledThreadPool(1);  //心跳服务
 
-	public Map<String,Integer> onlineServerMap = new HashMap<String,Integer>();//在线服务列表
+	private Map<String,String> boDestinationMap = new HashMap<String,String>();//bo与destination的map，从config文件中读取
+	public Map<String,Integer> onlineServerMap = new HashMap<String,Integer>();    //在线service列表
 	public Map<String,BOinstance> serviceBOMap = new HashMap<String,BOinstance>(); //<serviceName,BOinstance>
-	public Map<String,BOinstance> boMap = new HashMap<String,BOinstance>(); //<boName,BOinstance>
+	public Map<String,BOinstance> boMap = new HashMap<String,BOinstance>();        //<boName,BOinstance>
 	
 	public MonitorService(boolean isServer, String zmqport) {	
 		super(isServer,zmqport);
 		// TODO Auto-generated constructor stub
 		log = PLogger.getLogger(MonitorService.class);
-//		registTask = new MonitorDaemon();
 	}
 	
 	public void init() {
-		super.init();
-//		onlineServerMap = ((MonitorDaemon)registTask).getOnlineServerMap();
-		
-		loadBOmsgdef(new File("src/resource/msgdef/"));
-//		QNSAnalysisTask = new QNSRespond(boDestinationMap);
+		super.init();		
+		loadBOmsgdef(new File("resource/msgdef/"));
 		log.info("{} init successful",serverName);			
 	}
 	
@@ -55,6 +54,7 @@ public class MonitorService extends PService{
 		startHBService();
 		startQNSService();	
 		log.info("{} start successful",serverName);	
+		log.info(ErrMap.get("00000000"));
 	}
 
 	private void startHBService() {
@@ -65,8 +65,6 @@ public class MonitorService extends PService{
 	
 	private void startQNSService() {
 		// TODO Auto-generated method stub
-//		sub.subscribe("pilot.core.manager.serverstatus", new MonitorListener(log));
-//		scheduledQNSThread.schedule(new ZMQResponsder("5800", serverName, QNSAnalysisTask, log), 0, TimeUnit.SECONDS);
 		scheduledQNSThread.schedule(new QNSThread(), 0, TimeUnit.SECONDS);
 	}
 	
@@ -75,8 +73,7 @@ public class MonitorService extends PService{
 		public void run() {
 			HBServer hb = new HBServer(log, session, cache,MonitorService.this,"HBTopic");
 			hb.publish();
-//			QNSService qns = new QNSService(log, session, cache,MonitorService.this,"QNSqueryTopic");
-//			qns.publish();
+
 		}	
 	}
 	
@@ -108,6 +105,13 @@ public class MonitorService extends PService{
 			    	String filename = f.getName();
 			    	bean  = new ClassPathXmlApplicationContext(f.getPath());	
 			    	BOinstance bobean = (BOinstance)bean.getBean("BOinstance");
+			    	boMap.put(bobean.getBoEntry(), bobean);
+			    	
+			    	List<String> serverList = bobean.getServerList();
+			    	for(String serverName :serverList) {
+			    		serviceBOMap.put(serverName, bobean);
+			    	}
+			    	boDestinationMap.put(bobean.getBoEntry(), bobean.getDestination());
 			    	log.info("Load BO {} msgdef with path:{}",bobean.name,f.getPath());
 			    }		    		    	
 			}

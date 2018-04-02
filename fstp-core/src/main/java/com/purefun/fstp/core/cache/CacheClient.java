@@ -35,7 +35,7 @@ public class CacheClient {
 	
 	public CacheClient(Logger log) {
 		this.log = log;
-		BeanFactory factory  = new ClassPathXmlApplicationContext("classpath:config/Cache/CacheClient.xml");
+		BeanFactory factory  = new ClassPathXmlApplicationContext("classpath:resource/comConf/CacheClient.xml");
 		Object obj = factory.getBean("jedisPool");
 		if (obj!=null) {
 			jedisPool = (JedisPool)obj;
@@ -49,7 +49,7 @@ public class CacheClient {
 	
 	public static Jedis getJedis() {
 		if(jedisPool==null) {
-			BeanFactory factory  = new ClassPathXmlApplicationContext("classpath:config/CacheClient.xml");
+			BeanFactory factory  = new ClassPathXmlApplicationContext("classpath:resource/comConf/CacheClient.xml");
 			Object obj = factory.getBean("jedisPool");
 			if (obj!=null) {
 				jedisPool = (JedisPool)obj;

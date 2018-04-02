@@ -78,20 +78,13 @@ public class QNSClient{
             if (responseMessage != null) {
             	respond = responseMessage.getText();
             	getTopics(respond);
-//            	if (respond.equalsIgnoreCase("1")) {
-//            		log.info("format error");
-//            		respond = null;
-//            	}
             } else {
             	log.info("query failure");
             }       	        
 	        } catch (Exception exp) {
 	           System.out.println("[CLIENT] Caught exception, exiting.");
 	           exp.printStackTrace(System.out);
-//	           System.exit(1);
 	       }
-		
-//		query();
 		
 		return topics;          
 	}

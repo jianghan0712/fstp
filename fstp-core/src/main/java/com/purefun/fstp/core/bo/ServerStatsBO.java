@@ -10,10 +10,8 @@ public class ServerStatsBO implements BaseBO  {
 	public String uuid = UUID.createUuid();					//bo实体的唯一标识，key
 	
 	public long boid = serialVersionUID;					//bo的唯一标识，key
-	
-	public static int msgtype = 1;				//bo的类型（1:manger，2:trade，3:marketdata）
-	
-	public String destination = "pilot.core.manager.serverstatus";
+		
+	public String destination = "fstp.core.manager.serverstatus";
 	
 	public String servername = null;
 	

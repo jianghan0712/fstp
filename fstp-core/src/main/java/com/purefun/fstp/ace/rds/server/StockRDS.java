@@ -10,12 +10,14 @@ import javax.sql.DataSource;
 import org.apache.xbean.spring.context.ClassPathXmlApplicationContext;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import com.purefun.fstp.core.bo.TestBO;
 import com.purefun.fstp.core.logging.PLogger;
 import com.purefun.fstp.core.rpc.RpcFactory;
 import com.purefun.fstp.core.rpc.pub.Publisher;
 import com.purefun.fstp.core.rpc.qns.QNSubscriber;
+import com.purefun.fstp.core.tool.ErrorManager;
 
 public class StockRDS extends RDSBase{
 	CrudRepository repository = null;
@@ -39,10 +41,9 @@ public class StockRDS extends RDSBase{
 			pub.publish(new TestBO());
 		}
 		QNSubscriber qns = RpcFactory.createQNSubscriber();
-		qns.setting("pilot.core.rpc.*", serverName);
+		qns.setting("fstp.core.rpc.*", serverName);
 		qns.QNS(new MyMessageListener(log));
 		log.info("{} start successful",serverName);
-		
 
 		
 //		CrudRepository repo = beanFactory.getBean(TestBORepository.class);

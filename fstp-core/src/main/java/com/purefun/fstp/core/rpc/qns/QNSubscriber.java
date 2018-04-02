@@ -43,10 +43,6 @@ public class QNSubscriber{
 	public void QNS(QnsMessageListener listener) {
 		QNSRequestBO bo = new QNSRequestBO(qns);
 		topics = qnsclient.publish(bo);
-		
-//		task = new QNSRequestTask(qns);
-//		Runnable request = new ZMQRequester("5800", log ,serverName,task);	
-//		new Thread(request).start();
 
 		listener.queryList = query();//	1.query
 		listener.onQuery();			//	2.deal with history msg
@@ -73,6 +69,7 @@ public class QNSubscriber{
 			Destination destination = session.createTopic(qns);
 			MessageConsumer messageConsumer = session.createConsumer(destination);
 			messageConsumer.setMessageListener(msglisteneer);	
+			log.info("QNS topic:{}",qns);
 		} catch (JMSException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

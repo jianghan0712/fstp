@@ -27,7 +27,7 @@ public class PLogger{
 		pro.put("log4j.appender.stdout.layout.ConversionPattern", "[%-5p] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%c]  %m%n");
 		pro.put("log4j.additivity.stdout", "false");
 
-		pro.put("log4j.logger.common", "INFO,A92");
+		pro.put("log4j.logger.common", "INFO,stdout,A92");
 		pro.put("log4j.additivity.common", "false");
 		pro.put("log4j.appender.A92", "org.apache.log4j.DailyRollingFileAppender");
 		pro.put("log4j.appender.A92.DatePattern", "'.'yyyy-MM-dd-HH");

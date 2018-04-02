@@ -10,10 +10,8 @@ public class QNSRequestBO implements BaseBO  {
 	public String uuid = UUID.createUuid();					
 	
 	public long boid = serialVersionUID;					
-	
-	public int msgtype = 1;				//bo的类型（1:manger，2:trade，3:marketdata）
-	
-	public String destination = "pilot.core.manager.qnsrequest";
+		
+	public String destination = "fstp.core.manager.qnsrequest";
 	
 	public String servername = null;	
 	
@@ -21,9 +19,6 @@ public class QNSRequestBO implements BaseBO  {
 	
 	public QNSRequestBO(String msg){
 		this.request = msg;
-		this.uuid = UUID.createUuid();
-		this.boid = QNSRequestBO.serialVersionUID;
-		this.destination = "pilot.core.manager.qnsrequest";
 	}
 
 	public String toString() {		

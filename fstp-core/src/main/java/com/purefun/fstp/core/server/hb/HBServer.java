@@ -19,6 +19,7 @@ import javax.jms.TextMessage;
 import org.slf4j.Logger;
 
 import com.purefun.fstp.core.bo.ServerStatsBO;
+import com.purefun.fstp.core.bo.model.BOinstance;
 import com.purefun.fstp.core.constant.RpcConstant;
 import com.purefun.fstp.core.server.monitor.MonitorService;
 
@@ -43,19 +44,21 @@ public class HBServer{
 		if(session == null) {
 			log.error("There is no useful connect to broker");
 			return;
-		}			
+		}
+		Map<String,Integer> onlineServerMap = monitor.getOnlineServerMap();//在线服务列表
+        Map<String,BOinstance> serviceBOMap = monitor.getServiceBOMap();
 		try {
 			Destination destination = session.createTopic(desname);
 			MessageConsumer messageConsumer = session.createConsumer(destination);
 	        MessageProducer messageProducer = session.createProducer(null);
-			
+	        			
 	        while (true) {
 	        	ObjectMessage message = (ObjectMessage) messageConsumer.receive();
 	        	ServerStatsBO reveivebo = (ServerStatsBO)message.getObject();
 				String serverFullName = reveivebo.getServername();
 				String serverName = serverFullName.substring(0,serverFullName.indexOf("_"));
 				int status = reveivebo.getStatus();
-				Map<String,Integer> onlineServerMap = monitor.getOnlineServerMap();//在线服务列表
+				
 				
 				TextMessage responseMessage = null;
 	        	if(status == RpcConstant.ONLINE_SERVER) {
@@ -71,10 +74,23 @@ public class HBServer{
 	        	}else if(status == RpcConstant.HEART_BEAT) {
 	        		log.info("[HB] Received HB from service: {}", serverFullName);
 	        		responseMessage = session.createTextMessage("2");
-	        		messageProducer.send(message.getJMSReplyTo(), responseMessage, DeliveryMode.NON_PERSISTENT, Message.DEFAULT_PRIORITY, Message.DEFAULT_TIME_TO_LIVE);
+//	        		messageProducer.send(message.getJMSReplyTo(), responseMessage, DeliveryMode.NON_PERSISTENT, Message.DEFAULT_PRIORITY, Message.DEFAULT_TIME_TO_LIVE);
 	        	}else if(status == RpcConstant.OFFLINE_SERVER) {
 	        		onlineServerMap.remove(serverFullName);
-	        		
+	        		boolean deleteFlag = true;
+	        		//如果该service的所有实例都已经down了，需要把cache中对应的历史bo删除掉
+	        		for(String key : onlineServerMap.keySet()) {
+	        			String name = key.substring(0,key.indexOf("_"));
+	        			if(name.equalsIgnoreCase(serverName)) {
+	        				deleteFlag = false;
+	        				continue;
+	        			}
+	        		}
+	        		if(deleteFlag) {
+	        			BOinstance bo = serviceBOMap.get(serverName);
+	        			log.info(bo.getBoEntry());
+	        			cache.del(bo.getBoEntry());
+	        		}
 	        		log.info("[HB] service {} status change to offline", serverFullName);
 	        		continue;
 	        	}   

@@ -33,6 +33,7 @@ public abstract class QnsMessageListener implements MessageListener {
 		for(List<byte[]> each:queryList) {
 			if(each==null)
 				continue;
+			log.info("{}",each.size());
 			doQueryTask(each);
 		}
 	}
