@@ -88,8 +88,10 @@ public class HBServer{
 	        		}
 	        		if(deleteFlag) {
 	        			BOinstance bo = serviceBOMap.get(serverName);
-	        			log.info(bo.getBoEntry());
-	        			cache.del(bo.getBoEntry());
+	        			if(bo != null) {
+	        				log.info("clean cache :{}",bo.getBoEntry());
+		        			cache.del(bo.getBoEntry());
+	        			}        			
 	        		}
 	        		log.info("[HB] service {} status change to offline", serverFullName);
 	        		continue;

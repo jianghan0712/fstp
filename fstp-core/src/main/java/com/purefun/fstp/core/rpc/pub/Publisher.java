@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import com.purefun.fstp.core.bo.BaseBO;
 import com.purefun.fstp.core.bo.QNSRequestBO;
 import com.purefun.fstp.core.cache.ObjectTransCoder;
+import com.purefun.fstp.core.rpc.PublishMode;
 import com.purefun.fstp.core.rpc.qns.QNSClient;
 
 import redis.clients.jedis.Jedis;
@@ -33,11 +34,12 @@ public class Publisher{
 		this.cache = cache;
 	}
 	
-	public void publish(BaseBO bo) {
+	public void publish(BaseBO bo,int mode) {
 		if(session == null) {
 			log.error("There is no useful connect to broker");
 			return;
-		}			
+		}
+		
 		try {
 			Destination destination = session.createTopic(bo.getDestination());
 			MessageProducer messageProducer = session.createProducer(destination);
@@ -46,7 +48,8 @@ public class Publisher{
         	message.setObject((Serializable) bo); 
         	      	
             messageProducer.send(message);
-            durableInCache(bo);
+            if(mode == PublishMode.PUBLISH_AND_DUR)
+            	durableInCache(bo);
             log.info("publish BO:[{}]",bo.toString());
             
 		} catch (JMSException e) {

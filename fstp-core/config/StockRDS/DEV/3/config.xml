@@ -13,11 +13,6 @@
     <context:property-placeholder location="classpath:redis.properties" ignore-unresolvable="true" />
 	
     <bean id="MainServer" class="com.purefun.fstp.ace.rds.server.StockRDS">  
-		<constructor-arg name="serverName" value="StockRDS"></constructor-arg>
-        <constructor-arg name="isServer" value="true"></constructor-arg>
-        <constructor-arg name="zmqport" value="5555"></constructor-arg>
-       
-   	</bean>
-   	
-   	
+        <constructor-arg name="isServer" value="true"></constructor-arg>   
+   	</bean>   	
 </beans>

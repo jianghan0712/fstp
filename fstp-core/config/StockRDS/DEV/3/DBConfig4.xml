@@ -13,9 +13,9 @@
         http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
        default-lazy-init="true">
                
-    <context:component-scan base-package="com.cicc.pilot.core.bo"/>
+    <context:component-scan base-package="com.purefun.fstp.core.bo"/>
     
-    <!-- 1. 配置数据源 -->  
+    <!--  配置数据源 -->  
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="url" value="jdbc:mysql://localhost:3306/pilot"/>
         <property name="username" value="root"/>
@@ -23,33 +23,32 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
     </bean>
     
-    <!-- 2. 配置 JPA 的 EntityManagerFactory -->
+    <!--  配置 JPA 的 EntityManagerFactory -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-           <!-- 指定数据源 -->
         <property name="dataSource" ref="dataSource"/>
-        <!-- 指定Jpa持久化实现厂商类,这里以Hibernate为例 -->
         <property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
 		</property>
-		<property name="packagesToScan" value="com.cicc.pilot.core.bo"/>
+		<property name="packagesToScan" value="com.purefun.fstp.core.bo"/>
         <property name="persistenceXmlLocation" value="META-INF/persistence.xml"/>
-        <property name="persistenceUnitName" value="rds-persistence"/>
-        
+        <property name="persistenceUnitName" value="rds-persistence"/>      
     </bean>
     
-    <!-- 3. 配置事务管理器 -->
+    <!--  配置事务管理器 -->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
   
-  	<!-- 4. 配置支持注解的事务 -->
-  	<!--  -->
+  	<!--  配置支持注解的事务 -->
   	<tx:annotation-driven transaction-manager="transactionManager"/>
+  	 	
+  	<!--  配置 SpringData,需要加入  jpa 的命名空间 -->
+    <jpa:repositories base-package="com.purefun.fstp.ace.rds.repo"  entity-manager-factory-ref="entityManagerFactory"/>
   	
-  	
-  	<!-- 5. 配置 SpringData,需要加入  jpa 的命名空间 -->
-  	<!--  -->
-    <jpa:repositories base-package="com.cicc.pilot.ace.rds.bo.repo"  entity-manager-factory-ref="entityManagerFactory"/>
-  	
+  	<!--  配置RDS相关  --> 	
+  	<bean id="RDSCommon" class="com.purefun.fstp.ace.rds.server.RDSCommon">
+  		<property name="tableName" value="RDS_STOCK"/>
+  		<property name="rdsCrud"   value="com.purefun.fstp.ace.rds.repo.RDSStockBORepository"/>
+  	</bean>
   	<aop:aspectj-autoproxy />
 </beans>  

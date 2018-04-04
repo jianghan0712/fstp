@@ -45,7 +45,7 @@ public class PService {
 //	public ErrorManager errManager = null;
 	public Map<String,String> ErrMap = null;
 		
-	public PService(boolean isServer,String zmqport) {		
+	public PService(boolean isServer) {		
 		this.serverName = property.allTag;
 		this.isServer = isServer;
 	}
@@ -59,9 +59,11 @@ public class PService {
 		connection = new QpidConnect(log);
 		/**********		STEP 1: Load service config file		***************/
 		/*	removed to jvm para*/
+		
 		/**********	     STEP 2: Connet to broker	   	***************/
 		if(connection!=null)
 			session = connection.connect();
+		
 		/**********	     STEP 3: create rpc factory	   	***************/
 		rpcfactory = new RpcFactory(session, cache, log);
 		

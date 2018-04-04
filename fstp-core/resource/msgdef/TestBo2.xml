@@ -12,7 +12,7 @@
        <property name="boEntry" value="com.purefun.fstp.core.bo.TestBO2"/>
        <property name="serverList">
        		<list>
-       			 <value>StockRDS</value>  
+       			 <value>FundRDS</value>  
        		</list>
        </property>     
    </bean>

@@ -1,60 +1,54 @@
 package com.purefun.fstp.ace.rds.server;
 
-import java.io.IOException;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.List;
-
-import javax.sql.DataSource;
-
-import org.apache.xbean.spring.context.ClassPathXmlApplicationContext;
-import org.springframework.beans.factory.BeanFactory;
+import org.slf4j.Logger;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-
-import com.purefun.fstp.core.bo.TestBO;
+import com.purefun.fstp.core.bo.RDSStockBO;
+import com.purefun.fstp.core.bo.SourceStockBO;
 import com.purefun.fstp.core.logging.PLogger;
 import com.purefun.fstp.core.rpc.RpcFactory;
 import com.purefun.fstp.core.rpc.pub.Publisher;
-import com.purefun.fstp.core.rpc.qns.QNSubscriber;
-import com.purefun.fstp.core.tool.ErrorManager;
+import com.purefun.fstp.core.rpc.sub.Subscriber;
 
 public class StockRDS extends RDSBase{
 	CrudRepository repository = null;
+	String sourceQns = null;
 	
-	public StockRDS(String serverName, boolean isServer, String zmqport) {
-		super(serverName,isServer,zmqport);
+	public StockRDS(boolean isServer) {
+		super(isServer);
 		log = PLogger.getLogger(StockRDS.class);
 	}
 	
 	public void init() {
 		super.init();
-//		HBPort = 5200;
+		//receive sourceBO
+		sub = RpcFactory.createSubscriber();
+		listener = new StockRDSSubListener(log);
+		sub.subscribe(sourceQns,  listener);
+		
+		//publish rdsBO
+		pub = RpcFactory.createPublisher();
 	}
 	
 	public void start() {
-		super.start();	
-		Publisher pub = RpcFactory.createPublisher();
-		for(int i =0;i<3;i++) {
-			TestBO testbo = new TestBO();
-			testbo.setServername(serverName);
-			pub.publish(new TestBO());
-		}
-		QNSubscriber qns = RpcFactory.createQNSubscriber();
-		qns.setting("fstp.core.rpc.*", serverName);
-		qns.QNS(new MyMessageListener(log));
+		super.start();			
+		sourceBOList = listener.getResultList();
 		log.info("{} start successful",serverName);
+			
+		RDSStockBO test = new RDSStockBO();
+    	test.setBond_par_value(100.00);
+		save2DB(test);
+//		CrudRepository repo =  beanFactory.getBean(RDSStockBORepository.class);
+//    	
 
-		
-//		CrudRepository repo = beanFactory.getBean(TestBORepository.class);
-//    	TestBORepository personDao = ctx.getBean(TestBORepository.class);
     	
-//    	TestBO test = new TestBO();
-//    	personDao.save(test);
-//    	List<TestBO> list = (List<TestBO>)repo.findAll();
-//    	for(TestBO person : list) {
-//    		System.out.println("查询结果： name=" + person.getMsg() );
-//    	}
+//		CrudRepository repo = beanFactory.getBean(RDSStockBORepository.class);
+//		CrudRepository repo = (CrudRepository)beanFactory.getBean("curd");
+//    	TestBORepository personDao = ctx.getBean(TestBORepository.class);
+		
+//    	
+//    	repo.save(test);
+    	
+    	
 	}
 
 	public CrudRepository getRepository() {
@@ -63,6 +57,29 @@ public class StockRDS extends RDSBase{
 
 	public void setRepository(CrudRepository repository) {
 		this.repository = repository;
+	}
+
+	public String getSourceQns() {
+		return sourceQns;
+	}
+
+	public void setSourceQns(String sourceQns) {
+		this.sourceQns = sourceQns;
+	}
+	
+	class StockRDSSubListener extends RDSSubMessageListener<SourceStockBO>{
+
+		public StockRDSSubListener(Logger log) {
+			super(log);
+			// TODO Auto-generated constructor stub
+		}
+
+		@Override
+		protected void doRdsTask(SourceStockBO bo) {
+			// TODO Auto-generated method stub
+			
+		}
+		
 	}
 	
 	

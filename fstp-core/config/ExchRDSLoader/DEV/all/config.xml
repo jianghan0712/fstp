@@ -11,17 +11,30 @@
 	<import resource="classpath:resource/comConf/CommonConfig.xml" />
     <context:property-placeholder location="classpath:redis.properties" ignore-unresolvable="true" />
     	
-    <bean id="MainServer" class="com.purefun.fstp.core.server.monitor.MonitorService">  
+    <bean id="MainServer" class="com.purefun.fstp.ace.rds.loader.ExchRDSLoader">  
     	<!--  <constructor-arg name="serverName" value="MonitorService"></constructor-arg>-->
         <constructor-arg name="isServer" value="true"></constructor-arg>
-
-   		<property name="boDestinationMap">   
+        
+        <property name="secuMap">   
        		<map>
-       			<entry key="com.cicc.pilot.core.bo.TestBO"    		value="pilot.core.rpc.testone"/>
-       			<entry key="com.cicc.pilot.core.bo.TestBO2"   		value="pilot.core.rpc.testtwo"/>
-       			<entry key="com.cicc.pilot.core.bo.TestBO3"   		value="pilot.core.xxx.testtwo"/>    			
+       			<entry key="STOCK"    		value="1"/>
+       			<entry key="FUND"   		value="0"/>
+       			<entry key="REPO"   		value="0"/>  
+       			<entry key="BOND"   		value="0"/>
+       			<entry key="OPTION"   		value="0"/>  			
        		</map>
-       </property>          
+       </property>   
+       <property name="filesFactory" ref="filesfactory"/>            
+   	</bean>
+   	
+   	<bean id="filesfactory" class="com.purefun.fstp.ace.rds.loader.FileLoaderFactory"> 
+   	   <property name="exchFilesPath" value="C:\Users\jianghan\Desktop\exchfiles\"/>
+   	   <property name="fileMap"> 
+   	    	<map>
+       			<entry key="cpxx"    		value="mmdd,txt,\|"/> 			
+       		</map>
+       </property>  
+       
    	</bean>
    	   	
 </beans>

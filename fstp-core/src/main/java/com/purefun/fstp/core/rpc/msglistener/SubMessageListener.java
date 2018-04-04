@@ -3,6 +3,7 @@ package com.purefun.fstp.core.rpc.msglistener;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -13,6 +14,7 @@ import org.slf4j.Logger;
 
 public abstract class SubMessageListener implements MessageListener {
 	public Logger log = null;
+	protected List resultList = null;
 	
 	public SubMessageListener(Logger log) {
 		this.log = log;
@@ -27,6 +29,13 @@ public abstract class SubMessageListener implements MessageListener {
 		
 	}
 	
-	abstract protected void doSubscribeTask(ObjectMessage objMsg);
+	public List getResultList() {
+		return resultList;
+	}
 
+	public void setResultList(List resultList) {
+		this.resultList = resultList;
+	}
+
+	abstract protected void doSubscribeTask(ObjectMessage objMsg);
 }

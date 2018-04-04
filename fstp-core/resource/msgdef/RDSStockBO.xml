@@ -7,12 +7,12 @@
 
    <bean id="BOinstance" class="com.purefun.fstp.core.bo.model.BOinstance">     
        <property name="boid" value="2"/>
-       <property name="name" value="TestBO"/>
-       <property name="destination" value="fstp.core.rpc.testone"/>
-       <property name="boEntry" value="com.purefun.fstp.core.bo.TestBO"/>
+       <property name="name" value="RDSStockBO"/>
+       <property name="destination" value="fstp.ace.rds.stock"/>
+       <property name="boEntry" value="com.purefun.fstp.core.bo.RDSStockBO"/>
        <property name="serverList">
        		<list>
-       			 <value>RepoRDS</value>  
+       			 <value>StockRDS</value>  
        		</list>
        </property>     
    </bean>

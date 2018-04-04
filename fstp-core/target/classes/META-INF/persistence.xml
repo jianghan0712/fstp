@@ -5,9 +5,9 @@
     <persistence-unit name="rds-persistence" >  
         <!-- 配置jpa ORM产品 -->  
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>  
-        <!-- 添加对应的持久化类 -->  
-        <class>com.cicc.db.test.User</class>  
-        <class>com.cicc.pilot.core.bo.TestBO</class>        
+        <!-- 添加对应的持久化类 -->    
+        <class>com.purefun.fstp.core.bo.TestBO</class>  
+        <class>com.purefun.fstp.core.bo.RDSStockBO</class>      
         <properties>  
             <!-- jpa中配置hibernate基本属性 --> 
             <!--  

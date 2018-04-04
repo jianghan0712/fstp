@@ -37,8 +37,8 @@ public class MonitorService extends PService{
 	public Map<String,BOinstance> serviceBOMap = new HashMap<String,BOinstance>(); //<serviceName,BOinstance>
 	public Map<String,BOinstance> boMap = new HashMap<String,BOinstance>();        //<boName,BOinstance>
 	
-	public MonitorService(boolean isServer, String zmqport) {	
-		super(isServer,zmqport);
+	public MonitorService(boolean isServer) {	
+		super(isServer);
 		// TODO Auto-generated constructor stub
 		log = PLogger.getLogger(MonitorService.class);
 	}

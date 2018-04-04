@@ -30,10 +30,8 @@ public class Subscriber{
 		try {
 			Destination destination = session.createTopic(topic);
 			MessageConsumer messageConsumer = session.createConsumer(destination);
-			log.info("topic : {}",topic);
-//			connection.setClientID("123");
-//			MessageConsumer messageConsumer = session.createDurableSubscriber(session.createTopic(topic),connection.getClientID()); 
-			
+			log.info("subscribe topic : {}",topic);
+		
 		    messageConsumer.setMessageListener(msglisteneer);	
 		} catch (JMSException e) {
 			// TODO Auto-generated catch block
