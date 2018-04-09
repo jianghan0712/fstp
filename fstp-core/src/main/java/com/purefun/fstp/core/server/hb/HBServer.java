@@ -20,6 +20,7 @@ import org.slf4j.Logger;
 
 import com.purefun.fstp.core.bo.ServerStatsBO;
 import com.purefun.fstp.core.bo.model.BOinstance;
+import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.constant.RpcConstant;
 import com.purefun.fstp.core.server.monitor.MonitorService;
 
@@ -28,14 +29,14 @@ import redis.clients.jedis.Jedis;
 public class HBServer{
 	Logger log = null;
 	Session session = null;
-	Jedis cache = null;	
+	FCache fcache = null;	
 	MonitorService monitor = null;
 	String desname = null;
 	
-	public HBServer(Logger log,Session session,Jedis cache,MonitorService server,String topic) {
+	public HBServer(Logger log,Session session,FCache fcache,MonitorService server,String topic) {
 		this.log = log;
 		this.session = session;
-		this.cache = cache;
+		this.fcache = fcache;
 		this.monitor = server;
 		this.desname = topic;
 	}
@@ -90,13 +91,12 @@ public class HBServer{
 	        			BOinstance bo = serviceBOMap.get(serverName);
 	        			if(bo != null) {
 	        				log.info("clean cache :{}",bo.getBoEntry());
-		        			cache.del(bo.getBoEntry());
+		        			fcache.delObjct(bo.getBoEntry());
 	        			}        			
 	        		}
 	        		log.info("[HB] service {} status change to offline", serverFullName);
 	        		continue;
-	        	}   
-	        	
+	        	}           	
 	        	messageProducer.send(message.getJMSReplyTo(), responseMessage, DeliveryMode.NON_PERSISTENT, Message.DEFAULT_PRIORITY, Message.DEFAULT_TIME_TO_LIVE);
 	       }
 

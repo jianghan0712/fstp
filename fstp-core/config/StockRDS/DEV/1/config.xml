@@ -15,7 +15,13 @@
     <bean id="MainServer" class="com.purefun.fstp.ace.rds.server.StockRDS">  
         <constructor-arg name="isServer" value="true"></constructor-arg>  
         
-        <property name="sourceQns" value="fstp.ace.rds.source.stock"/>
+        <property name="managerBOMap">
+        	<map>
+        		<entry key="fstp.core.rpc.testone"    		value="com.purefun.fstp.core.bo.TestBO"/>
+        	</map>
+        </property>
+        
+        <property name="sourceQns" value="fstp.ace.rds.source.stock"/><!-- 订阅的从loader发来BO  topic -->
         <property name="source2rdsMap">
         	<map>
         		<description>key->rdsBO,value->sourceBO</description>

@@ -12,6 +12,7 @@ import javax.jms.Session;
 import org.slf4j.Logger;
 
 import com.purefun.fstp.core.bo.QNSRequestBO;
+import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.rpc.msglistener.QnsMessageListener;
 
 import redis.clients.jedis.Jedis;
@@ -22,21 +23,21 @@ public class QNSubscriber{
 	String serverName = null;
 	Logger log = null;
 	Session session = null;
-	Jedis cache = null;
+	FCache fcache = null;
 	
 	QNSClient qnsclient = null;
 	
-	public QNSubscriber(Logger log,Session session,Jedis cache) {
+	public QNSubscriber(Logger log,Session session,FCache fcache) {
 		this.log = log;
 		this.session = session;
-		this.cache = cache;	
+		this.fcache = fcache;	
 		
 	}
 	
 	public void setting(String des,String serverName) {
 		qns = des;
 		this.serverName = serverName;
-		qnsclient = new QNSClient(log,session,cache,"QNSqueryTopic",serverName);
+		qnsclient = new QNSClient(log,session,fcache,"QNSqueryTopic",serverName);
 		
 	}
 	
@@ -54,7 +55,7 @@ public class QNSubscriber{
 		List[] result = new ArrayList[topics.length];
 		int i = 0;
 		for(String topic:topics) {
-			List<byte[]> bocache = cache.lrange(topic.getBytes(),0,-1);
+			List<byte[]> bocache = fcache.getList(topic);
 			if(bocache == null || bocache.isEmpty()) {
 				log.info("topic {} has no message in cache",topic);
 			}else {

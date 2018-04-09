@@ -4,10 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.purefun.fstp.ace.rds.repo.RDSStockBORepository;
 import com.purefun.fstp.core.bo.BaseBO;
-import com.purefun.fstp.core.bo.RDSStockBO;
-import com.purefun.fstp.core.cache.ObjectTransCoder;
 import com.purefun.fstp.core.rpc.pub.Publisher;
 import com.purefun.fstp.core.rpc.sub.Subscriber;
 import com.purefun.fstp.core.server.PService;
@@ -19,6 +16,7 @@ public abstract class RDSBase extends PService{
 	Publisher pub = null;
 	Subscriber sub = null;
 	RDSSubMessageListener listener = null;
+	
 	
 	public RDSBase(boolean isServer) {
 		super(isServer);
@@ -35,8 +33,7 @@ public abstract class RDSBase extends PService{
 		super.start();
 		
 		//First load DB data
-		loadDBdata2Cache();
-		log.info("{} start successful",serverName);
+//		loadDBdata2Cache();
 		
 	}
 
@@ -50,7 +47,8 @@ public abstract class RDSBase extends PService{
 			List<T> list = (List<T>)repo.findAll();
 			int count = 0;
 	    	for(T each : list) {
-	    		cache.rpush(each.getClass().getName().getBytes(), ObjectTransCoder.serialize(each));
+	    		fcache.setList(each.getClass().getName(), each);
+//	    		cache.rpush(.getBytes(), ObjectTransCoder.serialize(each));
 	    		count++;
 	    	}
 	    	log.info("load data from DB to cache successful!!");
@@ -88,5 +86,4 @@ public abstract class RDSBase extends PService{
 	public void setSourceBOList(List sourceBOList) {
 		this.sourceBOList = sourceBOList;
 	}
-	
 }

@@ -1,14 +1,9 @@
 package com.purefun.fstp.core.rpc.qns;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.jms.DeliveryMode;
 import javax.jms.Destination;
-import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
@@ -21,19 +16,15 @@ import org.slf4j.Logger;
 import com.purefun.fstp.core.bo.QNSRequestBO;
 import com.purefun.fstp.core.server.monitor.MonitorService;
 
-import redis.clients.jedis.Jedis;
-
 public class QNSService{
 	Logger log = null;
 	Session session = null;
-	Jedis cache = null;	
 	MonitorService monitor = null;
 	String desname = null;
 	
-	public QNSService(Logger log,Session session,Jedis cache,MonitorService server,String topic) {
+	public QNSService(Logger log,Session session,MonitorService server,String topic) {
 		this.log = log;
 		this.session = session;
-		this.cache = cache;
 		this.monitor = server;
 		this.desname = topic;
 	}

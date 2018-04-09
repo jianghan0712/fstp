@@ -1,9 +1,6 @@
 package com.purefun.fstp.core.server;
 
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.UnknownHostException;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -14,23 +11,21 @@ import org.apache.xbean.spring.context.ClassPathXmlApplicationContext;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-
 import com.purefun.fstp.core.bo.ServerStatsBO;
-import com.purefun.fstp.core.cache.CacheClient;
+import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.constant.RpcConstant;
 import com.purefun.fstp.core.qpid.QpidConnect;
 import com.purefun.fstp.core.rpc.RpcFactory;
+import com.purefun.fstp.core.rpc.query.QueryServerSide;
 import com.purefun.fstp.core.server.hb.HBClient;
 import com.purefun.fstp.core.tool.ErrorManager;
 
-import redis.clients.jedis.Jedis;
-
 public class PService {
 	protected static PProperty property ;
-	protected Jedis cache = null;
+//	protected Jedis cache = null;
+	protected FCache fcache = null;
 	protected String serverName = null;
-	protected static Logger log = null;
+	public static Logger log = null;
 	boolean isServer = true;
 	boolean connectMonitor = false;
 	protected String defaultPath = System.getProperty("user.dir") + "\\src\\resource\\msgdef";
@@ -42,11 +37,13 @@ public class PService {
 	protected QpidConnect connection = null;
 		
 	public ScheduledExecutorService HBThreadPool = Executors.newScheduledThreadPool(1); 
+	public ScheduledExecutorService scheduledQueryThread = Executors.newScheduledThreadPool(1);  //查询请求服务
 //	public ErrorManager errManager = null;
 	public Map<String,String> ErrMap = null;
+	public Map<String,String> managerBOMap = null;
 		
 	public PService(boolean isServer) {		
-		this.serverName = property.allTag;
+		this.serverName = property.fullName;
 		this.isServer = isServer;
 	}
 	
@@ -55,7 +52,8 @@ public class PService {
 		log.info("|                 This is Free & Super Trading Platform                |");
 		log.info("------------------------------------------------------------------------");
 		log.info("Create a new FSTP Server:{}",serverName);
-		this.cache =  CacheClient.getJedis();
+
+		fcache = new FCache(this);
 		connection = new QpidConnect(log);
 		/**********		STEP 1: Load service config file		***************/
 		/*	removed to jvm para*/
@@ -65,12 +63,12 @@ public class PService {
 			session = connection.connect();
 		
 		/**********	     STEP 3: create rpc factory	   	***************/
-		rpcfactory = new RpcFactory(session, cache, log);
+		rpcfactory = new RpcFactory(session, fcache, log);
 		
 		/**********	     STEP 4: Register to monitor	   	***************/		
 		if(!property.serverName.equalsIgnoreCase("MonitorService")) {
 			ServerStatsBO bo = new ServerStatsBO(serverName, RpcConstant.ONLINE_SERVER);
-			hb = new HBClient(log, session, cache,"HBTopic",serverName);
+			hb = new HBClient(log, session, "HBTopic",serverName);
 			hb.publish(bo);
 
 		}
@@ -82,6 +80,7 @@ public class PService {
 	public void start() {
 		/*	heart beat */
 		HBThreadPool.scheduleAtFixedRate(new HBThread(), 0,10, TimeUnit.SECONDS);
+		startQueryService();
 	}
 	
 	public void stop() {
@@ -95,8 +94,12 @@ public class PService {
 		public void run() {
 			// TODO Auto-generated method stub			
 			hb.publish(bo);				
-		}
-		
+		}		
+	}
+	
+	public void startQueryService() {
+		// TODO Auto-generated method stub
+		scheduledQueryThread.schedule(new QueryServerSide(log, session, fcache, property.serverName, "QueryTopic",managerBOMap), 0, TimeUnit.SECONDS);
 	}
 
 	private static void getProperty() {
@@ -105,11 +108,33 @@ public class PService {
 		property.serverName = System.getProperty("ServiceName");
 		property.env = System.getProperty("Env");
 		property.instance =  System.getProperty("Instance");
-		property.allTag = property.serverName + "_" + property.env + "_" + property.instance;
+		property.fullName = property.serverName + "_" + property.env + "_" + property.instance;
+	}
+		
+	public BeanFactory getBeanFactory() {
+		return beanFactory;
+	}
+
+	public void setBeanFactory(BeanFactory beanFactory) {
+		this.beanFactory = beanFactory;
+	}
+		
+	public String getServerName() {
+		return serverName;
+	}
+
+	public void setServerName(String serverName) {
+		this.serverName = serverName;
 	}
 	
-	
-	
+	public Map<String, String> getManagerBOMap() {
+		return managerBOMap;
+	}
+
+	public void setManagerBOMap(Map<String, String> managerBOMap) {
+		this.managerBOMap = managerBOMap;
+	}
+
 	public static void main(String[] args) {		
 		getProperty();
 		String configPath = "config/" + property.serverName + "/" + property.env + "/" + property.instance + "/config.xml";
@@ -120,11 +145,6 @@ public class PService {
 		server.beanFactory = beanFactory;
 
 		server.init();
-		server.start();
-		
-		
-		
+		server.start();				
 	}
-
-
 }

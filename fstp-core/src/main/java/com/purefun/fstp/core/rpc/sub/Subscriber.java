@@ -3,27 +3,21 @@ package com.purefun.fstp.core.rpc.sub;
 import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.MessageConsumer;
-import javax.jms.MessageListener;
-import javax.jms.QueueBrowser;
 import javax.jms.Session;
-import javax.jms.Topic;
-import javax.jms.TopicSubscriber;
-
 import org.slf4j.Logger;
 
+import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.rpc.msglistener.SubMessageListener;
-
-import redis.clients.jedis.Jedis;
 
 public class Subscriber{
 	Logger log = null;
 	Session session = null;
-	Jedis cache = null;
+	FCache fcache = null;
 	
-	public Subscriber(Logger log,Session session,Jedis cache) {
+	public Subscriber(Logger log,Session session,FCache fcache) {
 		this.log = log;
 		this.session = session;
-		this.cache = cache;
+		this.fcache = fcache;
 	}
 	
 	public void subscribe(String topic,SubMessageListener msglisteneer) {

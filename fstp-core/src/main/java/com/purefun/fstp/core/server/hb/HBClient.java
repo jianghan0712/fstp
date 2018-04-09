@@ -20,6 +20,7 @@ import javax.jms.TextMessage;
 import org.slf4j.Logger;
 
 import com.purefun.fstp.core.bo.ServerStatsBO;
+import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.constant.RpcConstant;
 
 import redis.clients.jedis.Jedis;
@@ -27,7 +28,6 @@ import redis.clients.jedis.Jedis;
 public class HBClient{
 	static Logger log = null;
 	Session session = null;
-	Jedis cache = null;
 	String msgdef = null;
 	Destination destination = null;
 	TemporaryQueue responseQueue = null;
@@ -35,10 +35,9 @@ public class HBClient{
     MessageProducer messageProducer = null;
     String serverName = null;
 	
-	public HBClient(Logger log,Session session,Jedis cache,String topic,String servername) {
+	public HBClient(Logger log,Session session,String topic,String servername) {
 		this.log = log;
 		this.session = session;
-		this.cache = cache;
 		this.msgdef = topic;
 		
 		if(session == null) {

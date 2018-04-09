@@ -4,7 +4,7 @@ public class PProperty {
 	String serverName;
 	String env;
 	String instance;
-	String allTag;
+	String fullName;
 	
 	public String getServerName() {
 		return serverName;
@@ -24,10 +24,10 @@ public class PProperty {
 	public void setInstance(String instance) {
 		this.instance = instance;
 	}
-	public String getAllTag() {
-		return allTag;
+	public String getFullName() {
+		return fullName;
 	}
-	public void setAllTag(String allTag) {
-		this.allTag = allTag;
-	}	
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
 }

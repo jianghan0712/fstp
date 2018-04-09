@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 
 import com.purefun.fstp.core.bo.BaseBO;
 import com.purefun.fstp.core.bo.QNSRequestBO;
+import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.cache.ObjectTransCoder;
 import com.purefun.fstp.core.rpc.PublishMode;
 import com.purefun.fstp.core.rpc.qns.QNSClient;
@@ -26,12 +27,12 @@ import redis.clients.jedis.Jedis;
 public class Publisher{
 	Logger log = null;
 	Session session = null;
-	Jedis cache = null;
+	FCache fcache = null;
 	
-	public Publisher(Logger log,Session session,Jedis cache) {
+	public Publisher(Logger log,Session session,FCache fcache) {
 		this.log = log;
 		this.session = session;
-		this.cache = cache;
+		this.fcache = fcache;
 	}
 	
 	public void publish(BaseBO bo,int mode) {
@@ -59,9 +60,7 @@ public class Publisher{
 	}
 	
 	public void durableInCache(BaseBO bo) {
-		String mapName = bo.getClass().getName();
-		cache.rpush(mapName.getBytes(), ObjectTransCoder.serialize(bo));
-		
-//		log.info(mapName);
+		String mapName = bo.getClass().getName();		
+		fcache.setList(mapName, bo);
 	}	
 }

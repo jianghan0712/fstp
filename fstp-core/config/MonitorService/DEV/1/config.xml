@@ -21,7 +21,13 @@
        			<entry key="com.cicc.pilot.core.bo.TestBO2"   		value="pilot.core.rpc.testtwo"/>
        			<entry key="com.cicc.pilot.core.bo.TestBO3"   		value="pilot.core.xxx.testtwo"/>    			
        		</map>
-       </property>          
+       </property>  
+       <property name="managerBOMap">
+        	<map>
+        		<entry key="fstp.core.rpc.testone"    		value="com.purefun.fstp.core.bo.TestBO"/>
+        	</map>
+        </property>
+      
    	</bean>
    	   	
 </beans>

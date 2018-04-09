@@ -1,11 +1,16 @@
-package com.purefun.fstp.core.rpc.qns;
+package com.purefun.fstp.core.rpc.tunnel;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import javax.jms.Connection;
+import javax.jms.DeliveryMode;
 import javax.jms.Destination;
 import javax.jms.JMSException;
+import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
 import javax.jms.ObjectMessage;
@@ -15,11 +20,15 @@ import javax.jms.TextMessage;
 
 import org.slf4j.Logger;
 
+import com.purefun.fstp.core.bo.BaseBO;
 import com.purefun.fstp.core.bo.QNSRequestBO;
+import com.purefun.fstp.core.bo.QueryRequestBO;
 import com.purefun.fstp.core.cache.FCache;
 
-public class QNSClient{
-	static Logger log = null;
+import redis.clients.jedis.Jedis;
+
+public abstract class ClientSide<T>{
+	Logger log = null;
 	Session session = null;
 	FCache fcache = null;
 	String msgdef = null;
@@ -29,11 +38,7 @@ public class QNSClient{
     MessageConsumer messageConsumer = null;
     MessageProducer messageProducer = null;
     
-    String serverName = null;
-    
-    String[] topics = null;
-	
-	public QNSClient(Logger log,Session session,FCache fcache,String topic,String servername) {
+	public ClientSide(Logger log,Session session,FCache fcache,String topic) {
 		this.log = log;
 		this.session = session;
 		this.fcache = fcache;
@@ -47,7 +52,7 @@ public class QNSClient{
 				destination = session.createTopic(msgdef);
 				responseQueue = session.createTemporaryQueue();
 				messageConsumer = session.createConsumer(responseQueue);
-				messageProducer = session.createProducer(destination);								
+				messageProducer = session.createProducer(destination);	
 			} catch (JMSException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -55,67 +60,28 @@ public class QNSClient{
 		}
 	}
 	
-	public String[] publish(QNSRequestBO bo) {
+	public T query(BaseBO bo) {
 		if(session == null) {
 			log.error("There is no useful connect to broker");
 			return null;
 		}	
-		String respond = null;
-		String ret[] = null;
+
+		T receive = null;
 		try {		
 	        ObjectMessage message = session.createObjectMessage();
+	       
         	message.setObject((Serializable) bo); 
         	message.setJMSReplyTo(responseQueue);
-        	
+        	       	
         	messageProducer.send(message);
-        	
-        	TextMessage responseMessage = (TextMessage) messageConsumer.receive(5000);
-            if (responseMessage != null) {
-            	respond = responseMessage.getText();
-            	getTopics(respond);
-            } else {
-            	log.info("query failure");
-            }       	        
+
+        	ObjectMessage responseMessage = (ObjectMessage) messageConsumer.receive(5000); 
+        	receive = (T) responseMessage.getObject();
 	        } catch (Exception exp) {
 	           System.out.println("[CLIENT] Caught exception, exiting.");
 	           exp.printStackTrace(System.out);
 	       }
 		
-		return topics;          
-	}
-	
-	@Deprecated	
-	private List[] query() {
-		// TODO Auto-generated method stub
-		List[] result = new ArrayList[topics.length];
-		int i = 0;
-		for(String topic:topics) {
-			List<byte[]> bocache = fcache.getList(topic);
-			if(bocache == null || bocache.isEmpty()) {
-				log.info("topic {} has no message in cache",topic);
-			}else {
-				result[i++] = bocache;
-			}		
-		}
-		return result;
-	}
-
-	private void getTopics(String respond) {
-		while(respond==null) {
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}		
-		String temp = respond;
-		if(temp.equalsIgnoreCase("1")) {
-			log.info("format error");
-		}else if(temp.equalsIgnoreCase("2")) {
-			log.info("bo-destination init error");
-		}else {
-			topics = temp.split(",");
-		}				
+		return receive;          
 	}
 }
