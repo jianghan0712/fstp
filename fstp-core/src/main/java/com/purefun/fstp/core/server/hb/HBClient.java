@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.jms.BytesMessage;
 import javax.jms.Connection;
 import javax.jms.DeliveryMode;
 import javax.jms.Destination;
@@ -19,7 +20,8 @@ import javax.jms.TextMessage;
 
 import org.slf4j.Logger;
 
-import com.purefun.fstp.core.bo.ServerStatsBO;
+import com.purefun.fstp.core.bo.copy.otw.ICommom_OTW;
+import com.purefun.fstp.core.bo.copy.otw.ServerStatsBO_OTW;
 import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.constant.RpcConstant;
 
@@ -59,14 +61,14 @@ public class HBClient{
 		}
 	}
 	
-	public void publish(ServerStatsBO bo) {
+	public void publish(ICommom_OTW bo) {
 		if(session == null) {
 			log.error("There is no useful connect to broker");
 			return;
 		}			
 		try {		
-	        ObjectMessage message = session.createObjectMessage();
-        	message.setObject((Serializable) bo); 
+			BytesMessage message = session.createBytesMessage();
+        	message.writeBytes(bo.getBuilder().build().toByteArray());
         	message.setJMSReplyTo(responseQueue);
         	
         	messageProducer.send(message);
@@ -78,7 +80,7 @@ public class HBClient{
             	}
 //            	log.info("[HB] Received: Monitor" );
             } else {
-            	log.info("can't connet to MonitorServer,server {} will exit",bo.getServername());
+            	log.info("can't connet to MonitorServer,server {} will exit",((ServerStatsBO_OTW)bo).getBuilder().getServername());
             	System.exit(1);
             }       	        
 	        } catch (Exception exp) {
@@ -108,7 +110,10 @@ public class HBClient{
 		private void doShutDownWork(Session session,String serverName) {
 			Runtime.getRuntime().addShutdownHook(new Thread() {
 				  public void run(){
-					  ServerStatsBO bo = new ServerStatsBO(serverName, RpcConstant.OFFLINE_SERVER);
+					  ServerStatsBO_OTW bo = new ServerStatsBO_OTW();
+					  bo.setServername(serverName);
+					  bo.setStatus(RpcConstant.OFFLINE_SERVER);
+//					  ServerStatsBO bo = new ServerStatsBO(serverName, RpcConstant.OFFLINE_SERVER);
 					  Destination destination;
 					  try {
 						  destination = session.createTopic("HBTopic");
@@ -116,8 +121,9 @@ public class HBClient{
 						  MessageConsumer messageConsumer = session.createConsumer(responseQueue);
 						  MessageProducer messageProducer = session.createProducer(destination);
 	
-						  ObjectMessage message = session.createObjectMessage();
-					      message.setObject((Serializable) bo); 
+						  BytesMessage message = session.createBytesMessage();
+						  message.writeBytes(bo.getBuilder().build().toByteArray());
+//					      message.setObject((Serializable) bo); 
 					      message.setJMSReplyTo(responseQueue);
 					        	
 					      messageProducer.send(message);

@@ -7,7 +7,9 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>  
         <!-- 添加对应的持久化类 -->    
         <class>com.purefun.fstp.core.bo.TestBO</class>  
-        <class>com.purefun.fstp.core.bo.RDSStockBO</class>      
+        <class>com.purefun.fstp.core.bo.RDSStockBO</class>  
+        <class>com.purefun.fstp.core.bo.TestBO2_OTW</class> 
+            
         <properties>  
             <!-- jpa中配置hibernate基本属性 --> 
             <!--  

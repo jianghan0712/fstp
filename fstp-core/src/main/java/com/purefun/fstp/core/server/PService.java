@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 import com.purefun.fstp.core.bo.ServerStatsBO;
+import com.purefun.fstp.core.bo.copy.otw.ServerStatsBO_OTW;
 import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.constant.RpcConstant;
 import com.purefun.fstp.core.qpid.QpidConnect;
@@ -67,7 +68,10 @@ public class PService {
 		
 		/**********	     STEP 4: Register to monitor	   	***************/		
 		if(!property.serverName.equalsIgnoreCase("MonitorService")) {
-			ServerStatsBO bo = new ServerStatsBO(serverName, RpcConstant.ONLINE_SERVER);
+//			ServerStatsBO bo = new ServerStatsBO(serverName, RpcConstant.ONLINE_SERVER);
+			ServerStatsBO_OTW bo = new ServerStatsBO_OTW();
+			bo.setServername(serverName);
+			bo.setStatus(RpcConstant.ONLINE_SERVER);
 			hb = new HBClient(log, session, "HBTopic",serverName);
 			hb.publish(bo);
 
@@ -88,11 +92,14 @@ public class PService {
 	}	
 	
 	public class HBThread implements Runnable{
-		ServerStatsBO bo = new ServerStatsBO(serverName, RpcConstant.HEART_BEAT);
+//		ServerStatsBO bo = new ServerStatsBO(serverName, RpcConstant.HEART_BEAT);
+		ServerStatsBO_OTW bo = new ServerStatsBO_OTW();
 		
 		@Override		
 		public void run() {
-			// TODO Auto-generated method stub			
+			// TODO Auto-generated method stub	
+			bo.setServername(serverName);
+			bo.setStatus(RpcConstant.HEART_BEAT);
 			hb.publish(bo);				
 		}		
 	}

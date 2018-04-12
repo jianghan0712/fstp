@@ -3,6 +3,8 @@ package com.purefun.fstp.core.rpc.pub;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.jms.BytesMessage;
 import javax.jms.DeliveryMode;
 import javax.jms.Destination;
 import javax.jms.JMSException;
@@ -17,6 +19,8 @@ import org.slf4j.Logger;
 
 import com.purefun.fstp.core.bo.BaseBO;
 import com.purefun.fstp.core.bo.QNSRequestBO;
+import com.purefun.fstp.core.bo.copy.otw.ICommom_OTW;
+import com.purefun.fstp.core.bo.otw.TestBO2_OTW;
 import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.cache.ObjectTransCoder;
 import com.purefun.fstp.core.rpc.PublishMode;
@@ -35,7 +39,7 @@ public class Publisher{
 		this.fcache = fcache;
 	}
 	
-	public void publish(BaseBO bo,int mode) {
+	public void publish(ICommom_OTW bo,int mode) {
 		if(session == null) {
 			log.error("There is no useful connect to broker");
 			return;
@@ -45,8 +49,10 @@ public class Publisher{
 			Destination destination = session.createTopic(bo.getDestination());
 			MessageProducer messageProducer = session.createProducer(destination);
 			
-			ObjectMessage message = session.createObjectMessage();
-        	message.setObject((Serializable) bo); 
+//			ObjectMessage message = session.createObjectMessage();
+//        	message.setObject((Serializable) bo);
+        	BytesMessage message = session.createBytesMessage();
+        	message.writeBytes(bo.getBuilder().build().toByteArray());
         	      	
             messageProducer.send(message);
             if(mode == PublishMode.PUBLISH_AND_DUR)
@@ -59,8 +65,9 @@ public class Publisher{
 		} 
 	}
 	
-	public void durableInCache(BaseBO bo) {
-		String mapName = bo.getClass().getName();		
-		fcache.setList(mapName, bo);
+	public void durableInCache(ICommom_OTW bo) {
+		String mapName = bo.getBo().getClass().getName();	
+		fcache.setList(mapName, bo.getBuilder().build().toByteArray());
+//		fcache.setList(mapName, bo);
 	}	
 }

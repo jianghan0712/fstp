@@ -2,9 +2,12 @@ package com.purefun.fstp.ace.rds.loader;
 
 import java.util.Map;
 
+import org.zeromq.ZStar.Exit;
+
 import com.purefun.fstp.ace.rds.loader.bean.Cpxxbean;
 import com.purefun.fstp.ace.rds.server.StockRDS;
 import com.purefun.fstp.core.bo.SourceStockBO;
+import com.purefun.fstp.core.bo.copy.otw.SourceStockBO_OTW;
 import com.purefun.fstp.core.logging.PLogger;
 import com.purefun.fstp.core.rpc.PublishMode;
 import com.purefun.fstp.core.rpc.RpcFactory;
@@ -31,6 +34,8 @@ public class ExchRDSLoader extends PService{
 		filesFactory.init(log);
 		loadFiles();
 		publish2RDS();
+		
+		System.exit(0);
 	}
 
 	private void loadFiles() {
@@ -48,7 +53,7 @@ public class ExchRDSLoader extends PService{
 			Map<String,Map<String,Cpxxbean>> infoMap = eachMap.getValue();
 			Map<String,Cpxxbean> beanMap = infoMap.get("STOCK");
 			for(Map.Entry<String, Cpxxbean> bean:beanMap.entrySet()) {
-				SourceStockBO bo = new SourceStockBO();	
+				SourceStockBO_OTW bo = new SourceStockBO_OTW();	
 				Cpxxbean value = bean.getValue();
 				bo.setSecu_id(value.getSecu_id());
 				bo.setSecu_chinese_name(value.getSecu_chinese_name());

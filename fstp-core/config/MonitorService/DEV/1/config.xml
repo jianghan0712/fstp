@@ -17,9 +17,9 @@
 
    		<property name="boDestinationMap">   
        		<map>
-       			<entry key="com.cicc.pilot.core.bo.TestBO"    		value="pilot.core.rpc.testone"/>
-       			<entry key="com.cicc.pilot.core.bo.TestBO2"   		value="pilot.core.rpc.testtwo"/>
-       			<entry key="com.cicc.pilot.core.bo.TestBO3"   		value="pilot.core.xxx.testtwo"/>    			
+       			<entry key="com.purefun.fstp.core.bo.copy.TestBO"    		value="fstp.core.rpc.testone"/>
+       			<entry key="com.purefun.fstp.core.bo.copy.TestBO2"   		value="fstp.core.rpc.testtwo"/>
+       			<entry key="com.purefun.fstp.core.bo.copy.TestBO3"   		value="fstp.core.rpc.testthree"/>    			
        		</map>
        </property>  
        <property name="managerBOMap">

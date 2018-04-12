@@ -48,7 +48,7 @@
   	<!--  配置RDS相关  --> 	
   	<bean id="RDSCommon" class="com.purefun.fstp.ace.rds.server.RDSCommon">
   		<property name="tableName" value="RDS_STOCK"/>
-  		<property name="rdsCrud"   value="com.purefun.fstp.ace.rds.repo.RDSStockBORepository"/>
+  		<property name="rdsCrud"   value="com.purefun.fstp.ace.rds.repo.TestBORepository"/>
   	</bean>
   	<aop:aspectj-autoproxy />
 </beans>  

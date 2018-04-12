@@ -66,11 +66,11 @@ public class FCache {
 	}
 	
 	//存储BO用的LIST
-	public void setList(String key, Object value) {
+	public void setList(String key, byte[] value) {
 		byte[] bytes = null;
 		if(cache != null && value != null) {
-			bytes = ObjectTransCoder.serialize(value);
-			cache.rpush(key.getBytes(),bytes);
+//			bytes = ObjectTransCoder.serialize(value);
+			cache.rpush(key.getBytes(),value);
 			log.debug("Set List key={} successfull!",key);
 		}else {
 			log.debug("The object is null");
@@ -88,6 +88,29 @@ public class FCache {
 		}
 		return ret;
 	}
+	
+//	public void setList(String key, Object value) {
+//		byte[] bytes = null;
+//		if(cache != null && value != null) {
+//			bytes = ObjectTransCoder.serialize(value);
+//			cache.rpush(key.getBytes(),bytes);
+//			log.debug("Set List key={} successfull!",key);
+//		}else {
+//			log.debug("The object is null");
+//		}
+//	}
+//	
+//	public List<byte[]> getList(String key) {
+//		List<byte[]> ret = null;
+//		
+//		if(cache != null) {
+//			ret = cache.lrange(key.getBytes(),0,-1);
+//			log.debug("get key={} object!",key);
+//		}else {
+//			log.debug("The {} not found in cache:{}",key,cache);
+//		}
+//		return ret;
+//	}
 	
 	//删除对应的cache
 	public void delObjct(String key) {

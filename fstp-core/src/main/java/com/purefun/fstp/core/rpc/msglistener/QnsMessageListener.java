@@ -5,12 +5,15 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.jms.BytesMessage;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
 
 import org.slf4j.Logger;
+
+import com.google.protobuf.InvalidProtocolBufferException;
 
 public abstract class QnsMessageListener implements MessageListener {
 	public Logger log = null;
@@ -23,9 +26,14 @@ public abstract class QnsMessageListener implements MessageListener {
 	@Override
 	public void onMessage(Message message) {
 		// TODO Auto-generated method stub		
-		ObjectMessage objMsg = (ObjectMessage) message;
+		BytesMessage objMsg = (BytesMessage) message;
 
-		doSubscribe(objMsg);
+		try {
+			doSubscribe(objMsg);
+		} catch (InvalidProtocolBufferException | JMSException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -38,7 +46,7 @@ public abstract class QnsMessageListener implements MessageListener {
 		}
 	}
 	
-	abstract protected void doSubscribe(ObjectMessage objMsg);
+	abstract protected void doSubscribe(BytesMessage objMsg) throws InvalidProtocolBufferException, JMSException;
 	
 	abstract protected void doQueryTask(List<byte[]> each);
 

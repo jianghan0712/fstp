@@ -2,6 +2,7 @@ package com.purefun.fstp.core.rpc.qns;
 
 import java.util.Map;
 
+import javax.jms.BytesMessage;
 import javax.jms.DeliveryMode;
 import javax.jms.Destination;
 import javax.jms.Message;
@@ -14,7 +15,11 @@ import javax.jms.TextMessage;
 import org.slf4j.Logger;
 
 import com.purefun.fstp.core.bo.QNSRequestBO;
+import com.purefun.fstp.core.bo.copy.otw.QNSRequestBO_OTW;
+import com.purefun.fstp.core.bo.copy.pro.QNSRequestBO_PRO;
+import com.purefun.fstp.core.bo.copy.pro.ServerStatsBO_PRO;
 import com.purefun.fstp.core.server.monitor.MonitorService;
+import com.purefun.fstp.core.tool.RPCTool;
 
 public class QNSService{
 	Logger log = null;
@@ -40,12 +45,22 @@ public class QNSService{
 	        MessageProducer messageProducer = session.createProducer(null);
 			
 	        while (true) {
-	        	ObjectMessage message = (ObjectMessage) messageConsumer.receive();
-	        	QNSRequestBO reveivebo = (QNSRequestBO)message.getObject();
+	        	BytesMessage message = (BytesMessage)messageConsumer.receive();
+	        	byte[] byteArray = new byte[1024];
+	        	int len = -1;
+	        	len=message.readBytes(byteArray);
+	        	if(len == -1){ 
+	        		continue;
+	        	}
+	        	QNSRequestBO_OTW receiveBO =new QNSRequestBO_OTW(RPCTool.subBytes(byteArray, 0, len));
+
+//	        	ServerStatsBO reveivebo = (ServerStatsBO)message.getObject();							
+//	        	ObjectMessage message = (ObjectMessage) messageConsumer.receive();
+//	        	QNSRequestBO reveivebo = (QNSRequestBO)message.getObject();
 	        	
-	        	log.info("receive ServerName:{},QNSTopic:{}",reveivebo.getServername(),reveivebo.getRequest());
-	        	String reply = analysis(reveivebo.getRequest());
-	        	log.info(reveivebo.getRequest());
+	        	log.info("receive ServerName:{},QNSTopic:{}",receiveBO.getServername(),receiveBO.getRequest());
+	        	String reply = analysis(receiveBO.getRequest());
+	        	log.info(receiveBO.getRequest());
 	        	TextMessage responseMessage = session.createTextMessage(reply);
 	        	messageProducer.send(message.getJMSReplyTo(), responseMessage, DeliveryMode.NON_PERSISTENT, Message.DEFAULT_PRIORITY, Message.DEFAULT_TIME_TO_LIVE);	        
 	        }

@@ -1,7 +1,5 @@
 package com.purefun.fstp.core.bo;
 
-import java.io.Serializable;
-
 import com.purefun.fstp.core.tool.UUID;
 
 public class ServerStatsBO implements BaseBO  {
@@ -32,12 +30,6 @@ public class ServerStatsBO implements BaseBO  {
 	
 	public String getServername() {
 		return servername;
-	}
-
-	@Override
-	public String getDestination() {
-		// TODO Auto-generated method stub
-		return destination;
 	}
 		
 }

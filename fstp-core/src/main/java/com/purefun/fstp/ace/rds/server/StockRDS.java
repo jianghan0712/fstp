@@ -6,9 +6,16 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.springframework.data.repository.CrudRepository;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.purefun.fstp.core.bo.QueryRequestBO;
+import com.purefun.fstp.core.bo.RDSStockBO;
 import com.purefun.fstp.core.bo.SourceStockBO;
 import com.purefun.fstp.core.bo.TestBO;
+import com.purefun.fstp.core.bo.TestBO2;
+import com.purefun.fstp.core.bo.copy.otw.SourceStockBO_OTW;
+import com.purefun.fstp.core.bo.copy.otw.TestBO_OTW;
+import com.purefun.fstp.core.bo.copy.pro.SourceStockBO_PRO;
+import com.purefun.fstp.core.bo.otw.TestBO2_OTW;
 import com.purefun.fstp.core.logging.PLogger;
 import com.purefun.fstp.core.rpc.RpcFactory;
 import com.purefun.fstp.core.rpc.qns.QNSubscriber;
@@ -29,10 +36,11 @@ public class StockRDS extends RDSBase{
 		//receive sourceBO
 		sub = RpcFactory.createSubscriber();
 		listener = new StockRDSSubListener(log);
-//		sub.subscribe(sourceQns,  listener);
+		sub.subscribe(sourceQns,  listener);
 		
 		//publish rdsBO
 		pub = RpcFactory.createPublisher();
+		
 	}
 	
 	public void start() {
@@ -40,28 +48,54 @@ public class StockRDS extends RDSBase{
 		sourceBOList = listener.getResultList();
 
 		/*	test query */
-		QueryClientSide query = new QueryClientSide(log, session, fcache, "QueryTopic");
-		List<TestBO> result = query.query(new QueryRequestBO(serverName,"MonitorService","QueryTopic","fstp.core.rpc.testone"));
-		if(result != null && result.size()!=0) {
-			log.info("receive {} messages",result.size());
-		}else {
-			log.info("Query nothing");
-		}
-		
+//		QueryClientSide query = new QueryClientSide(log, session, fcache, "QueryTopic");
+//		List<TestBO> result = query.query(new QueryRequestBO(serverName,"MonitorService","QueryTopic","fstp.core.rpc.testone"));
+//		if(result != null && result.size()!=0) {
+//			log.info("receive {} messages",result.size());
+//		}else {
+//			log.info("Query nothing");
+//		}
+				
 		/*	test QNS */
-//		QNSubscriber qns = RpcFactory.createQNSubscriber();
-//		qns.setting("fstp.core.rpc.*", serverName);
-//		qns.QNS(new MyMessageListener(log));
+		QNSubscriber qns = RpcFactory.createQNSubscriber();
+		qns.setting("fstp.core.rpc.*", serverName);
+		qns.QNS(new MyMessageListener(log));
 		
 		log.info("{} start successful",serverName);
 //		RDSStockBO test = new RDSStockBO();
 //    	test.setBond_par_value(100.00);
-//		save2DB(test);
+
+//		for(int i = 0;i<3;i++) {
+//			TestBO_OTW test = new TestBO_OTW();
+//			pub.publish(test, 0);
+//		}
+		
+//		
+//		List<byte[]> list = fcache.getList("com.purefun.fstp.core.bo.TestBO2");
+//		log.info("{}",list.size());
+//		
+//		for(byte[] each:list) {
+//			try {
+//				com.purefun.fstp.core.bo.proto.TestBO2_PRO.TestBO2 receive = com.purefun.fstp.core.bo.proto.TestBO2_PRO.TestBO2.parseFrom(each);
+//				log.info("receive:{}",receive.toString());
+//			} catch (InvalidProtocolBufferException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+//		test.setMsg("this is otw");
+		
+//		TestBO2 test = new TestBO2();
+//		test.msg = "100000";
+
+//		TestBO2_OTW test = new TestBO2_OTW();
+//		log.info(test.getMsg());
+//		save2DB(test.getBo());
 //		CrudRepository repo =  beanFactory.getBean(RDSStockBORepository.class);
 //    	
 
     	
-//		CrudRepository repo = beanFactory.getBean(RDSStockBORepository.class);
+		
 //		CrudRepository repo = (CrudRepository)beanFactory.getBean("curd");
 //    	TestBORepository personDao = ctx.getBean(TestBORepository.class);
 		
@@ -95,7 +129,7 @@ public class StockRDS extends RDSBase{
 		this.source2rdsMap = source2rdsMap;
 	}
 
-	class StockRDSSubListener extends RDSSubMessageListener<SourceStockBO>{
+	class StockRDSSubListener extends RDSSubMessageListener<SourceStockBO_PRO.SourceStockBO>{
 
 		public StockRDSSubListener(Logger log) {
 			super(log);
@@ -103,7 +137,7 @@ public class StockRDS extends RDSBase{
 		}
 
 		@Override
-		protected void doRdsTask(SourceStockBO bo) {
+		protected void doRdsTask(SourceStockBO_OTW bo) {
 			// TODO Auto-generated method stub
 			
 		}

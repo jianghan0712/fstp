@@ -11,12 +11,10 @@ import com.purefun.fstp.core.tool.UUID;
 @Entity  
 @Table(name="TestBO") 
 public class TestBO  implements BaseBO {
-	private static final long serialVersionUID = 2L;
-	
 	@Id
 	private String uuid = UUID.createUuid();					//bo实体的唯一标识，key
 	
-	public long boid = serialVersionUID;					//bo的唯一标识，key
+	public long boid = 2L;					//bo的唯一标识，key
 		
 	public String destination = "fstp.core.rpc.testone";
 	
@@ -24,29 +22,4 @@ public class TestBO  implements BaseBO {
 	
 	public String msg = null;
 	
-	public String getServername() {
-		return servername;
-	}
-	public void setServername(String servername) {
-		this.servername = servername;
-	}
-	public String getMsg() {
-		return msg;
-	}
-	public void setMsg(String msg) {
-		this.msg = msg;
-	}
-
-	@Override
-	public String getDestination() {
-		// TODO Auto-generated method stub
-		return destination;
-	}
-	public String toString() {
-		
-		return " uuid:"+ this.uuid ;	
-	}
-
-
-
 }

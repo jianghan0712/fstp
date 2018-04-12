@@ -44,13 +44,5 @@ public class QNSRequestBO implements BaseBO  {
 
 	public void setRequest(String request) {
 		this.request = request;
-	}
-
-	@Override
-	public String getDestination() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
+	}		
 }

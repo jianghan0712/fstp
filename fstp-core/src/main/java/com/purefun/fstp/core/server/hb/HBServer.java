@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.jms.BytesMessage;
 import javax.jms.DeliveryMode;
 import javax.jms.Destination;
 import javax.jms.JMSException;
@@ -18,11 +19,14 @@ import javax.jms.TextMessage;
 
 import org.slf4j.Logger;
 
-import com.purefun.fstp.core.bo.ServerStatsBO;
+import com.purefun.fstp.core.bo.copy.ServerStatsBO;
+import com.purefun.fstp.core.bo.copy.otw.ServerStatsBO_OTW;
+import com.purefun.fstp.core.bo.copy.pro.ServerStatsBO_PRO;
 import com.purefun.fstp.core.bo.model.BOinstance;
 import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.constant.RpcConstant;
 import com.purefun.fstp.core.server.monitor.MonitorService;
+import com.purefun.fstp.core.tool.RPCTool;
 
 import redis.clients.jedis.Jedis;
 
@@ -54,12 +58,20 @@ public class HBServer{
 	        MessageProducer messageProducer = session.createProducer(null);
 	        			
 	        while (true) {
-	        	ObjectMessage message = (ObjectMessage) messageConsumer.receive();
-	        	ServerStatsBO reveivebo = (ServerStatsBO)message.getObject();
-				String serverFullName = reveivebo.getServername();
+//	        	ServerStatsBO_OTW receiveBO = new ServerStatsBO_OTW();
+	        	BytesMessage message = (BytesMessage)messageConsumer.receive();
+	        	byte[] byteArray = new byte[1024];
+	        	int len = -1;
+	        	len=message.readBytes(byteArray);
+	        	
+	        	if(len == -1){ 
+	        		continue;
+	        	}
+	        	ServerStatsBO_OTW receiveBO = new ServerStatsBO_OTW(RPCTool.subBytes(byteArray, 0, len));
+//	        	ServerStatsBO reveivebo = (ServerStatsBO)message.getObject();
+				String serverFullName = receiveBO.getServername();
 				String serverName = serverFullName.substring(0,serverFullName.indexOf("_"));
-				int status = reveivebo.getStatus();
-				
+				int status = receiveBO.getStatus();				
 				
 				TextMessage responseMessage = null;
 	        	if(status == RpcConstant.ONLINE_SERVER) {

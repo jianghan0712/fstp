@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
+import com.purefun.fstp.ace.rds.repo.RDSStockBORepository;
+import com.purefun.fstp.ace.rds.repo.TestBORepository;
 import com.purefun.fstp.core.bo.BaseBO;
 import com.purefun.fstp.core.rpc.pub.Publisher;
 import com.purefun.fstp.core.rpc.sub.Subscriber;
@@ -22,16 +24,20 @@ public abstract class RDSBase extends PService{
 		super(isServer);
 		// TODO Auto-generated constructor stub
 //		registTask = new RegisterMonitor();
+		
 	}
 	
 	public void init() {
 		super.init();
 		log.info("{} init successful",serverName);	
+//		repo = beanFactory.getBean(RDSStockBORepository.class);
+//		repo = beanFactory.getBean(TestBORepository.class);
+		
 	}
 	
 	public void start() {
 		super.start();
-		
+				
 		//First load DB data
 //		loadDBdata2Cache();
 		

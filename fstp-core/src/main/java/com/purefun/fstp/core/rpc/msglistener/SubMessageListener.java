@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.jms.BytesMessage;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -23,7 +24,7 @@ public abstract class SubMessageListener implements MessageListener {
 	@Override
 	public void onMessage(Message message) {
 		// TODO Auto-generated method stub		
-		ObjectMessage objMsg = (ObjectMessage) message;
+		BytesMessage objMsg = (BytesMessage) message;
 
 		doSubscribeTask(objMsg);
 		
@@ -37,5 +38,5 @@ public abstract class SubMessageListener implements MessageListener {
 		this.resultList = resultList;
 	}
 
-	abstract protected void doSubscribeTask(ObjectMessage objMsg);
+	abstract protected void doSubscribeTask(BytesMessage objMsg);
 }

@@ -12,6 +12,7 @@ import javax.jms.Session;
 import org.slf4j.Logger;
 
 import com.purefun.fstp.core.bo.QNSRequestBO;
+import com.purefun.fstp.core.bo.copy.otw.QNSRequestBO_OTW;
 import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.rpc.msglistener.QnsMessageListener;
 
@@ -42,7 +43,9 @@ public class QNSubscriber{
 	}
 	
 	public void QNS(QnsMessageListener listener) {
-		QNSRequestBO bo = new QNSRequestBO(qns);
+//		QNSRequestBO bo = new QNSRequestBO(qns);
+		QNSRequestBO_OTW bo = new QNSRequestBO_OTW();
+		bo.setRequest(qns);
 		topics = qnsclient.publish(bo);
 
 		listener.queryList = query();//	1.query
@@ -65,7 +68,7 @@ public class QNSubscriber{
 		return result;
 	}
 	
-	private void subscribe(MessageListener msglisteneer) {
+	private void subscribe(QnsMessageListener msglisteneer) {
 		try {
 			Destination destination = session.createTopic(qns);
 			MessageConsumer messageConsumer = session.createConsumer(destination);

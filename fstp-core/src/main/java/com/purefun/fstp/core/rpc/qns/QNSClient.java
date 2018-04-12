@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.jms.BytesMessage;
 import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.MessageConsumer;
@@ -16,6 +17,7 @@ import javax.jms.TextMessage;
 import org.slf4j.Logger;
 
 import com.purefun.fstp.core.bo.QNSRequestBO;
+import com.purefun.fstp.core.bo.copy.otw.ICommom_OTW;
 import com.purefun.fstp.core.cache.FCache;
 
 public class QNSClient{
@@ -55,7 +57,7 @@ public class QNSClient{
 		}
 	}
 	
-	public String[] publish(QNSRequestBO bo) {
+	public String[] publish(ICommom_OTW bo) {
 		if(session == null) {
 			log.error("There is no useful connect to broker");
 			return null;
@@ -63,8 +65,13 @@ public class QNSClient{
 		String respond = null;
 		String ret[] = null;
 		try {		
-	        ObjectMessage message = session.createObjectMessage();
-        	message.setObject((Serializable) bo); 
+//	        ObjectMessage message = session.createObjectMessage();
+//        	message.setObject((Serializable) bo); 
+//        	message.setJMSReplyTo(responseQueue);
+//        	
+//        	messageProducer.send(message);
+        	BytesMessage message = session.createBytesMessage();
+        	message.writeBytes(bo.getBuilder().build().toByteArray());
         	message.setJMSReplyTo(responseQueue);
         	
         	messageProducer.send(message);
@@ -82,22 +89,6 @@ public class QNSClient{
 	       }
 		
 		return topics;          
-	}
-	
-	@Deprecated	
-	private List[] query() {
-		// TODO Auto-generated method stub
-		List[] result = new ArrayList[topics.length];
-		int i = 0;
-		for(String topic:topics) {
-			List<byte[]> bocache = fcache.getList(topic);
-			if(bocache == null || bocache.isEmpty()) {
-				log.info("topic {} has no message in cache",topic);
-			}else {
-				result[i++] = bocache;
-			}		
-		}
-		return result;
 	}
 
 	private void getTopics(String respond) {

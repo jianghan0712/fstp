@@ -27,12 +27,6 @@ public class QueryRequestBO implements BaseBO  {
 		this.querytopic = querytopic;
 		this.queryBoDestination = queryBoDestination;
 	}
-	
-	@Override
-	public String getDestination() {
-		// TODO Auto-generated method stub
-		return destination;
-	}
 
 	public String getRequestServiceName() {
 		return requestServiceName;
@@ -57,11 +51,5 @@ public class QueryRequestBO implements BaseBO  {
 	public void setQueryBoDestination(String queryBoDestination) {
 		this.queryBoDestination = queryBoDestination;
 	}
-
-	@Override
-	public String toString() {
-		return "QueryRequestBO [uuid=" + uuid + ", boid=" + boid + ", destination=" + destination
-				+ ", requestServiceName=" + requestServiceName + ", respondServiceName=" + respondServiceName + "]";
-	}	
 	
 }

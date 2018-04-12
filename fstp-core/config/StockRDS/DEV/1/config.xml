@@ -9,7 +9,7 @@
     <!-- 引入jedis的properties配置文件 -->
     <!--如果你有多个数据源需要通过<context:property-placeholder管理，且不愿意放在一个配置文件里，那么一定要加上ignore-unresolvable=“true"-->
 	<import resource="classpath:resource/comConf/CommonConfig.xml" />
-	<import resource="DBConfig4.xml" />
+	<!--  <import resource="DBConfig4.xml" />-->
     <context:property-placeholder location="classpath:redis.properties" ignore-unresolvable="true" />
 	
     <bean id="MainServer" class="com.purefun.fstp.ace.rds.server.StockRDS">  
