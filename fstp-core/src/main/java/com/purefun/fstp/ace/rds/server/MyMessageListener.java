@@ -15,9 +15,8 @@ import org.slf4j.Logger;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.purefun.fstp.core.bo.TestBO;
-import com.purefun.fstp.core.bo.copy.otw.TestBO_OTW;
-import com.purefun.fstp.core.bo.copy.pro.ServerStatsBO_PRO;
-import com.purefun.fstp.core.bo.copy.pro.TestBO_PRO;
+import com.purefun.fstp.core.bo.otw.TestBO_OTW;
+import com.purefun.fstp.core.bo.pro.TestBO_PRO;
 import com.purefun.fstp.core.cache.ObjectTransCoder;
 import com.purefun.fstp.core.rpc.msglistener.QnsMessageListener;
 import com.purefun.fstp.core.tool.RPCTool;
@@ -62,7 +61,7 @@ public class MyMessageListener extends QnsMessageListener {
 		for(byte[] each:eachList) {
 //			TestBO_OTW bo = new TestBO_OTW();			
 			try {
-				com.purefun.fstp.core.bo.copy.pro.TestBO_PRO.TestBO receiveBO = TestBO_PRO.TestBO.parseFrom(each);
+				com.purefun.fstp.core.bo.pro.TestBO_PRO.TestBO receiveBO = TestBO_PRO.TestBO.parseFrom(each);
 				log.info(receiveBO.getDestination());
 			} catch (InvalidProtocolBufferException e) {
 				// TODO Auto-generated catch block

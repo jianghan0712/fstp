@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 
 import com.purefun.fstp.core.bo.BaseBO;
 import com.purefun.fstp.core.bo.QNSRequestBO;
-import com.purefun.fstp.core.bo.copy.otw.ICommom_OTW;
+import com.purefun.fstp.core.bo.commom.ICommom_OTW;
 import com.purefun.fstp.core.bo.otw.TestBO2_OTW;
 import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.cache.ObjectTransCoder;

@@ -12,7 +12,7 @@ import javax.jms.Session;
 import org.slf4j.Logger;
 
 import com.purefun.fstp.core.bo.QNSRequestBO;
-import com.purefun.fstp.core.bo.copy.otw.QNSRequestBO_OTW;
+import com.purefun.fstp.core.bo.otw.QNSRequestBO_OTW;
 import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.rpc.msglistener.QnsMessageListener;
 

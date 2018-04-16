@@ -53,8 +53,7 @@ public abstract class RDSBase extends PService{
 			List<T> list = (List<T>)repo.findAll();
 			int count = 0;
 	    	for(T each : list) {
-	    		fcache.setList(each.getClass().getName(), each);
-//	    		cache.rpush(.getBytes(), ObjectTransCoder.serialize(each));
+	    		fcache.setList(each.getClass().getName(), (byte[])each);
 	    		count++;
 	    	}
 	    	log.info("load data from DB to cache successful!!");

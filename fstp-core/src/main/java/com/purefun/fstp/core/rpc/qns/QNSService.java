@@ -15,9 +15,7 @@ import javax.jms.TextMessage;
 import org.slf4j.Logger;
 
 import com.purefun.fstp.core.bo.QNSRequestBO;
-import com.purefun.fstp.core.bo.copy.otw.QNSRequestBO_OTW;
-import com.purefun.fstp.core.bo.copy.pro.QNSRequestBO_PRO;
-import com.purefun.fstp.core.bo.copy.pro.ServerStatsBO_PRO;
+import com.purefun.fstp.core.bo.otw.QNSRequestBO_OTW;
 import com.purefun.fstp.core.server.monitor.MonitorService;
 import com.purefun.fstp.core.tool.RPCTool;
 

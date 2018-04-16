@@ -12,11 +12,7 @@ import org.slf4j.Logger;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.purefun.fstp.core.bo.SourceStockBO;
 import com.purefun.fstp.core.bo.TestBO;
-import com.purefun.fstp.core.bo.copy.otw.ICommom_OTW;
-import com.purefun.fstp.core.bo.copy.otw.SourceStockBO_OTW;
-import com.purefun.fstp.core.bo.copy.pro.RDSStockBO_PRO;
-import com.purefun.fstp.core.bo.copy.pro.SourceStockBO_PRO;
-import com.purefun.fstp.core.bo.copy.pro.TestBO_PRO;
+import com.purefun.fstp.core.bo.otw.SourceStockBO_OTW;
 import com.purefun.fstp.core.rpc.msglistener.SubMessageListener;
 import com.purefun.fstp.core.tool.RPCTool;
 

@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 import com.purefun.fstp.core.bo.ServerStatsBO;
-import com.purefun.fstp.core.bo.copy.otw.ServerStatsBO_OTW;
+import com.purefun.fstp.core.bo.otw.ServerStatsBO_OTW;
 import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.constant.RpcConstant;
 import com.purefun.fstp.core.qpid.QpidConnect;

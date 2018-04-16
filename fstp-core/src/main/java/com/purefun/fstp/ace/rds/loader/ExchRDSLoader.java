@@ -7,7 +7,7 @@ import org.zeromq.ZStar.Exit;
 import com.purefun.fstp.ace.rds.loader.bean.Cpxxbean;
 import com.purefun.fstp.ace.rds.server.StockRDS;
 import com.purefun.fstp.core.bo.SourceStockBO;
-import com.purefun.fstp.core.bo.copy.otw.SourceStockBO_OTW;
+import com.purefun.fstp.core.bo.otw.SourceStockBO_OTW;
 import com.purefun.fstp.core.logging.PLogger;
 import com.purefun.fstp.core.rpc.PublishMode;
 import com.purefun.fstp.core.rpc.RpcFactory;

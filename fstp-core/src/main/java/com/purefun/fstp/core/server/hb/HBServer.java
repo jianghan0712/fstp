@@ -19,10 +19,9 @@ import javax.jms.TextMessage;
 
 import org.slf4j.Logger;
 
-import com.purefun.fstp.core.bo.copy.ServerStatsBO;
-import com.purefun.fstp.core.bo.copy.otw.ServerStatsBO_OTW;
-import com.purefun.fstp.core.bo.copy.pro.ServerStatsBO_PRO;
+import com.purefun.fstp.core.bo.ServerStatsBO;
 import com.purefun.fstp.core.bo.model.BOinstance;
+import com.purefun.fstp.core.bo.otw.ServerStatsBO_OTW;
 import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.constant.RpcConstant;
 import com.purefun.fstp.core.server.monitor.MonitorService;

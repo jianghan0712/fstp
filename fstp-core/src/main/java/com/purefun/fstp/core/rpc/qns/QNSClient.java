@@ -17,7 +17,7 @@ import javax.jms.TextMessage;
 import org.slf4j.Logger;
 
 import com.purefun.fstp.core.bo.QNSRequestBO;
-import com.purefun.fstp.core.bo.copy.otw.ICommom_OTW;
+import com.purefun.fstp.core.bo.commom.ICommom_OTW;
 import com.purefun.fstp.core.cache.FCache;
 
 public class QNSClient{
