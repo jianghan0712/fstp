@@ -364,7 +364,8 @@ public class GenerateBOFiles {
 	}
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {	
-		String bodir = "resource/com/purefun/fstp/core/bo/";
+//		String bodir = "resource/com/purefun/fstp/core/bo/";
+		String bodir = args[0];
 		GenerateBOFiles writer = new GenerateBOFiles(bodir);
 		writer.genProtoFile(new File(bodir));
 		writer.genBuildFile(new File(writer.protofileDirectory));

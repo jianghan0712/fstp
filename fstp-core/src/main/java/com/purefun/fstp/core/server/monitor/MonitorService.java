@@ -46,7 +46,7 @@ public class MonitorService extends PService{
 //		QueryRespond test = new QueryRespond(log, session, cache, serverName, "QueryTopic");
 //		test.publish();
 		
-		log.info(ErrMap.get("00000000"));
+//		log.info(ErrMap.get("00000000"));
 	}
 
 	private void startHBService() {

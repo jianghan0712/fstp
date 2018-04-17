@@ -78,13 +78,14 @@ public class PService {
 		}
 		/*  monitor service don't need register*/
 		/**********	     STEP 5: Get Common info	   	***************/
-		ErrMap = ((ErrorManager)beanFactory.getBean("errorManager")).getErrorMap();
+//		ErrMap = ((ErrorManager)beanFactory.getBean("errorManager")).getErrorMap();
 	}
 
 	public void start() {
 		/*	heart beat */
 		HBThreadPool.scheduleAtFixedRate(new HBThread(), 0,10, TimeUnit.SECONDS);
 		startQueryService();
+		log.info("<====================   active");
 	}
 	
 	public void stop() {
@@ -152,6 +153,7 @@ public class PService {
 		server.beanFactory = beanFactory;
 
 		server.init();
-		server.start();				
+		server.start();	
+		
 	}
 }

@@ -34,7 +34,7 @@ public class QpidConnect {
 	
 	public Session connect() {
 		Session session = null;
-		try (InputStream resourceAsStream = this.getClass().getResourceAsStream("hello.properties")){
+		try (InputStream resourceAsStream = this.getClass().getResourceAsStream("qpid.properties")){
             Properties properties = new Properties();
             properties.load(resourceAsStream);
             Context context = new InitialContext(properties);
