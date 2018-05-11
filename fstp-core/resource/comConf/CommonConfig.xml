@@ -10,7 +10,5 @@
     <!--如果你有多个数据源需要通过<context:property-placeholder管理，且不愿意放在一个配置文件里，那么一定要加上ignore-unresolvable=“true"-->
 	<import resource="ErrManager.xml" />
 	<import resource="CacheClient.xml" />
-	
-    <context:property-placeholder location="classpath:redis.properties" ignore-unresolvable="true" />
-   	  	
+	  	  	
 </beans>

@@ -5,6 +5,7 @@ public class PProperty {
 	String env;
 	String instance;
 	String fullName;
+	String develop;
 	
 	public String getServerName() {
 		return serverName;
@@ -30,4 +31,16 @@ public class PProperty {
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
+	public String getDevelop() {
+		return develop;
+	}
+	public void setDevelop(String develop) {
+		this.develop = develop;
+	}
+	@Override
+	public String toString() {
+		return "PProperty [serverName=" + serverName + ", env=" + env + ", instance=" + instance + ", fullName="
+				+ fullName + ", develop=" + develop + "]";
+	}
+	
 }

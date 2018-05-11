@@ -33,5 +33,18 @@ public class Subscriber{
 		}         
 	}
 	
+	public void subscribe(String topic,PythonMessageListener msglisteneer) {
+		try {
+			Destination destination = session.createTopic(topic);
+			MessageConsumer messageConsumer = session.createConsumer(destination);
+			log.info("subscribe topic : {}",topic);
+		
+		    messageConsumer.setMessageListener(msglisteneer);	
+		} catch (JMSException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}         
+	}
+	
 
 }

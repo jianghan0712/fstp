@@ -28,7 +28,7 @@
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     	
     	<!-- Spring -->
-    	<spring-framework.version>4.3.13.RELEASE</spring-framework.version>
+    	<spring-framework.version>5.0.2.RELEASE</spring-framework.version>
     	<spring-framework-data.version>2.0.2.RELEASE</spring-framework-data.version>
     	
 		<!-- Logging -->
@@ -39,6 +39,10 @@
     	<mybatis.version>3.2.8</mybatis.version>
     	<!-- Hibernate -->
     	<hibernate.version>4.3.11.Final</hibernate.version>
+    	<!-- ignite.version -->
+    	<ignite.version>2.4.0</ignite.version>
+    	<lucene.version>5.5.0</lucene.version>
+    	<fstp.version>0.0.1-SNAPSHOT</fstp.version>
   </properties>
 
   <dependencies>
@@ -63,12 +67,17 @@
         <version>5.13.4</version>
     </dependency> 
     
-    <!-- Spring --> 
+    <!-- Spring -->  
     <dependency>
         <groupId>org.springframework.data</groupId>
         <artifactId>spring-data-jpa</artifactId>
-        <version>1.7.1.RELEASE</version>
-    </dependency>   
+        <version>${spring-framework-data.version}</version>
+    </dependency> 
+	<dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-expression</artifactId>
+    	<version>${spring-framework.version}</version>
+	</dependency>
      
     <!-- Logging -->
     <dependency>
@@ -76,7 +85,6 @@
  		<artifactId>slf4j-api</artifactId>
   		<version>${slf4j.version}</version>
 	</dependency>
-
 	<dependency>
   		<groupId>org.slf4j</groupId>
   		<artifactId>log4j-over-slf4j</artifactId>
@@ -148,10 +156,54 @@
     	<artifactId>protobuf-java</artifactId>
     	<version>3.5.1</version>
 	</dependency>
-    
+	
+	<!-- ignite -->
+	<dependency>
+    	<groupId>org.apache.lucene</groupId>
+    	<artifactId>lucene-core</artifactId>
+    	<version>${lucene.version}</version>
+	</dependency>
+	<dependency>
+    	<groupId>org.apache.lucene</groupId>
+    	<artifactId>lucene-analyzers-common</artifactId>
+    	<version>${lucene.version}</version>
+	</dependency>
+	<dependency>
+    	<groupId>org.apache.lucene</groupId>
+    	<artifactId>lucene-queryparser</artifactId>
+    	<version>${lucene.version}</version>
+	</dependency>
+	<dependency>
+    	<groupId>org.apache.ignite</groupId>
+    	<artifactId>ignite-core</artifactId>
+    	<version>${ignite.version}</version>
+	</dependency>
+	<dependency>
+    	<groupId>org.apache.ignite</groupId>
+    	<artifactId>ignite-indexing</artifactId>
+    	<version>${ignite.version}</version>
+	</dependency>
+	<dependency>
+    	<groupId>org.apache.ignite</groupId>
+    	<artifactId>ignite-spring</artifactId>
+    	<version>${ignite.version}</version>
+	</dependency>
+    <dependency>
+        <groupId>commons-logging</groupId>
+        <artifactId>commons-logging</artifactId>
+        <version>1.1.1</version>
+	</dependency> 
+	<dependency>
+        <groupId>com.purefun</groupId>
+        <artifactId>fstp-core-bo</artifactId>
+        <version>${fstp.version}</version>
+	</dependency> 
+
+
   </dependencies>
   <modules>
   	<module>fstp-core</module>
     <module>fstp-ace-rds</module>
+    <module>fstp-core-bo</module>
   </modules>
 </project>

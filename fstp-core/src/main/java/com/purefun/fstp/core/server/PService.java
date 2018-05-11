@@ -15,6 +15,8 @@ import com.purefun.fstp.core.bo.ServerStatsBO;
 import com.purefun.fstp.core.bo.otw.ServerStatsBO_OTW;
 import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.constant.RpcConstant;
+import com.purefun.fstp.core.logging.PLogger;
+import com.purefun.fstp.core.python.TestPython;
 import com.purefun.fstp.core.qpid.QpidConnect;
 import com.purefun.fstp.core.rpc.RpcFactory;
 import com.purefun.fstp.core.rpc.query.QueryServerSide;
@@ -42,13 +44,24 @@ public class PService {
 //	public ErrorManager errManager = null;
 	public Map<String,String> ErrMap = null;
 	public Map<String,String> managerBOMap = null;
+	
 		
 	public PService(boolean isServer) {		
 		this.serverName = property.fullName;
 		this.isServer = isServer;
 	}
 	
+	public PService() {		
+		getProperty();
+		log = PLogger.getLogger(TestPython.class);
+		log.info(property.toString());
+		this.serverName = property.fullName;
+//		this.serverName = "python";
+		
+	}
+	
 	public void init() {
+		
 		log.info("------------------------------------------------------------------------");
 		log.info("|                 This is Free & Super Trading Platform                |");
 		log.info("------------------------------------------------------------------------");
@@ -69,11 +82,11 @@ public class PService {
 		/**********	     STEP 4: Register to monitor	   	***************/		
 		if(!property.serverName.equalsIgnoreCase("MonitorService")) {
 //			ServerStatsBO bo = new ServerStatsBO(serverName, RpcConstant.ONLINE_SERVER);
-			ServerStatsBO_OTW bo = new ServerStatsBO_OTW();
-			bo.setServername(serverName);
-			bo.setStatus(RpcConstant.ONLINE_SERVER);
+			ServerStatsBO_OTW hbbo = new ServerStatsBO_OTW();
+			hbbo.setServername(serverName);
+			hbbo.setStatus(RpcConstant.ONLINE_SERVER);
 			hb = new HBClient(log, session, "HBTopic",serverName);
-			hb.publish(bo);
+			hb.publish(hbbo);
 
 		}
 		/*  monitor service don't need register*/
@@ -83,7 +96,9 @@ public class PService {
 
 	public void start() {
 		/*	heart beat */
-		HBThreadPool.scheduleAtFixedRate(new HBThread(), 0,10, TimeUnit.SECONDS);
+		if(!property.develop.equalsIgnoreCase("python")) {
+			HBThreadPool.scheduleAtFixedRate(new HBThread(new ServerStatsBO_OTW()), 0, 60, TimeUnit.SECONDS);
+		}
 		startQueryService();
 		log.info("<====================   active");
 	}
@@ -94,7 +109,10 @@ public class PService {
 	
 	public class HBThread implements Runnable{
 //		ServerStatsBO bo = new ServerStatsBO(serverName, RpcConstant.HEART_BEAT);
-		ServerStatsBO_OTW bo = new ServerStatsBO_OTW();
+		ServerStatsBO_OTW bo = null;
+		public HBThread(ServerStatsBO_OTW bo) {
+			this.bo = bo;
+		}
 		
 		@Override		
 		public void run() {
@@ -107,7 +125,7 @@ public class PService {
 	
 	public void startQueryService() {
 		// TODO Auto-generated method stub
-		scheduledQueryThread.schedule(new QueryServerSide(log, session, fcache, property.serverName, "QueryTopic",managerBOMap), 0, TimeUnit.SECONDS);
+//		scheduledQueryThread.schedule(new QueryServerSide(log, session, fcache, property.serverName, "QueryTopic",managerBOMap), 0, TimeUnit.SECONDS);
 	}
 
 	private static void getProperty() {
@@ -117,6 +135,7 @@ public class PService {
 		property.env = System.getProperty("Env");
 		property.instance =  System.getProperty("Instance");
 		property.fullName = property.serverName + "_" + property.env + "_" + property.instance;
+		property.develop = System.getProperty("Develop");
 	}
 		
 	public BeanFactory getBeanFactory() {
@@ -143,15 +162,77 @@ public class PService {
 		this.managerBOMap = managerBOMap;
 	}
 
+	public FCache getFcache() {
+		return fcache;
+	}
+
+	public void setFcache(FCache fcache) {
+		this.fcache = fcache;
+	}
+
+	public boolean isServer() {
+		return isServer;
+	}
+
+	public void setServer(boolean isServer) {
+		this.isServer = isServer;
+	}
+
+	public RpcFactory getRpcfactory() {
+		return rpcfactory;
+	}
+
+	public void setRpcfactory(RpcFactory rpcfactory) {
+		this.rpcfactory = rpcfactory;
+	}
+
+	public HBClient getHb() {
+		return hb;
+	}
+
+	public void setHb(HBClient hb) {
+		this.hb = hb;
+	}
+
+	public Session getSession() {
+		return session;
+	}
+
+	public void setSession(Session session) {
+		this.session = session;
+	}
+
+	public QpidConnect getConnection() {
+		return connection;
+	}
+
+	public void setConnection(QpidConnect connection) {
+		this.connection = connection;
+	}
+
+	public Map<String, String> getErrMap() {
+		return ErrMap;
+	}
+
+	public void setErrMap(Map<String, String> errMap) {
+		ErrMap = errMap;
+	}
+
 	public static void main(String[] args) {		
 		getProperty();
-		String configPath = "config/" + property.serverName + "/" + property.env + "/" + property.instance + "/config.xml";
-				
+		String configPath = null;
+		PService server = null;
+		if(property.develop.equalsIgnoreCase("python")) {			
+			configPath = "config/PythonService/" +  property.env + "/" + property.instance + "/config.xml";	
+		}else if(property.develop.equalsIgnoreCase("java")){
+			configPath = "config/" + property.serverName + "/" + property.env + "/" + property.instance + "/config.xml";				
+		}
+		
 		ApplicationContext beanFactory=new ClassPathXmlApplicationContext(configPath);
-		PService server = (PService)beanFactory.getBean("MainServer");
-
+		server = (PService)beanFactory.getBean("MainServer");
 		server.beanFactory = beanFactory;
-
+		System.out.println(beanFactory);
+		
 		server.init();
 		server.start();	
 		

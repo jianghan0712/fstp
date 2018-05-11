@@ -64,6 +64,32 @@ public class Publisher{
 			e.printStackTrace();
 		} 
 	}
+
+	public void publish(String topic ,String str) {
+		if(session == null) {
+			log.error("There is no useful connect to broker");
+			return;
+		}
+		
+		try {
+			Destination destination = session.createTopic(topic);
+			MessageProducer messageProducer = session.createProducer(destination);
+			
+//			ObjectMessage message = session.createObjectMessage();
+//        	message.setObject((Serializable) bo);
+        	BytesMessage message = session.createBytesMessage();
+        	message.writeBytes(str.getBytes());
+        	      	
+            messageProducer.send(message);
+//            if(mode == PublishMode.PUBLISH_AND_DUR)
+//            	durableInCache(bo);
+            log.info("publish BO:[{}]",str);
+            
+		} catch (JMSException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
 	
 	public void durableInCache(ICommom_OTW bo) {
 		String mapName = bo.getBo().getClass().getName();	
