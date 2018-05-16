@@ -1,4 +1,4 @@
-package com.purefun.fstp.core.rpc.query;
+package com.purefun.fstp.core.ipc.query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import com.purefun.fstp.core.bo.TestBO;
 import com.purefun.fstp.core.bo.otw.QueryRequestBO_OTW;
 import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.cache.ObjectTransCoder;
-import com.purefun.fstp.core.rpc.tunnel.ServerSide;
+import com.purefun.fstp.core.ipc.tunnel.ServerSide;
 
 public class QueryServerSide extends ServerSide<QueryRequestBO_OTW, List<TestBO>>{ 
 	

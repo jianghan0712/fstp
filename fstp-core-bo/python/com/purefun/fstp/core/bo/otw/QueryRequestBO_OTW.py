@@ -1,7 +1,8 @@
+from core.common.ICommon_OTW import ICommon_OTW
 from com.purefun.fstp.core.bo.pro import QueryRequestBO_pb2
 from com.purefun.fstp.core.bo.model.QueryRequestBO import QueryRequestBO
 
-class QueryRequestBO_OTW(object):
+class QueryRequestBO_OTW(ICommon_OTW):
 
     def __init__(self, byteMsg = None):
         self._bo_pro = QueryRequestBO_pb2.QueryRequestBO()
@@ -86,3 +87,5 @@ class QueryRequestBO_OTW(object):
         self._bo.queryBoDestination = queryBoDestination
         self._bo_pro.queryBoDestination = queryBoDestination
 
+    def toString(self):
+        return "QueryRequestBO_OTW ["+"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"requestServiceName = " + str(self.getRequestServiceName()) +"," +"respondServiceName = " + str(self.getRespondServiceName()) +"," +"querytopic = " + str(self.getQuerytopic()) +"," +"queryBoDestination = " + str(self.getQueryBoDestination()) +"," +"]"

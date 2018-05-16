@@ -39,8 +39,5 @@ if __main__:
     # a = PyPService()
     # a.start1()
     
-    # print java.lang.System.getProperty("ServiceName");
-    # print java.lang.System.getProperty("ServiceName");
-    # print java.lang.System.getProperty("ServiceName");
     shutdownJVM()
 

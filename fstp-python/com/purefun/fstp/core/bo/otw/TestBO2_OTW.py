@@ -1,7 +1,8 @@
+from core.common.ICommon_OTW import ICommon_OTW
 from com.purefun.fstp.core.bo.pro import TestBO2_pb2
 from com.purefun.fstp.core.bo.model.TestBO2 import TestBO2
 
-class TestBO2_OTW(object):
+class TestBO2_OTW(ICommon_OTW):
 
     def __init__(self, byteMsg = None):
         self._bo_pro = TestBO2_pb2.TestBO2()
@@ -68,3 +69,5 @@ class TestBO2_OTW(object):
         self._bo.msg = msg
         self._bo_pro.msg = msg
 
+    def toString(self):
+        return "TestBO2_OTW ["+"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"servername = " + str(self.getServername()) +"," +"msg = " + str(self.getMsg()) +"," +"]"

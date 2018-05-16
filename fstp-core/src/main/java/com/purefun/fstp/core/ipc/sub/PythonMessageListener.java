@@ -1,4 +1,4 @@
-package com.purefun.fstp.core.rpc.sub;
+package com.purefun.fstp.core.ipc.sub;
 
 import java.nio.ByteBuffer;
 

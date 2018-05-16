@@ -4,7 +4,6 @@ import ConfigParser
 import uuid
 
 from core.log import PyPLogger
-from core.bo import TestBO_pb2
 
 class PyQpidConnect(object):
     '''
@@ -37,16 +36,16 @@ class PyQpidConnect(object):
             self.connect.open()
             self.session = self.connect.session()
             self.log.info('create qpid session succesful')
-        
-            sender = self.session.sender("amq.topic/python")
-            bo = TestBO_pb2.TestBO()
-            bo.uuid = str(uuid.uuid1())
-            bo.boid = 3;
-            bo.destination = "fstp.core.rpc.testone"
-            bo.servername = "PythonService"
-            bo.msg = "msg content"
-            data = bo.SerializeToString()
-            sender.send(Message(data));
+            return self.session
+#             sender = self.session.sender("amq.topic/python")
+#             bo = TestBO_pb2.TestBO()
+#             bo.uuid = str(uuid.uuid1())
+#             bo.boid = 3;
+#             bo.destination = "fstp.core.rpc.testone"
+#             bo.servername = "PythonService"
+#             bo.msg = "msg content"
+#             data = bo.SerializeToString()
+#             sender.send(Message(data));
             
 #             receiver = session.receiver(address)
         except MessagingError,m:

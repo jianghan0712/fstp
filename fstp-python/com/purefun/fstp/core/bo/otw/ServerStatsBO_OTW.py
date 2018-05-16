@@ -1,7 +1,8 @@
+from core.common.ICommon_OTW import ICommon_OTW
 from com.purefun.fstp.core.bo.pro import ServerStatsBO_pb2
 from com.purefun.fstp.core.bo.model.ServerStatsBO import ServerStatsBO
 
-class ServerStatsBO_OTW(object):
+class ServerStatsBO_OTW(ICommon_OTW):
 
     def __init__(self, byteMsg = None):
         self._bo_pro = ServerStatsBO_pb2.ServerStatsBO()
@@ -68,3 +69,5 @@ class ServerStatsBO_OTW(object):
         self._bo.status = status
         self._bo_pro.status = status
 
+    def toString(self):
+        return "ServerStatsBO_OTW ["+"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"servername = " + str(self.getServername()) +"," +"status = " + str(self.getStatus()) +"," +"]"

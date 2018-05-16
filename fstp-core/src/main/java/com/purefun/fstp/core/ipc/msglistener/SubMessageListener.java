@@ -1,4 +1,4 @@
-package com.purefun.fstp.core.rpc.msglistener;
+package com.purefun.fstp.core.ipc.msglistener;
 
 import java.util.ArrayList;
 import java.util.HashSet;

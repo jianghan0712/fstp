@@ -1,4 +1,4 @@
-package com.purefun.fstp.core.rpc.qns;
+package com.purefun.fstp.core.ipc.qns;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.slf4j.Logger;
 import com.purefun.fstp.core.bo.QNSRequestBO;
 import com.purefun.fstp.core.bo.otw.QNSRequestBO_OTW;
 import com.purefun.fstp.core.cache.FCache;
-import com.purefun.fstp.core.rpc.msglistener.QnsMessageListener;
+import com.purefun.fstp.core.ipc.msglistener.QnsMessageListener;
 
 import redis.clients.jedis.Jedis;
 

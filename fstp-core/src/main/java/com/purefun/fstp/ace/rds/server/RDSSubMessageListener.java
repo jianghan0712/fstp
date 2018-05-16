@@ -13,7 +13,7 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.purefun.fstp.core.bo.SourceStockBO;
 import com.purefun.fstp.core.bo.TestBO;
 import com.purefun.fstp.core.bo.otw.SourceStockBO_OTW;
-import com.purefun.fstp.core.rpc.msglistener.SubMessageListener;
+import com.purefun.fstp.core.ipc.msglistener.SubMessageListener;
 import com.purefun.fstp.core.tool.RPCTool;
 
 public abstract class RDSSubMessageListener<T extends com.google.protobuf.GeneratedMessageV3> extends SubMessageListener{

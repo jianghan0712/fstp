@@ -2,17 +2,20 @@
 from core.log import PyPLogger
 from core.ipc.qpid import PyQpidConnect
 import ConfigParser
+from com.purefun.fstp.core.bo.otw.TestBO_OTW import TestBO_OTW
 
 class PyPService(object):
     ''' 主服务类   '''
-    
+   
     def __init__(self, serviceName, env, instance):
         self.serviceName = serviceName
         self.property = PyProperty(serviceName, env, instance)
-        
-        self.log = PyPLogger.PyPLogger(PyPService)  
-        self.qpid = PyQpidConnect.PyQpidConnect(self.log) #config/qpid.conf
+        self.log = None  
+#         self.log = PyPLogger.PyPLogger(PyPService)        
         self.confDic = dict()                             #用户自定义的配置字典
+        
+        self.session = None        
+        self.pub = None
       
     def __initConfig(self):
         path = "../../config/" + self.serviceName + "/" + self.property.env + "/" + self.property.instance + "/"
@@ -53,10 +56,13 @@ class PyPService(object):
            
     def initService(self):
         self.__initConfig()             #初始化配置文件
-        self.qpid.createSession()       #初始化Qpid
+        self.qpid = PyQpidConnect.PyQpidConnect(self.log) #config/qpid.conf
+        self.session = self.qpid.createSession()       #初始化Qpid
       
     def startService(self):
         pass
+#         bo = TestBO_OTW()
+#         self.pub.publish(bo)
 
 
 class PyProperty(object):
@@ -70,9 +76,7 @@ class PyProperty(object):
         self.instance = instance  
 
     
-service = PyPService("pyTestService","DEV","1")
-service.initService()
-
-str = service.getConfigBean('db', 'db', 'url')
-print str
-# print service.confDic['db'].get('db','url')
+# service = PyPService("pyTestService","DEV","1")
+# service.initService()
+# service.startService()
+# raw_input()

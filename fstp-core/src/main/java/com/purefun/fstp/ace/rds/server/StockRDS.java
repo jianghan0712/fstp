@@ -15,10 +15,10 @@ import com.purefun.fstp.core.bo.TestBO2;
 import com.purefun.fstp.core.bo.otw.SourceStockBO_OTW;
 import com.purefun.fstp.core.bo.otw.TestBO2_OTW;
 import com.purefun.fstp.core.bo.pro.SourceStockBO_PRO;
+import com.purefun.fstp.core.ipc.RpcFactory;
+import com.purefun.fstp.core.ipc.qns.QNSubscriber;
+import com.purefun.fstp.core.ipc.query.QueryClientSide;
 import com.purefun.fstp.core.logging.PLogger;
-import com.purefun.fstp.core.rpc.RpcFactory;
-import com.purefun.fstp.core.rpc.qns.QNSubscriber;
-import com.purefun.fstp.core.rpc.query.QueryClientSide;
 
 public class StockRDS extends RDSBase{
 	CrudRepository repository = null;

@@ -1,7 +1,8 @@
+from core.common.ICommon_OTW import ICommon_OTW
 from com.purefun.fstp.core.bo.pro import QNSRequestBO_pb2
 from com.purefun.fstp.core.bo.model.QNSRequestBO import QNSRequestBO
 
-class QNSRequestBO_OTW(object):
+class QNSRequestBO_OTW(ICommon_OTW):
 
     def __init__(self, byteMsg = None):
         self._bo_pro = QNSRequestBO_pb2.QNSRequestBO()
@@ -68,3 +69,5 @@ class QNSRequestBO_OTW(object):
         self._bo.request = request
         self._bo_pro.request = request
 
+    def toString(self):
+        return "QNSRequestBO_OTW ["+"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"servername = " + str(self.getServername()) +"," +"request = " + str(self.getRequest()) +"," +"]"

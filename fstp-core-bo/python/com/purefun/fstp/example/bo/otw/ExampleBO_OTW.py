@@ -1,7 +1,8 @@
+from core.common.ICommon_OTW import ICommon_OTW
 from com.purefun.fstp.example.bo.pro import ExampleBO_pb2
 from com.purefun.fstp.example.bo.model.ExampleBO import ExampleBO
 
-class ExampleBO_OTW(object):
+class ExampleBO_OTW(ICommon_OTW):
 
     def __init__(self, byteMsg = None):
         self._bo_pro = ExampleBO_pb2.ExampleBO()
@@ -68,3 +69,5 @@ class ExampleBO_OTW(object):
         self._bo.age = age
         self._bo_pro.age = age
 
+    def toString(self):
+        return "ExampleBO_OTW ["+"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"name = " + str(self.getName()) +"," +"age = " + str(self.getAge()) +"," +"]"

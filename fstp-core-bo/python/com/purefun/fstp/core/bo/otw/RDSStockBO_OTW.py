@@ -1,7 +1,8 @@
+from core.common.ICommon_OTW import ICommon_OTW
 from com.purefun.fstp.core.bo.pro import RDSStockBO_pb2
 from com.purefun.fstp.core.bo.model.RDSStockBO import RDSStockBO
 
-class RDSStockBO_OTW(object):
+class RDSStockBO_OTW(ICommon_OTW):
 
     def __init__(self, byteMsg = None):
         self._bo_pro = RDSStockBO_pb2.RDSStockBO()
@@ -302,3 +303,5 @@ class RDSStockBO_OTW(object):
         self._bo.memo = memo
         self._bo_pro.memo = memo
 
+    def toString(self):
+        return "RDSStockBO_OTW ["+"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"product_id = " + str(self.getProduct_id()) +"," +"isin = " + str(self.getIsin()) +"," +"recv_time = " + str(self.getRecv_time()) +"," +"secu_name_cn = " + str(self.getSecu_name_cn()) +"," +"secu_name_en = " + str(self.getSecu_name_en()) +"," +"secu_base_id = " + str(self.getSecu_base_id()) +"," +"exch_type = " + str(self.getExch_type()) +"," +"secu_type = " + str(self.getSecu_type()) +"," +"secu_sub_type = " + str(self.getSecu_sub_type()) +"," +"currency = " + str(self.getCurrency()) +"," +"bond_par_value = " + str(self.getBond_par_value()) +"," +"last_trade_date = " + str(self.getLast_trade_date()) +"," +"list_date = " + str(self.getList_date()) +"," +"buy_unit = " + str(self.getBuy_unit()) +"," +"sell_unit = " + str(self.getSell_unit()) +"," +"trade_low_limit = " + str(self.getTrade_low_limit()) +"," +"trade_high_limit = " + str(self.getTrade_high_limit()) +"," +"pre_close_price = " + str(self.getPre_close_price()) +"," +"tick_price = " + str(self.getTick_price()) +"," +"price_limit_type = " + str(self.getPrice_limit_type()) +"," +"price_high_limit = " + str(self.getPrice_high_limit()) +"," +"price_low_limit = " + str(self.getPrice_low_limit()) +"," +"ex_right_ratio = " + str(self.getEx_right_ratio()) +"," +"dividend_price = " + str(self.getDividend_price()) +"," +"financing_flag = " + str(self.getFinancing_flag()) +"," +"margin_flag = " + str(self.getMargin_flag()) +"," +"secu_status = " + str(self.getSecu_status()) +"," +"memo = " + str(self.getMemo()) +"," +"]"

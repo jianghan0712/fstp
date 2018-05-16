@@ -1,4 +1,4 @@
-package com.purefun.fstp.core.rpc.tunnel;
+package com.purefun.fstp.core.ipc.tunnel;
 
 import java.io.Serializable;
 import java.util.ArrayList;

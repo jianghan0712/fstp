@@ -1,4 +1,4 @@
-package com.purefun.fstp.core.rpc.sub;
+package com.purefun.fstp.core.ipc.sub;
 
 import javax.jms.Destination;
 import javax.jms.JMSException;
@@ -7,7 +7,7 @@ import javax.jms.Session;
 import org.slf4j.Logger;
 
 import com.purefun.fstp.core.cache.FCache;
-import com.purefun.fstp.core.rpc.msglistener.SubMessageListener;
+import com.purefun.fstp.core.ipc.msglistener.SubMessageListener;
 
 public class Subscriber{
 	Logger log = null;

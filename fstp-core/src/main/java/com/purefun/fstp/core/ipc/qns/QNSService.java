@@ -1,4 +1,4 @@
-package com.purefun.fstp.core.rpc.qns;
+package com.purefun.fstp.core.ipc.qns;
 
 import java.util.Map;
 

@@ -169,11 +169,12 @@ public class GeneratePythonBOFiles {
 		Class bo = Class.forName(boClassName);
 		Field[] fields=bo.getDeclaredFields();
 		
+		println(new StringBuilder("from core.common.ICommon_OTW import ICommon_OTW").toString());
 		println(new StringBuilder("from ").append(bopackageName).append(".pro import ").append(_pb2Name).toString());
 		println(new StringBuilder("from ").append(bopackageName).append(".model.").append(boName).append(" import ").append(boName).toString());
 		println("");
 		
-		println(new StringBuilder("class ").append(_otwName).append("(object):").toString());
+		println(new StringBuilder("class ").append(_otwName).append("(ICommon_OTW):").toString());
 		println("");
 		
 		//_init(self,object)
@@ -214,8 +215,10 @@ public class GeneratePythonBOFiles {
 		//get/set method
 		genMethod(fields);
 		
+		genToString(_otwName, fields);
+		
 	}
-
+	
 	private void genMethod(Field[] fields) {
 		// TODO Auto-generated method stub
 		for(Field field : fields) {
@@ -263,19 +266,18 @@ public class GeneratePythonBOFiles {
 
 	private void genToString(String name,Field[] fields) {
 		// TODO Auto-generated method stub
-		println(new StringBuilder(TAB).append("public String toString() {").toString()); 
-		println(new StringBuilder(TAB).append(TAB).append("return \"").append(name).append(" [\"+").toString());
+		println(new StringBuilder(TAB).append("def toString(self):").toString()); 
+		StringBuilder all = new StringBuilder(TAB).append(TAB).append("return \"").append(name).append(" [\"+");
 		for(Field field:fields) {
 			StringBuilder fieldName = new StringBuilder(field.getName());
 			StringBuilder methodName = new StringBuilder("get");
 			StringBuilder first = new StringBuilder(fieldName.substring(0, 1).toUpperCase());
 			StringBuilder last = new StringBuilder(fieldName.substring(1));
 			methodName.append(first).append(last);
-			println(new StringBuilder(TAB).append(TAB).append(TAB).append("\"").append(field.getName())
-					                      .append(" = \" + ").append(methodName).append("() +").append("\",\" +").toString());			
+			all.append("\"").append(field.getName()).append(" = \" + str(self.").append(methodName).append("()) +").append("\",\" +");
 		}
-		println(new StringBuilder(TAB).append("\"]\";").toString()); 
-		println(new StringBuilder(TAB).append("}").toString());		
+		all.append("\"]\"");
+		println(all.toString());
 	}
 
 	private void genPyModel(File f) throws IOException, ClassNotFoundException {

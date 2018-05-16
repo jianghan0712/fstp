@@ -1,7 +1,8 @@
+from core.common.ICommon_OTW import ICommon_OTW
 from com.purefun.fstp.core.bo.pro import SourceStockBO_pb2
 from com.purefun.fstp.core.bo.model.SourceStockBO import SourceStockBO
 
-class SourceStockBO_OTW(object):
+class SourceStockBO_OTW(ICommon_OTW):
 
     def __init__(self, byteMsg = None):
         self._bo_pro = SourceStockBO_pb2.SourceStockBO()
@@ -320,3 +321,5 @@ class SourceStockBO_OTW(object):
         self._bo.memo = memo
         self._bo_pro.memo = memo
 
+    def toString(self):
+        return "SourceStockBO_OTW ["+"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"secu_id = " + str(self.getSecu_id()) +"," +"isin = " + str(self.getIsin()) +"," +"record_update_time = " + str(self.getRecord_update_time()) +"," +"secu_chinese_name = " + str(self.getSecu_chinese_name()) +"," +"secu_english_name = " + str(self.getSecu_english_name()) +"," +"secu_base_id = " + str(self.getSecu_base_id()) +"," +"exch_type = " + str(self.getExch_type()) +"," +"secu_type = " + str(self.getSecu_type()) +"," +"secu_sub_type = " + str(self.getSecu_sub_type()) +"," +"currency = " + str(self.getCurrency()) +"," +"bond_par_value = " + str(self.getBond_par_value()) +"," +"not_list_stkqty = " + str(self.getNot_list_stkqty()) +"," +"last_trade_date = " + str(self.getLast_trade_date()) +"," +"list_date = " + str(self.getList_date()) +"," +"product_set_id = " + str(self.getProduct_set_id()) +"," +"buy_unit = " + str(self.getBuy_unit()) +"," +"sell_unit = " + str(self.getSell_unit()) +"," +"trade_low_limit = " + str(self.getTrade_low_limit()) +"," +"trade_high_limit = " + str(self.getTrade_high_limit()) +"," +"pre_close_price = " + str(self.getPre_close_price()) +"," +"tick_price = " + str(self.getTick_price()) +"," +"price_limit_type = " + str(self.getPrice_limit_type()) +"," +"price_high_limit = " + str(self.getPrice_high_limit()) +"," +"price_low_limit = " + str(self.getPrice_low_limit()) +"," +"ex_right_ratio = " + str(self.getEx_right_ratio()) +"," +"dividend_price = " + str(self.getDividend_price()) +"," +"financing_flag = " + str(self.getFinancing_flag()) +"," +"margin_flag = " + str(self.getMargin_flag()) +"," +"secu_status = " + str(self.getSecu_status()) +"," +"memo = " + str(self.getMemo()) +"," +"]"

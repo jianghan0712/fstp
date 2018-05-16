@@ -4,29 +4,34 @@ Created on 2018年5月2日
 
 @author: Jianghan
 '''
+from qpid.messaging import *
 
 class PyPublisher(object):
     '''
     classdocs
     '''
-    def __init__(self, session, ):
+    def __init__(self, session, log):
         '''
         Constructor
         '''
         self.session = session
+        self.log = log
         
-        
-        sender = self.session.sender("amq.topic/python")
-        bo = TestBO_pb2.TestBO()
-        bo.uuid = "1234";
-        bo.boid = 3;
-        bo.destination = "fstp.core.rpc.testone"
-        bo.servername = "PythonService"
-        bo.msg = "msg content"
-        data = bo.SerializeToString()
-         
-        sender.send(Message(data));
     
-    def publish(self, bo):
-        sender.send(Message(data));
+    def publish(self, bo, durFlag = False, topicFormat = "amq.topic/"):
+        if self.session is not None :
+            print bo.getDestination()
+            print topicFormat + str(bo.getDestination())
+            sender = self.session.sender(topicFormat + str(bo.getDestination())) 
+            
+        data = bo.getProBO().SerializeToString()
+        sender.send(Message(data))
+        self.log.info("Publish BO:", bo.toString())
+        if durFlag is True:
+            self.durable(bo)
+    
+    def durable(self, bo):
+        pass
+            
+        
         

@@ -7,8 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 import com.purefun.fstp.ace.rds.repo.RDSStockBORepository;
 import com.purefun.fstp.ace.rds.repo.TestBORepository;
 import com.purefun.fstp.core.bo.BaseBO;
-import com.purefun.fstp.core.rpc.pub.Publisher;
-import com.purefun.fstp.core.rpc.sub.Subscriber;
+import com.purefun.fstp.core.ipc.pub.Publisher;
+import com.purefun.fstp.core.ipc.sub.Subscriber;
 import com.purefun.fstp.core.server.PService;
 
 public abstract class RDSBase extends PService{

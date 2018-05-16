@@ -1,4 +1,4 @@
-package com.purefun.fstp.core.rpc.query;
+package com.purefun.fstp.core.ipc.query;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 
 import com.purefun.fstp.core.bo.TestBO;
 import com.purefun.fstp.core.cache.FCache;
-import com.purefun.fstp.core.rpc.tunnel.ClientSide;
+import com.purefun.fstp.core.ipc.tunnel.ClientSide;
 
 public class QueryClientSide extends ClientSide<List<TestBO>>{
 

@@ -1,4 +1,4 @@
-package com.purefun.fstp.core.rpc.pub;
+package com.purefun.fstp.core.ipc.pub;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,8 +23,8 @@ import com.purefun.fstp.core.bo.commom.ICommom_OTW;
 import com.purefun.fstp.core.bo.otw.TestBO2_OTW;
 import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.cache.ObjectTransCoder;
-import com.purefun.fstp.core.rpc.PublishMode;
-import com.purefun.fstp.core.rpc.qns.QNSClient;
+import com.purefun.fstp.core.ipc.PublishMode;
+import com.purefun.fstp.core.ipc.qns.QNSClient;
 
 import redis.clients.jedis.Jedis;
 

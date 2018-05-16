@@ -18,7 +18,7 @@ import com.purefun.fstp.core.bo.TestBO;
 import com.purefun.fstp.core.bo.otw.TestBO_OTW;
 import com.purefun.fstp.core.bo.pro.TestBO_PRO;
 import com.purefun.fstp.core.cache.ObjectTransCoder;
-import com.purefun.fstp.core.rpc.msglistener.QnsMessageListener;
+import com.purefun.fstp.core.ipc.msglistener.QnsMessageListener;
 import com.purefun.fstp.core.tool.RPCTool;
 
 public class MyMessageListener extends QnsMessageListener {

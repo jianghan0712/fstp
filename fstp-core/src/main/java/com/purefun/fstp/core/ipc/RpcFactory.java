@@ -1,12 +1,12 @@
-package com.purefun.fstp.core.rpc;
+package com.purefun.fstp.core.ipc;
 
 import javax.jms.Session;
 import org.slf4j.Logger;
 
 import com.purefun.fstp.core.cache.FCache;
-import com.purefun.fstp.core.rpc.pub.Publisher;
-import com.purefun.fstp.core.rpc.qns.QNSubscriber;
-import com.purefun.fstp.core.rpc.sub.Subscriber;
+import com.purefun.fstp.core.ipc.pub.Publisher;
+import com.purefun.fstp.core.ipc.qns.QNSubscriber;
+import com.purefun.fstp.core.ipc.sub.Subscriber;
 
 import redis.clients.jedis.Jedis;
 
