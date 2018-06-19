@@ -1,0 +1,90 @@
+[INFO ] [2018-06-19 14:08:35.774] [com.purefun.fstp.core.server.monitor.MonitorService]  ------------------------------------------------------------------------
+[INFO ] [2018-06-19 14:08:35.775] [com.purefun.fstp.core.server.monitor.MonitorService]  |                 This is Free & Super Trading Platform                |
+[INFO ] [2018-06-19 14:08:35.775] [com.purefun.fstp.core.server.monitor.MonitorService]  ------------------------------------------------------------------------
+[INFO ] [2018-06-19 14:08:35.775] [com.purefun.fstp.core.server.monitor.MonitorService]  Create a new FSTP Server:MonitorService_DEV_1
+[INFO ] [2018-06-19 14:08:35.807] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 init FCache succesful
+[INFO ] [2018-06-19 14:08:35.977] [org.apache.qpid.client.security.DynamicSaslRegistrar]  Additional SASL providers successfully registered.
+[INFO ] [2018-06-19 14:08:35.994] [org.apache.qpid.client.security.CallbackHandlerRegistry]  Callback handlers available for SASL mechanisms: [EXTERNAL, GSSAPI, SCRAM-SHA-256, SCRAM-SHA-1, CRAM-MD5-HASHED, CRAM-MD5, PLAIN, AMQPLAIN, ANONYMOUS, XOAUTH2]
+[INFO ] [2018-06-19 14:08:41.511] [org.apache.qpid.client.AMQConnection]  Connection 1 now connected from /127.0.0.1:56508 to localhost/127.0.0.1:5672
+[INFO ] [2018-06-19 14:08:43.610] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO RDSStockBO msgdef with path:resource\msgdef\RDSStockBO.xml
+[INFO ] [2018-06-19 14:08:43.626] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO TestBO msgdef with path:resource\msgdef\TestBo.xml
+[INFO ] [2018-06-19 14:08:43.641] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO TestBO2 msgdef with path:resource\msgdef\TestBo2.xml
+[INFO ] [2018-06-19 14:08:43.641] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 init successful
+[INFO ] [2018-06-19 14:08:43.689] [com.purefun.fstp.core.server.monitor.MonitorService]  <====================   active
+[INFO ] [2018-06-19 14:08:43.695] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 start successful
+[INFO ] [2018-06-19 14:47:14.055] [com.purefun.fstp.core.server.monitor.MonitorService]  ------------------------------------------------------------------------
+[INFO ] [2018-06-19 14:47:14.056] [com.purefun.fstp.core.server.monitor.MonitorService]  |                 This is Free & Super Trading Platform                |
+[INFO ] [2018-06-19 14:47:14.056] [com.purefun.fstp.core.server.monitor.MonitorService]  ------------------------------------------------------------------------
+[INFO ] [2018-06-19 14:47:14.057] [com.purefun.fstp.core.server.monitor.MonitorService]  Create a new FSTP Server:MonitorService_DEV_1
+[INFO ] [2018-06-19 14:47:14.076] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 init FCache succesful
+[INFO ] [2018-06-19 14:47:14.154] [org.apache.qpid.client.security.DynamicSaslRegistrar]  Additional SASL providers successfully registered.
+[INFO ] [2018-06-19 14:47:14.156] [org.apache.qpid.client.security.CallbackHandlerRegistry]  Callback handlers available for SASL mechanisms: [EXTERNAL, GSSAPI, SCRAM-SHA-256, SCRAM-SHA-1, CRAM-MD5-HASHED, CRAM-MD5, PLAIN, AMQPLAIN, ANONYMOUS, XOAUTH2]
+[INFO ] [2018-06-19 14:47:14.372] [org.apache.qpid.client.AMQConnection]  Connection 1 now connected from /127.0.0.1:58095 to localhost/127.0.0.1:5672
+[INFO ] [2018-06-19 14:47:14.544] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO RDSStockBO msgdef with path:resource\msgdef\RDSStockBO.xml
+[INFO ] [2018-06-19 14:47:14.556] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO TestBO msgdef with path:resource\msgdef\TestBo.xml
+[INFO ] [2018-06-19 14:47:14.568] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO TestBO2 msgdef with path:resource\msgdef\TestBo2.xml
+[INFO ] [2018-06-19 14:47:14.568] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 init successful
+[INFO ] [2018-06-19 14:47:14.584] [com.purefun.fstp.core.server.monitor.MonitorService]  <====================   active
+[INFO ] [2018-06-19 14:47:14.585] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 start successful
+[INFO ] [2018-06-19 14:55:54.062] [com.purefun.fstp.core.server.monitor.MonitorService]  ------------------------------------------------------------------------
+[INFO ] [2018-06-19 14:55:54.062] [com.purefun.fstp.core.server.monitor.MonitorService]  |                 This is Free & Super Trading Platform                |
+[INFO ] [2018-06-19 14:55:54.062] [com.purefun.fstp.core.server.monitor.MonitorService]  ------------------------------------------------------------------------
+[INFO ] [2018-06-19 14:55:54.063] [com.purefun.fstp.core.server.monitor.MonitorService]  Create a new FSTP Server:MonitorService_DEV_1
+[INFO ] [2018-06-19 14:55:54.080] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 init FCache succesful
+[INFO ] [2018-06-19 14:55:54.153] [org.apache.qpid.client.security.DynamicSaslRegistrar]  Additional SASL providers successfully registered.
+[INFO ] [2018-06-19 14:55:54.154] [org.apache.qpid.client.security.CallbackHandlerRegistry]  Callback handlers available for SASL mechanisms: [EXTERNAL, GSSAPI, SCRAM-SHA-256, SCRAM-SHA-1, CRAM-MD5-HASHED, CRAM-MD5, PLAIN, AMQPLAIN, ANONYMOUS, XOAUTH2]
+[INFO ] [2018-06-19 14:55:54.313] [org.apache.qpid.client.AMQConnection]  Connection 1 now connected from /127.0.0.1:58147 to localhost/127.0.0.1:5672
+[INFO ] [2018-06-19 14:55:54.508] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO RDSStockBO msgdef with path:resource\msgdef\RDSStockBO.xml
+[INFO ] [2018-06-19 14:55:54.522] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO TestBO msgdef with path:resource\msgdef\TestBo.xml
+[INFO ] [2018-06-19 14:55:54.533] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO TestBO2 msgdef with path:resource\msgdef\TestBo2.xml
+[INFO ] [2018-06-19 14:55:54.533] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 init successful
+[INFO ] [2018-06-19 14:55:54.545] [com.purefun.fstp.core.server.monitor.MonitorService]  <====================   active
+[INFO ] [2018-06-19 14:55:54.546] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 start successful
+[INFO ] [2018-06-19 15:04:46.917] [com.purefun.fstp.core.server.monitor.MonitorService]  ------------------------------------------------------------------------
+[INFO ] [2018-06-19 15:04:46.918] [com.purefun.fstp.core.server.monitor.MonitorService]  |                 This is Free & Super Trading Platform                |
+[INFO ] [2018-06-19 15:04:46.919] [com.purefun.fstp.core.server.monitor.MonitorService]  ------------------------------------------------------------------------
+[INFO ] [2018-06-19 15:04:46.920] [com.purefun.fstp.core.server.monitor.MonitorService]  Create a new FSTP Server:MonitorService_DEV_1
+[INFO ] [2018-06-19 15:04:46.946] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 init FCache succesful
+[INFO ] [2018-06-19 15:04:47.020] [org.apache.qpid.client.security.DynamicSaslRegistrar]  Additional SASL providers successfully registered.
+[INFO ] [2018-06-19 15:04:47.021] [org.apache.qpid.client.security.CallbackHandlerRegistry]  Callback handlers available for SASL mechanisms: [EXTERNAL, GSSAPI, SCRAM-SHA-256, SCRAM-SHA-1, CRAM-MD5-HASHED, CRAM-MD5, PLAIN, AMQPLAIN, ANONYMOUS, XOAUTH2]
+[INFO ] [2018-06-19 15:04:47.212] [org.apache.qpid.client.AMQConnection]  Connection 1 now connected from /127.0.0.1:58217 to localhost/127.0.0.1:5672
+[INFO ] [2018-06-19 15:04:47.473] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO RDSStockBO msgdef with path:resource\msgdef\RDSStockBO.xml
+[INFO ] [2018-06-19 15:04:47.486] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO TestBO msgdef with path:resource\msgdef\TestBo.xml
+[INFO ] [2018-06-19 15:04:47.499] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO TestBO2 msgdef with path:resource\msgdef\TestBo2.xml
+[INFO ] [2018-06-19 15:04:47.499] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 init successful
+[INFO ] [2018-06-19 15:04:47.515] [com.purefun.fstp.core.server.monitor.MonitorService]  <====================   active
+[INFO ] [2018-06-19 15:04:47.516] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 start successful
+[INFO ] [2018-06-19 15:11:53.433] [com.purefun.fstp.core.server.monitor.MonitorService]  ------------------------------------------------------------------------
+[INFO ] [2018-06-19 15:11:53.434] [com.purefun.fstp.core.server.monitor.MonitorService]  |                 This is Free & Super Trading Platform                |
+[INFO ] [2018-06-19 15:11:53.434] [com.purefun.fstp.core.server.monitor.MonitorService]  ------------------------------------------------------------------------
+[INFO ] [2018-06-19 15:11:53.435] [com.purefun.fstp.core.server.monitor.MonitorService]  Create a new FSTP Server:MonitorService_DEV_1
+[INFO ] [2018-06-19 15:11:53.452] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 init FCache succesful
+[INFO ] [2018-06-19 15:11:53.532] [org.apache.qpid.client.security.DynamicSaslRegistrar]  Additional SASL providers successfully registered.
+[INFO ] [2018-06-19 15:11:53.534] [org.apache.qpid.client.security.CallbackHandlerRegistry]  Callback handlers available for SASL mechanisms: [EXTERNAL, GSSAPI, SCRAM-SHA-256, SCRAM-SHA-1, CRAM-MD5-HASHED, CRAM-MD5, PLAIN, AMQPLAIN, ANONYMOUS, XOAUTH2]
+[INFO ] [2018-06-19 15:11:53.626] [org.apache.qpid.client.AMQConnection]  Connection 1 now connected from /127.0.0.1:58397 to localhost/127.0.0.1:5672
+[INFO ] [2018-06-19 15:11:53.791] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO RDSStockBO msgdef with path:resource\msgdef\RDSStockBO.xml
+[INFO ] [2018-06-19 15:11:53.807] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO TestBO msgdef with path:resource\msgdef\TestBo.xml
+[INFO ] [2018-06-19 15:11:53.819] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO TestBO2 msgdef with path:resource\msgdef\TestBo2.xml
+[INFO ] [2018-06-19 15:11:53.819] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 init successful
+[INFO ] [2018-06-19 15:11:53.832] [com.purefun.fstp.core.server.monitor.MonitorService]  <====================   active
+[INFO ] [2018-06-19 15:11:53.832] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 start successful
+[INFO ] [2018-06-19 15:48:22.367] [com.purefun.fstp.core.server.monitor.MonitorService]  ------------------------------------------------------------------------
+[INFO ] [2018-06-19 15:48:22.368] [com.purefun.fstp.core.server.monitor.MonitorService]  |                 This is Free & Super Trading Platform                |
+[INFO ] [2018-06-19 15:48:22.368] [com.purefun.fstp.core.server.monitor.MonitorService]  ------------------------------------------------------------------------
+[INFO ] [2018-06-19 15:48:22.369] [com.purefun.fstp.core.server.monitor.MonitorService]  Create a new FSTP Server:MonitorService_DEV_1
+[INFO ] [2018-06-19 15:48:22.384] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 init FCache succesful
+[INFO ] [2018-06-19 15:48:22.453] [org.apache.qpid.client.security.DynamicSaslRegistrar]  Additional SASL providers successfully registered.
+[INFO ] [2018-06-19 15:48:22.455] [org.apache.qpid.client.security.CallbackHandlerRegistry]  Callback handlers available for SASL mechanisms: [EXTERNAL, GSSAPI, SCRAM-SHA-256, SCRAM-SHA-1, CRAM-MD5-HASHED, CRAM-MD5, PLAIN, AMQPLAIN, ANONYMOUS, XOAUTH2]
+[INFO ] [2018-06-19 15:48:22.538] [org.apache.qpid.client.AMQConnection]  Connection 1 now connected from /127.0.0.1:60264 to localhost/127.0.0.1:5672
+[INFO ] [2018-06-19 15:48:22.673] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO RDSStockBO msgdef with path:resource\msgdef\RDSStockBO.xml
+[INFO ] [2018-06-19 15:48:22.687] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO TestBO msgdef with path:resource\msgdef\TestBo.xml
+[INFO ] [2018-06-19 15:48:22.698] [com.purefun.fstp.core.server.monitor.MonitorService]  Load BO TestBO2 msgdef with path:resource\msgdef\TestBo2.xml
+[INFO ] [2018-06-19 15:48:22.698] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 init successful
+[INFO ] [2018-06-19 15:48:22.716] [com.purefun.fstp.core.server.monitor.MonitorService]  <====================   active
+[INFO ] [2018-06-19 15:48:22.717] [com.purefun.fstp.core.server.monitor.MonitorService]  MonitorService_DEV_1 start successful
+[INFO ] [2018-06-19 15:48:45.613] [com.purefun.fstp.core.server.monitor.MonitorService]  receive status bo：serverName:FstpPublishExampleService,status:0
+[INFO ] [2018-06-19 15:48:45.614] [com.purefun.fstp.core.server.monitor.MonitorService]  server FstpPublishExampleService online 
+[INFO ] [2018-06-19 15:48:45.637] [com.purefun.fstp.core.server.monitor.MonitorService]  [HB] Received HB from service: FstpPublishExampleService_DEV_1
+[INFO ] [2018-06-19 15:49:45.644] [com.purefun.fstp.core.server.monitor.MonitorService]  [HB] Received HB from service: FstpPublishExampleService_DEV_1
+[INFO ] [2018-06-19 15:50:45.705] [com.purefun.fstp.core.server.monitor.MonitorService]  [HB] Received HB from service: FstpPublishExampleService_DEV_1
+[INFO ] [2018-06-19 15:51:18.559] [com.purefun.fstp.core.server.monitor.MonitorService]  [HB] service FstpPublishExampleService_DEV_1 status change to offline

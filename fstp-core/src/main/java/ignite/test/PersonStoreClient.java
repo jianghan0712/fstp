@@ -19,7 +19,7 @@ public class PersonStoreClient {
         Person p=new Person();  
 //        cache.put(p.id,p);
         cache.loadCache(null);  
-        QueryCursor<List<?>> cursor = cache.query(new SqlFieldsQuery("select id, orgId,name from Person"));  
+        QueryCursor<List<?>> cursor = cache.query(new SqlFieldsQuery("select id, orgId,name from Person where name = 'CCED'"));  
         System.out.println(cursor.getAll());  
 //        Person p=new Person(44,5,"CCED");  
 //        cache.put(p.getId(),p);  

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
+       default-lazy-init="true">
+               
+    <context:component-scan base-package="com.purefun.fstp.core.bo"/>
+    
+    <!--  配置数据源 -->  
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="url" value="jdbc:mysql://localhost:3306/pilot"/>
+        <property name="username" value="root"/>
+        <property name="password" value="jianghan"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+    </bean>
+    
+    <!--  配置 JPA 的 EntityManagerFactory -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+		</property>
+		<property name="packagesToScan" value="com.purefun.fstp.core.bo"/>
+        <property name="persistenceXmlLocation" value="META-INF/persistence.xml"/>
+        <property name="persistenceUnitName" value="rds-persistence"/>      
+    </bean>
+    
+    <!--  配置事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+  
+  	<!--  配置支持注解的事务 -->
+  	<tx:annotation-driven transaction-manager="transactionManager"/>
+  	 	
+  	<!--  配置 SpringData,需要加入  jpa 的命名空间 -->
+    <jpa:repositories base-package="com.purefun.fstp.ace.rds.repo"  entity-manager-factory-ref="entityManagerFactory"/>
+  	
+  	<!--  配置RDS相关  --> 	
+  	<bean id="RDSCommon" class="com.purefun.fstp.ace.rds.server.RDSCommon">
+  		<property name="tableName" value="RDS_STOCK"/>
+  		<property name="rdsCrud"   value="com.purefun.fstp.ace.rds.repo.TestBORepository"/>
+  	</bean>
+  	<aop:aspectj-autoproxy />
+</beans>  
