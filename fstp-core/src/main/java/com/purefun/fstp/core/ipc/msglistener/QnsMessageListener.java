@@ -14,6 +14,7 @@ import javax.jms.ObjectMessage;
 import org.slf4j.Logger;
 
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.purefun.fstp.core.tool.RPCTool;
 
 public abstract class QnsMessageListener implements MessageListener {
 	public Logger log = null;
@@ -27,14 +28,18 @@ public abstract class QnsMessageListener implements MessageListener {
 	public void onMessage(Message message) {
 		// TODO Auto-generated method stub		
 		BytesMessage objMsg = (BytesMessage) message;
-
 		try {
-			doSubscribe(objMsg);
+			byte[] byteArray = new byte[1024];
+        	int len = -1;
+        	len = objMsg.readBytes(byteArray);
+        	if(len == -1){ 
+        		return;
+        	}
+        	doSubscribe(RPCTool.subBytes(byteArray, 0, len));
 		} catch (InvalidProtocolBufferException | JMSException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}	
 	}
 	
 	public void onQuery() {
@@ -46,7 +51,7 @@ public abstract class QnsMessageListener implements MessageListener {
 		}
 	}
 	
-	abstract protected void doSubscribe(BytesMessage objMsg) throws InvalidProtocolBufferException, JMSException;
+	abstract protected void doSubscribe(byte[] objMsg) throws InvalidProtocolBufferException, JMSException;
 	
 	abstract protected void doQueryTask(List<byte[]> each);
 

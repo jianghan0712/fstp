@@ -8,8 +8,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.xbean.spring.context.ClassPathXmlApplicationContext;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.purefun.fstp.core.bo.model.BOinstance;
 import com.purefun.fstp.core.ipc.qns.QNSService;
 import com.purefun.fstp.core.ipc.sub.PythonMessageListener;

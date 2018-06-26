@@ -28,6 +28,16 @@ public class QNSRequestBO_OTW implements ICommom_OTW {
         setRequest(receive.getRequest());
     }
 
+    public QNSRequestBO_OTW(QNSRequestBO bofrom){
+        builder = QNSRequestBO_PRO.QNSRequestBO.newBuilder();
+        bo= new QNSRequestBO();
+        setUuid(bofrom.uuid);
+        setBoid(bofrom.boid);
+        setDestination(bofrom.destination);
+        setServername(bofrom.servername);
+        setRequest(bofrom.request);
+    }
+
     @Override
     public QNSRequestBO_PRO.QNSRequestBO.Builder getBuilder() { 
         return builder;

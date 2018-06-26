@@ -1,5 +1,6 @@
 package com.purefun.fstp.ace.rds.repo;
 
+import org.apache.ignite.springdata.repository.config.RepositoryConfig;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

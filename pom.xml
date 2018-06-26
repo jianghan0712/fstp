@@ -39,7 +39,7 @@
     	<!-- mybatis -->
     	<mybatis.version>3.2.8</mybatis.version>
     	<!-- Hibernate -->
-    	<hibernate.version>4.3.11.Final</hibernate.version>
+    	<hibernate.version>5.2.12.Final</hibernate.version>
     	<!-- ignite.version -->
     	<ignite.version>2.4.0</ignite.version>
     	<lucene.version>5.5.0</lucene.version>
@@ -71,7 +71,7 @@
     <dependency>
         <groupId>org.apache.activemq</groupId>
         <artifactId>activemq-all</artifactId>
-        <version>5.13.4</version>
+        <version>5.11.4</version>
     </dependency> 
     
     <!-- Spring -->  
@@ -180,6 +180,12 @@
     	<artifactId>lucene-queryparser</artifactId>
     	<version>${lucene.version}</version>
 	</dependency>
+	
+    <dependency>
+        <groupId>commons-logging</groupId>
+        <artifactId>commons-logging</artifactId>
+        <version>1.1.1</version>
+	</dependency> 
 	<dependency>
     	<groupId>org.apache.ignite</groupId>
     	<artifactId>ignite-core</artifactId>
@@ -201,11 +207,15 @@
          <version>${ignite.version}</version>
     </dependency>
     <dependency>
-        <groupId>commons-logging</groupId>
-        <artifactId>commons-logging</artifactId>
-        <version>1.1.1</version>
-	</dependency> 
-
+         <groupId>org.apache.ignite</groupId>
+         <artifactId>ignite-log4j</artifactId>
+         <version>${ignite.version}</version>
+    </dependency>
+    <dependency>
+  		<groupId>org.apache.ignite</groupId>
+  		<artifactId>ignite-slf4j</artifactId>
+  		<version>${ignite.version}</version>
+	</dependency>
   </dependencies>
   <modules>
   	<module>fstp-core</module>

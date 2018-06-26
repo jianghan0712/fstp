@@ -30,6 +30,18 @@ public class QueryRequestBO_OTW implements ICommom_OTW {
         setQueryBoDestination(receive.getQueryBoDestination());
     }
 
+    public QueryRequestBO_OTW(QueryRequestBO bofrom){
+        builder = QueryRequestBO_PRO.QueryRequestBO.newBuilder();
+        bo= new QueryRequestBO();
+        setUuid(bofrom.uuid);
+        setBoid(bofrom.boid);
+        setDestination(bofrom.destination);
+        setRequestServiceName(bofrom.requestServiceName);
+        setRespondServiceName(bofrom.respondServiceName);
+        setQuerytopic(bofrom.querytopic);
+        setQueryBoDestination(bofrom.queryBoDestination);
+    }
+
     @Override
     public QueryRequestBO_PRO.QueryRequestBO.Builder getBuilder() { 
         return builder;

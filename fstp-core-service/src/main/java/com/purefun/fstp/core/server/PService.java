@@ -7,14 +7,23 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import javax.jms.Session;
-import org.apache.xbean.spring.context.ClassPathXmlApplicationContext;
+
+import org.apache.ignite.Ignite;
+import org.apache.ignite.IgniteCache;
+import org.apache.ignite.Ignition;
+import org.apache.ignite.configuration.CacheConfiguration;
+import org.apache.ignite.springdata.repository.config.EnableIgniteRepositories;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.purefun.fstp.core.bo.RDSStockBO;
 import com.purefun.fstp.core.bo.ServerStatsBO;
 import com.purefun.fstp.core.bo.otw.ServerStatsBO_OTW;
 import com.purefun.fstp.core.cache.FCache;
 import com.purefun.fstp.core.constant.RpcConstant;
+import com.purefun.fstp.core.ignite.cfg.IgniteCfg;
 import com.purefun.fstp.core.ipc.RpcFactory;
 import com.purefun.fstp.core.ipc.query.QueryServerSide;
 import com.purefun.fstp.core.logging.PLogger;
@@ -23,6 +32,7 @@ import com.purefun.fstp.core.qpid.QpidConnect;
 import com.purefun.fstp.core.server.hb.HBClient;
 import com.purefun.fstp.core.tool.ErrorManager;
 
+@EnableIgniteRepositories
 public class PService {
 	protected static PProperty property ;
 //	protected Jedis cache = null;
@@ -45,6 +55,10 @@ public class PService {
 	public Map<String,String> ErrMap = null;
 	public Map<String,String> managerBOMap = null;
 	
+	public IgniteCfg cfg ;	
+	public Ignite ignite = null;
+	public IgniteCache cache = null;
+	
 		
 	public PService(boolean isServer) {		
 		this.serverName = property.fullName;
@@ -55,9 +69,7 @@ public class PService {
 		getProperty();
 		log = PLogger.getLogger(TestPython.class);
 		log.info(property.toString());
-		this.serverName = property.fullName;
-//		this.serverName = "python";
-		
+		this.serverName = property.fullName;	
 	}
 	
 	public void init() {
@@ -70,16 +82,15 @@ public class PService {
 		fcache = new FCache(this);
 		connection = new QpidConnect(log);
 		/**********		STEP 1: Load service config file		***************/
-		/*	removed to jvm para*/
 		
-		/**********	     STEP 2: Connet to broker	   	***************/
+		/**********	     STEP 1: Connet to broker	   	***************/
 		if(connection!=null)
 			session = connection.connect();
 		
-		/**********	     STEP 3: create rpc factory	   	***************/
+		/**********	     STEP 2: create rpc factory	   	***************/
 		rpcfactory = new RpcFactory(session, fcache, log);
 		
-		/**********	     STEP 4: Register to monitor	   	***************/		
+		/**********	     STEP 3: Register to monitor	   	***************/		
 		if(!property.serverName.equalsIgnoreCase("MonitorService")) {
 //			ServerStatsBO bo = new ServerStatsBO(serverName, RpcConstant.ONLINE_SERVER);
 			ServerStatsBO_OTW hbbo = new ServerStatsBO_OTW();
@@ -90,8 +101,14 @@ public class PService {
 
 		}
 		/*  monitor service don't need register*/
-		/**********	     STEP 5: Get Common info	   	***************/
+		/**********	     STEP 4: Get Common info	   	***************/
 //		ErrMap = ((ErrorManager)beanFactory.getBean("errorManager")).getErrorMap();
+		
+		/**********	     STEP 6: ignite	   	***************/
+
+		cfg = beanFactory.getBean(IgniteCfg.class);
+		cfg.init(log);
+		ignite = Ignition.start(cfg.getCfg());	
 	}
 
 	public void start() {
