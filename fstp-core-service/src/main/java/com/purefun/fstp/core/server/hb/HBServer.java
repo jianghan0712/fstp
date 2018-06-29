@@ -1,45 +1,38 @@
 package com.purefun.fstp.core.server.hb;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.jms.BytesMessage;
 import javax.jms.DeliveryMode;
 import javax.jms.Destination;
-import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
-import javax.jms.ObjectMessage;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 
 import org.slf4j.Logger;
 
-import com.purefun.fstp.core.bo.ServerStatsBO;
 import com.purefun.fstp.core.bo.model.BOinstance;
 import com.purefun.fstp.core.bo.otw.ServerStatsBO_OTW;
-import com.purefun.fstp.core.cache.FCache;
+import com.purefun.fstp.core.cache.ICommonCache;
+import com.purefun.fstp.core.cache.ignitecache.ICache;
+import com.purefun.fstp.core.cache.rediscache.RCache;
 import com.purefun.fstp.core.constant.RpcConstant;
 import com.purefun.fstp.core.server.monitor.MonitorService;
 import com.purefun.fstp.core.tool.RPCTool;
 
-import redis.clients.jedis.Jedis;
-
 public class HBServer{
 	Logger log = null;
 	Session session = null;
-	FCache fcache = null;	
+	ICommonCache Icache = null;	
 	MonitorService monitor = null;
 	String desname = null;
 	
-	public HBServer(Logger log,Session session,FCache fcache,MonitorService server,String topic) {
+	public HBServer(Logger log,Session session,ICommonCache Icache,MonitorService server,String topic) {
 		this.log = log;
 		this.session = session;
-		this.fcache = fcache;
+		this.Icache = Icache;
 		this.monitor = server;
 		this.desname = topic;
 	}
@@ -100,9 +93,9 @@ public class HBServer{
 	        		}
 	        		if(deleteFlag) {
 	        			BOinstance bo = serviceBOMap.get(serverName);
-	        			if(bo != null) {
-	        				log.info("clean cache :{}",bo.getBoEntry());
-		        			fcache.delObjct(bo.getBoEntry());
+	        			if(bo != null && RCache.class.isInstance(Icache)) {
+	        				log.info("clean cache :{}",bo.getBoEntry());        				
+	        				((RCache)Icache).delObjct(bo.getBoEntry());
 	        			}        			
 	        		}
 	        		log.info("[HB] service {} status change to offline", serverFullName);

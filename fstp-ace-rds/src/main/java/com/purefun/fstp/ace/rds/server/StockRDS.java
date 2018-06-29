@@ -1,29 +1,25 @@
 package com.purefun.fstp.ace.rds.server;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import org.apache.ignite.configuration.CacheConfiguration;
 import org.slf4j.Logger;
-import org.springframework.data.repository.CrudRepository;
-
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.purefun.fstp.core.bo.QueryRequestBO;
 import com.purefun.fstp.core.bo.RDSStockBO;
-import com.purefun.fstp.core.bo.SourceStockBO;
-import com.purefun.fstp.core.bo.TestBO;
-import com.purefun.fstp.core.bo.TestBO2;
+import com.purefun.fstp.core.bo.otw.RDSStockBO_OTW;
 import com.purefun.fstp.core.bo.otw.SourceStockBO_OTW;
-import com.purefun.fstp.core.bo.otw.TestBO2_OTW;
-import com.purefun.fstp.core.bo.pro.SourceStockBO_PRO;
+import com.purefun.fstp.core.cache.ignitecache.ICache;
+import com.purefun.fstp.core.cache.rediscache.RCache;
 import com.purefun.fstp.core.ipc.RpcFactory;
-import com.purefun.fstp.core.ipc.qns.QNSubscriber;
-import com.purefun.fstp.core.ipc.query.QueryClientSide;
 import com.purefun.fstp.core.logging.PLogger;
 
 public class StockRDS extends RDSBase{
-	CrudRepository repository = null;
 	String sourceQns = null;
 	Map<String,String> source2rdsMap = null;
+	HashMap<String,RDSStockBO_OTW> rdsBoList = new HashMap<String,RDSStockBO_OTW>();
 	
 	public StockRDS(boolean isServer) {
 		super(isServer);
@@ -39,77 +35,15 @@ public class StockRDS extends RDSBase{
 		
 		//publish rdsBO
 		pub = RpcFactory.createPublisher();
-		
+	
+		CacheConfiguration<String, RDSStockBO> selfcache = beanFactory.getBean(CacheConfiguration.class);
+		cache = ignite.getOrCreateCache(selfcache);
 	}
 	
 	public void start() {
-		super.start();			
-		sourceBOList = listener.getResultList();
-
-		/*	test query */
-//		QueryClientSide query = new QueryClientSide(log, session, fcache, "QueryTopic");
-//		List<TestBO> result = query.query(new QueryRequestBO(serverName,"MonitorService","QueryTopic","fstp.core.rpc.testone"));
-//		if(result != null && result.size()!=0) {
-//			log.info("receive {} messages",result.size());
-//		}else {
-//			log.info("Query nothing");
-//		}
-				
-		/*	test QNS */
-//		QNSubscriber qns = RpcFactory.createQNSubscriber();
-//		qns.setting("fstp.core.rpc.*", serverName);
-//		qns.QNS(new MyMessageListener(log));
+		super.start();	
 		
-		log.info("{} start successful",serverName);
-//		RDSStockBO test = new RDSStockBO();
-//    	test.setBond_par_value(100.00);
-
-//		for(int i = 0;i<3;i++) {
-//			TestBO_OTW test = new TestBO_OTW();
-//			pub.publish(test, 0);
-//		}
-		
-//		
-//		List<byte[]> list = fcache.getList("com.purefun.fstp.core.bo.TestBO2");
-//		log.info("{}",list.size());
-//		
-//		for(byte[] each:list) {
-//			try {
-//				com.purefun.fstp.core.bo.proto.TestBO2_PRO.TestBO2 receive = com.purefun.fstp.core.bo.proto.TestBO2_PRO.TestBO2.parseFrom(each);
-//				log.info("receive:{}",receive.toString());
-//			} catch (InvalidProtocolBufferException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-//		test.setMsg("this is otw");
-		
-//		TestBO2 test = new TestBO2();
-//		test.msg = "100000";
-
-//		TestBO2_OTW test = new TestBO2_OTW();
-//		log.info(test.getMsg());
-//		save2DB(test.getBo());
-//		CrudRepository repo =  beanFactory.getBean(RDSStockBORepository.class);
-//    	
-
-    	
-		
-//		CrudRepository repo = (CrudRepository)beanFactory.getBean("curd");
-//    	TestBORepository personDao = ctx.getBean(TestBORepository.class);
-		
-//    	
-//    	repo.save(test);
-    	
-    	
-	}
-
-	public CrudRepository getRepository() {
-		return repository;
-	}
-
-	public void setRepository(CrudRepository repository) {
-		this.repository = repository;
+		log.info("{} start successful",serverName);	
 	}
 
 	public String getSourceQns() {
@@ -128,7 +62,48 @@ public class StockRDS extends RDSBase{
 		this.source2rdsMap = source2rdsMap;
 	}
 
-	class StockRDSSubListener extends RDSSubMessageListener<SourceStockBO_PRO.SourceStockBO>{
+//	@Override
+//	protected void loadDBdata2CacheImp(List list) {
+//		// TODO Auto-generated method stub
+//		int count = 0;
+//    	for(RDSStockBO each : (List<RDSStockBO>)list) {
+//    		RDSStockBO_OTW bo = new RDSStockBO_OTW(each);
+//    		fcache.setList(each.getClass().getName(), bo.getBuilder().build().toByteArray());
+//    		rdsBoList.put(bo.getProduct_id(), bo);
+//    		log.info("load bo :product_id={}",bo.getProduct_id());
+//    		count++;
+//    	}
+//    	log.info("load data from DB to cache successful!!");
+//    	log.info("Count:{}",count);
+//	}
+	@Override
+	protected void loadDBdata2CacheImp(List list) {
+		// TODO Auto-generated method stub
+		int count = 0;
+    	for(RDSStockBO each : (List<RDSStockBO>)list) {
+    		if(ICache.class.isInstance(Icache)) {
+    			Icache.put("com.purefun.fstp.core.bo.RDSStockBO", each.product_id, each);
+    		}else if(RCache.class.isInstance(Icache)) {
+    			RDSStockBO_OTW bo = new RDSStockBO_OTW(each);
+    			Icache.put(null, each.getClass().getName(), bo.getBuilder().build().toByteArray());
+    		}
+    		
+  		
+    		log.info("load bo :product_id={}",each.product_id);
+    		count++;
+    	}
+    	log.info("load data from DB to cache successful!!");
+    	log.info("Count:{}",count);
+
+//    	SqlQuery sql = new SqlQuery<AffinityKey<String>, RDSStockBO>(RDSStockBO.class, "1=1").setArgs(0, 1000);	
+//    	QueryCursor<?> res = cache.query(sql);
+//    	for(Object each:res.getAll()) {
+//    		RDSStockBO a = (RDSStockBO) ((CacheEntryImpl<String, RDSStockBO>)each).getValue();
+//    		log.info("{}",a.secu_name_cn);
+//    	}
+	}
+	
+	class StockRDSSubListener extends RDSSubMessageListener{
 
 		public StockRDSSubListener(Logger log) {
 			super(log);
@@ -136,12 +111,89 @@ public class StockRDS extends RDSBase{
 		}
 
 		@Override
-		protected void doRdsTask(SourceStockBO_OTW bo) {
+		protected void doRdsTask(byte[] bobyte) {
 			// TODO Auto-generated method stub
-			
+			try {
+				SourceStockBO_OTW sourcebo = new SourceStockBO_OTW(bobyte);
+				RDSStockBO_OTW rdsbo = null;
+				
+				rdsbo = rdsBoList.get(sourcebo.getSecu_id());
+				if(rdsbo == null) {//insert directly
+					log.info("There is no product_id={} in cache, we will insert it.",sourcebo.getBo().secu_id);
+					rdsbo = new RDSStockBO_OTW();
+					insertOrUpdateCacheAndDB(null, sourcebo, false, rdsbo);
+					rdsBoList.put(rdsbo.getProduct_id(), rdsbo);
+				}else {
+					String[] ret = ifDupBO(rdsbo, sourcebo);
+					if(ret[0]==null) {
+						log.info("This is a dup BO:product_id={}, we will ignore it!",sourcebo.getSecu_id());
+					}else {
+						log.info("Need update,product_id={},fild={},source value={},rds value={}",rdsbo.getProduct_id(), ret[0],ret[1],ret[2]);					
+						RDSStockBO_OTW rdsboNew = new RDSStockBO_OTW();
+						insertOrUpdateCacheAndDB(rdsbo, sourcebo, true, rdsboNew);
+						rdsBoList.replace(rdsbo.getProduct_id(), rdsbo);
+					}					
+				}				
+			} catch (InvalidProtocolBufferException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}						
+		}
+
+		private void insertOrUpdateCacheAndDB(RDSStockBO_OTW rdsboOld, SourceStockBO_OTW sourcebo,boolean isUpdate, RDSStockBO_OTW rdsboNew) {
+			// TODO Auto-generated method stub
+			for(Map.Entry<String, String> eachMap:source2rdsMap.entrySet()) {
+				setMethod(rdsboNew, sourcebo, eachMap);
+			}
+			if(isUpdate) {				
+				repo.deleteById(rdsboOld.getUuid());
+				repo.save(rdsboNew.getBo());
+				log.info("update successful,product_id={}",rdsboNew.getProduct_id());
+			}else {
+				repo.save(rdsboNew.getBo());
+				log.info("insert successful,product_id={}",rdsboNew.getProduct_id());
+			}		
+		}
+
+		private String[] ifDupBO(RDSStockBO_OTW rdsbo, SourceStockBO_OTW sourcebo) {
+			// TODO Auto-generated method stub
+			String[] ret = {null,null,null};
+			for(Map.Entry<String, String> eachMap:source2rdsMap.entrySet()) {				
+				String getSouceMethodName = new StringBuffer("get").append(eachMap.getValue().substring(0, 1).toUpperCase()).append(eachMap.getValue().substring(1)).toString();
+				String getRdsMethodName = new StringBuffer("get").append(eachMap.getKey().substring(0, 1).toUpperCase()).append(eachMap.getKey().substring(1)).toString();
+				try {
+					Method getSourceMethod = sourcebo.getClass().getMethod(getSouceMethodName);
+					Class returnType =  getSourceMethod.getReturnType();
+					Method getRdsMethod = rdsbo.getClass().getMethod(getRdsMethodName);
+
+					if(!getSourceMethod.invoke(sourcebo).equals(getRdsMethod.invoke(rdsbo))) {
+						ret[0] = eachMap.getKey();
+						ret[1] = String.valueOf(getSourceMethod.invoke(sourcebo));
+						ret[2] = String.valueOf(getRdsMethod.invoke(rdsbo));						
+						break;
+					}										
+				} catch (NoSuchMethodException | SecurityException |IllegalAccessException|IllegalArgumentException|InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			return ret;		
 		}
 		
+		public void setMethod(RDSStockBO_OTW rdsbo, SourceStockBO_OTW sourcebo, Map.Entry<String, String>eachMap) {
+			String getMethodName = new StringBuffer("get").append(eachMap.getValue().substring(0, 1).toUpperCase()).append(eachMap.getValue().substring(1)).toString();
+			String setMethodName = new StringBuffer("set").append(eachMap.getKey().substring(0, 1).toUpperCase()).append(eachMap.getKey().substring(1)).toString();
+
+			try {
+				Method getSourceMethod = sourcebo.getClass().getMethod(getMethodName);
+				Class returnType =  getSourceMethod.getReturnType();
+				Method setRDSMethod = rdsbo.getClass().getMethod(setMethodName, returnType);
+				setRDSMethod.invoke(rdsbo, getSourceMethod.invoke(sourcebo));
+			} catch (NoSuchMethodException | SecurityException |IllegalAccessException|IllegalArgumentException|InvocationTargetException e) {
+				e.printStackTrace();
+			}		
+
+		}
 	}
-	
 	
 }

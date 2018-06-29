@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<import resource="classpath*:comConf/CommonConfig.xml" />
+	<import resource="DBConfig.xml"/>
+    	
+    <bean id="MainServer" class="com.purefun.fstp.core.server.ignite.IgniteService">  
+    	<!--  <constructor-arg name="serverName" value="MonitorService"></constructor-arg>-->
+        <constructor-arg name="isServer" value="true"></constructor-arg> 
+        <property name="cacheType" value="ignite"/> 
+        <property name="managerBOMap">
+        	<map>
+        		<entry key="fstp.core.rpc.testone"    		value="com.purefun.fstp.core.bo.TestBO"/>
+        	</map>
+        </property>   
+   	</bean>
+   	
+   	<bean id="cacheConfigurationList" class="java.util.ArrayList">
+  		<constructor-arg>
+	  		<list>
+                <bean class="org.apache.ignite.configuration.CacheConfiguration">
+	  			 	<property name="name" value="com.purefun.fstp.core.bo.TestBO"></property> 
+	  			 	<property name="indexedTypes">
+                    	<array>
+                    		<value>java.lang.String</value>
+                    		<value>com.purefun.fstp.core.bo.TestBO</value>
+                    	</array>
+                    </property>  
+                </bean>
+	  		</list>
+	  	</constructor-arg>
+  	</bean>
+   	   	
+</beans>

@@ -8,13 +8,11 @@ import javax.jms.Destination;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
-import javax.jms.ObjectMessage;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 
 import org.slf4j.Logger;
 
-import com.purefun.fstp.core.bo.QNSRequestBO;
 import com.purefun.fstp.core.bo.otw.QNSRequestBO_OTW;
 import com.purefun.fstp.core.server.monitor.MonitorService;
 import com.purefun.fstp.core.tool.RPCTool;
@@ -51,11 +49,7 @@ public class QNSService{
 	        		continue;
 	        	}
 	        	QNSRequestBO_OTW receiveBO =new QNSRequestBO_OTW(RPCTool.subBytes(byteArray, 0, len));
-
-//	        	ServerStatsBO reveivebo = (ServerStatsBO)message.getObject();							
-//	        	ObjectMessage message = (ObjectMessage) messageConsumer.receive();
-//	        	QNSRequestBO reveivebo = (QNSRequestBO)message.getObject();
-	        	
+        	
 	        	log.info("receive ServerName:{},QNSTopic:{}",receiveBO.getServername(),receiveBO.getRequest());
 	        	String reply = analysis(receiveBO.getRequest());
 	        	log.info(receiveBO.getRequest());
@@ -77,7 +71,13 @@ public class QNSService{
 		
 		if(index == -1) {
 			log.info("don't need analysis");
-			return qns;
+			for(Map.Entry<String, String> each:boDestinationMap.entrySet()) {
+				String destination = each.getValue();
+				if(destination.equalsIgnoreCase(qns)) {
+					result = each.getKey();
+					return result;
+				}				
+			}
 		}
 		
 		if(!qns.endsWith(".*")) {

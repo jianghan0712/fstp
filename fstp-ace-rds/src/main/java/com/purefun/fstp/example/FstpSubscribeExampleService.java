@@ -54,26 +54,32 @@ public class FstpSubscribeExampleService extends PService{
 			
 		}
 
+//		@Override
+//		protected void doSubscribeTask(BytesMessage objMsg) {
+//			// TODO Auto-generated method stub
+//			try {
+//				byte[] byteArray = new byte[1024];
+//	        	int len = -1;
+//	        	len = objMsg.readBytes(byteArray);
+//	        	if(len == -1){ 
+//	        		return;
+//	        	}
+////	        	ExampleBO_OTW receiveBO = new ExampleBO_OTW(RPCTool.subBytes(byteArray, 0, len));
+//	        	TestBO_OTW receiveBO = new TestBO_OTW(RPCTool.subBytes(byteArray, 0, len));
+//				log.info("receive：{}",receiveBO.toString());
+//			} catch (JMSException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (InvalidProtocolBufferException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+
 		@Override
-		protected void doSubscribeTask(BytesMessage objMsg) {
+		protected void doSubscribeTask(byte[] objMsg) {
 			// TODO Auto-generated method stub
-			try {
-				byte[] byteArray = new byte[1024];
-	        	int len = -1;
-	        	len = objMsg.readBytes(byteArray);
-	        	if(len == -1){ 
-	        		return;
-	        	}
-//	        	ExampleBO_OTW receiveBO = new ExampleBO_OTW(RPCTool.subBytes(byteArray, 0, len));
-	        	TestBO_OTW receiveBO = new TestBO_OTW(RPCTool.subBytes(byteArray, 0, len));
-				log.info("receive：{}",receiveBO.toString());
-			} catch (JMSException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvalidProtocolBufferException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 		}
 		
 	}

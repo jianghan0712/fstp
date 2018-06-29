@@ -1,45 +1,30 @@
 package com.purefun.fstp.core.ipc.pub;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.jms.BytesMessage;
-import javax.jms.DeliveryMode;
 import javax.jms.Destination;
 import javax.jms.JMSException;
-import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
-import javax.jms.ObjectMessage;
 import javax.jms.Session;
-import javax.jms.TemporaryQueue;
-import javax.jms.TextMessage;
-
 import org.slf4j.Logger;
 
-import com.purefun.fstp.core.bo.BaseBO;
-import com.purefun.fstp.core.bo.QNSRequestBO;
 import com.purefun.fstp.core.bo.commom.ICommom_OTW;
-import com.purefun.fstp.core.bo.otw.TestBO2_OTW;
-import com.purefun.fstp.core.cache.FCache;
-import com.purefun.fstp.core.cache.ObjectTransCoder;
+import com.purefun.fstp.core.cache.ICommonCache;
+import com.purefun.fstp.core.cache.ignitecache.ICache;
+import com.purefun.fstp.core.cache.rediscache.RCache;
 import com.purefun.fstp.core.ipc.PublishMode;
-import com.purefun.fstp.core.ipc.qns.QNSClient;
-
-import redis.clients.jedis.Jedis;
 
 public class Publisher{
 	Logger log = null;
 	Session session = null;
-	FCache fcache = null;
+	ICommonCache cache = null;
 	
-	public Publisher(Logger log,Session session,FCache fcache) {
+	public Publisher(Logger log,Session session,ICommonCache cache) {
 		this.log = log;
 		this.session = session;
-		this.fcache = fcache;
+		this.cache = cache;
 	}
-	
-	public void publish(ICommom_OTW bo,int mode) {
+
+	public void publish(ICommom_OTW bo,int mode,String cacheName) {
 		if(session == null) {
 			log.error("There is no useful connect to broker");
 			return;
@@ -49,14 +34,12 @@ public class Publisher{
 			Destination destination = session.createTopic(bo.getDestination());
 			MessageProducer messageProducer = session.createProducer(destination);
 			
-//			ObjectMessage message = session.createObjectMessage();
-//        	message.setObject((Serializable) bo);
         	BytesMessage message = session.createBytesMessage();
         	message.writeBytes(bo.getBuilder().build().toByteArray());
         	      	
             messageProducer.send(message);
             if(mode == PublishMode.PUBLISH_AND_DUR)
-            	durableInCache(bo);
+            	durableInCache(bo, cacheName);
             log.info("publish BO:[{}]",bo.toString());
             
 		} catch (JMSException e) {
@@ -64,36 +47,12 @@ public class Publisher{
 			e.printStackTrace();
 		} 
 	}
-
-	public void publish(String topic ,String str) {
-		if(session == null) {
-			log.error("There is no useful connect to broker");
-			return;
-		}
-		
-		try {
-			Destination destination = session.createTopic(topic);
-			MessageProducer messageProducer = session.createProducer(destination);
-			
-//			ObjectMessage message = session.createObjectMessage();
-//        	message.setObject((Serializable) bo);
-        	BytesMessage message = session.createBytesMessage();
-        	message.writeBytes(str.getBytes());
-        	      	
-            messageProducer.send(message);
-//            if(mode == PublishMode.PUBLISH_AND_DUR)
-//            	durableInCache(bo);
-            log.info("publish BO:[{}]",str);
-            
-		} catch (JMSException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-	}
 	
-	public void durableInCache(ICommom_OTW bo) {
-		String mapName = bo.getBo().getClass().getName();	
-		fcache.setList(mapName, bo.getBuilder().build().toByteArray());
-//		fcache.setList(mapName, bo);
+	public void durableInCache(ICommom_OTW bo, String cacheName) {
+		String mapName = bo.getBo().getClass().getName();
+		if(RCache.class.isInstance(cache))
+			cache.put(cacheName, bo.getUuid(), bo.getBuilder().build().toByteArray());
+		else if(ICache.class.isInstance(cache))
+			cache.put(cacheName, bo.getUuid(), bo.getBo());
 	}	
 }

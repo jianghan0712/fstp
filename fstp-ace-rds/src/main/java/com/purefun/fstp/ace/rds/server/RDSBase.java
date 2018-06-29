@@ -2,10 +2,9 @@ package com.purefun.fstp.ace.rds.server;
 
 import java.util.List;
 
+import org.apache.ignite.IgniteCache;
 import org.springframework.data.repository.CrudRepository;
 
-import com.purefun.fstp.ace.rds.repo.RDSStockBORepository;
-import com.purefun.fstp.ace.rds.repo.TestBORepository;
 import com.purefun.fstp.core.bo.BaseBO;
 import com.purefun.fstp.core.ipc.pub.Publisher;
 import com.purefun.fstp.core.ipc.sub.Subscriber;
@@ -18,31 +17,26 @@ public abstract class RDSBase extends PService{
 	Publisher pub = null;
 	Subscriber sub = null;
 	RDSSubMessageListener listener = null;
+	public IgniteCache cache = null;
 	
 	
 	public RDSBase(boolean isServer) {
 		super(isServer);
 		// TODO Auto-generated constructor stub
-//		registTask = new RegisterMonitor();
-		
 	}
 	
 	public void init() {
 		super.init();
-		log.info("{} init successful",serverName);	
-//		repo = beanFactory.getBean(RDSStockBORepository.class);
-//		repo = beanFactory.getBean(TestBORepository.class);
-		
+		log.info("{} init successful",serverName);			
 	}
 	
 	public void start() {
-		super.start();
-				
+		super.start();		
 		//First load DB data
-		loadDBdata2Cache();
-		
+		loadDBdata2Cache();	
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private <T> void loadDBdata2Cache() {
 		// TODO Auto-generated method stub
 		rdsinfo = beanFactory.getBean(RDSCommon.class);
@@ -51,19 +45,16 @@ public abstract class RDSBase extends PService{
 			Class rdsCrud = Class.forName(rdsinfo.getRdsCrud());
 			repo = (CrudRepository)beanFactory.getBean(rdsCrud);
 			log.info("---------load all key from DB table:{}---------",rdsinfo.getTableName());
-			List<T> list = (List<T>)repo.findAll();
-			int count = 0;
-	    	for(T each : list) {
-	    		fcache.setList(each.getClass().getName(), (byte[])each);
-	    		count++;
-	    	}
-	    	log.info("load data from DB to cache successful!!");
-	    	log.info("Count:{}",count);
+			List list = (List) repo.findAll();
+
+			loadDBdata2CacheImp(list);	    	
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+		
+	abstract protected void loadDBdata2CacheImp(List list);
 	
 	protected void save2DB(BaseBO bo) {
 		repo.save(bo);

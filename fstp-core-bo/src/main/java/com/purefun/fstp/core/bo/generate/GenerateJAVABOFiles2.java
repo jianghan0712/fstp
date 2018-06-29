@@ -193,6 +193,22 @@ public class GenerateJAVABOFiles2 {
 		println(new StringBuilder(TAB).append("}").toString());
 		println("");
 		
+		//定义构造器3
+		println(new StringBuilder(TAB).append("public ").append(_otwName).append("(").append(boName).append(" bofrom){").toString());
+		println(new StringBuilder(TAB).append(TAB).append(BUILDER).append(" = ")
+				  .append(_proName).append(".").append(boName).append(".").append("newBuilder();").toString());
+		println(new StringBuilder(TAB).append(TAB).append(BO).append("= new ").append(boName).append("();").toString());
+
+		genBOStructSetMethod(fields);
+		println(new StringBuilder(TAB).append("}").toString());
+		println("");
+		
+		//定义serial
+		println(new StringBuilder(TAB).append("public byte[] serial() {").toString());
+		println(new StringBuilder(TAB).append(TAB).append("return builder.build().toByteArray();").toString());
+		println(new StringBuilder(TAB).append("}").toString());
+		println("");
+		
 		//定义@Override
 		//builder
 		println(new StringBuilder(TAB).append("@Override").toString());
@@ -212,6 +228,19 @@ public class GenerateJAVABOFiles2 {
 		
 		genToString(_otwName,fields);
 		println("}");					
+	}
+
+	private void genBOStructSetMethod(Field[] fields) {
+		// TODO Auto-generated method stub
+		for(Field field : fields) {
+			StringBuilder setmethodName = new StringBuilder();
+			String fieldName = field.getName();
+			StringBuilder first = new StringBuilder(fieldName.substring(0, 1).toUpperCase());
+			StringBuilder last = new StringBuilder(fieldName.substring(1));
+			setmethodName.append(first).append(last);
+			println(new StringBuilder(TAB).append(TAB).append("set").append(setmethodName).append("(")
+										  .append("bofrom.").append(fieldName).append(");").toString());
+		}					
 	}
 
 	private void genToString(String name,Field[] fields) {

@@ -21,7 +21,7 @@ class QueryRequestBO_OTW(ICommon_OTW):
         self._bo_pro.requestServiceName = self._bo.requestServiceName
         self._bo_pro.respondServiceName = self._bo.respondServiceName
         self._bo_pro.querytopic = self._bo.querytopic
-        self._bo_pro.queryBoDestination = self._bo.queryBoDestination
+        self._bo_pro.tempTopic = self._bo.tempTopic
 
     def __setDataFromPB(self):
         self._bo.uuid = self._bo_pro.uuid
@@ -30,7 +30,7 @@ class QueryRequestBO_OTW(ICommon_OTW):
         self._bo.requestServiceName = self._bo_pro.requestServiceName
         self._bo.respondServiceName = self._bo_pro.respondServiceName
         self._bo.querytopic = self._bo_pro.querytopic
-        self._bo.queryBoDestination = self._bo_pro.queryBoDestination
+        self._bo.tempTopic = self._bo_pro.tempTopic
 
     def getBO(self):
         return self._bo
@@ -80,12 +80,12 @@ class QueryRequestBO_OTW(ICommon_OTW):
         self._bo.querytopic = querytopic
         self._bo_pro.querytopic = querytopic
 
-    def getQueryBoDestination(self):
-        return self._bo.queryBoDestination
+    def getTempTopic(self):
+        return self._bo.tempTopic
 
-    def setQueryBoDestination(self, queryBoDestination):
-        self._bo.queryBoDestination = queryBoDestination
-        self._bo_pro.queryBoDestination = queryBoDestination
+    def setTempTopic(self, tempTopic):
+        self._bo.tempTopic = tempTopic
+        self._bo_pro.tempTopic = tempTopic
 
     def toString(self):
-        return "QueryRequestBO_OTW ["+"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"requestServiceName = " + str(self.getRequestServiceName()) +"," +"respondServiceName = " + str(self.getRespondServiceName()) +"," +"querytopic = " + str(self.getQuerytopic()) +"," +"queryBoDestination = " + str(self.getQueryBoDestination()) +"," +"]"
+        return "QueryRequestBO_OTW ["+"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"requestServiceName = " + str(self.getRequestServiceName()) +"," +"respondServiceName = " + str(self.getRespondServiceName()) +"," +"querytopic = " + str(self.getQuerytopic()) +"," +"tempTopic = " + str(self.getTempTopic()) +"," +"]"

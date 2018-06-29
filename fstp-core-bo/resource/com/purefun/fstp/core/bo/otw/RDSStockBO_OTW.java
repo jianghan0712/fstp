@@ -25,17 +25,12 @@ public class RDSStockBO_OTW implements ICommom_OTW {
         setBoid(receive.getBoid());
         setDestination(receive.getDestination());
         setProduct_id(receive.getProductId());
-        setIsin(receive.getIsin());
-        setRecv_time(receive.getRecvTime());
         setSecu_name_cn(receive.getSecuNameCn());
         setSecu_name_en(receive.getSecuNameEn());
-        setSecu_base_id(receive.getSecuBaseId());
         setExch_type(receive.getExchType());
         setSecu_type(receive.getSecuType());
         setSecu_sub_type(receive.getSecuSubType());
         setCurrency(receive.getCurrency());
-        setBond_par_value(receive.getBondParValue());
-        setLast_trade_date(receive.getLastTradeDate());
         setList_date(receive.getListDate());
         setBuy_unit(receive.getBuyUnit());
         setSell_unit(receive.getSellUnit());
@@ -43,7 +38,6 @@ public class RDSStockBO_OTW implements ICommom_OTW {
         setTrade_high_limit(receive.getTradeHighLimit());
         setPre_close_price(receive.getPreClosePrice());
         setTick_price(receive.getTickPrice());
-        setPrice_limit_type(receive.getPriceLimitType());
         setPrice_high_limit(receive.getPriceHighLimit());
         setPrice_low_limit(receive.getPriceLowLimit());
         setEx_right_ratio(receive.getExRightRatio());
@@ -52,6 +46,42 @@ public class RDSStockBO_OTW implements ICommom_OTW {
         setMargin_flag(receive.getMarginFlag());
         setSecu_status(receive.getSecuStatus());
         setMemo(receive.getMemo());
+        setUpdate_time(receive.getUpdateTime());
+    }
+
+    public RDSStockBO_OTW(RDSStockBO bofrom){
+        builder = RDSStockBO_PRO.RDSStockBO.newBuilder();
+        bo= new RDSStockBO();
+        setUuid(bofrom.uuid);
+        setBoid(bofrom.boid);
+        setDestination(bofrom.destination);
+        setProduct_id(bofrom.product_id);
+        setSecu_name_cn(bofrom.secu_name_cn);
+        setSecu_name_en(bofrom.secu_name_en);
+        setExch_type(bofrom.exch_type);
+        setSecu_type(bofrom.secu_type);
+        setSecu_sub_type(bofrom.secu_sub_type);
+        setCurrency(bofrom.currency);
+        setList_date(bofrom.list_date);
+        setBuy_unit(bofrom.buy_unit);
+        setSell_unit(bofrom.sell_unit);
+        setTrade_low_limit(bofrom.trade_low_limit);
+        setTrade_high_limit(bofrom.trade_high_limit);
+        setPre_close_price(bofrom.pre_close_price);
+        setTick_price(bofrom.tick_price);
+        setPrice_high_limit(bofrom.price_high_limit);
+        setPrice_low_limit(bofrom.price_low_limit);
+        setEx_right_ratio(bofrom.ex_right_ratio);
+        setDividend_price(bofrom.dividend_price);
+        setFinancing_flag(bofrom.financing_flag);
+        setMargin_flag(bofrom.margin_flag);
+        setSecu_status(bofrom.secu_status);
+        setMemo(bofrom.memo);
+        setUpdate_time(bofrom.update_time);
+    }
+
+    public byte[] serial() {
+        return builder.build().toByteArray();
     }
 
     @Override
@@ -100,24 +130,6 @@ public class RDSStockBO_OTW implements ICommom_OTW {
         builder.setProductId(product_id);
     }
 
-    public java.lang.String getIsin() {
-        return builder.getIsin();
-    }
-
-    public void setIsin(java.lang.String isin) {
-        bo.isin = isin;
-        builder.setIsin(isin);
-    }
-
-    public java.lang.String getRecv_time() {
-        return builder.getRecvTime();
-    }
-
-    public void setRecv_time(java.lang.String recv_time) {
-        bo.recv_time = recv_time;
-        builder.setRecvTime(recv_time);
-    }
-
     public java.lang.String getSecu_name_cn() {
         return builder.getSecuNameCn();
     }
@@ -134,15 +146,6 @@ public class RDSStockBO_OTW implements ICommom_OTW {
     public void setSecu_name_en(java.lang.String secu_name_en) {
         bo.secu_name_en = secu_name_en;
         builder.setSecuNameEn(secu_name_en);
-    }
-
-    public java.lang.String getSecu_base_id() {
-        return builder.getSecuBaseId();
-    }
-
-    public void setSecu_base_id(java.lang.String secu_base_id) {
-        bo.secu_base_id = secu_base_id;
-        builder.setSecuBaseId(secu_base_id);
     }
 
     public java.lang.String getExch_type() {
@@ -179,24 +182,6 @@ public class RDSStockBO_OTW implements ICommom_OTW {
     public void setCurrency(java.lang.String currency) {
         bo.currency = currency;
         builder.setCurrency(currency);
-    }
-
-    public double getBond_par_value() {
-        return builder.getBondParValue();
-    }
-
-    public void setBond_par_value(double bond_par_value) {
-        bo.bond_par_value = bond_par_value;
-        builder.setBondParValue(bond_par_value);
-    }
-
-    public java.lang.String getLast_trade_date() {
-        return builder.getLastTradeDate();
-    }
-
-    public void setLast_trade_date(java.lang.String last_trade_date) {
-        bo.last_trade_date = last_trade_date;
-        builder.setLastTradeDate(last_trade_date);
     }
 
     public java.lang.String getList_date() {
@@ -260,15 +245,6 @@ public class RDSStockBO_OTW implements ICommom_OTW {
     public void setTick_price(double tick_price) {
         bo.tick_price = tick_price;
         builder.setTickPrice(tick_price);
-    }
-
-    public java.lang.String getPrice_limit_type() {
-        return builder.getPriceLimitType();
-    }
-
-    public void setPrice_limit_type(java.lang.String price_limit_type) {
-        bo.price_limit_type = price_limit_type;
-        builder.setPriceLimitType(price_limit_type);
     }
 
     public double getPrice_high_limit() {
@@ -343,23 +319,27 @@ public class RDSStockBO_OTW implements ICommom_OTW {
         builder.setMemo(memo);
     }
 
+    public java.lang.String getUpdate_time() {
+        return builder.getUpdateTime();
+    }
+
+    public void setUpdate_time(java.lang.String update_time) {
+        bo.update_time = update_time;
+        builder.setUpdateTime(update_time);
+    }
+
     public String toString() {
         return "RDSStockBO_OTW ["+
             "uuid = " + getUuid() +"," +
             "boid = " + getBoid() +"," +
             "destination = " + getDestination() +"," +
             "product_id = " + getProduct_id() +"," +
-            "isin = " + getIsin() +"," +
-            "recv_time = " + getRecv_time() +"," +
             "secu_name_cn = " + getSecu_name_cn() +"," +
             "secu_name_en = " + getSecu_name_en() +"," +
-            "secu_base_id = " + getSecu_base_id() +"," +
             "exch_type = " + getExch_type() +"," +
             "secu_type = " + getSecu_type() +"," +
             "secu_sub_type = " + getSecu_sub_type() +"," +
             "currency = " + getCurrency() +"," +
-            "bond_par_value = " + getBond_par_value() +"," +
-            "last_trade_date = " + getLast_trade_date() +"," +
             "list_date = " + getList_date() +"," +
             "buy_unit = " + getBuy_unit() +"," +
             "sell_unit = " + getSell_unit() +"," +
@@ -367,7 +347,6 @@ public class RDSStockBO_OTW implements ICommom_OTW {
             "trade_high_limit = " + getTrade_high_limit() +"," +
             "pre_close_price = " + getPre_close_price() +"," +
             "tick_price = " + getTick_price() +"," +
-            "price_limit_type = " + getPrice_limit_type() +"," +
             "price_high_limit = " + getPrice_high_limit() +"," +
             "price_low_limit = " + getPrice_low_limit() +"," +
             "ex_right_ratio = " + getEx_right_ratio() +"," +
@@ -376,6 +355,7 @@ public class RDSStockBO_OTW implements ICommom_OTW {
             "margin_flag = " + getMargin_flag() +"," +
             "secu_status = " + getSecu_status() +"," +
             "memo = " + getMemo() +"," +
+            "update_time = " + getUpdate_time() +"," +
     "]";
     }
 }

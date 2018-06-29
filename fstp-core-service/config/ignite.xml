@@ -38,7 +38,9 @@
                         </list>  
                     </property>  
                 </bean>  
-  
+  				<bean class="org.apache.ignite.configuration.CacheConfiguration">  
+                    <property name="name" value="person"></property>  
+                </bean> 
             </list>  
         </property>  
   

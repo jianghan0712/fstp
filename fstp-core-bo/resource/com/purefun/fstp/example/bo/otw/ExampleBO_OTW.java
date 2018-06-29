@@ -28,6 +28,20 @@ public class ExampleBO_OTW implements ICommom_OTW {
         setAge(receive.getAge());
     }
 
+    public ExampleBO_OTW(ExampleBO bofrom){
+        builder = ExampleBO_PRO.ExampleBO.newBuilder();
+        bo= new ExampleBO();
+        setUuid(bofrom.uuid);
+        setBoid(bofrom.boid);
+        setDestination(bofrom.destination);
+        setName(bofrom.name);
+        setAge(bofrom.age);
+    }
+
+    public byte[] serial() {
+        return builder.build().toByteArray();
+    }
+
     @Override
     public ExampleBO_PRO.ExampleBO.Builder getBuilder() { 
         return builder;
