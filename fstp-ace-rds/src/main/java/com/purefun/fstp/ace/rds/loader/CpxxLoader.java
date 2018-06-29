@@ -51,7 +51,7 @@ public class CpxxLoader extends FileLoader{
 			bean.setRecord_update_time(lineValues[i++].trim());
 			bean.setSecu_chinese_name(lineValues[i++].trim());
 			bean.setSecu_english_name(lineValues[i++].trim());
-			bean.setSecu_base_id(lineValues[i++].trim());
+			bean.setSecu_base_id(lineValues[i++].trim() + ".SH");
 			bean.setExch_type(lineValues[i++].trim());		
 			bean.setSecu_type(lineValues[i++].trim());
 			bean.setSecu_sub_type(lineValues[i++].trim());
@@ -74,7 +74,7 @@ public class CpxxLoader extends FileLoader{
 			bean.setDividend_price(lineValues[i++].trim());
 			bean.setFinancing_flag(lineValues[i++].trim());
 			bean.setMargin_flag(lineValues[i++].trim());
-			bean.setSecu_status(lineValues[i++].trim());
+			bean.setSecu_status(lineValues[i++]);
 			bean.setMemo(lineValues[i++].trim());		
 			
 			String secu_type = bean.getSecu_type();

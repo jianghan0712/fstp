@@ -56,6 +56,48 @@ public class SourceStockBO_OTW implements ICommom_OTW {
         setMemo(receive.getMemo());
     }
 
+    public SourceStockBO_OTW(SourceStockBO bofrom){
+        builder = SourceStockBO_PRO.SourceStockBO.newBuilder();
+        bo= new SourceStockBO();
+        setUuid(bofrom.uuid);
+        setBoid(bofrom.boid);
+        setDestination(bofrom.destination);
+        setSecu_id(bofrom.secu_id);
+        setIsin(bofrom.isin);
+        setRecord_update_time(bofrom.record_update_time);
+        setSecu_chinese_name(bofrom.secu_chinese_name);
+        setSecu_english_name(bofrom.secu_english_name);
+        setSecu_base_id(bofrom.secu_base_id);
+        setExch_type(bofrom.exch_type);
+        setSecu_type(bofrom.secu_type);
+        setSecu_sub_type(bofrom.secu_sub_type);
+        setCurrency(bofrom.currency);
+        setBond_par_value(bofrom.bond_par_value);
+        setNot_list_stkqty(bofrom.not_list_stkqty);
+        setLast_trade_date(bofrom.last_trade_date);
+        setList_date(bofrom.list_date);
+        setProduct_set_id(bofrom.product_set_id);
+        setBuy_unit(bofrom.buy_unit);
+        setSell_unit(bofrom.sell_unit);
+        setTrade_low_limit(bofrom.trade_low_limit);
+        setTrade_high_limit(bofrom.trade_high_limit);
+        setPre_close_price(bofrom.pre_close_price);
+        setTick_price(bofrom.tick_price);
+        setPrice_limit_type(bofrom.price_limit_type);
+        setPrice_high_limit(bofrom.price_high_limit);
+        setPrice_low_limit(bofrom.price_low_limit);
+        setEx_right_ratio(bofrom.ex_right_ratio);
+        setDividend_price(bofrom.dividend_price);
+        setFinancing_flag(bofrom.financing_flag);
+        setMargin_flag(bofrom.margin_flag);
+        setSecu_status(bofrom.secu_status);
+        setMemo(bofrom.memo);
+    }
+
+    public byte[] serial() {
+        return builder.build().toByteArray();
+    }
+
     @Override
     public SourceStockBO_PRO.SourceStockBO.Builder getBuilder() { 
         return builder;

@@ -16,7 +16,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
-    	<dependency>
+		<dependency>
         	 <groupId>com.purefun</groupId>
         	 <artifactId>fstp-core</artifactId>
         	 <version>${fstp.version}</version>
@@ -26,6 +26,5 @@
         	<artifactId>fstp-core-bo</artifactId>
         	<version>${fstp.version}</version>
 		</dependency> 
-	
   </dependencies>
 </project>

@@ -6,13 +6,12 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<import resource="classpath:resource/comConf/CommonConfig.xml" />
+	<import resource="classpath*:comConf/CommonConfig.xml" />
 	<import resource="DBConfig.xml" />
-    <context:property-placeholder location="classpath:redis.properties" ignore-unresolvable="true" />
-	
+
     <bean id="MainServer" class="com.purefun.fstp.ace.rds.server.StockRDS">  
         <constructor-arg name="isServer" value="true"></constructor-arg>  
-        
+        <property name="cacheType" value="ignite"/>
         <property name="managerBOMap">
         	<map>
         		<entry key="fstp.core.rpc.testone"    		value="com.purefun.fstp.core.bo.TestBO"/>
@@ -24,17 +23,12 @@
         	<map>
         		<description>key->rdsBO,value->sourceBO</description>
        			<entry key="product_id"    		value="secu_id"/>
-       			<entry key="isin"   		    value="isin"/>
-       			<entry key="recv_time"   		value="record_update_time"/>  
        			<entry key="secu_name_cn"   	value="secu_chinese_name"/>
        			<entry key="secu_name_en"   	value="secu_english_name"/> 
-       			<entry key="secu_base_id"   	value="secu_base_id"/>
        			<entry key="exch_type"   		value="exch_type"/>
        			<entry key="secu_type"   		value="secu_type"/>
        			<entry key="secu_sub_type"   	value="secu_sub_type"/>
        			<entry key="currency"   		value="currency"/>
-       			<entry key="bond_par_value"   	value="bond_par_value"/>
-       			<entry key="last_trade_date"   	value="last_trade_date"/>
        			<entry key="list_date"   		value="list_date"/>
        			<entry key="buy_unit"   		value="buy_unit"/>
        			<entry key="sell_unit"   		value="sell_unit"/>
@@ -42,7 +36,6 @@
        			<entry key="trade_high_limit"  	value="trade_high_limit"/>
        			<entry key="pre_close_price"   	value="pre_close_price"/>
        			<entry key="tick_price"   		value="tick_price"/>
-       			<entry key="price_limit_type"  	value="price_limit_type"/>
        			<entry key="price_high_limit"   value="price_high_limit"/>
        			<entry key="price_low_limit"   	value="price_low_limit"/> 
        			<entry key="ex_right_ratio"   	value="ex_right_ratio"/> 
@@ -53,5 +46,31 @@
        			<entry key="memo"   			value="memo"/> 			
        		</map>
        	</property>
-   	</bean>   	
+   	</bean> 
+   	
+   	<bean id="rdscache" class="org.apache.ignite.configuration.CacheConfiguration">  
+         <property name="name" value="com.purefun.fstp.core.bo.RDSStockBO"></property>  
+         <property name="indexedTypes">
+               <array>
+                    <value>java.lang.String</value>
+                    <value>com.purefun.fstp.core.bo.RDSStockBO</value>
+               </array>
+         </property>  
+    </bean>  
+    
+    <bean id="cacheConfigurationList" class="java.util.ArrayList">
+  		<constructor-arg>
+	  		<list>
+                <bean class="org.apache.ignite.configuration.CacheConfiguration">
+	  			 	<property name="name" value="com.purefun.fstp.core.bo.RDSStockBO"></property>  
+         			<property name="indexedTypes">
+               			<array>
+                    		<value>java.lang.String</value>
+                    		<value>com.purefun.fstp.core.bo.RDSStockBO</value>
+               			</array>
+         			</property>  
+                </bean>
+	  		</list>
+	  	</constructor-arg>
+  	</bean>	
 </beans>

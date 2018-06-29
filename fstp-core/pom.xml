@@ -17,8 +17,13 @@
   </properties>
   <dependencies>
       	<dependency>
+        	 <groupId>com.purefun</groupId>
+        	 <artifactId>fstp-core-bo</artifactId>
+        	 <version>${fstp.version}</version>
+		</dependency> 
+    	<dependency>
         	<groupId>com.purefun</groupId>
-        	<artifactId>fstp-core-bo</artifactId>
+        	<artifactId>fstp-core-service</artifactId>
         	<version>${fstp.version}</version>
 		</dependency> 
   </dependencies>

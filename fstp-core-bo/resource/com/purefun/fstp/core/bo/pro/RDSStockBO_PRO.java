@@ -70,327 +70,262 @@ public final class RDSStockBO_PRO {
         getProductIdBytes();
 
     /**
-     * <code>optional string isin = 5;</code>
-     */
-    boolean hasIsin();
-    /**
-     * <code>optional string isin = 5;</code>
-     */
-    java.lang.String getIsin();
-    /**
-     * <code>optional string isin = 5;</code>
-     */
-    com.google.protobuf.ByteString
-        getIsinBytes();
-
-    /**
-     * <code>optional string recv_time = 6;</code>
-     */
-    boolean hasRecvTime();
-    /**
-     * <code>optional string recv_time = 6;</code>
-     */
-    java.lang.String getRecvTime();
-    /**
-     * <code>optional string recv_time = 6;</code>
-     */
-    com.google.protobuf.ByteString
-        getRecvTimeBytes();
-
-    /**
-     * <code>optional string secu_name_cn = 7;</code>
+     * <code>optional string secu_name_cn = 5;</code>
      */
     boolean hasSecuNameCn();
     /**
-     * <code>optional string secu_name_cn = 7;</code>
+     * <code>optional string secu_name_cn = 5;</code>
      */
     java.lang.String getSecuNameCn();
     /**
-     * <code>optional string secu_name_cn = 7;</code>
+     * <code>optional string secu_name_cn = 5;</code>
      */
     com.google.protobuf.ByteString
         getSecuNameCnBytes();
 
     /**
-     * <code>optional string secu_name_en = 8;</code>
+     * <code>optional string secu_name_en = 6;</code>
      */
     boolean hasSecuNameEn();
     /**
-     * <code>optional string secu_name_en = 8;</code>
+     * <code>optional string secu_name_en = 6;</code>
      */
     java.lang.String getSecuNameEn();
     /**
-     * <code>optional string secu_name_en = 8;</code>
+     * <code>optional string secu_name_en = 6;</code>
      */
     com.google.protobuf.ByteString
         getSecuNameEnBytes();
 
     /**
-     * <code>optional string secu_base_id = 9;</code>
-     */
-    boolean hasSecuBaseId();
-    /**
-     * <code>optional string secu_base_id = 9;</code>
-     */
-    java.lang.String getSecuBaseId();
-    /**
-     * <code>optional string secu_base_id = 9;</code>
-     */
-    com.google.protobuf.ByteString
-        getSecuBaseIdBytes();
-
-    /**
-     * <code>optional string exch_type = 10;</code>
+     * <code>optional string exch_type = 7;</code>
      */
     boolean hasExchType();
     /**
-     * <code>optional string exch_type = 10;</code>
+     * <code>optional string exch_type = 7;</code>
      */
     java.lang.String getExchType();
     /**
-     * <code>optional string exch_type = 10;</code>
+     * <code>optional string exch_type = 7;</code>
      */
     com.google.protobuf.ByteString
         getExchTypeBytes();
 
     /**
-     * <code>optional string secu_type = 11;</code>
+     * <code>optional string secu_type = 8;</code>
      */
     boolean hasSecuType();
     /**
-     * <code>optional string secu_type = 11;</code>
+     * <code>optional string secu_type = 8;</code>
      */
     java.lang.String getSecuType();
     /**
-     * <code>optional string secu_type = 11;</code>
+     * <code>optional string secu_type = 8;</code>
      */
     com.google.protobuf.ByteString
         getSecuTypeBytes();
 
     /**
-     * <code>optional string secu_sub_type = 12;</code>
+     * <code>optional string secu_sub_type = 9;</code>
      */
     boolean hasSecuSubType();
     /**
-     * <code>optional string secu_sub_type = 12;</code>
+     * <code>optional string secu_sub_type = 9;</code>
      */
     java.lang.String getSecuSubType();
     /**
-     * <code>optional string secu_sub_type = 12;</code>
+     * <code>optional string secu_sub_type = 9;</code>
      */
     com.google.protobuf.ByteString
         getSecuSubTypeBytes();
 
     /**
-     * <code>optional string currency = 13;</code>
+     * <code>optional string currency = 10;</code>
      */
     boolean hasCurrency();
     /**
-     * <code>optional string currency = 13;</code>
+     * <code>optional string currency = 10;</code>
      */
     java.lang.String getCurrency();
     /**
-     * <code>optional string currency = 13;</code>
+     * <code>optional string currency = 10;</code>
      */
     com.google.protobuf.ByteString
         getCurrencyBytes();
 
     /**
-     * <code>optional double bond_par_value = 14;</code>
-     */
-    boolean hasBondParValue();
-    /**
-     * <code>optional double bond_par_value = 14;</code>
-     */
-    double getBondParValue();
-
-    /**
-     * <code>optional string last_trade_date = 15;</code>
-     */
-    boolean hasLastTradeDate();
-    /**
-     * <code>optional string last_trade_date = 15;</code>
-     */
-    java.lang.String getLastTradeDate();
-    /**
-     * <code>optional string last_trade_date = 15;</code>
-     */
-    com.google.protobuf.ByteString
-        getLastTradeDateBytes();
-
-    /**
-     * <code>optional string list_date = 16;</code>
+     * <code>optional string list_date = 11;</code>
      */
     boolean hasListDate();
     /**
-     * <code>optional string list_date = 16;</code>
+     * <code>optional string list_date = 11;</code>
      */
     java.lang.String getListDate();
     /**
-     * <code>optional string list_date = 16;</code>
+     * <code>optional string list_date = 11;</code>
      */
     com.google.protobuf.ByteString
         getListDateBytes();
 
     /**
-     * <code>optional int32 buy_unit = 17;</code>
+     * <code>optional int32 buy_unit = 12;</code>
      */
     boolean hasBuyUnit();
     /**
-     * <code>optional int32 buy_unit = 17;</code>
+     * <code>optional int32 buy_unit = 12;</code>
      */
     int getBuyUnit();
 
     /**
-     * <code>optional int32 sell_unit = 18;</code>
+     * <code>optional int32 sell_unit = 13;</code>
      */
     boolean hasSellUnit();
     /**
-     * <code>optional int32 sell_unit = 18;</code>
+     * <code>optional int32 sell_unit = 13;</code>
      */
     int getSellUnit();
 
     /**
-     * <code>optional int32 trade_low_limit = 19;</code>
+     * <code>optional int32 trade_low_limit = 14;</code>
      */
     boolean hasTradeLowLimit();
     /**
-     * <code>optional int32 trade_low_limit = 19;</code>
+     * <code>optional int32 trade_low_limit = 14;</code>
      */
     int getTradeLowLimit();
 
     /**
-     * <code>optional int32 trade_high_limit = 20;</code>
+     * <code>optional int32 trade_high_limit = 15;</code>
      */
     boolean hasTradeHighLimit();
     /**
-     * <code>optional int32 trade_high_limit = 20;</code>
+     * <code>optional int32 trade_high_limit = 15;</code>
      */
     int getTradeHighLimit();
 
     /**
-     * <code>optional double pre_close_price = 21;</code>
+     * <code>optional double pre_close_price = 16;</code>
      */
     boolean hasPreClosePrice();
     /**
-     * <code>optional double pre_close_price = 21;</code>
+     * <code>optional double pre_close_price = 16;</code>
      */
     double getPreClosePrice();
 
     /**
-     * <code>optional double tick_price = 22;</code>
+     * <code>optional double tick_price = 17;</code>
      */
     boolean hasTickPrice();
     /**
-     * <code>optional double tick_price = 22;</code>
+     * <code>optional double tick_price = 17;</code>
      */
     double getTickPrice();
 
     /**
-     * <code>optional string price_limit_type = 23;</code>
-     */
-    boolean hasPriceLimitType();
-    /**
-     * <code>optional string price_limit_type = 23;</code>
-     */
-    java.lang.String getPriceLimitType();
-    /**
-     * <code>optional string price_limit_type = 23;</code>
-     */
-    com.google.protobuf.ByteString
-        getPriceLimitTypeBytes();
-
-    /**
-     * <code>optional double price_high_limit = 24;</code>
+     * <code>optional double price_high_limit = 18;</code>
      */
     boolean hasPriceHighLimit();
     /**
-     * <code>optional double price_high_limit = 24;</code>
+     * <code>optional double price_high_limit = 18;</code>
      */
     double getPriceHighLimit();
 
     /**
-     * <code>optional double price_low_limit = 25;</code>
+     * <code>optional double price_low_limit = 19;</code>
      */
     boolean hasPriceLowLimit();
     /**
-     * <code>optional double price_low_limit = 25;</code>
+     * <code>optional double price_low_limit = 19;</code>
      */
     double getPriceLowLimit();
 
     /**
-     * <code>optional double ex_right_ratio = 26;</code>
+     * <code>optional double ex_right_ratio = 20;</code>
      */
     boolean hasExRightRatio();
     /**
-     * <code>optional double ex_right_ratio = 26;</code>
+     * <code>optional double ex_right_ratio = 20;</code>
      */
     double getExRightRatio();
 
     /**
-     * <code>optional double dividend_price = 27;</code>
+     * <code>optional double dividend_price = 21;</code>
      */
     boolean hasDividendPrice();
     /**
-     * <code>optional double dividend_price = 27;</code>
+     * <code>optional double dividend_price = 21;</code>
      */
     double getDividendPrice();
 
     /**
-     * <code>optional string financing_flag = 28;</code>
+     * <code>optional string financing_flag = 22;</code>
      */
     boolean hasFinancingFlag();
     /**
-     * <code>optional string financing_flag = 28;</code>
+     * <code>optional string financing_flag = 22;</code>
      */
     java.lang.String getFinancingFlag();
     /**
-     * <code>optional string financing_flag = 28;</code>
+     * <code>optional string financing_flag = 22;</code>
      */
     com.google.protobuf.ByteString
         getFinancingFlagBytes();
 
     /**
-     * <code>optional string margin_flag = 29;</code>
+     * <code>optional string margin_flag = 23;</code>
      */
     boolean hasMarginFlag();
     /**
-     * <code>optional string margin_flag = 29;</code>
+     * <code>optional string margin_flag = 23;</code>
      */
     java.lang.String getMarginFlag();
     /**
-     * <code>optional string margin_flag = 29;</code>
+     * <code>optional string margin_flag = 23;</code>
      */
     com.google.protobuf.ByteString
         getMarginFlagBytes();
 
     /**
-     * <code>optional string secu_status = 30;</code>
+     * <code>optional string secu_status = 24;</code>
      */
     boolean hasSecuStatus();
     /**
-     * <code>optional string secu_status = 30;</code>
+     * <code>optional string secu_status = 24;</code>
      */
     java.lang.String getSecuStatus();
     /**
-     * <code>optional string secu_status = 30;</code>
+     * <code>optional string secu_status = 24;</code>
      */
     com.google.protobuf.ByteString
         getSecuStatusBytes();
 
     /**
-     * <code>optional string memo = 31;</code>
+     * <code>optional string memo = 25;</code>
      */
     boolean hasMemo();
     /**
-     * <code>optional string memo = 31;</code>
+     * <code>optional string memo = 25;</code>
      */
     java.lang.String getMemo();
     /**
-     * <code>optional string memo = 31;</code>
+     * <code>optional string memo = 25;</code>
      */
     com.google.protobuf.ByteString
         getMemoBytes();
+
+    /**
+     * <code>optional string update_time = 26;</code>
+     */
+    boolean hasUpdateTime();
+    /**
+     * <code>optional string update_time = 26;</code>
+     */
+    java.lang.String getUpdateTime();
+    /**
+     * <code>optional string update_time = 26;</code>
+     */
+    com.google.protobuf.ByteString
+        getUpdateTimeBytes();
   }
   /**
    * Protobuf type {@code RDSStockBO}
@@ -409,17 +344,12 @@ public final class RDSStockBO_PRO {
       boid_ = 0L;
       destination_ = "";
       productId_ = "";
-      isin_ = "";
-      recvTime_ = "";
       secuNameCn_ = "";
       secuNameEn_ = "";
-      secuBaseId_ = "";
       exchType_ = "";
       secuType_ = "";
       secuSubType_ = "";
       currency_ = "";
-      bondParValue_ = 0D;
-      lastTradeDate_ = "";
       listDate_ = "";
       buyUnit_ = 0;
       sellUnit_ = 0;
@@ -427,7 +357,6 @@ public final class RDSStockBO_PRO {
       tradeHighLimit_ = 0;
       preClosePrice_ = 0D;
       tickPrice_ = 0D;
-      priceLimitType_ = "";
       priceHighLimit_ = 0D;
       priceLowLimit_ = 0D;
       exRightRatio_ = 0D;
@@ -436,6 +365,7 @@ public final class RDSStockBO_PRO {
       marginFlag_ = "";
       secuStatus_ = "";
       memo_ = "";
+      updateTime_ = "";
     }
 
     @java.lang.Override
@@ -495,152 +425,123 @@ public final class RDSStockBO_PRO {
             case 42: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000010;
-              isin_ = bs;
+              secuNameCn_ = bs;
               break;
             }
             case 50: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000020;
-              recvTime_ = bs;
+              secuNameEn_ = bs;
               break;
             }
             case 58: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000040;
-              secuNameCn_ = bs;
+              exchType_ = bs;
               break;
             }
             case 66: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000080;
-              secuNameEn_ = bs;
+              secuType_ = bs;
               break;
             }
             case 74: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000100;
-              secuBaseId_ = bs;
+              secuSubType_ = bs;
               break;
             }
             case 82: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000200;
-              exchType_ = bs;
+              currency_ = bs;
               break;
             }
             case 90: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000400;
-              secuType_ = bs;
-              break;
-            }
-            case 98: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000800;
-              secuSubType_ = bs;
-              break;
-            }
-            case 106: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00001000;
-              currency_ = bs;
-              break;
-            }
-            case 113: {
-              bitField0_ |= 0x00002000;
-              bondParValue_ = input.readDouble();
-              break;
-            }
-            case 122: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00004000;
-              lastTradeDate_ = bs;
-              break;
-            }
-            case 130: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00008000;
               listDate_ = bs;
               break;
             }
-            case 136: {
-              bitField0_ |= 0x00010000;
+            case 96: {
+              bitField0_ |= 0x00000800;
               buyUnit_ = input.readInt32();
               break;
             }
-            case 144: {
-              bitField0_ |= 0x00020000;
+            case 104: {
+              bitField0_ |= 0x00001000;
               sellUnit_ = input.readInt32();
               break;
             }
-            case 152: {
-              bitField0_ |= 0x00040000;
+            case 112: {
+              bitField0_ |= 0x00002000;
               tradeLowLimit_ = input.readInt32();
               break;
             }
-            case 160: {
-              bitField0_ |= 0x00080000;
+            case 120: {
+              bitField0_ |= 0x00004000;
               tradeHighLimit_ = input.readInt32();
+              break;
+            }
+            case 129: {
+              bitField0_ |= 0x00008000;
+              preClosePrice_ = input.readDouble();
+              break;
+            }
+            case 137: {
+              bitField0_ |= 0x00010000;
+              tickPrice_ = input.readDouble();
+              break;
+            }
+            case 145: {
+              bitField0_ |= 0x00020000;
+              priceHighLimit_ = input.readDouble();
+              break;
+            }
+            case 153: {
+              bitField0_ |= 0x00040000;
+              priceLowLimit_ = input.readDouble();
+              break;
+            }
+            case 161: {
+              bitField0_ |= 0x00080000;
+              exRightRatio_ = input.readDouble();
               break;
             }
             case 169: {
               bitField0_ |= 0x00100000;
-              preClosePrice_ = input.readDouble();
+              dividendPrice_ = input.readDouble();
               break;
             }
-            case 177: {
+            case 178: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00200000;
-              tickPrice_ = input.readDouble();
+              financingFlag_ = bs;
               break;
             }
             case 186: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00400000;
-              priceLimitType_ = bs;
-              break;
-            }
-            case 193: {
-              bitField0_ |= 0x00800000;
-              priceHighLimit_ = input.readDouble();
-              break;
-            }
-            case 201: {
-              bitField0_ |= 0x01000000;
-              priceLowLimit_ = input.readDouble();
-              break;
-            }
-            case 209: {
-              bitField0_ |= 0x02000000;
-              exRightRatio_ = input.readDouble();
-              break;
-            }
-            case 217: {
-              bitField0_ |= 0x04000000;
-              dividendPrice_ = input.readDouble();
-              break;
-            }
-            case 226: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x08000000;
-              financingFlag_ = bs;
-              break;
-            }
-            case 234: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x10000000;
               marginFlag_ = bs;
               break;
             }
-            case 242: {
+            case 194: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x20000000;
+              bitField0_ |= 0x00800000;
               secuStatus_ = bs;
               break;
             }
-            case 250: {
+            case 202: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x40000000;
+              bitField0_ |= 0x01000000;
               memo_ = bs;
+              break;
+            }
+            case 210: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x02000000;
+              updateTime_ = bs;
               break;
             }
           }
@@ -809,100 +710,16 @@ public final class RDSStockBO_PRO {
       }
     }
 
-    public static final int ISIN_FIELD_NUMBER = 5;
-    private volatile java.lang.Object isin_;
+    public static final int SECU_NAME_CN_FIELD_NUMBER = 5;
+    private volatile java.lang.Object secuNameCn_;
     /**
-     * <code>optional string isin = 5;</code>
+     * <code>optional string secu_name_cn = 5;</code>
      */
-    public boolean hasIsin() {
+    public boolean hasSecuNameCn() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional string isin = 5;</code>
-     */
-    public java.lang.String getIsin() {
-      java.lang.Object ref = isin_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          isin_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string isin = 5;</code>
-     */
-    public com.google.protobuf.ByteString
-        getIsinBytes() {
-      java.lang.Object ref = isin_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        isin_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int RECV_TIME_FIELD_NUMBER = 6;
-    private volatile java.lang.Object recvTime_;
-    /**
-     * <code>optional string recv_time = 6;</code>
-     */
-    public boolean hasRecvTime() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional string recv_time = 6;</code>
-     */
-    public java.lang.String getRecvTime() {
-      java.lang.Object ref = recvTime_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          recvTime_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string recv_time = 6;</code>
-     */
-    public com.google.protobuf.ByteString
-        getRecvTimeBytes() {
-      java.lang.Object ref = recvTime_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        recvTime_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int SECU_NAME_CN_FIELD_NUMBER = 7;
-    private volatile java.lang.Object secuNameCn_;
-    /**
-     * <code>optional string secu_name_cn = 7;</code>
-     */
-    public boolean hasSecuNameCn() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>optional string secu_name_cn = 7;</code>
+     * <code>optional string secu_name_cn = 5;</code>
      */
     public java.lang.String getSecuNameCn() {
       java.lang.Object ref = secuNameCn_;
@@ -919,7 +736,7 @@ public final class RDSStockBO_PRO {
       }
     }
     /**
-     * <code>optional string secu_name_cn = 7;</code>
+     * <code>optional string secu_name_cn = 5;</code>
      */
     public com.google.protobuf.ByteString
         getSecuNameCnBytes() {
@@ -935,16 +752,16 @@ public final class RDSStockBO_PRO {
       }
     }
 
-    public static final int SECU_NAME_EN_FIELD_NUMBER = 8;
+    public static final int SECU_NAME_EN_FIELD_NUMBER = 6;
     private volatile java.lang.Object secuNameEn_;
     /**
-     * <code>optional string secu_name_en = 8;</code>
+     * <code>optional string secu_name_en = 6;</code>
      */
     public boolean hasSecuNameEn() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>optional string secu_name_en = 8;</code>
+     * <code>optional string secu_name_en = 6;</code>
      */
     public java.lang.String getSecuNameEn() {
       java.lang.Object ref = secuNameEn_;
@@ -961,7 +778,7 @@ public final class RDSStockBO_PRO {
       }
     }
     /**
-     * <code>optional string secu_name_en = 8;</code>
+     * <code>optional string secu_name_en = 6;</code>
      */
     public com.google.protobuf.ByteString
         getSecuNameEnBytes() {
@@ -977,58 +794,16 @@ public final class RDSStockBO_PRO {
       }
     }
 
-    public static final int SECU_BASE_ID_FIELD_NUMBER = 9;
-    private volatile java.lang.Object secuBaseId_;
-    /**
-     * <code>optional string secu_base_id = 9;</code>
-     */
-    public boolean hasSecuBaseId() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
-    /**
-     * <code>optional string secu_base_id = 9;</code>
-     */
-    public java.lang.String getSecuBaseId() {
-      java.lang.Object ref = secuBaseId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          secuBaseId_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string secu_base_id = 9;</code>
-     */
-    public com.google.protobuf.ByteString
-        getSecuBaseIdBytes() {
-      java.lang.Object ref = secuBaseId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        secuBaseId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int EXCH_TYPE_FIELD_NUMBER = 10;
+    public static final int EXCH_TYPE_FIELD_NUMBER = 7;
     private volatile java.lang.Object exchType_;
     /**
-     * <code>optional string exch_type = 10;</code>
+     * <code>optional string exch_type = 7;</code>
      */
     public boolean hasExchType() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>optional string exch_type = 10;</code>
+     * <code>optional string exch_type = 7;</code>
      */
     public java.lang.String getExchType() {
       java.lang.Object ref = exchType_;
@@ -1045,7 +820,7 @@ public final class RDSStockBO_PRO {
       }
     }
     /**
-     * <code>optional string exch_type = 10;</code>
+     * <code>optional string exch_type = 7;</code>
      */
     public com.google.protobuf.ByteString
         getExchTypeBytes() {
@@ -1061,16 +836,16 @@ public final class RDSStockBO_PRO {
       }
     }
 
-    public static final int SECU_TYPE_FIELD_NUMBER = 11;
+    public static final int SECU_TYPE_FIELD_NUMBER = 8;
     private volatile java.lang.Object secuType_;
     /**
-     * <code>optional string secu_type = 11;</code>
+     * <code>optional string secu_type = 8;</code>
      */
     public boolean hasSecuType() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
-     * <code>optional string secu_type = 11;</code>
+     * <code>optional string secu_type = 8;</code>
      */
     public java.lang.String getSecuType() {
       java.lang.Object ref = secuType_;
@@ -1087,7 +862,7 @@ public final class RDSStockBO_PRO {
       }
     }
     /**
-     * <code>optional string secu_type = 11;</code>
+     * <code>optional string secu_type = 8;</code>
      */
     public com.google.protobuf.ByteString
         getSecuTypeBytes() {
@@ -1103,16 +878,16 @@ public final class RDSStockBO_PRO {
       }
     }
 
-    public static final int SECU_SUB_TYPE_FIELD_NUMBER = 12;
+    public static final int SECU_SUB_TYPE_FIELD_NUMBER = 9;
     private volatile java.lang.Object secuSubType_;
     /**
-     * <code>optional string secu_sub_type = 12;</code>
+     * <code>optional string secu_sub_type = 9;</code>
      */
     public boolean hasSecuSubType() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
-     * <code>optional string secu_sub_type = 12;</code>
+     * <code>optional string secu_sub_type = 9;</code>
      */
     public java.lang.String getSecuSubType() {
       java.lang.Object ref = secuSubType_;
@@ -1129,7 +904,7 @@ public final class RDSStockBO_PRO {
       }
     }
     /**
-     * <code>optional string secu_sub_type = 12;</code>
+     * <code>optional string secu_sub_type = 9;</code>
      */
     public com.google.protobuf.ByteString
         getSecuSubTypeBytes() {
@@ -1145,16 +920,16 @@ public final class RDSStockBO_PRO {
       }
     }
 
-    public static final int CURRENCY_FIELD_NUMBER = 13;
+    public static final int CURRENCY_FIELD_NUMBER = 10;
     private volatile java.lang.Object currency_;
     /**
-     * <code>optional string currency = 13;</code>
+     * <code>optional string currency = 10;</code>
      */
     public boolean hasCurrency() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
-     * <code>optional string currency = 13;</code>
+     * <code>optional string currency = 10;</code>
      */
     public java.lang.String getCurrency() {
       java.lang.Object ref = currency_;
@@ -1171,7 +946,7 @@ public final class RDSStockBO_PRO {
       }
     }
     /**
-     * <code>optional string currency = 13;</code>
+     * <code>optional string currency = 10;</code>
      */
     public com.google.protobuf.ByteString
         getCurrencyBytes() {
@@ -1187,73 +962,16 @@ public final class RDSStockBO_PRO {
       }
     }
 
-    public static final int BOND_PAR_VALUE_FIELD_NUMBER = 14;
-    private double bondParValue_;
-    /**
-     * <code>optional double bond_par_value = 14;</code>
-     */
-    public boolean hasBondParValue() {
-      return ((bitField0_ & 0x00002000) == 0x00002000);
-    }
-    /**
-     * <code>optional double bond_par_value = 14;</code>
-     */
-    public double getBondParValue() {
-      return bondParValue_;
-    }
-
-    public static final int LAST_TRADE_DATE_FIELD_NUMBER = 15;
-    private volatile java.lang.Object lastTradeDate_;
-    /**
-     * <code>optional string last_trade_date = 15;</code>
-     */
-    public boolean hasLastTradeDate() {
-      return ((bitField0_ & 0x00004000) == 0x00004000);
-    }
-    /**
-     * <code>optional string last_trade_date = 15;</code>
-     */
-    public java.lang.String getLastTradeDate() {
-      java.lang.Object ref = lastTradeDate_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          lastTradeDate_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string last_trade_date = 15;</code>
-     */
-    public com.google.protobuf.ByteString
-        getLastTradeDateBytes() {
-      java.lang.Object ref = lastTradeDate_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        lastTradeDate_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int LIST_DATE_FIELD_NUMBER = 16;
+    public static final int LIST_DATE_FIELD_NUMBER = 11;
     private volatile java.lang.Object listDate_;
     /**
-     * <code>optional string list_date = 16;</code>
+     * <code>optional string list_date = 11;</code>
      */
     public boolean hasListDate() {
-      return ((bitField0_ & 0x00008000) == 0x00008000);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
-     * <code>optional string list_date = 16;</code>
+     * <code>optional string list_date = 11;</code>
      */
     public java.lang.String getListDate() {
       java.lang.Object ref = listDate_;
@@ -1270,7 +988,7 @@ public final class RDSStockBO_PRO {
       }
     }
     /**
-     * <code>optional string list_date = 16;</code>
+     * <code>optional string list_date = 11;</code>
      */
     public com.google.protobuf.ByteString
         getListDateBytes() {
@@ -1286,208 +1004,166 @@ public final class RDSStockBO_PRO {
       }
     }
 
-    public static final int BUY_UNIT_FIELD_NUMBER = 17;
+    public static final int BUY_UNIT_FIELD_NUMBER = 12;
     private int buyUnit_;
     /**
-     * <code>optional int32 buy_unit = 17;</code>
+     * <code>optional int32 buy_unit = 12;</code>
      */
     public boolean hasBuyUnit() {
-      return ((bitField0_ & 0x00010000) == 0x00010000);
+      return ((bitField0_ & 0x00000800) == 0x00000800);
     }
     /**
-     * <code>optional int32 buy_unit = 17;</code>
+     * <code>optional int32 buy_unit = 12;</code>
      */
     public int getBuyUnit() {
       return buyUnit_;
     }
 
-    public static final int SELL_UNIT_FIELD_NUMBER = 18;
+    public static final int SELL_UNIT_FIELD_NUMBER = 13;
     private int sellUnit_;
     /**
-     * <code>optional int32 sell_unit = 18;</code>
+     * <code>optional int32 sell_unit = 13;</code>
      */
     public boolean hasSellUnit() {
-      return ((bitField0_ & 0x00020000) == 0x00020000);
+      return ((bitField0_ & 0x00001000) == 0x00001000);
     }
     /**
-     * <code>optional int32 sell_unit = 18;</code>
+     * <code>optional int32 sell_unit = 13;</code>
      */
     public int getSellUnit() {
       return sellUnit_;
     }
 
-    public static final int TRADE_LOW_LIMIT_FIELD_NUMBER = 19;
+    public static final int TRADE_LOW_LIMIT_FIELD_NUMBER = 14;
     private int tradeLowLimit_;
     /**
-     * <code>optional int32 trade_low_limit = 19;</code>
+     * <code>optional int32 trade_low_limit = 14;</code>
      */
     public boolean hasTradeLowLimit() {
-      return ((bitField0_ & 0x00040000) == 0x00040000);
+      return ((bitField0_ & 0x00002000) == 0x00002000);
     }
     /**
-     * <code>optional int32 trade_low_limit = 19;</code>
+     * <code>optional int32 trade_low_limit = 14;</code>
      */
     public int getTradeLowLimit() {
       return tradeLowLimit_;
     }
 
-    public static final int TRADE_HIGH_LIMIT_FIELD_NUMBER = 20;
+    public static final int TRADE_HIGH_LIMIT_FIELD_NUMBER = 15;
     private int tradeHighLimit_;
     /**
-     * <code>optional int32 trade_high_limit = 20;</code>
+     * <code>optional int32 trade_high_limit = 15;</code>
      */
     public boolean hasTradeHighLimit() {
-      return ((bitField0_ & 0x00080000) == 0x00080000);
+      return ((bitField0_ & 0x00004000) == 0x00004000);
     }
     /**
-     * <code>optional int32 trade_high_limit = 20;</code>
+     * <code>optional int32 trade_high_limit = 15;</code>
      */
     public int getTradeHighLimit() {
       return tradeHighLimit_;
     }
 
-    public static final int PRE_CLOSE_PRICE_FIELD_NUMBER = 21;
+    public static final int PRE_CLOSE_PRICE_FIELD_NUMBER = 16;
     private double preClosePrice_;
     /**
-     * <code>optional double pre_close_price = 21;</code>
+     * <code>optional double pre_close_price = 16;</code>
      */
     public boolean hasPreClosePrice() {
-      return ((bitField0_ & 0x00100000) == 0x00100000);
+      return ((bitField0_ & 0x00008000) == 0x00008000);
     }
     /**
-     * <code>optional double pre_close_price = 21;</code>
+     * <code>optional double pre_close_price = 16;</code>
      */
     public double getPreClosePrice() {
       return preClosePrice_;
     }
 
-    public static final int TICK_PRICE_FIELD_NUMBER = 22;
+    public static final int TICK_PRICE_FIELD_NUMBER = 17;
     private double tickPrice_;
     /**
-     * <code>optional double tick_price = 22;</code>
+     * <code>optional double tick_price = 17;</code>
      */
     public boolean hasTickPrice() {
-      return ((bitField0_ & 0x00200000) == 0x00200000);
+      return ((bitField0_ & 0x00010000) == 0x00010000);
     }
     /**
-     * <code>optional double tick_price = 22;</code>
+     * <code>optional double tick_price = 17;</code>
      */
     public double getTickPrice() {
       return tickPrice_;
     }
 
-    public static final int PRICE_LIMIT_TYPE_FIELD_NUMBER = 23;
-    private volatile java.lang.Object priceLimitType_;
-    /**
-     * <code>optional string price_limit_type = 23;</code>
-     */
-    public boolean hasPriceLimitType() {
-      return ((bitField0_ & 0x00400000) == 0x00400000);
-    }
-    /**
-     * <code>optional string price_limit_type = 23;</code>
-     */
-    public java.lang.String getPriceLimitType() {
-      java.lang.Object ref = priceLimitType_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          priceLimitType_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string price_limit_type = 23;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPriceLimitTypeBytes() {
-      java.lang.Object ref = priceLimitType_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        priceLimitType_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PRICE_HIGH_LIMIT_FIELD_NUMBER = 24;
+    public static final int PRICE_HIGH_LIMIT_FIELD_NUMBER = 18;
     private double priceHighLimit_;
     /**
-     * <code>optional double price_high_limit = 24;</code>
+     * <code>optional double price_high_limit = 18;</code>
      */
     public boolean hasPriceHighLimit() {
-      return ((bitField0_ & 0x00800000) == 0x00800000);
+      return ((bitField0_ & 0x00020000) == 0x00020000);
     }
     /**
-     * <code>optional double price_high_limit = 24;</code>
+     * <code>optional double price_high_limit = 18;</code>
      */
     public double getPriceHighLimit() {
       return priceHighLimit_;
     }
 
-    public static final int PRICE_LOW_LIMIT_FIELD_NUMBER = 25;
+    public static final int PRICE_LOW_LIMIT_FIELD_NUMBER = 19;
     private double priceLowLimit_;
     /**
-     * <code>optional double price_low_limit = 25;</code>
+     * <code>optional double price_low_limit = 19;</code>
      */
     public boolean hasPriceLowLimit() {
-      return ((bitField0_ & 0x01000000) == 0x01000000);
+      return ((bitField0_ & 0x00040000) == 0x00040000);
     }
     /**
-     * <code>optional double price_low_limit = 25;</code>
+     * <code>optional double price_low_limit = 19;</code>
      */
     public double getPriceLowLimit() {
       return priceLowLimit_;
     }
 
-    public static final int EX_RIGHT_RATIO_FIELD_NUMBER = 26;
+    public static final int EX_RIGHT_RATIO_FIELD_NUMBER = 20;
     private double exRightRatio_;
     /**
-     * <code>optional double ex_right_ratio = 26;</code>
+     * <code>optional double ex_right_ratio = 20;</code>
      */
     public boolean hasExRightRatio() {
-      return ((bitField0_ & 0x02000000) == 0x02000000);
+      return ((bitField0_ & 0x00080000) == 0x00080000);
     }
     /**
-     * <code>optional double ex_right_ratio = 26;</code>
+     * <code>optional double ex_right_ratio = 20;</code>
      */
     public double getExRightRatio() {
       return exRightRatio_;
     }
 
-    public static final int DIVIDEND_PRICE_FIELD_NUMBER = 27;
+    public static final int DIVIDEND_PRICE_FIELD_NUMBER = 21;
     private double dividendPrice_;
     /**
-     * <code>optional double dividend_price = 27;</code>
+     * <code>optional double dividend_price = 21;</code>
      */
     public boolean hasDividendPrice() {
-      return ((bitField0_ & 0x04000000) == 0x04000000);
+      return ((bitField0_ & 0x00100000) == 0x00100000);
     }
     /**
-     * <code>optional double dividend_price = 27;</code>
+     * <code>optional double dividend_price = 21;</code>
      */
     public double getDividendPrice() {
       return dividendPrice_;
     }
 
-    public static final int FINANCING_FLAG_FIELD_NUMBER = 28;
+    public static final int FINANCING_FLAG_FIELD_NUMBER = 22;
     private volatile java.lang.Object financingFlag_;
     /**
-     * <code>optional string financing_flag = 28;</code>
+     * <code>optional string financing_flag = 22;</code>
      */
     public boolean hasFinancingFlag() {
-      return ((bitField0_ & 0x08000000) == 0x08000000);
+      return ((bitField0_ & 0x00200000) == 0x00200000);
     }
     /**
-     * <code>optional string financing_flag = 28;</code>
+     * <code>optional string financing_flag = 22;</code>
      */
     public java.lang.String getFinancingFlag() {
       java.lang.Object ref = financingFlag_;
@@ -1504,7 +1180,7 @@ public final class RDSStockBO_PRO {
       }
     }
     /**
-     * <code>optional string financing_flag = 28;</code>
+     * <code>optional string financing_flag = 22;</code>
      */
     public com.google.protobuf.ByteString
         getFinancingFlagBytes() {
@@ -1520,16 +1196,16 @@ public final class RDSStockBO_PRO {
       }
     }
 
-    public static final int MARGIN_FLAG_FIELD_NUMBER = 29;
+    public static final int MARGIN_FLAG_FIELD_NUMBER = 23;
     private volatile java.lang.Object marginFlag_;
     /**
-     * <code>optional string margin_flag = 29;</code>
+     * <code>optional string margin_flag = 23;</code>
      */
     public boolean hasMarginFlag() {
-      return ((bitField0_ & 0x10000000) == 0x10000000);
+      return ((bitField0_ & 0x00400000) == 0x00400000);
     }
     /**
-     * <code>optional string margin_flag = 29;</code>
+     * <code>optional string margin_flag = 23;</code>
      */
     public java.lang.String getMarginFlag() {
       java.lang.Object ref = marginFlag_;
@@ -1546,7 +1222,7 @@ public final class RDSStockBO_PRO {
       }
     }
     /**
-     * <code>optional string margin_flag = 29;</code>
+     * <code>optional string margin_flag = 23;</code>
      */
     public com.google.protobuf.ByteString
         getMarginFlagBytes() {
@@ -1562,16 +1238,16 @@ public final class RDSStockBO_PRO {
       }
     }
 
-    public static final int SECU_STATUS_FIELD_NUMBER = 30;
+    public static final int SECU_STATUS_FIELD_NUMBER = 24;
     private volatile java.lang.Object secuStatus_;
     /**
-     * <code>optional string secu_status = 30;</code>
+     * <code>optional string secu_status = 24;</code>
      */
     public boolean hasSecuStatus() {
-      return ((bitField0_ & 0x20000000) == 0x20000000);
+      return ((bitField0_ & 0x00800000) == 0x00800000);
     }
     /**
-     * <code>optional string secu_status = 30;</code>
+     * <code>optional string secu_status = 24;</code>
      */
     public java.lang.String getSecuStatus() {
       java.lang.Object ref = secuStatus_;
@@ -1588,7 +1264,7 @@ public final class RDSStockBO_PRO {
       }
     }
     /**
-     * <code>optional string secu_status = 30;</code>
+     * <code>optional string secu_status = 24;</code>
      */
     public com.google.protobuf.ByteString
         getSecuStatusBytes() {
@@ -1604,16 +1280,16 @@ public final class RDSStockBO_PRO {
       }
     }
 
-    public static final int MEMO_FIELD_NUMBER = 31;
+    public static final int MEMO_FIELD_NUMBER = 25;
     private volatile java.lang.Object memo_;
     /**
-     * <code>optional string memo = 31;</code>
+     * <code>optional string memo = 25;</code>
      */
     public boolean hasMemo() {
-      return ((bitField0_ & 0x40000000) == 0x40000000);
+      return ((bitField0_ & 0x01000000) == 0x01000000);
     }
     /**
-     * <code>optional string memo = 31;</code>
+     * <code>optional string memo = 25;</code>
      */
     public java.lang.String getMemo() {
       java.lang.Object ref = memo_;
@@ -1630,7 +1306,7 @@ public final class RDSStockBO_PRO {
       }
     }
     /**
-     * <code>optional string memo = 31;</code>
+     * <code>optional string memo = 25;</code>
      */
     public com.google.protobuf.ByteString
         getMemoBytes() {
@@ -1640,6 +1316,48 @@ public final class RDSStockBO_PRO {
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         memo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int UPDATE_TIME_FIELD_NUMBER = 26;
+    private volatile java.lang.Object updateTime_;
+    /**
+     * <code>optional string update_time = 26;</code>
+     */
+    public boolean hasUpdateTime() {
+      return ((bitField0_ & 0x02000000) == 0x02000000);
+    }
+    /**
+     * <code>optional string update_time = 26;</code>
+     */
+    public java.lang.String getUpdateTime() {
+      java.lang.Object ref = updateTime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          updateTime_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string update_time = 26;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUpdateTimeBytes() {
+      java.lang.Object ref = updateTime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        updateTime_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1683,85 +1401,70 @@ public final class RDSStockBO_PRO {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, productId_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, isin_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, secuNameCn_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, recvTime_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, secuNameEn_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, secuNameCn_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, exchType_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, secuNameEn_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, secuType_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, secuBaseId_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, secuSubType_);
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, exchType_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, currency_);
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 11, secuType_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 11, listDate_);
       }
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 12, secuSubType_);
+        output.writeInt32(12, buyUnit_);
       }
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 13, currency_);
+        output.writeInt32(13, sellUnit_);
       }
       if (((bitField0_ & 0x00002000) == 0x00002000)) {
-        output.writeDouble(14, bondParValue_);
+        output.writeInt32(14, tradeLowLimit_);
       }
       if (((bitField0_ & 0x00004000) == 0x00004000)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 15, lastTradeDate_);
+        output.writeInt32(15, tradeHighLimit_);
       }
       if (((bitField0_ & 0x00008000) == 0x00008000)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 16, listDate_);
+        output.writeDouble(16, preClosePrice_);
       }
       if (((bitField0_ & 0x00010000) == 0x00010000)) {
-        output.writeInt32(17, buyUnit_);
+        output.writeDouble(17, tickPrice_);
       }
       if (((bitField0_ & 0x00020000) == 0x00020000)) {
-        output.writeInt32(18, sellUnit_);
+        output.writeDouble(18, priceHighLimit_);
       }
       if (((bitField0_ & 0x00040000) == 0x00040000)) {
-        output.writeInt32(19, tradeLowLimit_);
+        output.writeDouble(19, priceLowLimit_);
       }
       if (((bitField0_ & 0x00080000) == 0x00080000)) {
-        output.writeInt32(20, tradeHighLimit_);
+        output.writeDouble(20, exRightRatio_);
       }
       if (((bitField0_ & 0x00100000) == 0x00100000)) {
-        output.writeDouble(21, preClosePrice_);
+        output.writeDouble(21, dividendPrice_);
       }
       if (((bitField0_ & 0x00200000) == 0x00200000)) {
-        output.writeDouble(22, tickPrice_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 22, financingFlag_);
       }
       if (((bitField0_ & 0x00400000) == 0x00400000)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 23, priceLimitType_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 23, marginFlag_);
       }
       if (((bitField0_ & 0x00800000) == 0x00800000)) {
-        output.writeDouble(24, priceHighLimit_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 24, secuStatus_);
       }
       if (((bitField0_ & 0x01000000) == 0x01000000)) {
-        output.writeDouble(25, priceLowLimit_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 25, memo_);
       }
       if (((bitField0_ & 0x02000000) == 0x02000000)) {
-        output.writeDouble(26, exRightRatio_);
-      }
-      if (((bitField0_ & 0x04000000) == 0x04000000)) {
-        output.writeDouble(27, dividendPrice_);
-      }
-      if (((bitField0_ & 0x08000000) == 0x08000000)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 28, financingFlag_);
-      }
-      if (((bitField0_ & 0x10000000) == 0x10000000)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 29, marginFlag_);
-      }
-      if (((bitField0_ & 0x20000000) == 0x20000000)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 30, secuStatus_);
-      }
-      if (((bitField0_ & 0x40000000) == 0x40000000)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 31, memo_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 26, updateTime_);
       }
       unknownFields.writeTo(output);
     }
@@ -1785,96 +1488,80 @@ public final class RDSStockBO_PRO {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, productId_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, isin_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, secuNameCn_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, recvTime_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, secuNameEn_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, secuNameCn_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, exchType_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, secuNameEn_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, secuType_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, secuBaseId_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, secuSubType_);
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, exchType_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, currency_);
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, secuType_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, listDate_);
       }
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, secuSubType_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(12, buyUnit_);
       }
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, currency_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(13, sellUnit_);
       }
       if (((bitField0_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(14, bondParValue_);
+          .computeInt32Size(14, tradeLowLimit_);
       }
       if (((bitField0_ & 0x00004000) == 0x00004000)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(15, lastTradeDate_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(15, tradeHighLimit_);
       }
       if (((bitField0_ & 0x00008000) == 0x00008000)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(16, listDate_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(16, preClosePrice_);
       }
       if (((bitField0_ & 0x00010000) == 0x00010000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(17, buyUnit_);
+          .computeDoubleSize(17, tickPrice_);
       }
       if (((bitField0_ & 0x00020000) == 0x00020000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(18, sellUnit_);
+          .computeDoubleSize(18, priceHighLimit_);
       }
       if (((bitField0_ & 0x00040000) == 0x00040000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(19, tradeLowLimit_);
+          .computeDoubleSize(19, priceLowLimit_);
       }
       if (((bitField0_ & 0x00080000) == 0x00080000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(20, tradeHighLimit_);
+          .computeDoubleSize(20, exRightRatio_);
       }
       if (((bitField0_ & 0x00100000) == 0x00100000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(21, preClosePrice_);
+          .computeDoubleSize(21, dividendPrice_);
       }
       if (((bitField0_ & 0x00200000) == 0x00200000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(22, tickPrice_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(22, financingFlag_);
       }
       if (((bitField0_ & 0x00400000) == 0x00400000)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(23, priceLimitType_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(23, marginFlag_);
       }
       if (((bitField0_ & 0x00800000) == 0x00800000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(24, priceHighLimit_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(24, secuStatus_);
       }
       if (((bitField0_ & 0x01000000) == 0x01000000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(25, priceLowLimit_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(25, memo_);
       }
       if (((bitField0_ & 0x02000000) == 0x02000000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(26, exRightRatio_);
-      }
-      if (((bitField0_ & 0x04000000) == 0x04000000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(27, dividendPrice_);
-      }
-      if (((bitField0_ & 0x08000000) == 0x08000000)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(28, financingFlag_);
-      }
-      if (((bitField0_ & 0x10000000) == 0x10000000)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(29, marginFlag_);
-      }
-      if (((bitField0_ & 0x20000000) == 0x20000000)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(30, secuStatus_);
-      }
-      if (((bitField0_ & 0x40000000) == 0x40000000)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(31, memo_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(26, updateTime_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1912,16 +1599,6 @@ public final class RDSStockBO_PRO {
         result = result && getProductId()
             .equals(other.getProductId());
       }
-      result = result && (hasIsin() == other.hasIsin());
-      if (hasIsin()) {
-        result = result && getIsin()
-            .equals(other.getIsin());
-      }
-      result = result && (hasRecvTime() == other.hasRecvTime());
-      if (hasRecvTime()) {
-        result = result && getRecvTime()
-            .equals(other.getRecvTime());
-      }
       result = result && (hasSecuNameCn() == other.hasSecuNameCn());
       if (hasSecuNameCn()) {
         result = result && getSecuNameCn()
@@ -1931,11 +1608,6 @@ public final class RDSStockBO_PRO {
       if (hasSecuNameEn()) {
         result = result && getSecuNameEn()
             .equals(other.getSecuNameEn());
-      }
-      result = result && (hasSecuBaseId() == other.hasSecuBaseId());
-      if (hasSecuBaseId()) {
-        result = result && getSecuBaseId()
-            .equals(other.getSecuBaseId());
       }
       result = result && (hasExchType() == other.hasExchType());
       if (hasExchType()) {
@@ -1956,18 +1628,6 @@ public final class RDSStockBO_PRO {
       if (hasCurrency()) {
         result = result && getCurrency()
             .equals(other.getCurrency());
-      }
-      result = result && (hasBondParValue() == other.hasBondParValue());
-      if (hasBondParValue()) {
-        result = result && (
-            java.lang.Double.doubleToLongBits(getBondParValue())
-            == java.lang.Double.doubleToLongBits(
-                other.getBondParValue()));
-      }
-      result = result && (hasLastTradeDate() == other.hasLastTradeDate());
-      if (hasLastTradeDate()) {
-        result = result && getLastTradeDate()
-            .equals(other.getLastTradeDate());
       }
       result = result && (hasListDate() == other.hasListDate());
       if (hasListDate()) {
@@ -2007,11 +1667,6 @@ public final class RDSStockBO_PRO {
             java.lang.Double.doubleToLongBits(getTickPrice())
             == java.lang.Double.doubleToLongBits(
                 other.getTickPrice()));
-      }
-      result = result && (hasPriceLimitType() == other.hasPriceLimitType());
-      if (hasPriceLimitType()) {
-        result = result && getPriceLimitType()
-            .equals(other.getPriceLimitType());
       }
       result = result && (hasPriceHighLimit() == other.hasPriceHighLimit());
       if (hasPriceHighLimit()) {
@@ -2061,6 +1716,11 @@ public final class RDSStockBO_PRO {
         result = result && getMemo()
             .equals(other.getMemo());
       }
+      result = result && (hasUpdateTime() == other.hasUpdateTime());
+      if (hasUpdateTime()) {
+        result = result && getUpdateTime()
+            .equals(other.getUpdateTime());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -2089,14 +1749,6 @@ public final class RDSStockBO_PRO {
         hash = (37 * hash) + PRODUCT_ID_FIELD_NUMBER;
         hash = (53 * hash) + getProductId().hashCode();
       }
-      if (hasIsin()) {
-        hash = (37 * hash) + ISIN_FIELD_NUMBER;
-        hash = (53 * hash) + getIsin().hashCode();
-      }
-      if (hasRecvTime()) {
-        hash = (37 * hash) + RECV_TIME_FIELD_NUMBER;
-        hash = (53 * hash) + getRecvTime().hashCode();
-      }
       if (hasSecuNameCn()) {
         hash = (37 * hash) + SECU_NAME_CN_FIELD_NUMBER;
         hash = (53 * hash) + getSecuNameCn().hashCode();
@@ -2104,10 +1756,6 @@ public final class RDSStockBO_PRO {
       if (hasSecuNameEn()) {
         hash = (37 * hash) + SECU_NAME_EN_FIELD_NUMBER;
         hash = (53 * hash) + getSecuNameEn().hashCode();
-      }
-      if (hasSecuBaseId()) {
-        hash = (37 * hash) + SECU_BASE_ID_FIELD_NUMBER;
-        hash = (53 * hash) + getSecuBaseId().hashCode();
       }
       if (hasExchType()) {
         hash = (37 * hash) + EXCH_TYPE_FIELD_NUMBER;
@@ -2124,15 +1772,6 @@ public final class RDSStockBO_PRO {
       if (hasCurrency()) {
         hash = (37 * hash) + CURRENCY_FIELD_NUMBER;
         hash = (53 * hash) + getCurrency().hashCode();
-      }
-      if (hasBondParValue()) {
-        hash = (37 * hash) + BOND_PAR_VALUE_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            java.lang.Double.doubleToLongBits(getBondParValue()));
-      }
-      if (hasLastTradeDate()) {
-        hash = (37 * hash) + LAST_TRADE_DATE_FIELD_NUMBER;
-        hash = (53 * hash) + getLastTradeDate().hashCode();
       }
       if (hasListDate()) {
         hash = (37 * hash) + LIST_DATE_FIELD_NUMBER;
@@ -2163,10 +1802,6 @@ public final class RDSStockBO_PRO {
         hash = (37 * hash) + TICK_PRICE_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
             java.lang.Double.doubleToLongBits(getTickPrice()));
-      }
-      if (hasPriceLimitType()) {
-        hash = (37 * hash) + PRICE_LIMIT_TYPE_FIELD_NUMBER;
-        hash = (53 * hash) + getPriceLimitType().hashCode();
       }
       if (hasPriceHighLimit()) {
         hash = (37 * hash) + PRICE_HIGH_LIMIT_FIELD_NUMBER;
@@ -2203,6 +1838,10 @@ public final class RDSStockBO_PRO {
       if (hasMemo()) {
         hash = (37 * hash) + MEMO_FIELD_NUMBER;
         hash = (53 * hash) + getMemo().hashCode();
+      }
+      if (hasUpdateTime()) {
+        hash = (37 * hash) + UPDATE_TIME_FIELD_NUMBER;
+        hash = (53 * hash) + getUpdateTime().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2341,60 +1980,50 @@ public final class RDSStockBO_PRO {
         bitField0_ = (bitField0_ & ~0x00000004);
         productId_ = "";
         bitField0_ = (bitField0_ & ~0x00000008);
-        isin_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
-        recvTime_ = "";
-        bitField0_ = (bitField0_ & ~0x00000020);
         secuNameCn_ = "";
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000010);
         secuNameEn_ = "";
-        bitField0_ = (bitField0_ & ~0x00000080);
-        secuBaseId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000020);
         exchType_ = "";
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000040);
         secuType_ = "";
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000080);
         secuSubType_ = "";
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00000100);
         currency_ = "";
-        bitField0_ = (bitField0_ & ~0x00001000);
-        bondParValue_ = 0D;
-        bitField0_ = (bitField0_ & ~0x00002000);
-        lastTradeDate_ = "";
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00000200);
         listDate_ = "";
-        bitField0_ = (bitField0_ & ~0x00008000);
+        bitField0_ = (bitField0_ & ~0x00000400);
         buyUnit_ = 0;
-        bitField0_ = (bitField0_ & ~0x00010000);
+        bitField0_ = (bitField0_ & ~0x00000800);
         sellUnit_ = 0;
-        bitField0_ = (bitField0_ & ~0x00020000);
+        bitField0_ = (bitField0_ & ~0x00001000);
         tradeLowLimit_ = 0;
-        bitField0_ = (bitField0_ & ~0x00040000);
+        bitField0_ = (bitField0_ & ~0x00002000);
         tradeHighLimit_ = 0;
-        bitField0_ = (bitField0_ & ~0x00080000);
+        bitField0_ = (bitField0_ & ~0x00004000);
         preClosePrice_ = 0D;
-        bitField0_ = (bitField0_ & ~0x00100000);
+        bitField0_ = (bitField0_ & ~0x00008000);
         tickPrice_ = 0D;
-        bitField0_ = (bitField0_ & ~0x00200000);
-        priceLimitType_ = "";
-        bitField0_ = (bitField0_ & ~0x00400000);
+        bitField0_ = (bitField0_ & ~0x00010000);
         priceHighLimit_ = 0D;
-        bitField0_ = (bitField0_ & ~0x00800000);
+        bitField0_ = (bitField0_ & ~0x00020000);
         priceLowLimit_ = 0D;
-        bitField0_ = (bitField0_ & ~0x01000000);
+        bitField0_ = (bitField0_ & ~0x00040000);
         exRightRatio_ = 0D;
-        bitField0_ = (bitField0_ & ~0x02000000);
+        bitField0_ = (bitField0_ & ~0x00080000);
         dividendPrice_ = 0D;
-        bitField0_ = (bitField0_ & ~0x04000000);
+        bitField0_ = (bitField0_ & ~0x00100000);
         financingFlag_ = "";
-        bitField0_ = (bitField0_ & ~0x08000000);
+        bitField0_ = (bitField0_ & ~0x00200000);
         marginFlag_ = "";
-        bitField0_ = (bitField0_ & ~0x10000000);
+        bitField0_ = (bitField0_ & ~0x00400000);
         secuStatus_ = "";
-        bitField0_ = (bitField0_ & ~0x20000000);
+        bitField0_ = (bitField0_ & ~0x00800000);
         memo_ = "";
-        bitField0_ = (bitField0_ & ~0x40000000);
+        bitField0_ = (bitField0_ & ~0x01000000);
+        updateTime_ = "";
+        bitField0_ = (bitField0_ & ~0x02000000);
         return this;
       }
 
@@ -2438,111 +2067,91 @@ public final class RDSStockBO_PRO {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.isin_ = isin_;
+        result.secuNameCn_ = secuNameCn_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.recvTime_ = recvTime_;
+        result.secuNameEn_ = secuNameEn_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.secuNameCn_ = secuNameCn_;
+        result.exchType_ = exchType_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.secuNameEn_ = secuNameEn_;
+        result.secuType_ = secuType_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000100;
         }
-        result.secuBaseId_ = secuBaseId_;
+        result.secuSubType_ = secuSubType_;
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000200;
         }
-        result.exchType_ = exchType_;
+        result.currency_ = currency_;
         if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
           to_bitField0_ |= 0x00000400;
         }
-        result.secuType_ = secuType_;
+        result.listDate_ = listDate_;
         if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
           to_bitField0_ |= 0x00000800;
         }
-        result.secuSubType_ = secuSubType_;
+        result.buyUnit_ = buyUnit_;
         if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
           to_bitField0_ |= 0x00001000;
         }
-        result.currency_ = currency_;
+        result.sellUnit_ = sellUnit_;
         if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
           to_bitField0_ |= 0x00002000;
         }
-        result.bondParValue_ = bondParValue_;
+        result.tradeLowLimit_ = tradeLowLimit_;
         if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
           to_bitField0_ |= 0x00004000;
         }
-        result.lastTradeDate_ = lastTradeDate_;
+        result.tradeHighLimit_ = tradeHighLimit_;
         if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
           to_bitField0_ |= 0x00008000;
         }
-        result.listDate_ = listDate_;
+        result.preClosePrice_ = preClosePrice_;
         if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
           to_bitField0_ |= 0x00010000;
         }
-        result.buyUnit_ = buyUnit_;
+        result.tickPrice_ = tickPrice_;
         if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
           to_bitField0_ |= 0x00020000;
         }
-        result.sellUnit_ = sellUnit_;
+        result.priceHighLimit_ = priceHighLimit_;
         if (((from_bitField0_ & 0x00040000) == 0x00040000)) {
           to_bitField0_ |= 0x00040000;
         }
-        result.tradeLowLimit_ = tradeLowLimit_;
+        result.priceLowLimit_ = priceLowLimit_;
         if (((from_bitField0_ & 0x00080000) == 0x00080000)) {
           to_bitField0_ |= 0x00080000;
         }
-        result.tradeHighLimit_ = tradeHighLimit_;
+        result.exRightRatio_ = exRightRatio_;
         if (((from_bitField0_ & 0x00100000) == 0x00100000)) {
           to_bitField0_ |= 0x00100000;
         }
-        result.preClosePrice_ = preClosePrice_;
+        result.dividendPrice_ = dividendPrice_;
         if (((from_bitField0_ & 0x00200000) == 0x00200000)) {
           to_bitField0_ |= 0x00200000;
         }
-        result.tickPrice_ = tickPrice_;
+        result.financingFlag_ = financingFlag_;
         if (((from_bitField0_ & 0x00400000) == 0x00400000)) {
           to_bitField0_ |= 0x00400000;
         }
-        result.priceLimitType_ = priceLimitType_;
+        result.marginFlag_ = marginFlag_;
         if (((from_bitField0_ & 0x00800000) == 0x00800000)) {
           to_bitField0_ |= 0x00800000;
         }
-        result.priceHighLimit_ = priceHighLimit_;
+        result.secuStatus_ = secuStatus_;
         if (((from_bitField0_ & 0x01000000) == 0x01000000)) {
           to_bitField0_ |= 0x01000000;
         }
-        result.priceLowLimit_ = priceLowLimit_;
+        result.memo_ = memo_;
         if (((from_bitField0_ & 0x02000000) == 0x02000000)) {
           to_bitField0_ |= 0x02000000;
         }
-        result.exRightRatio_ = exRightRatio_;
-        if (((from_bitField0_ & 0x04000000) == 0x04000000)) {
-          to_bitField0_ |= 0x04000000;
-        }
-        result.dividendPrice_ = dividendPrice_;
-        if (((from_bitField0_ & 0x08000000) == 0x08000000)) {
-          to_bitField0_ |= 0x08000000;
-        }
-        result.financingFlag_ = financingFlag_;
-        if (((from_bitField0_ & 0x10000000) == 0x10000000)) {
-          to_bitField0_ |= 0x10000000;
-        }
-        result.marginFlag_ = marginFlag_;
-        if (((from_bitField0_ & 0x20000000) == 0x20000000)) {
-          to_bitField0_ |= 0x20000000;
-        }
-        result.secuStatus_ = secuStatus_;
-        if (((from_bitField0_ & 0x40000000) == 0x40000000)) {
-          to_bitField0_ |= 0x40000000;
-        }
-        result.memo_ = memo_;
+        result.updateTime_ = updateTime_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2603,61 +2212,38 @@ public final class RDSStockBO_PRO {
           productId_ = other.productId_;
           onChanged();
         }
-        if (other.hasIsin()) {
-          bitField0_ |= 0x00000010;
-          isin_ = other.isin_;
-          onChanged();
-        }
-        if (other.hasRecvTime()) {
-          bitField0_ |= 0x00000020;
-          recvTime_ = other.recvTime_;
-          onChanged();
-        }
         if (other.hasSecuNameCn()) {
-          bitField0_ |= 0x00000040;
+          bitField0_ |= 0x00000010;
           secuNameCn_ = other.secuNameCn_;
           onChanged();
         }
         if (other.hasSecuNameEn()) {
-          bitField0_ |= 0x00000080;
+          bitField0_ |= 0x00000020;
           secuNameEn_ = other.secuNameEn_;
           onChanged();
         }
-        if (other.hasSecuBaseId()) {
-          bitField0_ |= 0x00000100;
-          secuBaseId_ = other.secuBaseId_;
-          onChanged();
-        }
         if (other.hasExchType()) {
-          bitField0_ |= 0x00000200;
+          bitField0_ |= 0x00000040;
           exchType_ = other.exchType_;
           onChanged();
         }
         if (other.hasSecuType()) {
-          bitField0_ |= 0x00000400;
+          bitField0_ |= 0x00000080;
           secuType_ = other.secuType_;
           onChanged();
         }
         if (other.hasSecuSubType()) {
-          bitField0_ |= 0x00000800;
+          bitField0_ |= 0x00000100;
           secuSubType_ = other.secuSubType_;
           onChanged();
         }
         if (other.hasCurrency()) {
-          bitField0_ |= 0x00001000;
+          bitField0_ |= 0x00000200;
           currency_ = other.currency_;
           onChanged();
         }
-        if (other.hasBondParValue()) {
-          setBondParValue(other.getBondParValue());
-        }
-        if (other.hasLastTradeDate()) {
-          bitField0_ |= 0x00004000;
-          lastTradeDate_ = other.lastTradeDate_;
-          onChanged();
-        }
         if (other.hasListDate()) {
-          bitField0_ |= 0x00008000;
+          bitField0_ |= 0x00000400;
           listDate_ = other.listDate_;
           onChanged();
         }
@@ -2679,11 +2265,6 @@ public final class RDSStockBO_PRO {
         if (other.hasTickPrice()) {
           setTickPrice(other.getTickPrice());
         }
-        if (other.hasPriceLimitType()) {
-          bitField0_ |= 0x00400000;
-          priceLimitType_ = other.priceLimitType_;
-          onChanged();
-        }
         if (other.hasPriceHighLimit()) {
           setPriceHighLimit(other.getPriceHighLimit());
         }
@@ -2697,23 +2278,28 @@ public final class RDSStockBO_PRO {
           setDividendPrice(other.getDividendPrice());
         }
         if (other.hasFinancingFlag()) {
-          bitField0_ |= 0x08000000;
+          bitField0_ |= 0x00200000;
           financingFlag_ = other.financingFlag_;
           onChanged();
         }
         if (other.hasMarginFlag()) {
-          bitField0_ |= 0x10000000;
+          bitField0_ |= 0x00400000;
           marginFlag_ = other.marginFlag_;
           onChanged();
         }
         if (other.hasSecuStatus()) {
-          bitField0_ |= 0x20000000;
+          bitField0_ |= 0x00800000;
           secuStatus_ = other.secuStatus_;
           onChanged();
         }
         if (other.hasMemo()) {
-          bitField0_ |= 0x40000000;
+          bitField0_ |= 0x01000000;
           memo_ = other.memo_;
+          onChanged();
+        }
+        if (other.hasUpdateTime()) {
+          bitField0_ |= 0x02000000;
+          updateTime_ = other.updateTime_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -3013,167 +2599,15 @@ public final class RDSStockBO_PRO {
         return this;
       }
 
-      private java.lang.Object isin_ = "";
+      private java.lang.Object secuNameCn_ = "";
       /**
-       * <code>optional string isin = 5;</code>
+       * <code>optional string secu_name_cn = 5;</code>
        */
-      public boolean hasIsin() {
+      public boolean hasSecuNameCn() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional string isin = 5;</code>
-       */
-      public java.lang.String getIsin() {
-        java.lang.Object ref = isin_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            isin_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string isin = 5;</code>
-       */
-      public com.google.protobuf.ByteString
-          getIsinBytes() {
-        java.lang.Object ref = isin_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          isin_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string isin = 5;</code>
-       */
-      public Builder setIsin(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        isin_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string isin = 5;</code>
-       */
-      public Builder clearIsin() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        isin_ = getDefaultInstance().getIsin();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string isin = 5;</code>
-       */
-      public Builder setIsinBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        isin_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object recvTime_ = "";
-      /**
-       * <code>optional string recv_time = 6;</code>
-       */
-      public boolean hasRecvTime() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional string recv_time = 6;</code>
-       */
-      public java.lang.String getRecvTime() {
-        java.lang.Object ref = recvTime_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            recvTime_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string recv_time = 6;</code>
-       */
-      public com.google.protobuf.ByteString
-          getRecvTimeBytes() {
-        java.lang.Object ref = recvTime_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          recvTime_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string recv_time = 6;</code>
-       */
-      public Builder setRecvTime(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000020;
-        recvTime_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string recv_time = 6;</code>
-       */
-      public Builder clearRecvTime() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        recvTime_ = getDefaultInstance().getRecvTime();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string recv_time = 6;</code>
-       */
-      public Builder setRecvTimeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000020;
-        recvTime_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object secuNameCn_ = "";
-      /**
-       * <code>optional string secu_name_cn = 7;</code>
-       */
-      public boolean hasSecuNameCn() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>optional string secu_name_cn = 7;</code>
+       * <code>optional string secu_name_cn = 5;</code>
        */
       public java.lang.String getSecuNameCn() {
         java.lang.Object ref = secuNameCn_;
@@ -3190,7 +2624,7 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string secu_name_cn = 7;</code>
+       * <code>optional string secu_name_cn = 5;</code>
        */
       public com.google.protobuf.ByteString
           getSecuNameCnBytes() {
@@ -3206,36 +2640,36 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string secu_name_cn = 7;</code>
+       * <code>optional string secu_name_cn = 5;</code>
        */
       public Builder setSecuNameCn(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00000010;
         secuNameCn_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string secu_name_cn = 7;</code>
+       * <code>optional string secu_name_cn = 5;</code>
        */
       public Builder clearSecuNameCn() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000010);
         secuNameCn_ = getDefaultInstance().getSecuNameCn();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string secu_name_cn = 7;</code>
+       * <code>optional string secu_name_cn = 5;</code>
        */
       public Builder setSecuNameCnBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00000010;
         secuNameCn_ = value;
         onChanged();
         return this;
@@ -3243,13 +2677,13 @@ public final class RDSStockBO_PRO {
 
       private java.lang.Object secuNameEn_ = "";
       /**
-       * <code>optional string secu_name_en = 8;</code>
+       * <code>optional string secu_name_en = 6;</code>
        */
       public boolean hasSecuNameEn() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>optional string secu_name_en = 8;</code>
+       * <code>optional string secu_name_en = 6;</code>
        */
       public java.lang.String getSecuNameEn() {
         java.lang.Object ref = secuNameEn_;
@@ -3266,7 +2700,7 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string secu_name_en = 8;</code>
+       * <code>optional string secu_name_en = 6;</code>
        */
       public com.google.protobuf.ByteString
           getSecuNameEnBytes() {
@@ -3282,126 +2716,50 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string secu_name_en = 8;</code>
+       * <code>optional string secu_name_en = 6;</code>
        */
       public Builder setSecuNameEn(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000080;
+  bitField0_ |= 0x00000020;
         secuNameEn_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string secu_name_en = 8;</code>
+       * <code>optional string secu_name_en = 6;</code>
        */
       public Builder clearSecuNameEn() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000020);
         secuNameEn_ = getDefaultInstance().getSecuNameEn();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string secu_name_en = 8;</code>
+       * <code>optional string secu_name_en = 6;</code>
        */
       public Builder setSecuNameEnBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000080;
+  bitField0_ |= 0x00000020;
         secuNameEn_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object secuBaseId_ = "";
-      /**
-       * <code>optional string secu_base_id = 9;</code>
-       */
-      public boolean hasSecuBaseId() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      /**
-       * <code>optional string secu_base_id = 9;</code>
-       */
-      public java.lang.String getSecuBaseId() {
-        java.lang.Object ref = secuBaseId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            secuBaseId_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string secu_base_id = 9;</code>
-       */
-      public com.google.protobuf.ByteString
-          getSecuBaseIdBytes() {
-        java.lang.Object ref = secuBaseId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          secuBaseId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string secu_base_id = 9;</code>
-       */
-      public Builder setSecuBaseId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000100;
-        secuBaseId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string secu_base_id = 9;</code>
-       */
-      public Builder clearSecuBaseId() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        secuBaseId_ = getDefaultInstance().getSecuBaseId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string secu_base_id = 9;</code>
-       */
-      public Builder setSecuBaseIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000100;
-        secuBaseId_ = value;
         onChanged();
         return this;
       }
 
       private java.lang.Object exchType_ = "";
       /**
-       * <code>optional string exch_type = 10;</code>
+       * <code>optional string exch_type = 7;</code>
        */
       public boolean hasExchType() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>optional string exch_type = 10;</code>
+       * <code>optional string exch_type = 7;</code>
        */
       public java.lang.String getExchType() {
         java.lang.Object ref = exchType_;
@@ -3418,7 +2776,7 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string exch_type = 10;</code>
+       * <code>optional string exch_type = 7;</code>
        */
       public com.google.protobuf.ByteString
           getExchTypeBytes() {
@@ -3434,36 +2792,36 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string exch_type = 10;</code>
+       * <code>optional string exch_type = 7;</code>
        */
       public Builder setExchType(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000200;
+  bitField0_ |= 0x00000040;
         exchType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string exch_type = 10;</code>
+       * <code>optional string exch_type = 7;</code>
        */
       public Builder clearExchType() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000040);
         exchType_ = getDefaultInstance().getExchType();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string exch_type = 10;</code>
+       * <code>optional string exch_type = 7;</code>
        */
       public Builder setExchTypeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000200;
+  bitField0_ |= 0x00000040;
         exchType_ = value;
         onChanged();
         return this;
@@ -3471,13 +2829,13 @@ public final class RDSStockBO_PRO {
 
       private java.lang.Object secuType_ = "";
       /**
-       * <code>optional string secu_type = 11;</code>
+       * <code>optional string secu_type = 8;</code>
        */
       public boolean hasSecuType() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
-       * <code>optional string secu_type = 11;</code>
+       * <code>optional string secu_type = 8;</code>
        */
       public java.lang.String getSecuType() {
         java.lang.Object ref = secuType_;
@@ -3494,7 +2852,7 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string secu_type = 11;</code>
+       * <code>optional string secu_type = 8;</code>
        */
       public com.google.protobuf.ByteString
           getSecuTypeBytes() {
@@ -3510,36 +2868,36 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string secu_type = 11;</code>
+       * <code>optional string secu_type = 8;</code>
        */
       public Builder setSecuType(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000400;
+  bitField0_ |= 0x00000080;
         secuType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string secu_type = 11;</code>
+       * <code>optional string secu_type = 8;</code>
        */
       public Builder clearSecuType() {
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000080);
         secuType_ = getDefaultInstance().getSecuType();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string secu_type = 11;</code>
+       * <code>optional string secu_type = 8;</code>
        */
       public Builder setSecuTypeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000400;
+  bitField0_ |= 0x00000080;
         secuType_ = value;
         onChanged();
         return this;
@@ -3547,13 +2905,13 @@ public final class RDSStockBO_PRO {
 
       private java.lang.Object secuSubType_ = "";
       /**
-       * <code>optional string secu_sub_type = 12;</code>
+       * <code>optional string secu_sub_type = 9;</code>
        */
       public boolean hasSecuSubType() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
-       * <code>optional string secu_sub_type = 12;</code>
+       * <code>optional string secu_sub_type = 9;</code>
        */
       public java.lang.String getSecuSubType() {
         java.lang.Object ref = secuSubType_;
@@ -3570,7 +2928,7 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string secu_sub_type = 12;</code>
+       * <code>optional string secu_sub_type = 9;</code>
        */
       public com.google.protobuf.ByteString
           getSecuSubTypeBytes() {
@@ -3586,36 +2944,36 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string secu_sub_type = 12;</code>
+       * <code>optional string secu_sub_type = 9;</code>
        */
       public Builder setSecuSubType(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000800;
+  bitField0_ |= 0x00000100;
         secuSubType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string secu_sub_type = 12;</code>
+       * <code>optional string secu_sub_type = 9;</code>
        */
       public Builder clearSecuSubType() {
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00000100);
         secuSubType_ = getDefaultInstance().getSecuSubType();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string secu_sub_type = 12;</code>
+       * <code>optional string secu_sub_type = 9;</code>
        */
       public Builder setSecuSubTypeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000800;
+  bitField0_ |= 0x00000100;
         secuSubType_ = value;
         onChanged();
         return this;
@@ -3623,13 +2981,13 @@ public final class RDSStockBO_PRO {
 
       private java.lang.Object currency_ = "";
       /**
-       * <code>optional string currency = 13;</code>
+       * <code>optional string currency = 10;</code>
        */
       public boolean hasCurrency() {
-        return ((bitField0_ & 0x00001000) == 0x00001000);
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
-       * <code>optional string currency = 13;</code>
+       * <code>optional string currency = 10;</code>
        */
       public java.lang.String getCurrency() {
         java.lang.Object ref = currency_;
@@ -3646,7 +3004,7 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string currency = 13;</code>
+       * <code>optional string currency = 10;</code>
        */
       public com.google.protobuf.ByteString
           getCurrencyBytes() {
@@ -3662,158 +3020,50 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string currency = 13;</code>
+       * <code>optional string currency = 10;</code>
        */
       public Builder setCurrency(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00001000;
+  bitField0_ |= 0x00000200;
         currency_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string currency = 13;</code>
+       * <code>optional string currency = 10;</code>
        */
       public Builder clearCurrency() {
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00000200);
         currency_ = getDefaultInstance().getCurrency();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string currency = 13;</code>
+       * <code>optional string currency = 10;</code>
        */
       public Builder setCurrencyBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00001000;
+  bitField0_ |= 0x00000200;
         currency_ = value;
-        onChanged();
-        return this;
-      }
-
-      private double bondParValue_ ;
-      /**
-       * <code>optional double bond_par_value = 14;</code>
-       */
-      public boolean hasBondParValue() {
-        return ((bitField0_ & 0x00002000) == 0x00002000);
-      }
-      /**
-       * <code>optional double bond_par_value = 14;</code>
-       */
-      public double getBondParValue() {
-        return bondParValue_;
-      }
-      /**
-       * <code>optional double bond_par_value = 14;</code>
-       */
-      public Builder setBondParValue(double value) {
-        bitField0_ |= 0x00002000;
-        bondParValue_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional double bond_par_value = 14;</code>
-       */
-      public Builder clearBondParValue() {
-        bitField0_ = (bitField0_ & ~0x00002000);
-        bondParValue_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object lastTradeDate_ = "";
-      /**
-       * <code>optional string last_trade_date = 15;</code>
-       */
-      public boolean hasLastTradeDate() {
-        return ((bitField0_ & 0x00004000) == 0x00004000);
-      }
-      /**
-       * <code>optional string last_trade_date = 15;</code>
-       */
-      public java.lang.String getLastTradeDate() {
-        java.lang.Object ref = lastTradeDate_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            lastTradeDate_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string last_trade_date = 15;</code>
-       */
-      public com.google.protobuf.ByteString
-          getLastTradeDateBytes() {
-        java.lang.Object ref = lastTradeDate_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          lastTradeDate_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string last_trade_date = 15;</code>
-       */
-      public Builder setLastTradeDate(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00004000;
-        lastTradeDate_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string last_trade_date = 15;</code>
-       */
-      public Builder clearLastTradeDate() {
-        bitField0_ = (bitField0_ & ~0x00004000);
-        lastTradeDate_ = getDefaultInstance().getLastTradeDate();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string last_trade_date = 15;</code>
-       */
-      public Builder setLastTradeDateBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00004000;
-        lastTradeDate_ = value;
         onChanged();
         return this;
       }
 
       private java.lang.Object listDate_ = "";
       /**
-       * <code>optional string list_date = 16;</code>
+       * <code>optional string list_date = 11;</code>
        */
       public boolean hasListDate() {
-        return ((bitField0_ & 0x00008000) == 0x00008000);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
-       * <code>optional string list_date = 16;</code>
+       * <code>optional string list_date = 11;</code>
        */
       public java.lang.String getListDate() {
         java.lang.Object ref = listDate_;
@@ -3830,7 +3080,7 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string list_date = 16;</code>
+       * <code>optional string list_date = 11;</code>
        */
       public com.google.protobuf.ByteString
           getListDateBytes() {
@@ -3846,36 +3096,36 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string list_date = 16;</code>
+       * <code>optional string list_date = 11;</code>
        */
       public Builder setListDate(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00008000;
+  bitField0_ |= 0x00000400;
         listDate_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string list_date = 16;</code>
+       * <code>optional string list_date = 11;</code>
        */
       public Builder clearListDate() {
-        bitField0_ = (bitField0_ & ~0x00008000);
+        bitField0_ = (bitField0_ & ~0x00000400);
         listDate_ = getDefaultInstance().getListDate();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string list_date = 16;</code>
+       * <code>optional string list_date = 11;</code>
        */
       public Builder setListDateBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00008000;
+  bitField0_ |= 0x00000400;
         listDate_ = value;
         onChanged();
         return this;
@@ -3883,31 +3133,31 @@ public final class RDSStockBO_PRO {
 
       private int buyUnit_ ;
       /**
-       * <code>optional int32 buy_unit = 17;</code>
+       * <code>optional int32 buy_unit = 12;</code>
        */
       public boolean hasBuyUnit() {
-        return ((bitField0_ & 0x00010000) == 0x00010000);
+        return ((bitField0_ & 0x00000800) == 0x00000800);
       }
       /**
-       * <code>optional int32 buy_unit = 17;</code>
+       * <code>optional int32 buy_unit = 12;</code>
        */
       public int getBuyUnit() {
         return buyUnit_;
       }
       /**
-       * <code>optional int32 buy_unit = 17;</code>
+       * <code>optional int32 buy_unit = 12;</code>
        */
       public Builder setBuyUnit(int value) {
-        bitField0_ |= 0x00010000;
+        bitField0_ |= 0x00000800;
         buyUnit_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 buy_unit = 17;</code>
+       * <code>optional int32 buy_unit = 12;</code>
        */
       public Builder clearBuyUnit() {
-        bitField0_ = (bitField0_ & ~0x00010000);
+        bitField0_ = (bitField0_ & ~0x00000800);
         buyUnit_ = 0;
         onChanged();
         return this;
@@ -3915,31 +3165,31 @@ public final class RDSStockBO_PRO {
 
       private int sellUnit_ ;
       /**
-       * <code>optional int32 sell_unit = 18;</code>
+       * <code>optional int32 sell_unit = 13;</code>
        */
       public boolean hasSellUnit() {
-        return ((bitField0_ & 0x00020000) == 0x00020000);
+        return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       /**
-       * <code>optional int32 sell_unit = 18;</code>
+       * <code>optional int32 sell_unit = 13;</code>
        */
       public int getSellUnit() {
         return sellUnit_;
       }
       /**
-       * <code>optional int32 sell_unit = 18;</code>
+       * <code>optional int32 sell_unit = 13;</code>
        */
       public Builder setSellUnit(int value) {
-        bitField0_ |= 0x00020000;
+        bitField0_ |= 0x00001000;
         sellUnit_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 sell_unit = 18;</code>
+       * <code>optional int32 sell_unit = 13;</code>
        */
       public Builder clearSellUnit() {
-        bitField0_ = (bitField0_ & ~0x00020000);
+        bitField0_ = (bitField0_ & ~0x00001000);
         sellUnit_ = 0;
         onChanged();
         return this;
@@ -3947,31 +3197,31 @@ public final class RDSStockBO_PRO {
 
       private int tradeLowLimit_ ;
       /**
-       * <code>optional int32 trade_low_limit = 19;</code>
+       * <code>optional int32 trade_low_limit = 14;</code>
        */
       public boolean hasTradeLowLimit() {
-        return ((bitField0_ & 0x00040000) == 0x00040000);
+        return ((bitField0_ & 0x00002000) == 0x00002000);
       }
       /**
-       * <code>optional int32 trade_low_limit = 19;</code>
+       * <code>optional int32 trade_low_limit = 14;</code>
        */
       public int getTradeLowLimit() {
         return tradeLowLimit_;
       }
       /**
-       * <code>optional int32 trade_low_limit = 19;</code>
+       * <code>optional int32 trade_low_limit = 14;</code>
        */
       public Builder setTradeLowLimit(int value) {
-        bitField0_ |= 0x00040000;
+        bitField0_ |= 0x00002000;
         tradeLowLimit_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 trade_low_limit = 19;</code>
+       * <code>optional int32 trade_low_limit = 14;</code>
        */
       public Builder clearTradeLowLimit() {
-        bitField0_ = (bitField0_ & ~0x00040000);
+        bitField0_ = (bitField0_ & ~0x00002000);
         tradeLowLimit_ = 0;
         onChanged();
         return this;
@@ -3979,31 +3229,31 @@ public final class RDSStockBO_PRO {
 
       private int tradeHighLimit_ ;
       /**
-       * <code>optional int32 trade_high_limit = 20;</code>
+       * <code>optional int32 trade_high_limit = 15;</code>
        */
       public boolean hasTradeHighLimit() {
-        return ((bitField0_ & 0x00080000) == 0x00080000);
+        return ((bitField0_ & 0x00004000) == 0x00004000);
       }
       /**
-       * <code>optional int32 trade_high_limit = 20;</code>
+       * <code>optional int32 trade_high_limit = 15;</code>
        */
       public int getTradeHighLimit() {
         return tradeHighLimit_;
       }
       /**
-       * <code>optional int32 trade_high_limit = 20;</code>
+       * <code>optional int32 trade_high_limit = 15;</code>
        */
       public Builder setTradeHighLimit(int value) {
-        bitField0_ |= 0x00080000;
+        bitField0_ |= 0x00004000;
         tradeHighLimit_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 trade_high_limit = 20;</code>
+       * <code>optional int32 trade_high_limit = 15;</code>
        */
       public Builder clearTradeHighLimit() {
-        bitField0_ = (bitField0_ & ~0x00080000);
+        bitField0_ = (bitField0_ & ~0x00004000);
         tradeHighLimit_ = 0;
         onChanged();
         return this;
@@ -4011,31 +3261,31 @@ public final class RDSStockBO_PRO {
 
       private double preClosePrice_ ;
       /**
-       * <code>optional double pre_close_price = 21;</code>
+       * <code>optional double pre_close_price = 16;</code>
        */
       public boolean hasPreClosePrice() {
-        return ((bitField0_ & 0x00100000) == 0x00100000);
+        return ((bitField0_ & 0x00008000) == 0x00008000);
       }
       /**
-       * <code>optional double pre_close_price = 21;</code>
+       * <code>optional double pre_close_price = 16;</code>
        */
       public double getPreClosePrice() {
         return preClosePrice_;
       }
       /**
-       * <code>optional double pre_close_price = 21;</code>
+       * <code>optional double pre_close_price = 16;</code>
        */
       public Builder setPreClosePrice(double value) {
-        bitField0_ |= 0x00100000;
+        bitField0_ |= 0x00008000;
         preClosePrice_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional double pre_close_price = 21;</code>
+       * <code>optional double pre_close_price = 16;</code>
        */
       public Builder clearPreClosePrice() {
-        bitField0_ = (bitField0_ & ~0x00100000);
+        bitField0_ = (bitField0_ & ~0x00008000);
         preClosePrice_ = 0D;
         onChanged();
         return this;
@@ -4043,139 +3293,63 @@ public final class RDSStockBO_PRO {
 
       private double tickPrice_ ;
       /**
-       * <code>optional double tick_price = 22;</code>
+       * <code>optional double tick_price = 17;</code>
        */
       public boolean hasTickPrice() {
-        return ((bitField0_ & 0x00200000) == 0x00200000);
+        return ((bitField0_ & 0x00010000) == 0x00010000);
       }
       /**
-       * <code>optional double tick_price = 22;</code>
+       * <code>optional double tick_price = 17;</code>
        */
       public double getTickPrice() {
         return tickPrice_;
       }
       /**
-       * <code>optional double tick_price = 22;</code>
+       * <code>optional double tick_price = 17;</code>
        */
       public Builder setTickPrice(double value) {
-        bitField0_ |= 0x00200000;
+        bitField0_ |= 0x00010000;
         tickPrice_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional double tick_price = 22;</code>
+       * <code>optional double tick_price = 17;</code>
        */
       public Builder clearTickPrice() {
-        bitField0_ = (bitField0_ & ~0x00200000);
+        bitField0_ = (bitField0_ & ~0x00010000);
         tickPrice_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object priceLimitType_ = "";
-      /**
-       * <code>optional string price_limit_type = 23;</code>
-       */
-      public boolean hasPriceLimitType() {
-        return ((bitField0_ & 0x00400000) == 0x00400000);
-      }
-      /**
-       * <code>optional string price_limit_type = 23;</code>
-       */
-      public java.lang.String getPriceLimitType() {
-        java.lang.Object ref = priceLimitType_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            priceLimitType_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string price_limit_type = 23;</code>
-       */
-      public com.google.protobuf.ByteString
-          getPriceLimitTypeBytes() {
-        java.lang.Object ref = priceLimitType_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          priceLimitType_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string price_limit_type = 23;</code>
-       */
-      public Builder setPriceLimitType(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00400000;
-        priceLimitType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string price_limit_type = 23;</code>
-       */
-      public Builder clearPriceLimitType() {
-        bitField0_ = (bitField0_ & ~0x00400000);
-        priceLimitType_ = getDefaultInstance().getPriceLimitType();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string price_limit_type = 23;</code>
-       */
-      public Builder setPriceLimitTypeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00400000;
-        priceLimitType_ = value;
         onChanged();
         return this;
       }
 
       private double priceHighLimit_ ;
       /**
-       * <code>optional double price_high_limit = 24;</code>
+       * <code>optional double price_high_limit = 18;</code>
        */
       public boolean hasPriceHighLimit() {
-        return ((bitField0_ & 0x00800000) == 0x00800000);
+        return ((bitField0_ & 0x00020000) == 0x00020000);
       }
       /**
-       * <code>optional double price_high_limit = 24;</code>
+       * <code>optional double price_high_limit = 18;</code>
        */
       public double getPriceHighLimit() {
         return priceHighLimit_;
       }
       /**
-       * <code>optional double price_high_limit = 24;</code>
+       * <code>optional double price_high_limit = 18;</code>
        */
       public Builder setPriceHighLimit(double value) {
-        bitField0_ |= 0x00800000;
+        bitField0_ |= 0x00020000;
         priceHighLimit_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional double price_high_limit = 24;</code>
+       * <code>optional double price_high_limit = 18;</code>
        */
       public Builder clearPriceHighLimit() {
-        bitField0_ = (bitField0_ & ~0x00800000);
+        bitField0_ = (bitField0_ & ~0x00020000);
         priceHighLimit_ = 0D;
         onChanged();
         return this;
@@ -4183,31 +3357,31 @@ public final class RDSStockBO_PRO {
 
       private double priceLowLimit_ ;
       /**
-       * <code>optional double price_low_limit = 25;</code>
+       * <code>optional double price_low_limit = 19;</code>
        */
       public boolean hasPriceLowLimit() {
-        return ((bitField0_ & 0x01000000) == 0x01000000);
+        return ((bitField0_ & 0x00040000) == 0x00040000);
       }
       /**
-       * <code>optional double price_low_limit = 25;</code>
+       * <code>optional double price_low_limit = 19;</code>
        */
       public double getPriceLowLimit() {
         return priceLowLimit_;
       }
       /**
-       * <code>optional double price_low_limit = 25;</code>
+       * <code>optional double price_low_limit = 19;</code>
        */
       public Builder setPriceLowLimit(double value) {
-        bitField0_ |= 0x01000000;
+        bitField0_ |= 0x00040000;
         priceLowLimit_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional double price_low_limit = 25;</code>
+       * <code>optional double price_low_limit = 19;</code>
        */
       public Builder clearPriceLowLimit() {
-        bitField0_ = (bitField0_ & ~0x01000000);
+        bitField0_ = (bitField0_ & ~0x00040000);
         priceLowLimit_ = 0D;
         onChanged();
         return this;
@@ -4215,31 +3389,31 @@ public final class RDSStockBO_PRO {
 
       private double exRightRatio_ ;
       /**
-       * <code>optional double ex_right_ratio = 26;</code>
+       * <code>optional double ex_right_ratio = 20;</code>
        */
       public boolean hasExRightRatio() {
-        return ((bitField0_ & 0x02000000) == 0x02000000);
+        return ((bitField0_ & 0x00080000) == 0x00080000);
       }
       /**
-       * <code>optional double ex_right_ratio = 26;</code>
+       * <code>optional double ex_right_ratio = 20;</code>
        */
       public double getExRightRatio() {
         return exRightRatio_;
       }
       /**
-       * <code>optional double ex_right_ratio = 26;</code>
+       * <code>optional double ex_right_ratio = 20;</code>
        */
       public Builder setExRightRatio(double value) {
-        bitField0_ |= 0x02000000;
+        bitField0_ |= 0x00080000;
         exRightRatio_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional double ex_right_ratio = 26;</code>
+       * <code>optional double ex_right_ratio = 20;</code>
        */
       public Builder clearExRightRatio() {
-        bitField0_ = (bitField0_ & ~0x02000000);
+        bitField0_ = (bitField0_ & ~0x00080000);
         exRightRatio_ = 0D;
         onChanged();
         return this;
@@ -4247,31 +3421,31 @@ public final class RDSStockBO_PRO {
 
       private double dividendPrice_ ;
       /**
-       * <code>optional double dividend_price = 27;</code>
+       * <code>optional double dividend_price = 21;</code>
        */
       public boolean hasDividendPrice() {
-        return ((bitField0_ & 0x04000000) == 0x04000000);
+        return ((bitField0_ & 0x00100000) == 0x00100000);
       }
       /**
-       * <code>optional double dividend_price = 27;</code>
+       * <code>optional double dividend_price = 21;</code>
        */
       public double getDividendPrice() {
         return dividendPrice_;
       }
       /**
-       * <code>optional double dividend_price = 27;</code>
+       * <code>optional double dividend_price = 21;</code>
        */
       public Builder setDividendPrice(double value) {
-        bitField0_ |= 0x04000000;
+        bitField0_ |= 0x00100000;
         dividendPrice_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional double dividend_price = 27;</code>
+       * <code>optional double dividend_price = 21;</code>
        */
       public Builder clearDividendPrice() {
-        bitField0_ = (bitField0_ & ~0x04000000);
+        bitField0_ = (bitField0_ & ~0x00100000);
         dividendPrice_ = 0D;
         onChanged();
         return this;
@@ -4279,13 +3453,13 @@ public final class RDSStockBO_PRO {
 
       private java.lang.Object financingFlag_ = "";
       /**
-       * <code>optional string financing_flag = 28;</code>
+       * <code>optional string financing_flag = 22;</code>
        */
       public boolean hasFinancingFlag() {
-        return ((bitField0_ & 0x08000000) == 0x08000000);
+        return ((bitField0_ & 0x00200000) == 0x00200000);
       }
       /**
-       * <code>optional string financing_flag = 28;</code>
+       * <code>optional string financing_flag = 22;</code>
        */
       public java.lang.String getFinancingFlag() {
         java.lang.Object ref = financingFlag_;
@@ -4302,7 +3476,7 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string financing_flag = 28;</code>
+       * <code>optional string financing_flag = 22;</code>
        */
       public com.google.protobuf.ByteString
           getFinancingFlagBytes() {
@@ -4318,36 +3492,36 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string financing_flag = 28;</code>
+       * <code>optional string financing_flag = 22;</code>
        */
       public Builder setFinancingFlag(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x08000000;
+  bitField0_ |= 0x00200000;
         financingFlag_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string financing_flag = 28;</code>
+       * <code>optional string financing_flag = 22;</code>
        */
       public Builder clearFinancingFlag() {
-        bitField0_ = (bitField0_ & ~0x08000000);
+        bitField0_ = (bitField0_ & ~0x00200000);
         financingFlag_ = getDefaultInstance().getFinancingFlag();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string financing_flag = 28;</code>
+       * <code>optional string financing_flag = 22;</code>
        */
       public Builder setFinancingFlagBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x08000000;
+  bitField0_ |= 0x00200000;
         financingFlag_ = value;
         onChanged();
         return this;
@@ -4355,13 +3529,13 @@ public final class RDSStockBO_PRO {
 
       private java.lang.Object marginFlag_ = "";
       /**
-       * <code>optional string margin_flag = 29;</code>
+       * <code>optional string margin_flag = 23;</code>
        */
       public boolean hasMarginFlag() {
-        return ((bitField0_ & 0x10000000) == 0x10000000);
+        return ((bitField0_ & 0x00400000) == 0x00400000);
       }
       /**
-       * <code>optional string margin_flag = 29;</code>
+       * <code>optional string margin_flag = 23;</code>
        */
       public java.lang.String getMarginFlag() {
         java.lang.Object ref = marginFlag_;
@@ -4378,7 +3552,7 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string margin_flag = 29;</code>
+       * <code>optional string margin_flag = 23;</code>
        */
       public com.google.protobuf.ByteString
           getMarginFlagBytes() {
@@ -4394,36 +3568,36 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string margin_flag = 29;</code>
+       * <code>optional string margin_flag = 23;</code>
        */
       public Builder setMarginFlag(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x10000000;
+  bitField0_ |= 0x00400000;
         marginFlag_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string margin_flag = 29;</code>
+       * <code>optional string margin_flag = 23;</code>
        */
       public Builder clearMarginFlag() {
-        bitField0_ = (bitField0_ & ~0x10000000);
+        bitField0_ = (bitField0_ & ~0x00400000);
         marginFlag_ = getDefaultInstance().getMarginFlag();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string margin_flag = 29;</code>
+       * <code>optional string margin_flag = 23;</code>
        */
       public Builder setMarginFlagBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x10000000;
+  bitField0_ |= 0x00400000;
         marginFlag_ = value;
         onChanged();
         return this;
@@ -4431,13 +3605,13 @@ public final class RDSStockBO_PRO {
 
       private java.lang.Object secuStatus_ = "";
       /**
-       * <code>optional string secu_status = 30;</code>
+       * <code>optional string secu_status = 24;</code>
        */
       public boolean hasSecuStatus() {
-        return ((bitField0_ & 0x20000000) == 0x20000000);
+        return ((bitField0_ & 0x00800000) == 0x00800000);
       }
       /**
-       * <code>optional string secu_status = 30;</code>
+       * <code>optional string secu_status = 24;</code>
        */
       public java.lang.String getSecuStatus() {
         java.lang.Object ref = secuStatus_;
@@ -4454,7 +3628,7 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string secu_status = 30;</code>
+       * <code>optional string secu_status = 24;</code>
        */
       public com.google.protobuf.ByteString
           getSecuStatusBytes() {
@@ -4470,36 +3644,36 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string secu_status = 30;</code>
+       * <code>optional string secu_status = 24;</code>
        */
       public Builder setSecuStatus(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x20000000;
+  bitField0_ |= 0x00800000;
         secuStatus_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string secu_status = 30;</code>
+       * <code>optional string secu_status = 24;</code>
        */
       public Builder clearSecuStatus() {
-        bitField0_ = (bitField0_ & ~0x20000000);
+        bitField0_ = (bitField0_ & ~0x00800000);
         secuStatus_ = getDefaultInstance().getSecuStatus();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string secu_status = 30;</code>
+       * <code>optional string secu_status = 24;</code>
        */
       public Builder setSecuStatusBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x20000000;
+  bitField0_ |= 0x00800000;
         secuStatus_ = value;
         onChanged();
         return this;
@@ -4507,13 +3681,13 @@ public final class RDSStockBO_PRO {
 
       private java.lang.Object memo_ = "";
       /**
-       * <code>optional string memo = 31;</code>
+       * <code>optional string memo = 25;</code>
        */
       public boolean hasMemo() {
-        return ((bitField0_ & 0x40000000) == 0x40000000);
+        return ((bitField0_ & 0x01000000) == 0x01000000);
       }
       /**
-       * <code>optional string memo = 31;</code>
+       * <code>optional string memo = 25;</code>
        */
       public java.lang.String getMemo() {
         java.lang.Object ref = memo_;
@@ -4530,7 +3704,7 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string memo = 31;</code>
+       * <code>optional string memo = 25;</code>
        */
       public com.google.protobuf.ByteString
           getMemoBytes() {
@@ -4546,37 +3720,113 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>optional string memo = 31;</code>
+       * <code>optional string memo = 25;</code>
        */
       public Builder setMemo(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x40000000;
+  bitField0_ |= 0x01000000;
         memo_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string memo = 31;</code>
+       * <code>optional string memo = 25;</code>
        */
       public Builder clearMemo() {
-        bitField0_ = (bitField0_ & ~0x40000000);
+        bitField0_ = (bitField0_ & ~0x01000000);
         memo_ = getDefaultInstance().getMemo();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string memo = 31;</code>
+       * <code>optional string memo = 25;</code>
        */
       public Builder setMemoBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x40000000;
+  bitField0_ |= 0x01000000;
         memo_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object updateTime_ = "";
+      /**
+       * <code>optional string update_time = 26;</code>
+       */
+      public boolean hasUpdateTime() {
+        return ((bitField0_ & 0x02000000) == 0x02000000);
+      }
+      /**
+       * <code>optional string update_time = 26;</code>
+       */
+      public java.lang.String getUpdateTime() {
+        java.lang.Object ref = updateTime_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            updateTime_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string update_time = 26;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUpdateTimeBytes() {
+        java.lang.Object ref = updateTime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          updateTime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string update_time = 26;</code>
+       */
+      public Builder setUpdateTime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x02000000;
+        updateTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string update_time = 26;</code>
+       */
+      public Builder clearUpdateTime() {
+        bitField0_ = (bitField0_ & ~0x02000000);
+        updateTime_ = getDefaultInstance().getUpdateTime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string update_time = 26;</code>
+       */
+      public Builder setUpdateTimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x02000000;
+        updateTime_ = value;
         onChanged();
         return this;
       }
@@ -4643,25 +3893,22 @@ public final class RDSStockBO_PRO {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020RDSStockBO.proto\"\231\005\n\nRDSStockBO\022\014\n\004uui" +
+      "\n\020RDSStockBO.proto\"\254\004\n\nRDSStockBO\022\014\n\004uui" +
       "d\030\001 \002(\t\022\014\n\004boid\030\002 \002(\022\022\023\n\013destination\030\003 \002" +
-      "(\t\022\022\n\nproduct_id\030\004 \001(\t\022\014\n\004isin\030\005 \001(\t\022\021\n\t" +
-      "recv_time\030\006 \001(\t\022\024\n\014secu_name_cn\030\007 \001(\t\022\024\n" +
-      "\014secu_name_en\030\010 \001(\t\022\024\n\014secu_base_id\030\t \001(" +
-      "\t\022\021\n\texch_type\030\n \001(\t\022\021\n\tsecu_type\030\013 \001(\t\022" +
-      "\025\n\rsecu_sub_type\030\014 \001(\t\022\020\n\010currency\030\r \001(\t" +
-      "\022\026\n\016bond_par_value\030\016 \001(\001\022\027\n\017last_trade_d" +
-      "ate\030\017 \001(\t\022\021\n\tlist_date\030\020 \001(\t\022\020\n\010buy_unit" +
-      "\030\021 \001(\005\022\021\n\tsell_unit\030\022 \001(\005\022\027\n\017trade_low_l" +
-      "imit\030\023 \001(\005\022\030\n\020trade_high_limit\030\024 \001(\005\022\027\n\017" +
-      "pre_close_price\030\025 \001(\001\022\022\n\ntick_price\030\026 \001(" +
-      "\001\022\030\n\020price_limit_type\030\027 \001(\t\022\030\n\020price_hig" +
-      "h_limit\030\030 \001(\001\022\027\n\017price_low_limit\030\031 \001(\001\022\026" +
-      "\n\016ex_right_ratio\030\032 \001(\001\022\026\n\016dividend_price" +
-      "\030\033 \001(\001\022\026\n\016financing_flag\030\034 \001(\t\022\023\n\013margin" +
-      "_flag\030\035 \001(\t\022\023\n\013secu_status\030\036 \001(\t\022\014\n\004memo" +
-      "\030\037 \001(\tB.\n\034com.purefun.fstp.core.bo.proB\016" +
-      "RDSStockBO_PRO"
+      "(\t\022\022\n\nproduct_id\030\004 \001(\t\022\024\n\014secu_name_cn\030\005" +
+      " \001(\t\022\024\n\014secu_name_en\030\006 \001(\t\022\021\n\texch_type\030" +
+      "\007 \001(\t\022\021\n\tsecu_type\030\010 \001(\t\022\025\n\rsecu_sub_typ" +
+      "e\030\t \001(\t\022\020\n\010currency\030\n \001(\t\022\021\n\tlist_date\030\013" +
+      " \001(\t\022\020\n\010buy_unit\030\014 \001(\005\022\021\n\tsell_unit\030\r \001(" +
+      "\005\022\027\n\017trade_low_limit\030\016 \001(\005\022\030\n\020trade_high" +
+      "_limit\030\017 \001(\005\022\027\n\017pre_close_price\030\020 \001(\001\022\022\n" +
+      "\ntick_price\030\021 \001(\001\022\030\n\020price_high_limit\030\022 " +
+      "\001(\001\022\027\n\017price_low_limit\030\023 \001(\001\022\026\n\016ex_right" +
+      "_ratio\030\024 \001(\001\022\026\n\016dividend_price\030\025 \001(\001\022\026\n\016" +
+      "financing_flag\030\026 \001(\t\022\023\n\013margin_flag\030\027 \001(" +
+      "\t\022\023\n\013secu_status\030\030 \001(\t\022\014\n\004memo\030\031 \001(\t\022\023\n\013" +
+      "update_time\030\032 \001(\tB.\n\034com.purefun.fstp.co" +
+      "re.bo.proB\016RDSStockBO_PRO"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4680,7 +3927,7 @@ public final class RDSStockBO_PRO {
     internal_static_RDSStockBO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RDSStockBO_descriptor,
-        new java.lang.String[] { "Uuid", "Boid", "Destination", "ProductId", "Isin", "RecvTime", "SecuNameCn", "SecuNameEn", "SecuBaseId", "ExchType", "SecuType", "SecuSubType", "Currency", "BondParValue", "LastTradeDate", "ListDate", "BuyUnit", "SellUnit", "TradeLowLimit", "TradeHighLimit", "PreClosePrice", "TickPrice", "PriceLimitType", "PriceHighLimit", "PriceLowLimit", "ExRightRatio", "DividendPrice", "FinancingFlag", "MarginFlag", "SecuStatus", "Memo", });
+        new java.lang.String[] { "Uuid", "Boid", "Destination", "ProductId", "SecuNameCn", "SecuNameEn", "ExchType", "SecuType", "SecuSubType", "Currency", "ListDate", "BuyUnit", "SellUnit", "TradeLowLimit", "TradeHighLimit", "PreClosePrice", "TickPrice", "PriceHighLimit", "PriceLowLimit", "ExRightRatio", "DividendPrice", "FinancingFlag", "MarginFlag", "SecuStatus", "Memo", "UpdateTime", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

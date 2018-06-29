@@ -1,29 +1,21 @@
 package com.purefun.fstp.core.ipc.qns;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.jms.BytesMessage;
 import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
-import javax.jms.ObjectMessage;
 import javax.jms.Session;
 import javax.jms.TemporaryQueue;
 import javax.jms.TextMessage;
 
 import org.slf4j.Logger;
 
-import com.purefun.fstp.core.bo.QNSRequestBO;
 import com.purefun.fstp.core.bo.commom.ICommom_OTW;
-import com.purefun.fstp.core.cache.FCache;
 
 public class QNSClient{
 	static Logger log = null;
 	Session session = null;
-	FCache fcache = null;
 	String msgdef = null;
 	
 	Destination destination = null;
@@ -35,10 +27,9 @@ public class QNSClient{
     
     String[] topics = null;
 	
-	public QNSClient(Logger log,Session session,FCache fcache,String topic,String servername) {
+	public QNSClient(Logger log,Session session,String topic,String servername) {
 		this.log = log;
 		this.session = session;
-		this.fcache = fcache;
 		this.msgdef = topic;
 		
 		if(session == null) {
@@ -65,11 +56,6 @@ public class QNSClient{
 		String respond = null;
 		String ret[] = null;
 		try {		
-//	        ObjectMessage message = session.createObjectMessage();
-//        	message.setObject((Serializable) bo); 
-//        	message.setJMSReplyTo(responseQueue);
-//        	
-//        	messageProducer.send(message);
         	BytesMessage message = session.createBytesMessage();
         	message.writeBytes(bo.getBuilder().build().toByteArray());
         	message.setJMSReplyTo(responseQueue);

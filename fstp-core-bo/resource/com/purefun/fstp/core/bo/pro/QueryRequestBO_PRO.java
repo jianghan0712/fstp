@@ -98,18 +98,18 @@ public final class QueryRequestBO_PRO {
         getQuerytopicBytes();
 
     /**
-     * <code>optional string queryBoDestination = 7;</code>
+     * <code>optional string tempTopic = 7;</code>
      */
-    boolean hasQueryBoDestination();
+    boolean hasTempTopic();
     /**
-     * <code>optional string queryBoDestination = 7;</code>
+     * <code>optional string tempTopic = 7;</code>
      */
-    java.lang.String getQueryBoDestination();
+    java.lang.String getTempTopic();
     /**
-     * <code>optional string queryBoDestination = 7;</code>
+     * <code>optional string tempTopic = 7;</code>
      */
     com.google.protobuf.ByteString
-        getQueryBoDestinationBytes();
+        getTempTopicBytes();
   }
   /**
    * Protobuf type {@code QueryRequestBO}
@@ -130,7 +130,7 @@ public final class QueryRequestBO_PRO {
       requestServiceName_ = "";
       respondServiceName_ = "";
       querytopic_ = "";
-      queryBoDestination_ = "";
+      tempTopic_ = "";
     }
 
     @java.lang.Override
@@ -202,7 +202,7 @@ public final class QueryRequestBO_PRO {
             case 58: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000040;
-              queryBoDestination_ = bs;
+              tempTopic_ = bs;
               break;
             }
           }
@@ -455,19 +455,19 @@ public final class QueryRequestBO_PRO {
       }
     }
 
-    public static final int QUERYBODESTINATION_FIELD_NUMBER = 7;
-    private volatile java.lang.Object queryBoDestination_;
+    public static final int TEMPTOPIC_FIELD_NUMBER = 7;
+    private volatile java.lang.Object tempTopic_;
     /**
-     * <code>optional string queryBoDestination = 7;</code>
+     * <code>optional string tempTopic = 7;</code>
      */
-    public boolean hasQueryBoDestination() {
+    public boolean hasTempTopic() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>optional string queryBoDestination = 7;</code>
+     * <code>optional string tempTopic = 7;</code>
      */
-    public java.lang.String getQueryBoDestination() {
-      java.lang.Object ref = queryBoDestination_;
+    public java.lang.String getTempTopic() {
+      java.lang.Object ref = tempTopic_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -475,22 +475,22 @@ public final class QueryRequestBO_PRO {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          queryBoDestination_ = s;
+          tempTopic_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>optional string queryBoDestination = 7;</code>
+     * <code>optional string tempTopic = 7;</code>
      */
     public com.google.protobuf.ByteString
-        getQueryBoDestinationBytes() {
-      java.lang.Object ref = queryBoDestination_;
+        getTempTopicBytes() {
+      java.lang.Object ref = tempTopic_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        queryBoDestination_ = b;
+        tempTopic_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -540,7 +540,7 @@ public final class QueryRequestBO_PRO {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, querytopic_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, queryBoDestination_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, tempTopic_);
       }
       unknownFields.writeTo(output);
     }
@@ -570,7 +570,7 @@ public final class QueryRequestBO_PRO {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, querytopic_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, queryBoDestination_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, tempTopic_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -618,10 +618,10 @@ public final class QueryRequestBO_PRO {
         result = result && getQuerytopic()
             .equals(other.getQuerytopic());
       }
-      result = result && (hasQueryBoDestination() == other.hasQueryBoDestination());
-      if (hasQueryBoDestination()) {
-        result = result && getQueryBoDestination()
-            .equals(other.getQueryBoDestination());
+      result = result && (hasTempTopic() == other.hasTempTopic());
+      if (hasTempTopic()) {
+        result = result && getTempTopic()
+            .equals(other.getTempTopic());
       }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
@@ -659,9 +659,9 @@ public final class QueryRequestBO_PRO {
         hash = (37 * hash) + QUERYTOPIC_FIELD_NUMBER;
         hash = (53 * hash) + getQuerytopic().hashCode();
       }
-      if (hasQueryBoDestination()) {
-        hash = (37 * hash) + QUERYBODESTINATION_FIELD_NUMBER;
-        hash = (53 * hash) + getQueryBoDestination().hashCode();
+      if (hasTempTopic()) {
+        hash = (37 * hash) + TEMPTOPIC_FIELD_NUMBER;
+        hash = (53 * hash) + getTempTopic().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -804,7 +804,7 @@ public final class QueryRequestBO_PRO {
         bitField0_ = (bitField0_ & ~0x00000010);
         querytopic_ = "";
         bitField0_ = (bitField0_ & ~0x00000020);
-        queryBoDestination_ = "";
+        tempTopic_ = "";
         bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
@@ -857,7 +857,7 @@ public final class QueryRequestBO_PRO {
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.queryBoDestination_ = queryBoDestination_;
+        result.tempTopic_ = tempTopic_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -928,9 +928,9 @@ public final class QueryRequestBO_PRO {
           querytopic_ = other.querytopic_;
           onChanged();
         }
-        if (other.hasQueryBoDestination()) {
+        if (other.hasTempTopic()) {
           bitField0_ |= 0x00000040;
-          queryBoDestination_ = other.queryBoDestination_;
+          tempTopic_ = other.tempTopic_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -1382,24 +1382,24 @@ public final class QueryRequestBO_PRO {
         return this;
       }
 
-      private java.lang.Object queryBoDestination_ = "";
+      private java.lang.Object tempTopic_ = "";
       /**
-       * <code>optional string queryBoDestination = 7;</code>
+       * <code>optional string tempTopic = 7;</code>
        */
-      public boolean hasQueryBoDestination() {
+      public boolean hasTempTopic() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>optional string queryBoDestination = 7;</code>
+       * <code>optional string tempTopic = 7;</code>
        */
-      public java.lang.String getQueryBoDestination() {
-        java.lang.Object ref = queryBoDestination_;
+      public java.lang.String getTempTopic() {
+        java.lang.Object ref = tempTopic_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
-            queryBoDestination_ = s;
+            tempTopic_ = s;
           }
           return s;
         } else {
@@ -1407,53 +1407,53 @@ public final class QueryRequestBO_PRO {
         }
       }
       /**
-       * <code>optional string queryBoDestination = 7;</code>
+       * <code>optional string tempTopic = 7;</code>
        */
       public com.google.protobuf.ByteString
-          getQueryBoDestinationBytes() {
-        java.lang.Object ref = queryBoDestination_;
+          getTempTopicBytes() {
+        java.lang.Object ref = tempTopic_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          queryBoDestination_ = b;
+          tempTopic_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>optional string queryBoDestination = 7;</code>
+       * <code>optional string tempTopic = 7;</code>
        */
-      public Builder setQueryBoDestination(
+      public Builder setTempTopic(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000040;
-        queryBoDestination_ = value;
+        tempTopic_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string queryBoDestination = 7;</code>
+       * <code>optional string tempTopic = 7;</code>
        */
-      public Builder clearQueryBoDestination() {
+      public Builder clearTempTopic() {
         bitField0_ = (bitField0_ & ~0x00000040);
-        queryBoDestination_ = getDefaultInstance().getQueryBoDestination();
+        tempTopic_ = getDefaultInstance().getTempTopic();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string queryBoDestination = 7;</code>
+       * <code>optional string tempTopic = 7;</code>
        */
-      public Builder setQueryBoDestinationBytes(
+      public Builder setTempTopicBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000040;
-        queryBoDestination_ = value;
+        tempTopic_ = value;
         onChanged();
         return this;
       }
@@ -1520,13 +1520,12 @@ public final class QueryRequestBO_PRO {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024QueryRequestBO.proto\"\251\001\n\016QueryRequestB" +
+      "\n\024QueryRequestBO.proto\"\240\001\n\016QueryRequestB" +
       "O\022\014\n\004uuid\030\001 \002(\t\022\014\n\004boid\030\002 \002(\022\022\023\n\013destina" +
       "tion\030\003 \002(\t\022\032\n\022requestServiceName\030\004 \001(\t\022\032" +
       "\n\022respondServiceName\030\005 \001(\t\022\022\n\nquerytopic" +
-      "\030\006 \001(\t\022\032\n\022queryBoDestination\030\007 \001(\tB2\n\034co" +
-      "m.purefun.fstp.core.bo.proB\022QueryRequest" +
-      "BO_PRO"
+      "\030\006 \001(\t\022\021\n\ttempTopic\030\007 \001(\tB2\n\034com.purefun" +
+      ".fstp.core.bo.proB\022QueryRequestBO_PRO"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1545,7 +1544,7 @@ public final class QueryRequestBO_PRO {
     internal_static_QueryRequestBO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_QueryRequestBO_descriptor,
-        new java.lang.String[] { "Uuid", "Boid", "Destination", "RequestServiceName", "RespondServiceName", "Querytopic", "QueryBoDestination", });
+        new java.lang.String[] { "Uuid", "Boid", "Destination", "RequestServiceName", "RespondServiceName", "Querytopic", "TempTopic", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

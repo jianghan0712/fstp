@@ -6,18 +6,20 @@ import javax.jms.MessageConsumer;
 import javax.jms.Session;
 import org.slf4j.Logger;
 
-import com.purefun.fstp.core.cache.FCache;
+import com.purefun.fstp.core.cache.ICommonCache;
+import com.purefun.fstp.core.cache.ignitecache.ICache;
+import com.purefun.fstp.core.cache.rediscache.RCache;
 import com.purefun.fstp.core.ipc.msglistener.SubMessageListener;
 
 public class Subscriber{
 	Logger log = null;
 	Session session = null;
-	FCache fcache = null;
+	ICommonCache cache = null;
 	
-	public Subscriber(Logger log,Session session,FCache fcache) {
+	public Subscriber(Logger log,Session session,ICommonCache cache) {
 		this.log = log;
 		this.session = session;
-		this.fcache = fcache;
+		this.cache = cache;
 	}
 	
 	public void subscribe(String topic,SubMessageListener msglisteneer) {
@@ -45,6 +47,4 @@ public class Subscriber{
 			e.printStackTrace();
 		}         
 	}
-	
-
 }

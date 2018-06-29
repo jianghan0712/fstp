@@ -17,7 +17,7 @@
     
     <!--  配置数据源 -->  
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="url" value="jdbc:mysql://localhost:3306/pilot"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/pilot?useSSL=false"/>
         <property name="username" value="root"/>
         <property name="password" value="jianghan"/>
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -48,7 +48,7 @@
   	<!--  配置RDS相关  --> 	
   	<bean id="RDSCommon" class="com.purefun.fstp.ace.rds.server.RDSCommon">
   		<property name="tableName" value="RDS_STOCK"/>
-  		<property name="rdsCrud"   value="com.purefun.fstp.ace.rds.repo.TestBORepository"/>
+  		<property name="rdsCrud"   value="com.purefun.fstp.ace.rds.repo.RDSStockBORepository"/>
   	</bean>
   	<aop:aspectj-autoproxy />
 </beans>  

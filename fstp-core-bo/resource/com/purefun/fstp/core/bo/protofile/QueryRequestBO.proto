@@ -8,5 +8,5 @@ message QueryRequestBO {
     optional string  requestServiceName = 4;
     optional string  respondServiceName = 5;
     optional string  querytopic = 6;
-    optional string  queryBoDestination = 7;
+    optional string  tempTopic = 7;
 }

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='QueryRequestBO.proto',
   package='com.purefun.fstp.core.bo',
   syntax='proto2',
-  serialized_pb=_b('\n\x14QueryRequestBO.proto\x12\x18\x63om.purefun.fstp.core.bo\"\xa9\x01\n\x0eQueryRequestBO\x12\x0c\n\x04uuid\x18\x01 \x02(\t\x12\x0c\n\x04\x62oid\x18\x02 \x02(\x12\x12\x13\n\x0b\x64\x65stination\x18\x03 \x02(\t\x12\x1a\n\x12requestServiceName\x18\x04 \x01(\t\x12\x1a\n\x12respondServiceName\x18\x05 \x01(\t\x12\x12\n\nquerytopic\x18\x06 \x01(\t\x12\x1a\n\x12queryBoDestination\x18\x07 \x01(\t')
+  serialized_pb=_b('\n\x14QueryRequestBO.proto\x12\x18\x63om.purefun.fstp.core.bo\"\xa0\x01\n\x0eQueryRequestBO\x12\x0c\n\x04uuid\x18\x01 \x02(\t\x12\x0c\n\x04\x62oid\x18\x02 \x02(\x12\x12\x13\n\x0b\x64\x65stination\x18\x03 \x02(\t\x12\x1a\n\x12requestServiceName\x18\x04 \x01(\t\x12\x1a\n\x12respondServiceName\x18\x05 \x01(\t\x12\x12\n\nquerytopic\x18\x06 \x01(\t\x12\x11\n\ttempTopic\x18\x07 \x01(\t')
 )
 
 
@@ -75,7 +75,7 @@ _QUERYREQUESTBO = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='queryBoDestination', full_name='com.purefun.fstp.core.bo.QueryRequestBO.queryBoDestination', index=6,
+      name='tempTopic', full_name='com.purefun.fstp.core.bo.QueryRequestBO.tempTopic', index=6,
       number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -94,7 +94,7 @@ _QUERYREQUESTBO = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=51,
-  serialized_end=220,
+  serialized_end=211,
 )
 
 DESCRIPTOR.message_types_by_name['QueryRequestBO'] = _QUERYREQUESTBO

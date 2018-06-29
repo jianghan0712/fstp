@@ -12,12 +12,11 @@ public class QueryRequestBO implements BaseBO  {
 		
 	public String destination = "fstp.core.manager.queryrequest";
 	
-	public String requestServiceName = null;
+	public String requestServiceName = "";
 	
-	public String respondServiceName = null;
+	public String respondServiceName = "";
 	
-	public String querytopic = null;
+	public String querytopic = "";
 	
-	public String queryBoDestination = null;
-	
+	public String tempTopic = "";	
 }

@@ -6,15 +6,12 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- 引入jedis的properties配置文件 -->
-    <!--如果你有多个数据源需要通过<context:property-placeholder管理，且不愿意放在一个配置文件里，那么一定要加上ignore-unresolvable=“true"-->
-	<import resource="classpath:resource/comConf/CommonConfig.xml" />
-    <context:property-placeholder location="classpath:redis.properties" ignore-unresolvable="true" />
-    	
+	<import resource="classpath*:resource/comConf/CommonConfig.xml" />
+   	
     <bean id="MainServer" class="com.purefun.fstp.ace.rds.loader.ExchRDSLoader">  
     	<!--  <constructor-arg name="serverName" value="MonitorService"></constructor-arg>-->
         <constructor-arg name="isServer" value="true"></constructor-arg>
-        
+        <property name="cacheType" value="ignite"/>
         <property name="secuMap">   
        		<map>
        			<entry key="STOCK"    		value="1"/>
@@ -24,7 +21,8 @@
        			<entry key="OPTION"   		value="0"/>  			
        		</map>
        </property>   
-       <property name="filesFactory" ref="filesfactory"/>            
+       <property name="filesFactory" ref="filesfactory"/> 
+       <property name="dict" ref="dictionary"/>           
    	</bean>
    	
    	<bean id="filesfactory" class="com.purefun.fstp.ace.rds.loader.FileLoaderFactory"> 
@@ -33,8 +31,57 @@
    	    	<map>
        			<entry key="cpxx"    		value="mmdd,txt,\|"/> 			
        		</map>
-       </property>  
-       
+       </property>       
+   	</bean>
+   	
+   	<bean id="dictionary" class="com.purefun.fstp.ace.rds.dict.Dictionary">
+   		<property name="secu_type" >
+   			<map>
+       			<entry key="ES"    		value="STOCK"/> 
+       			<entry key="EU"    		value="FUND"/>
+       			<entry key="D"    		value="BOND"/>
+       			<entry key="RWS"    	value="WARRENT"/>	
+       			<entry key="FF"    		value="FUTURE"/>		
+       		</map>
+       </property>
+       <property name="secu_subtype" >
+   			<map>
+       			<entry key="GBF"    		value="Treasury Bond"/> 
+       			<entry key="GBZ"    		value="Treasury Zero-coupon Bond"/>
+       			<entry key="DST"    		value="Treasury Distribution Bond"/>
+       			<entry key="DVP"    		value="Corporation Distribution Bond"/>	
+       			<entry key="CBF"    		value="Corporation Bond"/>
+       			<entry key="CCF"    		value="Corporation Convertible Bond"/>
+       			<entry key="FBF"    		value="Financial Bond"/>
+       			<entry key="CRP"    		value="Pledge Treasury Bond Repo"/>
+       			<entry key="BRP"    		value="Pledge Corporation Bond Repo"/>
+       			<entry key="ORP"    		value="Outright Repo"/>
+       			<entry key="CBD"    		value="Separate Convertible Bond"/>	
+       			<entry key="OBD"    		value="Other Type Bond"/>	
+       			
+       			<entry key="CEF"    		value="Close-end Fund"/>	
+       			<entry key="OEF"    		value="Open Fund"/>	
+       			<entry key="EBS"    		value="Exchange Trading Fund"/>	
+       			<entry key="FBL"    		value="Multiply Market Fund"/>	
+       			<entry key="OFN"    		value="Other Fund"/>	
+       			
+       			<entry key="ASH"    		value="A-Stock"/>
+       			<entry key="BSH"    		value="B-Stock"/>
+       			<entry key="CSH"    		value="H-Stock"/>
+       			<entry key="OEQ"    		value="Other-Stock"/>
+       			<entry key="CIW"    		value="Corporation Warrent"/>
+       			<entry key="COV"    		value="Preparation Warrent"/>
+       			<entry key="FEQ"    		value="Stock Future"/>	
+       			<entry key="FBD"    		value="Bond Future"/>	
+       			<entry key="OFT"    		value="Other Future"/>	
+       			<entry key="AMP"    		value="Collective Asset Management"/>	
+       			<entry key="WIT"    		value="Treasury Bond Pre Issue"/>
+       			<entry key="LOF"    		value="List-On Fund"/>
+       			<entry key="OPS"    		value="Open Preferred Stock"/>
+       			<entry key="PPS"    		value="Private Preferred Stock"/>
+       			<entry key="QRP"    		value="Quote Repo"/>		      				
+       		</map>
+       </property>
    	</bean>
    	   	
 </beans>

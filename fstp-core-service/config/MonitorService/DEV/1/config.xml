@@ -6,26 +6,24 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- 引入jedis的properties配置文件 -->
-    <!--如果你有多个数据源需要通过<context:property-placeholder管理，且不愿意放在一个配置文件里，那么一定要加上ignore-unresolvable=“true"-->
-	<import resource="classpath:comConf/CommonConfig.xml" />
+	<import resource="classpath*:comConf/CommonConfig.xml" />
     	
     <bean id="MainServer" class="com.purefun.fstp.core.server.monitor.MonitorService">  
     	<!--  <constructor-arg name="serverName" value="MonitorService"></constructor-arg>-->
         <constructor-arg name="isServer" value="true"></constructor-arg>
-
+        <property name="cacheType" value="ignite"/>
    		<property name="boDestinationMap">   
        		<map>
-       			<entry key="com.purefun.fstp.core.bo.copy.TestBO"    		value="fstp.core.rpc.testone"/>
-       			<entry key="com.purefun.fstp.core.bo.copy.TestBO2"   		value="fstp.core.rpc.testtwo"/>
-       			<entry key="com.purefun.fstp.core.bo.copy.TestBO3"   		value="fstp.core.rpc.testthree"/>    			
+       			<entry key="com.purefun.fstp.core.bo.TestBO"    		value="fstp.core.rpc.testone"/>
+       			<entry key="com.purefun.fstp.core.bo.TestBO2"   		value="fstp.core.rpc.testtwo"/>
+       			<entry key="com.purefun.fstp.core.bo.TestBO3"   		value="fstp.core.rpc.testthree"/>    			
        		</map>
        </property>  
        <property name="managerBOMap">
         	<map>
-        		<entry key="fstp.core.rpc.testone"    		value="com.purefun.fstp.core.bo.TestBO"/>
+        		<entry key="fstp.core.rpc.testtwo"    		value="com.purefun.fstp.core.bo.TestBO2"/>
         	</map>
-        </property>
+       </property>
       
    	</bean>
    	   	

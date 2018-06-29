@@ -6,17 +6,13 @@ import java.util.List;
 import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.MessageConsumer;
-import javax.jms.MessageListener;
 import javax.jms.Session;
 
 import org.slf4j.Logger;
 
-import com.purefun.fstp.core.bo.QNSRequestBO;
 import com.purefun.fstp.core.bo.otw.QNSRequestBO_OTW;
-import com.purefun.fstp.core.cache.FCache;
+import com.purefun.fstp.core.cache.ICommonCache;
 import com.purefun.fstp.core.ipc.msglistener.QnsMessageListener;
-
-import redis.clients.jedis.Jedis;
 
 public class QNSubscriber{
 	String[] topics = null;
@@ -24,26 +20,23 @@ public class QNSubscriber{
 	String serverName = null;
 	Logger log = null;
 	Session session = null;
-	FCache fcache = null;
+	ICommonCache cache = null;
 	
 	QNSClient qnsclient = null;
 	
-	public QNSubscriber(Logger log,Session session,FCache fcache) {
+	public QNSubscriber(Logger log,Session session,ICommonCache cache) {
 		this.log = log;
 		this.session = session;
-		this.fcache = fcache;	
-		
+		this.cache = cache;
 	}
-	
-	public void setting(String des,String serverName) {
+
+	public void init(String des,String serverName) {
 		qns = des;
 		this.serverName = serverName;
-		qnsclient = new QNSClient(log,session,fcache,"QNSqueryTopic",serverName);
-		
+		qnsclient = new QNSClient(log, session, "QNSqueryTopic", serverName);
 	}
 	
 	public void QNS(QnsMessageListener listener) {
-//		QNSRequestBO bo = new QNSRequestBO(qns);
 		QNSRequestBO_OTW bo = new QNSRequestBO_OTW();
 		bo.setRequest(qns);
 		topics = qnsclient.publish(bo);
@@ -58,12 +51,10 @@ public class QNSubscriber{
 		List[] result = new ArrayList[topics.length];
 		int i = 0;
 		for(String topic:topics) {
-			List<byte[]> bocache = fcache.getList(topic);
-			if(bocache == null || bocache.isEmpty()) {
-				log.info("topic {} has no message in cache",topic);
-			}else {
+			List bocache = (List)cache.get(topic, null);
+			if(bocache != null && !bocache.isEmpty()) {
 				result[i++] = bocache;
-			}		
+			}			
 		}
 		return result;
 	}

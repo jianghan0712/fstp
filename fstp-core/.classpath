@@ -22,8 +22,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/MavenCache/com/purefun/fstp-core-service/0.0.1-SNAPSHOT/fstp-core-service-0.0.1-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="D:/MavenCache/com/purefun/fstp-core-bo/0.0.1-SNAPSHOT/fstp-core-bo-0.0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="src" path="resource"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

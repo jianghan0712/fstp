@@ -8,4 +8,6 @@ public interface ICommom_OTW {
 	public Object getBo();
 	
 	public com.google.protobuf.GeneratedMessageV3.Builder getBuilder();
+	
+	public String getUuid();
 }
