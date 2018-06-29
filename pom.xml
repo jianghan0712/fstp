@@ -221,7 +221,6 @@
   	<module>fstp-core</module>
     <module>fstp-ace-rds</module>
     <module>fstp-core-bo</module>
-    <module>fstp-core-ignite</module>
     <module>fstp-core-service</module>
   </modules>
 </project>

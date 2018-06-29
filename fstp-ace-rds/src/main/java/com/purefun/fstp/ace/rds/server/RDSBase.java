@@ -2,6 +2,7 @@ package com.purefun.fstp.ace.rds.server;
 
 import java.util.List;
 
+import org.apache.ignite.IgniteCache;
 import org.springframework.data.repository.CrudRepository;
 
 import com.purefun.fstp.core.bo.BaseBO;
@@ -16,12 +17,12 @@ public abstract class RDSBase extends PService{
 	Publisher pub = null;
 	Subscriber sub = null;
 	RDSSubMessageListener listener = null;
+	public IgniteCache cache = null;
 	
 	
 	public RDSBase(boolean isServer) {
 		super(isServer);
 		// TODO Auto-generated constructor stub
-	
 	}
 	
 	public void init() {

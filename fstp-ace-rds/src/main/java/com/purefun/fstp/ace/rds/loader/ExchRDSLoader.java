@@ -86,7 +86,7 @@ public class ExchRDSLoader extends PService{
 				bo.setMargin_flag(value.getMargin_flag());
 				bo.setSecu_status(value.getSecu_status());
 				bo.setMemo(value.getMemo());				
-				publisher.publish(bo, PublishMode.PUBLISH_ONLY);
+				publisher.publish(bo, PublishMode.PUBLISH_ONLY, null);
 				count++;
 			}			
 		}	

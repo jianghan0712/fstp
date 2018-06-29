@@ -94,6 +94,10 @@ public class SourceStockBO_OTW implements ICommom_OTW {
         setMemo(bofrom.memo);
     }
 
+    public byte[] serial() {
+        return builder.build().toByteArray();
+    }
+
     @Override
     public SourceStockBO_PRO.SourceStockBO.Builder getBuilder() { 
         return builder;

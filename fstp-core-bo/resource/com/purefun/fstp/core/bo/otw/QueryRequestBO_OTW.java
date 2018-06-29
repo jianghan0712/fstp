@@ -27,7 +27,7 @@ public class QueryRequestBO_OTW implements ICommom_OTW {
         setRequestServiceName(receive.getRequestServiceName());
         setRespondServiceName(receive.getRespondServiceName());
         setQuerytopic(receive.getQuerytopic());
-        setQueryBoDestination(receive.getQueryBoDestination());
+        setTempTopic(receive.getTempTopic());
     }
 
     public QueryRequestBO_OTW(QueryRequestBO bofrom){
@@ -39,7 +39,11 @@ public class QueryRequestBO_OTW implements ICommom_OTW {
         setRequestServiceName(bofrom.requestServiceName);
         setRespondServiceName(bofrom.respondServiceName);
         setQuerytopic(bofrom.querytopic);
-        setQueryBoDestination(bofrom.queryBoDestination);
+        setTempTopic(bofrom.tempTopic);
+    }
+
+    public byte[] serial() {
+        return builder.build().toByteArray();
     }
 
     @Override
@@ -106,13 +110,13 @@ public class QueryRequestBO_OTW implements ICommom_OTW {
         builder.setQuerytopic(querytopic);
     }
 
-    public java.lang.String getQueryBoDestination() {
-        return builder.getQueryBoDestination();
+    public java.lang.String getTempTopic() {
+        return builder.getTempTopic();
     }
 
-    public void setQueryBoDestination(java.lang.String queryBoDestination) {
-        bo.queryBoDestination = queryBoDestination;
-        builder.setQueryBoDestination(queryBoDestination);
+    public void setTempTopic(java.lang.String tempTopic) {
+        bo.tempTopic = tempTopic;
+        builder.setTempTopic(tempTopic);
     }
 
     public String toString() {
@@ -123,7 +127,7 @@ public class QueryRequestBO_OTW implements ICommom_OTW {
             "requestServiceName = " + getRequestServiceName() +"," +
             "respondServiceName = " + getRespondServiceName() +"," +
             "querytopic = " + getQuerytopic() +"," +
-            "queryBoDestination = " + getQueryBoDestination() +"," +
+            "tempTopic = " + getTempTopic() +"," +
     "]";
     }
 }

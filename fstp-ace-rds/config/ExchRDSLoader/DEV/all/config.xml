@@ -11,7 +11,7 @@
     <bean id="MainServer" class="com.purefun.fstp.ace.rds.loader.ExchRDSLoader">  
     	<!--  <constructor-arg name="serverName" value="MonitorService"></constructor-arg>-->
         <constructor-arg name="isServer" value="true"></constructor-arg>
-        
+        <property name="cacheType" value="ignite"/>
         <property name="secuMap">   
        		<map>
        			<entry key="STOCK"    		value="1"/>

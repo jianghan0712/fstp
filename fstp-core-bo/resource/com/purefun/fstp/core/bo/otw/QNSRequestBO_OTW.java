@@ -38,6 +38,10 @@ public class QNSRequestBO_OTW implements ICommom_OTW {
         setRequest(bofrom.request);
     }
 
+    public byte[] serial() {
+        return builder.build().toByteArray();
+    }
+
     @Override
     public QNSRequestBO_PRO.QNSRequestBO.Builder getBuilder() { 
         return builder;

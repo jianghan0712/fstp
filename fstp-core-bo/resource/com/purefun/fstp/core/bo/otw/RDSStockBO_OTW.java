@@ -80,6 +80,10 @@ public class RDSStockBO_OTW implements ICommom_OTW {
         setUpdate_time(bofrom.update_time);
     }
 
+    public byte[] serial() {
+        return builder.build().toByteArray();
+    }
+
     @Override
     public RDSStockBO_PRO.RDSStockBO.Builder getBuilder() { 
         return builder;

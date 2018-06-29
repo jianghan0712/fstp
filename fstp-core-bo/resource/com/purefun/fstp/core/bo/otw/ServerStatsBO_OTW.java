@@ -38,6 +38,10 @@ public class ServerStatsBO_OTW implements ICommom_OTW {
         setStatus(bofrom.status);
     }
 
+    public byte[] serial() {
+        return builder.build().toByteArray();
+    }
+
     @Override
     public ServerStatsBO_PRO.ServerStatsBO.Builder getBuilder() { 
         return builder;

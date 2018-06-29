@@ -38,6 +38,10 @@ public class TestBO_OTW implements ICommom_OTW {
         setMsg(bofrom.msg);
     }
 
+    public byte[] serial() {
+        return builder.build().toByteArray();
+    }
+
     @Override
     public TestBO_PRO.TestBO.Builder getBuilder() { 
         return builder;

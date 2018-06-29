@@ -9,4 +9,4 @@ class QueryRequestBO(object):
         self.requestServiceName = ''
         self.respondServiceName = ''
         self.querytopic = ''
-        self.queryBoDestination = ''
+        self.tempTopic = ''

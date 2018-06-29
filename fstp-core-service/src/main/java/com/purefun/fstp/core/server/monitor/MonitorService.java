@@ -67,7 +67,7 @@ public class MonitorService extends PService{
 	public class HBThread implements Runnable{		
 		@Override
 		public void run() {
-			HBServer hb = new HBServer(log, session, fcache,MonitorService.this,"HBTopic");
+			HBServer hb = new HBServer(log, session, Icache, MonitorService.this,"HBTopic");
 			hb.publish();
 
 		}	

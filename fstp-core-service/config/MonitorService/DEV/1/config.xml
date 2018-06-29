@@ -11,19 +11,19 @@
     <bean id="MainServer" class="com.purefun.fstp.core.server.monitor.MonitorService">  
     	<!--  <constructor-arg name="serverName" value="MonitorService"></constructor-arg>-->
         <constructor-arg name="isServer" value="true"></constructor-arg>
-
+        <property name="cacheType" value="ignite"/>
    		<property name="boDestinationMap">   
        		<map>
-       			<entry key="com.purefun.fstp.core.bo.copy.TestBO"    		value="fstp.core.rpc.testone"/>
-       			<entry key="com.purefun.fstp.core.bo.copy.TestBO2"   		value="fstp.core.rpc.testtwo"/>
-       			<entry key="com.purefun.fstp.core.bo.copy.TestBO3"   		value="fstp.core.rpc.testthree"/>    			
+       			<entry key="com.purefun.fstp.core.bo.TestBO"    		value="fstp.core.rpc.testone"/>
+       			<entry key="com.purefun.fstp.core.bo.TestBO2"   		value="fstp.core.rpc.testtwo"/>
+       			<entry key="com.purefun.fstp.core.bo.TestBO3"   		value="fstp.core.rpc.testthree"/>    			
        		</map>
        </property>  
        <property name="managerBOMap">
         	<map>
-        		<entry key="fstp.core.rpc.testone"    		value="com.purefun.fstp.core.bo.TestBO"/>
+        		<entry key="fstp.core.rpc.testtwo"    		value="com.purefun.fstp.core.bo.TestBO2"/>
         	</map>
-        </property>
+       </property>
       
    	</bean>
    	   	

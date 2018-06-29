@@ -30,16 +30,7 @@
   		<constructor-arg>
 	  		<list>
 	  			<bean class="org.apache.ignite.configuration.CacheConfiguration">
-	  			 	<property name="name" value="personCache"></property>   
-                </bean>
-                <bean class="org.apache.ignite.configuration.CacheConfiguration">
-	  			 	<property name="name" value="RDSStock"></property> 
-	  			 	<property name="indexedTypes">
-                    	<array>
-                    		<value>java.lang.String</value>
-                    		<value>com.purefun.fstp.core.bo.RDSStockBO</value>
-                    	</array>
-                    </property>  
+	  			 	<property name="name" value="default-cache"></property>   
                 </bean>
 	  		</list>
 	  	</constructor-arg>

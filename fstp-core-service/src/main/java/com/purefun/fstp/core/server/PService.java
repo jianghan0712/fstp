@@ -18,30 +18,27 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.purefun.fstp.core.bo.RDSStockBO;
-import com.purefun.fstp.core.bo.ServerStatsBO;
 import com.purefun.fstp.core.bo.otw.ServerStatsBO_OTW;
-import com.purefun.fstp.core.cache.FCache;
+import com.purefun.fstp.core.cache.ICommonCache;
+import com.purefun.fstp.core.cache.ignitecache.ICache;
+import com.purefun.fstp.core.cache.rediscache.RCache;
 import com.purefun.fstp.core.constant.RpcConstant;
 import com.purefun.fstp.core.ignite.cfg.IgniteCfg;
 import com.purefun.fstp.core.ipc.RpcFactory;
-import com.purefun.fstp.core.ipc.query.QueryServerSide;
+import com.purefun.fstp.core.ipc.query.QueryService;
 import com.purefun.fstp.core.logging.PLogger;
 import com.purefun.fstp.core.python.TestPython;
 import com.purefun.fstp.core.qpid.QpidConnect;
 import com.purefun.fstp.core.server.hb.HBClient;
-import com.purefun.fstp.core.tool.ErrorManager;
 
 @EnableIgniteRepositories
 public class PService {
 	protected static PProperty property ;
-//	protected Jedis cache = null;
-	protected FCache fcache = null;
 	protected String serverName = null;
 	public static Logger log = null;
 	boolean isServer = true;
-	boolean connectMonitor = false;
-	protected String defaultPath = System.getProperty("user.dir") + "\\src\\resource\\msgdef";
+//	boolean connectMonitor = false;
+//	protected String defaultPath = System.getProperty("user.dir") + "\\src\\resource\\msgdef";
 	protected BeanFactory beanFactory = null;
 	protected RpcFactory rpcfactory = null;
 	protected HBClient hb = null;
@@ -57,8 +54,9 @@ public class PService {
 	
 	public IgniteCfg cfg ;	
 	public Ignite ignite = null;
-	public IgniteCache cache = null;
 	
+	public ICommonCache Icache = null;
+	public String cacheType = null;
 		
 	public PService(boolean isServer) {		
 		this.serverName = property.fullName;
@@ -72,51 +70,53 @@ public class PService {
 		this.serverName = property.fullName;	
 	}
 	
-	public void init() {
-		
+	public void init() {		
 		log.info("------------------------------------------------------------------------");
 		log.info("|                 This is Free & Super Trading Platform                |");
 		log.info("------------------------------------------------------------------------");
 		log.info("Create a new FSTP Server:{}",serverName);
 
-		fcache = new FCache(this);
 		connection = new QpidConnect(log);
 		/**********		STEP 1: Load service config file		***************/
+		if(cacheType.equalsIgnoreCase("ignite")) {
+			cfg = beanFactory.getBean(IgniteCfg.class);
+			cfg.init(log);
+			ignite = Ignition.start(cfg.getCfg());
+			Icache = new ICache(ignite, (List<CacheConfiguration>)beanFactory.getBean("cacheConfigurationList"));
+		}else if(cacheType.equalsIgnoreCase("redis")) {
+			Icache = new RCache(log, serverName, beanFactory);
+		}		
 		
-		/**********	     STEP 1: Connet to broker	   	***************/
+		/**********	     STEP 2: Connet to broker	   	***************/
 		if(connection!=null)
 			session = connection.connect();
 		
-		/**********	     STEP 2: create rpc factory	   	***************/
-		rpcfactory = new RpcFactory(session, fcache, log);
+		/**********	     STEP 3: create rpc factory	   	***************/
+		rpcfactory = new RpcFactory(session, Icache, log);
 		
-		/**********	     STEP 3: Register to monitor	   	***************/		
+		/**********	     STEP 4: Register to monitor	   	***************/		
 		if(!property.serverName.equalsIgnoreCase("MonitorService")) {
-//			ServerStatsBO bo = new ServerStatsBO(serverName, RpcConstant.ONLINE_SERVER);
 			ServerStatsBO_OTW hbbo = new ServerStatsBO_OTW();
 			hbbo.setServername(serverName);
 			hbbo.setStatus(RpcConstant.ONLINE_SERVER);
 			hb = new HBClient(log, session, "HBTopic",serverName);
 			hb.publish(hbbo);
-
 		}
-		/*  monitor service don't need register*/
-		/**********	     STEP 4: Get Common info	   	***************/
-//		ErrMap = ((ErrorManager)beanFactory.getBean("errorManager")).getErrorMap();
-		
-		/**********	     STEP 6: ignite	   	***************/
 
-		cfg = beanFactory.getBean(IgniteCfg.class);
-		cfg.init(log);
-		ignite = Ignition.start(cfg.getCfg());	
+		/**********	     STEP 5: Get Common info	   	***************/
+//		ErrMap = ((ErrorManager)beanFactory.getBean("errorManager")).getErrorMap();		
 	}
 
 	public void start() {
 		/*	heart beat */
+		/**********	     STEP 6: HB Thread	   	***************/
 		if(!property.develop.equalsIgnoreCase("python")) {
 			HBThreadPool.scheduleAtFixedRate(new HBThread(new ServerStatsBO_OTW()), 0, 60, TimeUnit.SECONDS);
 		}
-		startQueryService();
+		
+		/**********	     STEP 7: Query Thread	   	***************/
+		scheduledQueryThread.schedule(new QueryService(log, session, Icache, property.serverName, managerBOMap), 0, TimeUnit.SECONDS);
+		
 		log.info("<====================   active");
 	}
 	
@@ -125,7 +125,6 @@ public class PService {
 	}	
 	
 	public class HBThread implements Runnable{
-//		ServerStatsBO bo = new ServerStatsBO(serverName, RpcConstant.HEART_BEAT);
 		ServerStatsBO_OTW bo = null;
 		public HBThread(ServerStatsBO_OTW bo) {
 			this.bo = bo;
@@ -138,11 +137,6 @@ public class PService {
 			bo.setStatus(RpcConstant.HEART_BEAT);
 			hb.publish(bo);				
 		}		
-	}
-	
-	public void startQueryService() {
-		// TODO Auto-generated method stub
-//		scheduledQueryThread.schedule(new QueryServerSide(log, session, fcache, property.serverName, "QueryTopic",managerBOMap), 0, TimeUnit.SECONDS);
 	}
 
 	private static void getProperty() {
@@ -179,14 +173,6 @@ public class PService {
 		this.managerBOMap = managerBOMap;
 	}
 
-	public FCache getFcache() {
-		return fcache;
-	}
-
-	public void setFcache(FCache fcache) {
-		this.fcache = fcache;
-	}
-
 	public boolean isServer() {
 		return isServer;
 	}
@@ -203,36 +189,20 @@ public class PService {
 		this.rpcfactory = rpcfactory;
 	}
 
-	public HBClient getHb() {
-		return hb;
-	}
-
-	public void setHb(HBClient hb) {
-		this.hb = hb;
-	}
-
-	public Session getSession() {
-		return session;
-	}
-
-	public void setSession(Session session) {
-		this.session = session;
-	}
-
-	public QpidConnect getConnection() {
-		return connection;
-	}
-
-	public void setConnection(QpidConnect connection) {
-		this.connection = connection;
-	}
-
 	public Map<String, String> getErrMap() {
 		return ErrMap;
 	}
 
 	public void setErrMap(Map<String, String> errMap) {
 		ErrMap = errMap;
+	}
+	
+	public String getCacheType() {
+		return cacheType;
+	}
+
+	public void setCacheType(String cacheType) {
+		this.cacheType = cacheType;
 	}
 
 	public static void main(String[] args) {		

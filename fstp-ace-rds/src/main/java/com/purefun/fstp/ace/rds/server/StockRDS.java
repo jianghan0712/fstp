@@ -5,16 +5,14 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.apache.ignite.cache.affinity.AffinityKey;
-import org.apache.ignite.cache.query.QueryCursor;
-import org.apache.ignite.cache.query.SqlQuery;
 import org.apache.ignite.configuration.CacheConfiguration;
-import org.apache.ignite.internal.processors.cache.CacheEntryImpl;
 import org.slf4j.Logger;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.purefun.fstp.core.bo.RDSStockBO;
 import com.purefun.fstp.core.bo.otw.RDSStockBO_OTW;
 import com.purefun.fstp.core.bo.otw.SourceStockBO_OTW;
+import com.purefun.fstp.core.cache.ignitecache.ICache;
+import com.purefun.fstp.core.cache.rediscache.RCache;
 import com.purefun.fstp.core.ipc.RpcFactory;
 import com.purefun.fstp.core.logging.PLogger;
 
@@ -37,11 +35,7 @@ public class StockRDS extends RDSBase{
 		
 		//publish rdsBO
 		pub = RpcFactory.createPublisher();
-		//use java code create cache.
-//		CacheConfiguration<String, RDSStockBO> selfcache = new CacheConfiguration<String, RDSStockBO>("stockRDS");
-//		selfcache.setIndexedTypes(String.class, RDSStockBO.class);
-		
-		//or by spring
+	
 		CacheConfiguration<String, RDSStockBO> selfcache = beanFactory.getBean(CacheConfiguration.class);
 		cache = ignite.getOrCreateCache(selfcache);
 	}
@@ -87,7 +81,13 @@ public class StockRDS extends RDSBase{
 		// TODO Auto-generated method stub
 		int count = 0;
     	for(RDSStockBO each : (List<RDSStockBO>)list) {
-    		cache.put(each.product_id, each);
+    		if(ICache.class.isInstance(Icache)) {
+    			Icache.put("com.purefun.fstp.core.bo.RDSStockBO", each.product_id, each);
+    		}else if(RCache.class.isInstance(Icache)) {
+    			RDSStockBO_OTW bo = new RDSStockBO_OTW(each);
+    			Icache.put(null, each.getClass().getName(), bo.getBuilder().build().toByteArray());
+    		}
+    		
   		
     		log.info("load bo :product_id={}",each.product_id);
     		count++;
@@ -95,13 +95,12 @@ public class StockRDS extends RDSBase{
     	log.info("load data from DB to cache successful!!");
     	log.info("Count:{}",count);
 
-    	SqlQuery sql = new SqlQuery<AffinityKey<String>, RDSStockBO>(RDSStockBO.class, "1=1").setArgs(0, 1000);
-
-    	QueryCursor<?> res = cache.query(sql);
-    	for(Object each:res.getAll()) {
-    		RDSStockBO a = (RDSStockBO) ((CacheEntryImpl<String, RDSStockBO>)each).getValue();
-    		log.info("{}",a.secu_name_cn);
-    	}
+//    	SqlQuery sql = new SqlQuery<AffinityKey<String>, RDSStockBO>(RDSStockBO.class, "1=1").setArgs(0, 1000);	
+//    	QueryCursor<?> res = cache.query(sql);
+//    	for(Object each:res.getAll()) {
+//    		RDSStockBO a = (RDSStockBO) ((CacheEntryImpl<String, RDSStockBO>)each).getValue();
+//    		log.info("{}",a.secu_name_cn);
+//    	}
 	}
 	
 	class StockRDSSubListener extends RDSSubMessageListener{

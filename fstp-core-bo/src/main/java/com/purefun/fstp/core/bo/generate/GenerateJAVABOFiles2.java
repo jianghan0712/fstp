@@ -203,6 +203,12 @@ public class GenerateJAVABOFiles2 {
 		println(new StringBuilder(TAB).append("}").toString());
 		println("");
 		
+		//定义serial
+		println(new StringBuilder(TAB).append("public byte[] serial() {").toString());
+		println(new StringBuilder(TAB).append(TAB).append("return builder.build().toByteArray();").toString());
+		println(new StringBuilder(TAB).append("}").toString());
+		println("");
+		
 		//定义@Override
 		//builder
 		println(new StringBuilder(TAB).append("@Override").toString());

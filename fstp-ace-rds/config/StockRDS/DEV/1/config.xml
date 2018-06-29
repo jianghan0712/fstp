@@ -11,7 +11,7 @@
 
     <bean id="MainServer" class="com.purefun.fstp.ace.rds.server.StockRDS">  
         <constructor-arg name="isServer" value="true"></constructor-arg>  
-        
+        <property name="cacheType" value="ignite"/>
         <property name="managerBOMap">
         	<map>
         		<entry key="fstp.core.rpc.testone"    		value="com.purefun.fstp.core.bo.TestBO"/>
@@ -49,12 +49,28 @@
    	</bean> 
    	
    	<bean id="rdscache" class="org.apache.ignite.configuration.CacheConfiguration">  
-         <property name="name" value="stockRDS"></property>  
+         <property name="name" value="com.purefun.fstp.core.bo.RDSStockBO"></property>  
          <property name="indexedTypes">
                <array>
                     <value>java.lang.String</value>
                     <value>com.purefun.fstp.core.bo.RDSStockBO</value>
                </array>
          </property>  
-    </bean>  	
+    </bean>  
+    
+    <bean id="cacheConfigurationList" class="java.util.ArrayList">
+  		<constructor-arg>
+	  		<list>
+                <bean class="org.apache.ignite.configuration.CacheConfiguration">
+	  			 	<property name="name" value="com.purefun.fstp.core.bo.RDSStockBO"></property>  
+         			<property name="indexedTypes">
+               			<array>
+                    		<value>java.lang.String</value>
+                    		<value>com.purefun.fstp.core.bo.RDSStockBO</value>
+               			</array>
+         			</property>  
+                </bean>
+	  		</list>
+	  	</constructor-arg>
+  	</bean>	
 </beans>
