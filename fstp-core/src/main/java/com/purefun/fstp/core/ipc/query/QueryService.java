@@ -21,6 +21,7 @@ import com.purefun.fstp.core.bo.otw.QueryRequestBO_OTW;
 import com.purefun.fstp.core.cache.ICommonCache;
 import com.purefun.fstp.core.cache.ignitecache.ICache;
 import com.purefun.fstp.core.cache.rediscache.RCache;
+import com.purefun.fstp.core.tool.BoFactory;
 import com.purefun.fstp.core.tool.RPCTool;
 
 public class QueryService implements Runnable{
@@ -62,7 +63,7 @@ public class QueryService implements Runnable{
 					QueryRequestBO_OTW queryBO = new QueryRequestBO_OTW(RPCTool.subBytes(byteArray, 0, len));
 					List<byte[]> queResult = queryFromCache(queryBO);
 	            	if(queResult != null) {
-	            		log.info("receive query bo from {}.",queryBO.getRequestServiceName());
+	            		log.info("receive QueryBO topic: {}.",queryBO.getQuerytopic());
 	            		for(byte[] eachbo:queResult) {
 		            		BytesMessage responseMessage = session.createBytesMessage();
 			            	responseMessage.writeBytes(eachbo);
@@ -85,6 +86,8 @@ public class QueryService implements Runnable{
 		// TODO Auto-generated method stub
 		String request = queryBO.getQuerytopic();
 		List<byte[]> ret = null;
+		if(selfTopic==null || selfTopic.isEmpty())
+			return null;
 		for(Map.Entry<String, String> e:selfTopic.entrySet()) {
 			if (e.getKey().equalsIgnoreCase(request)) {
 				if(RCache.class.isInstance(cache)) {
@@ -114,13 +117,14 @@ public class QueryService implements Runnable{
 		
 		otwBoName.append("otw.").append(spiltTemp[len-1]).append("_OTW");
 		try {
-			Class c1 = Class.forName(boname);
+			Class c1 = Class.forName(boname);		
+//			Object t = BoFactory.createBo(c1);
 			Class c2 = Class.forName(otwBoName.toString());
+			Constructor c = c2.getDeclaredConstructor(c1);
+			Method m = c2.getMethod("serial");
+			
 			for(int i = 0;i<tempList.size();i++) {
-				if(c1.isInstance(tempList.get(i))) {
-					log.info(c1.getName());
-					Constructor c = c2.getDeclaredConstructor(c1);
-					Method m = c2.getMethod("serial");
+				if(c1.isInstance(tempList.get(i))) {			
 					byte[] k = (byte[]) m.invoke(c.newInstance(tempList.get(i)));
 					ret.add(k);
 				}
@@ -134,9 +138,6 @@ public class QueryService implements Runnable{
 		} catch (SecurityException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -146,8 +147,11 @@ public class QueryService implements Runnable{
 		} catch (InvocationTargetException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-				
+	
 		return ret;
 	}
 		

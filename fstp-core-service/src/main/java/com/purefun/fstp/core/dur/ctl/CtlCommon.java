@@ -1,8 +1,8 @@
-package com.purefun.fstp.ace.rds.server;
+package com.purefun.fstp.core.dur.ctl;
 
 import org.springframework.data.repository.CrudRepository;
 
-public class RDSCommon {
+public class CtlCommon {
 	String tableName = null;
 	String rdsCrud = null;
 

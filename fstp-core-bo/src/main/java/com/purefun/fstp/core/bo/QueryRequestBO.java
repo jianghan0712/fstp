@@ -3,14 +3,10 @@ package com.purefun.fstp.core.bo;
 import java.io.Serializable;
 
 import com.purefun.fstp.core.tool.UUID;
+import com.purefun.fstp.core.tool.fstpbo;
 
-public class QueryRequestBO implements BaseBO  {
-	
-	public String uuid = UUID.createUuid();					
-	
-	public long boid = 5L;					
-		
-	public String destination = "fstp.core.manager.queryrequest";
+@fstpbo(boid = 5L, destination = "fstp.core.manager.queryrequest")
+public class QueryRequestBO extends BaseBO  {
 	
 	public String requestServiceName = "";
 	

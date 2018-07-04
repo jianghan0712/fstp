@@ -10,18 +10,13 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 
 import com.purefun.fstp.core.tool.UUID;
+import com.purefun.fstp.core.tool.fstpbo;
 
 @Entity
 @Table(name="TestBO")
-public class TestBO2 implements BaseBO {
-	@Id 
-	public String uuid = UUID.createUuid();			
+@fstpbo(boid = 3L, destination = "fstp.core.rpc.testtwo")
+public class TestBO2 extends BaseBO {
+	public String servername = "";
 	
-	public long boid = 3;					
-		
-	public String destination = "fstp.core.rpc.testtwo";
-	
-	public String servername = null;
-	
-	public String msg = null;
+	public String msg = "";
 }

@@ -37,7 +37,7 @@ public class Query{
 				destination = session.createTopic("QueryTopic");
 				responseQueue = session.createTemporaryQueue();
 				messageConsumer = session.createConsumer(responseQueue);
-				messageProducer = session.createProducer(destination);	
+				messageProducer = session.createProducer(destination);
 			} catch (JMSException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -12,6 +12,7 @@ import java.lang.reflect.Field;
 
 public class GenerateJAVABOFiles2 {
 	PrintWriter myFileWriter;
+	String path = null;
 	String protofileDirectory = null;
 	String otwfileDirectory = null;
 	String builderfileDirectory = null;
@@ -33,13 +34,14 @@ public class GenerateJAVABOFiles2 {
 	private StringBuilder analysis(String line,int i) {
 		// TODO Auto-generated method stub
 //		String[] str = line.substring(0, line.indexOf("=")).trim().split(" "); 
-		line = line.replaceAll(";", "");
+		line = line.replaceAll(";", "");		
 		String[] str = line.trim().split(" "); 
 		StringBuilder fin = new StringBuilder();
 		//   str[0] str[1] str[2]
 		// required string uuid = 1;
 		if(str[2].equalsIgnoreCase("uuid") || str[2].equalsIgnoreCase("boid") || str[2].equalsIgnoreCase("destination")) {
-			fin.append("    required ");
+//			fin.append("    required ");
+			fin.append("    optional ");
 		}else {
 			fin.append("    optional ");
 		}
@@ -74,14 +76,12 @@ public class GenerateJAVABOFiles2 {
 			    	genFile(f);
 			    } else {			    	 
 			    	String className = f.getName().substring(0,f.getName().indexOf("."));
-			    	if(!className.contains("BO") || className.equalsIgnoreCase("BaseBO") || className.contains("Generate"))
+			    	if(!className.contains("BO") ||  className.contains("Generate"))
 			    		continue;
 			    	String filePath = f.getPath().substring(0,f.getPath().lastIndexOf("\\"));
 			    	String targetPath = TargetPath + filePath.substring(filePath.indexOf("com"));
 				 	protofileDirectory = targetPath + "\\protofile\\";
 				 	otwfileDirectory = targetPath + "\\otw\\";
-//				 	builderfileDirectory = targetPath + "\\builder\\";
-				 	System.out.println(targetPath);
 				 	String temp = targetPath.substring(targetPath.indexOf("com"),targetPath.length());
 				 	bopackageName = temp.replaceAll("\\\\", ".");
 			    	System.out.println(targetPath +"----" +  className +"----" +  protofileDirectory  +"----" + otwfileDirectory +"----" +builderfileDirectory +"-----" + bopackageName);
@@ -94,51 +94,98 @@ public class GenerateJAVABOFiles2 {
 						otwdir.mkdirs();
 				   	}
 			    	myFileWriter = new PrintWriter(new FileWriter(protofileDirectory + className + ".proto"),true);
-			    	genProFiles(f);
+			    	String superClass = genProFiles(f);
 			    	myFileWriter = new PrintWriter(new FileWriter(otwfileDirectory + className + "_OTW.java"),true);
-			    	genOTWContent(className);
-//			    	myFileWriter = new PrintWriter(new FileWriter(otwfileDirectory + className + "_OTW.java"),true);
+			    	genOTWContent(className, superClass);
 			    	genBuildFile(className + ".proto");
 			    }		    		    	
 			}
 		}		
 	}
 	
-	private void genProFiles(File f) throws IOException {
+	private String genProFiles(File f) throws IOException {
 		// TODO Auto-generated method stub
 		String className = f.getName().substring(0,f.getName().indexOf("."));
-	
+		String fileName = f.getPath();
 		InputStream input = new FileInputStream(f);
 		InputStreamReader inp = new InputStreamReader(input,"UTF-8");
 		BufferedReader br = new BufferedReader (inp);
-			
+		
+		println(new StringBuilder().append("import \"google/protobuf/any.proto\";").toString());
+		println("");
 		println(new StringBuilder().append("option java_outer_classname = \"").append(className).append("_PRO\";").toString());
 		println(new StringBuilder().append("option java_package = \"").append(bopackageName).append(".pro").append("\";").toString());
 		println("");
 		println(new StringBuilder().append("message ").append(className).append(" {").toString());
-				
-		String line = null;
-		int count = 1;
-		while((line = br.readLine())!=null) {
-			if(-1 != line.indexOf("{"))
-				break;
-		}
-			 
-		while((line = br.readLine())!=null) {
-			if(-1 != line.indexOf(";")) {
-				println(analysis(line,count++).toString());
-			}
-			if(-1 != line.indexOf("}")) {
-				break;
-			}
-		}
 		
+		String boName = fileName.substring(fileName.indexOf("com"), fileName.indexOf(".")).replace("\\", ".");
+		String line = null;
+		String[] l = null;
+		String superclass = null;
+		Field[] fileds = null;
+		int count = 4;
+		
+		try {
+			fileds = Class.forName(boName).getFields();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		println(new StringBuilder(TAB).append("optional string uuid = 1;").toString());
+		println(new StringBuilder(TAB).append("optional sint64 boid = 2;").toString());
+		println(new StringBuilder(TAB).append("optional string destination = 3;").toString());
+			
+		for(Field e:fileds) {
+			if(e.getName().equalsIgnoreCase("uuid") || e.getName().equalsIgnoreCase("boid") ||e.getName().equalsIgnoreCase("destination"))
+				continue;//先设了该值
+			StringBuilder fin = new StringBuilder(TAB).append("optional ");
+			if(e.getType().equals(java.lang.String.class)) {
+				fin.append("string ").append(e.getName()).append(" = ").append(String.valueOf(count++)).append(";");
+			}else if(e.getType().equals(double.class)) {
+				fin.append("double ").append(e.getName()).append(" = ").append(String.valueOf(count++)).append(";");
+			}else if(e.getType().equals(long.class)) {
+				fin.append("sint64 ").append(e.getName()).append(" = ").append(String.valueOf(count++)).append(";");
+			}else if(e.getType().equals(boolean.class)) {
+				fin.append("bool ").append(e.getName()).append(" = ").append(String.valueOf(count++)).append(";");
+			}else if(e.getType().equals(float.class)) {
+				fin.append("float ").append(e.getName()).append(" = ").append(String.valueOf(count++)).append(";");
+			}else if(e.getType().equals(int.class)) {
+				fin.append("int32 ").append(e.getName()).append(" = ").append(String.valueOf(count++)).append(";");
+			}
+			println(fin.toString());
+		}
+// 
+//		while((line = br.readLine())!=null) {
+//			if(-1 != line.indexOf("{")) {
+//				l = line.substring(0, line.indexOf("{")).split(" ");
+//				if(l[3].equalsIgnoreCase("extends"))
+////					superclass = findSuperClass(l[4]);
+//				break;
+//			}			
+//		}
+//			 
+//		while((line = br.readLine())!=null) {
+//			if(-1 != line.indexOf(";")) {
+//				println(analysis(line,count++).toString());
+//			}
+//			if(-1 != line.indexOf("}")) {
+//				break;
+//			}
+//		}
+//		
+//		if(superclass != null) {
+//			StringBuffer fin = new StringBuffer();
+//			fin.append("	optional google.protobuf.Any ").append(superclass).append(" = ").append(String.valueOf(count)).append(";");
+//			println(fin.toString());
+//		}
+//		
 		println("}");
+		return superclass;
 	}
-
+	
 	private void genBuildFile(String fileName) {
-		String strCmd = "./resource/protoc.exe -I=./" + protofileDirectory + " --java_out=./resource/ ./" + protofileDirectory + fileName;  		
-//		String strCmd = "D:/software/protobuf-3.5.1/src/protoc.exe -I=./" + protofileDirectory + " --java_out=./resource/ ./" + protofileDirectory + fileName;  
+//		String strCmd = "./resource/protoc.exe -I=./" + protofileDirectory + " --java_out=./resource/ ./" + protofileDirectory + fileName;  		
+		String strCmd = "D:/software/protobuf-3.5.1/src/protoc.exe -I=./" + protofileDirectory + " --java_out=./resource/ ./" + protofileDirectory + fileName;  
 		try {
 		    Runtime.getRuntime().exec(strCmd);
 		} catch (IOException e) {
@@ -146,7 +193,7 @@ public class GenerateJAVABOFiles2 {
 		}			  
 	}
 
-	private void genOTWContent(String boName) throws ClassNotFoundException {
+	private void genOTWContent(String boName, String superClassName) throws ClassNotFoundException {
 		// TODO Auto-generated method stub
 		String _proName = boName + "_PRO";
 		String _otwName = boName + "_OTW";
@@ -154,8 +201,9 @@ public class GenerateJAVABOFiles2 {
 		String boClassName = bopackageName + "." + boName;
 		
 		Class bo = Class.forName(boClassName);
-		Field[] fields=bo.getDeclaredFields();
-		
+		Field[] fields=bo.getFields();
+
+		/*************    文件头    ******************/
 		println(new StringBuilder("package ").append(bopackageName).append(".otw;").toString());
 		println("");
 		
@@ -163,6 +211,9 @@ public class GenerateJAVABOFiles2 {
 		println(new StringBuilder("import ").append(bopackageName).append(".pro.").append(boName).append("_PRO;").toString());
 		println(new StringBuilder("import com.google.protobuf.InvalidProtocolBufferException;").toString());
 		println(new StringBuilder("import com.purefun.fstp.core.bo.commom.ICommom_OTW;").toString());
+		println(new StringBuilder("import com.google.protobuf.Any;").toString());
+		
+		/*************    文件头    ******************/
 		println("");
 		println(new StringBuilder("public class ").append(_otwName).append(" implements ICommom_OTW {").toString());
 		
@@ -212,7 +263,7 @@ public class GenerateJAVABOFiles2 {
 		//定义@Override
 		//builder
 		println(new StringBuilder(TAB).append("@Override").toString());
-		println(new StringBuilder(TAB).append("public ").append(_proName).append(".").append(boName).append(".Builder getBuilder() { ").toString());
+		println(new StringBuilder(TAB).append("public com.google.protobuf.GeneratedMessageV3.Builder getBuilder() { ").toString());
 		println(new StringBuilder(TAB).append(TAB).append("return builder;").toString());
 		println(new StringBuilder(TAB).append("}").toString());
 		println("");
@@ -228,6 +279,64 @@ public class GenerateJAVABOFiles2 {
 		
 		genToString(_otwName,fields);
 		println("}");					
+	}
+
+	private void genOtherSetMethod(Field[] fields) {
+		// TODO Auto-generated method stub
+		for(Field field : fields) {
+			StringBuilder setmethodName = new StringBuilder();
+			String fieldName = field.getName();
+			StringBuilder first = null;
+			StringBuilder last = null;
+			
+			last = new StringBuilder(fieldName.substring(0, 1).toUpperCase()).append(fieldName.substring(1));
+			if(-1 != fieldName.indexOf("_")) {
+				first = new StringBuilder();
+				String[] temp = fieldName.split("_");
+				for(String t:temp) {
+					first.append(t.substring(0,1).toUpperCase()).append(t.substring(1));
+				}
+			}else {
+				first = last;
+			}
+			println(new StringBuilder(TAB).append(TAB).append("set").append(last).append("(")
+										  .append("bofrom.get").append(first).append("());").toString());
+		}
+	}
+
+	private String importSuperClass(String superClassName) {
+		// TODO Auto-generated method stub
+		String proName = superClassName + "_PRO.java";
+		String filePath = importFile(new File(TargetPath), proName);
+		String temp = null;
+		if (filePath!=null) {
+			temp = filePath.substring(filePath.indexOf("\\")+1, filePath.indexOf(".")).replace("\\", ".");
+		}
+		return temp;	
+	}
+
+	private String importFile(File directory, String superName) {
+		// TODO Auto-generated method stub
+		File flist[] = directory.listFiles();
+		String ret = null;
+		if (flist == null || flist.length == 0) {
+		    System.out.println("没有找到需要导入的父类");
+		    return null;
+		}
+		for (File f : flist) {
+		    if (f.isDirectory()) {
+		    	ret = importFile(f, superName);
+		    	if(ret!=null) {
+		    		return ret;
+		    	}
+		    } else {
+		    	if(f.getName().equalsIgnoreCase(superName)) {
+		    		ret = f.getPath();
+		    		return ret;
+		    	}
+		    }
+		}
+		return ret;
 	}
 
 	private void genBOStructSetMethod(Field[] fields) {
@@ -247,7 +356,17 @@ public class GenerateJAVABOFiles2 {
 		// TODO Auto-generated method stub
 		println(new StringBuilder(TAB).append("public String toString() {").toString()); 
 		println(new StringBuilder(TAB).append(TAB).append("return \"").append(name).append(" [\"+").toString());
+		
+		println(new StringBuilder(TAB).append(TAB).append(TAB).append("\"").append("uuid")
+                .append(" = \" + ").append("getUuid").append("() +").append("\",\" +").toString());			
+		println(new StringBuilder(TAB).append(TAB).append(TAB).append("\"").append("boid")
+                .append(" = \" + ").append("getBoid").append("() +").append("\",\" +").toString());			
+		println(new StringBuilder(TAB).append(TAB).append(TAB).append("\"").append("destination")
+                .append(" = \" + ").append("getDestination").append("() +").append("\",\" +").toString());			
+
 		for(Field field:fields) {
+			if(field.getName().equalsIgnoreCase("uuid") || field.getName().equalsIgnoreCase("boid") ||field.getName().equalsIgnoreCase("destination"))
+				continue;//先设了该值
 			StringBuilder fieldName = new StringBuilder(field.getName());
 			StringBuilder methodName = new StringBuilder("get");
 			StringBuilder first = new StringBuilder(fieldName.substring(0, 1).toUpperCase());
@@ -256,7 +375,7 @@ public class GenerateJAVABOFiles2 {
 			println(new StringBuilder(TAB).append(TAB).append(TAB).append("\"").append(field.getName())
 					                      .append(" = \" + ").append(methodName).append("() +").append("\",\" +").toString());			
 		}
-		println(new StringBuilder(TAB).append("\"]\";").toString()); 
+		println(new StringBuilder(TAB).append(TAB).append(" \"]\";").toString()); 
 		println(new StringBuilder(TAB).append("}").toString());
 		
 	}
@@ -358,7 +477,8 @@ public class GenerateJAVABOFiles2 {
 	}
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {	
-		GenerateJAVABOFiles2 writer = new GenerateJAVABOFiles2("src/main/java/");		
-		writer.genFile(new File("src/main/java/"));
+		GenerateJAVABOFiles2 writer = new GenerateJAVABOFiles2("src/main/java/");
+		writer.path = "src/main/java/";
+		writer.genFile(new File(writer.path));
 	}
 }

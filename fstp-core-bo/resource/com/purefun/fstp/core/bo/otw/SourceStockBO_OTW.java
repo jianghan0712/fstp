@@ -4,6 +4,7 @@ import com.purefun.fstp.core.bo.SourceStockBO;
 import com.purefun.fstp.core.bo.pro.SourceStockBO_PRO;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.purefun.fstp.core.bo.commom.ICommom_OTW;
+import com.google.protobuf.Any;
 
 public class SourceStockBO_OTW implements ICommom_OTW {
     SourceStockBO_PRO.SourceStockBO.Builder builder = null;
@@ -21,9 +22,6 @@ public class SourceStockBO_OTW implements ICommom_OTW {
         builder = SourceStockBO_PRO.SourceStockBO.newBuilder();
         bo= new SourceStockBO();
         SourceStockBO_PRO.SourceStockBO receive = SourceStockBO_PRO.SourceStockBO.parseFrom(message);
-        setUuid(receive.getUuid());
-        setBoid(receive.getBoid());
-        setDestination(receive.getDestination());
         setSecu_id(receive.getSecuId());
         setIsin(receive.getIsin());
         setRecord_update_time(receive.getRecordUpdateTime());
@@ -54,14 +52,14 @@ public class SourceStockBO_OTW implements ICommom_OTW {
         setMargin_flag(receive.getMarginFlag());
         setSecu_status(receive.getSecuStatus());
         setMemo(receive.getMemo());
+        setUuid(receive.getUuid());
+        setBoid(receive.getBoid());
+        setDestination(receive.getDestination());
     }
 
     public SourceStockBO_OTW(SourceStockBO bofrom){
         builder = SourceStockBO_PRO.SourceStockBO.newBuilder();
         bo= new SourceStockBO();
-        setUuid(bofrom.uuid);
-        setBoid(bofrom.boid);
-        setDestination(bofrom.destination);
         setSecu_id(bofrom.secu_id);
         setIsin(bofrom.isin);
         setRecord_update_time(bofrom.record_update_time);
@@ -92,6 +90,9 @@ public class SourceStockBO_OTW implements ICommom_OTW {
         setMargin_flag(bofrom.margin_flag);
         setSecu_status(bofrom.secu_status);
         setMemo(bofrom.memo);
+        setUuid(bofrom.uuid);
+        setBoid(bofrom.boid);
+        setDestination(bofrom.destination);
     }
 
     public byte[] serial() {
@@ -99,40 +100,13 @@ public class SourceStockBO_OTW implements ICommom_OTW {
     }
 
     @Override
-    public SourceStockBO_PRO.SourceStockBO.Builder getBuilder() { 
+    public com.google.protobuf.GeneratedMessageV3.Builder getBuilder() { 
         return builder;
     }
 
     @Override
     public SourceStockBO getBo() { 
         return bo;
-    }
-
-    public java.lang.String getUuid() {
-        return builder.getUuid();
-    }
-
-    public void setUuid(java.lang.String uuid) {
-        bo.uuid = uuid;
-        builder.setUuid(uuid);
-    }
-
-    public long getBoid() {
-        return builder.getBoid();
-    }
-
-    public void setBoid(long boid) {
-        bo.boid = boid;
-        builder.setBoid(boid);
-    }
-
-    public java.lang.String getDestination() {
-        return builder.getDestination();
-    }
-
-    public void setDestination(java.lang.String destination) {
-        bo.destination = destination;
-        builder.setDestination(destination);
     }
 
     public java.lang.String getSecu_id() {
@@ -405,6 +379,33 @@ public class SourceStockBO_OTW implements ICommom_OTW {
         builder.setMemo(memo);
     }
 
+    public java.lang.String getUuid() {
+        return builder.getUuid();
+    }
+
+    public void setUuid(java.lang.String uuid) {
+        bo.uuid = uuid;
+        builder.setUuid(uuid);
+    }
+
+    public long getBoid() {
+        return builder.getBoid();
+    }
+
+    public void setBoid(long boid) {
+        bo.boid = boid;
+        builder.setBoid(boid);
+    }
+
+    public java.lang.String getDestination() {
+        return builder.getDestination();
+    }
+
+    public void setDestination(java.lang.String destination) {
+        bo.destination = destination;
+        builder.setDestination(destination);
+    }
+
     public String toString() {
         return "SourceStockBO_OTW ["+
             "uuid = " + getUuid() +"," +
@@ -440,6 +441,6 @@ public class SourceStockBO_OTW implements ICommom_OTW {
             "margin_flag = " + getMargin_flag() +"," +
             "secu_status = " + getSecu_status() +"," +
             "memo = " + getMemo() +"," +
-    "]";
+         "]";
     }
 }

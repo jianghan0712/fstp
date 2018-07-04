@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 引入jedis的properties配置文件 -->
+	<import resource="classpath*:comConf/CommonConfig.xml" />
+	<!--  <import resource="DBConfig4.xml" />-->
+	
+    <bean id="MainServer" class="com.purefun.fstp.example.query.FstpQueryExampleService">  
+        <constructor-arg name="isServer" value="true"></constructor-arg>
+        <property name="cacheType" value="ignite"/>
+        <property name="managerBOMap">
+        	<map>
+        		<entry key="fstp.example.bo.test2"    		value="com.purefun.fstp.example.bo.ExampleBO"/>
+        		<entry key="fstp.ace.rds.server.stock"    	value="com.purefun.fstp.core.bo.RDSStockBO"/>
+        	</map>
+        </property>
+   	</bean> 
+   	
+   	<bean id="cacheConfigurationList" class="java.util.ArrayList">
+  		<constructor-arg>
+	  		<list>
+                <bean class="org.apache.ignite.configuration.CacheConfiguration">
+	  			 	<property name="name" value="com.purefun.fstp.example.bo.ExampleBO"></property>  
+         			<property name="indexedTypes">
+               			<array>
+                    		<value>java.lang.String</value>
+                    		<value>com.purefun.fstp.example.bo.ExampleBO</value>
+               			</array>
+         			</property>  
+                </bean>
+                <bean class="org.apache.ignite.configuration.CacheConfiguration">
+	  			 	<property name="name" value="com.purefun.fstp.core.bo.RDSStockBO"></property>  
+         			<property name="indexedTypes">
+               			<array>
+                    		<value>java.lang.String</value>
+                    		<value>com.purefun.fstp.core.bo.RDSStockBO</value>
+               			</array>
+         			</property>  
+                </bean>
+	  		</list>
+	  	</constructor-arg>
+  	</bean>	 	  	
+</beans>

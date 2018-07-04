@@ -1,47 +1,19 @@
 package com.purefun.fstp.core.server.ignite;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.jms.JMSException;
 
-import org.apache.commons.logging.impl.Log4JLogger;
-import org.apache.ignite.Ignite;
-import org.apache.ignite.IgniteCache;
-import org.apache.ignite.IgniteLogger;
-import org.apache.ignite.Ignition;
-import org.apache.ignite.cache.affinity.AffinityKey;
-import org.apache.ignite.cache.query.QueryCursor;
-import org.apache.ignite.cache.query.SqlFieldsQuery;
-import org.apache.ignite.cache.query.SqlQuery;
-import org.apache.ignite.configuration.IgniteConfiguration;
-import org.apache.ignite.internal.processors.cache.CacheEntryImpl;
-import org.apache.ignite.logger.slf4j.Slf4jLogger;
 import org.slf4j.Logger;
-import org.springframework.data.repository.CrudRepository;
-
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.purefun.fstp.ace.rds.server.RDSCommon;
-import com.purefun.fstp.core.bo.RDSStockBO;
 import com.purefun.fstp.core.bo.TestBO;
-import com.purefun.fstp.core.bo.otw.QueryRequestBO_OTW;
+import com.purefun.fstp.core.bo.otw.RDSStockBO_OTW;
 import com.purefun.fstp.core.bo.otw.TestBO_OTW;
-import com.purefun.fstp.core.bo.pro.TestBO_PRO;
-import com.purefun.fstp.core.cache.ignitecache.ICache;
-import com.purefun.fstp.core.cache.rediscache.RCache;
-import com.purefun.fstp.core.ipc.PublishMode;
 import com.purefun.fstp.core.ipc.msglistener.QnsMessageListener;
 import com.purefun.fstp.core.ipc.msglistener.QueryMessageListener;
-import com.purefun.fstp.core.ipc.pub.Publisher;
-import com.purefun.fstp.core.ipc.qns.QNSubscriber;
-import com.purefun.fstp.core.ipc.query.Query;
 import com.purefun.fstp.core.logging.PLogger;
-import com.purefun.fstp.core.model.Person;
-import com.purefun.fstp.core.model.repo.PersonRepository;
 import com.purefun.fstp.core.server.PService;
-
-import redis.clients.jedis.Jedis;
 
 public class IgniteService extends PService{
 	
@@ -70,19 +42,18 @@ public class IgniteService extends PService{
 		
 //		Query que = rpcfactory.createQuery();
 //		QueryRequestBO_OTW bo = new QueryRequestBO_OTW();
-//		bo.setQuerytopic("fstp.core.rpc.testone");
+//		bo.setQuerytopic("fstp.ace.rds.server.stock");
 //		que.query(bo, new TestListener(log));
 		
 //		ICache test = (ICache) Icache;
-//		List<TestBO> a = (List<TestBO>)test.get("com.purefun.fstp.core.bo.TestBO", null);
-//		for(TestBO bo: a) {
-//			log.info("{}",a.size());
-//			log.info(bo.uuid);			
+//		List<RDSStockBO> a = (List<RDSStockBO>)test.get("com.purefun.fstp.core.bo.RDSStockBO", null);
+//		for(RDSStockBO bo: a) {
+//			log.info(bo.secu_name_cn);			
 //		}
 				
-		QNSubscriber qns = rpcfactory.createQNSubscriber();
-		qns.init("fstp.core.rpc.testone", serverName);
-		qns.QNS(new Listener(log));
+//		QNSubscriber qns = rpcfactory.createQNSubscriber();
+//		qns.init("fstp.core.rpc.testone", serverName);
+//		qns.QNS(new Listener(log));
 						
 	}
 	class TestListener extends QueryMessageListener{
@@ -95,10 +66,10 @@ public class IgniteService extends PService{
 		@Override
 		protected void doTask(byte[] objMsg) {
 			// TODO Auto-generated method stub
-			TestBO_OTW a;
+			RDSStockBO_OTW a;
 			try {
-				a = new TestBO_OTW(objMsg);
-				log.info(a.getUuid());
+				a = new RDSStockBO_OTW(objMsg);
+				log.info(a.getSecu_name_cn());
 			} catch (InvalidProtocolBufferException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -123,8 +94,10 @@ public class IgniteService extends PService{
 		}
 
 		@Override
-		protected void doQueryTask(List eachList) {
+		protected void doQueryTask(Map.Entry<String, List> m) {
 			// TODO Auto-generated method stub
+			String boName = m.getKey();
+			List eachList = m.getValue();
 			int len = eachList.size();
 			for(int i = 0; i<len; i++) {
 				try {		

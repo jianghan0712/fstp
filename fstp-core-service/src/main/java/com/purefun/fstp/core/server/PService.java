@@ -18,6 +18,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.purefun.fstp.core.bo.ServerStatsBO;
 import com.purefun.fstp.core.bo.otw.ServerStatsBO_OTW;
 import com.purefun.fstp.core.cache.ICommonCache;
 import com.purefun.fstp.core.cache.ignitecache.ICache;
@@ -27,9 +28,9 @@ import com.purefun.fstp.core.ignite.cfg.IgniteCfg;
 import com.purefun.fstp.core.ipc.RpcFactory;
 import com.purefun.fstp.core.ipc.query.QueryService;
 import com.purefun.fstp.core.logging.PLogger;
-import com.purefun.fstp.core.python.TestPython;
 import com.purefun.fstp.core.qpid.QpidConnect;
 import com.purefun.fstp.core.server.hb.HBClient;
+import com.purefun.fstp.core.tool.BoFactory;
 
 @EnableIgniteRepositories
 public class PService {
@@ -65,7 +66,7 @@ public class PService {
 	
 	public PService() {		
 		getProperty();
-		log = PLogger.getLogger(TestPython.class);
+//		log = PLogger.getLogger(TestPython.class);
 		log.info(property.toString());
 		this.serverName = property.fullName;	
 	}
@@ -96,7 +97,7 @@ public class PService {
 		
 		/**********	     STEP 4: Register to monitor	   	***************/		
 		if(!property.serverName.equalsIgnoreCase("MonitorService")) {
-			ServerStatsBO_OTW hbbo = new ServerStatsBO_OTW();
+			ServerStatsBO_OTW hbbo = (ServerStatsBO_OTW)BoFactory.createBo(ServerStatsBO.class);
 			hbbo.setServername(serverName);
 			hbbo.setStatus(RpcConstant.ONLINE_SERVER);
 			hb = new HBClient(log, session, "HBTopic",serverName);
@@ -111,7 +112,7 @@ public class PService {
 		/*	heart beat */
 		/**********	     STEP 6: HB Thread	   	***************/
 		if(!property.develop.equalsIgnoreCase("python")) {
-			HBThreadPool.scheduleAtFixedRate(new HBThread(new ServerStatsBO_OTW()), 0, 60, TimeUnit.SECONDS);
+			HBThreadPool.scheduleAtFixedRate(new HBThread((ServerStatsBO_OTW)BoFactory.createBo(ServerStatsBO.class)), 0, 60, TimeUnit.SECONDS);
 		}
 		
 		/**********	     STEP 7: Query Thread	   	***************/

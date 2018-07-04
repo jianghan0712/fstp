@@ -3,15 +3,12 @@ package com.purefun.fstp.core.bo;
 import java.io.Serializable;
 
 import com.purefun.fstp.core.tool.UUID;
+import com.purefun.fstp.core.tool.fstpbo;
 
-public class QNSRequestBO implements BaseBO  {	
-	public String uuid = UUID.createUuid();					
+@fstpbo(boid = 4L, destination = "fstp.core.manager.qnsrequest")
+public class QNSRequestBO extends BaseBO  {	
 	
-	public long boid = 4L;					
-		
-	public String destination = "fstp.core.manager.qnsrequest";
+	public String servername = "";	
 	
-	public String servername = null;	
-	
-	public String request = null;
+	public String request = "";
 }

@@ -4,7 +4,7 @@
   
   <groupId>com.purefun</groupId>
   <artifactId>fstp</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   
   <name>fstp</name>
@@ -43,7 +43,7 @@
     	<!-- ignite.version -->
     	<ignite.version>2.4.0</ignite.version>
     	<lucene.version>5.5.0</lucene.version>
-    	<fstp.version>0.0.1-SNAPSHOT</fstp.version>
+    	<fstp.version>0.1.0-SNAPSHOT</fstp.version>
   </properties>
 
   <dependencies>
@@ -222,5 +222,6 @@
     <module>fstp-ace-rds</module>
     <module>fstp-core-bo</module>
     <module>fstp-core-service</module>
+    <module>fstp-example</module>
   </modules>
 </project>

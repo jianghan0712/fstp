@@ -4,6 +4,7 @@ import com.purefun.fstp.core.bo.RDSStockBO;
 import com.purefun.fstp.core.bo.pro.RDSStockBO_PRO;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.purefun.fstp.core.bo.commom.ICommom_OTW;
+import com.google.protobuf.Any;
 
 public class RDSStockBO_OTW implements ICommom_OTW {
     RDSStockBO_PRO.RDSStockBO.Builder builder = null;
@@ -21,9 +22,6 @@ public class RDSStockBO_OTW implements ICommom_OTW {
         builder = RDSStockBO_PRO.RDSStockBO.newBuilder();
         bo= new RDSStockBO();
         RDSStockBO_PRO.RDSStockBO receive = RDSStockBO_PRO.RDSStockBO.parseFrom(message);
-        setUuid(receive.getUuid());
-        setBoid(receive.getBoid());
-        setDestination(receive.getDestination());
         setProduct_id(receive.getProductId());
         setSecu_name_cn(receive.getSecuNameCn());
         setSecu_name_en(receive.getSecuNameEn());
@@ -47,14 +45,14 @@ public class RDSStockBO_OTW implements ICommom_OTW {
         setSecu_status(receive.getSecuStatus());
         setMemo(receive.getMemo());
         setUpdate_time(receive.getUpdateTime());
+        setUuid(receive.getUuid());
+        setBoid(receive.getBoid());
+        setDestination(receive.getDestination());
     }
 
     public RDSStockBO_OTW(RDSStockBO bofrom){
         builder = RDSStockBO_PRO.RDSStockBO.newBuilder();
         bo= new RDSStockBO();
-        setUuid(bofrom.uuid);
-        setBoid(bofrom.boid);
-        setDestination(bofrom.destination);
         setProduct_id(bofrom.product_id);
         setSecu_name_cn(bofrom.secu_name_cn);
         setSecu_name_en(bofrom.secu_name_en);
@@ -78,6 +76,9 @@ public class RDSStockBO_OTW implements ICommom_OTW {
         setSecu_status(bofrom.secu_status);
         setMemo(bofrom.memo);
         setUpdate_time(bofrom.update_time);
+        setUuid(bofrom.uuid);
+        setBoid(bofrom.boid);
+        setDestination(bofrom.destination);
     }
 
     public byte[] serial() {
@@ -85,40 +86,13 @@ public class RDSStockBO_OTW implements ICommom_OTW {
     }
 
     @Override
-    public RDSStockBO_PRO.RDSStockBO.Builder getBuilder() { 
+    public com.google.protobuf.GeneratedMessageV3.Builder getBuilder() { 
         return builder;
     }
 
     @Override
     public RDSStockBO getBo() { 
         return bo;
-    }
-
-    public java.lang.String getUuid() {
-        return builder.getUuid();
-    }
-
-    public void setUuid(java.lang.String uuid) {
-        bo.uuid = uuid;
-        builder.setUuid(uuid);
-    }
-
-    public long getBoid() {
-        return builder.getBoid();
-    }
-
-    public void setBoid(long boid) {
-        bo.boid = boid;
-        builder.setBoid(boid);
-    }
-
-    public java.lang.String getDestination() {
-        return builder.getDestination();
-    }
-
-    public void setDestination(java.lang.String destination) {
-        bo.destination = destination;
-        builder.setDestination(destination);
     }
 
     public java.lang.String getProduct_id() {
@@ -328,6 +302,33 @@ public class RDSStockBO_OTW implements ICommom_OTW {
         builder.setUpdateTime(update_time);
     }
 
+    public java.lang.String getUuid() {
+        return builder.getUuid();
+    }
+
+    public void setUuid(java.lang.String uuid) {
+        bo.uuid = uuid;
+        builder.setUuid(uuid);
+    }
+
+    public long getBoid() {
+        return builder.getBoid();
+    }
+
+    public void setBoid(long boid) {
+        bo.boid = boid;
+        builder.setBoid(boid);
+    }
+
+    public java.lang.String getDestination() {
+        return builder.getDestination();
+    }
+
+    public void setDestination(java.lang.String destination) {
+        bo.destination = destination;
+        builder.setDestination(destination);
+    }
+
     public String toString() {
         return "RDSStockBO_OTW ["+
             "uuid = " + getUuid() +"," +
@@ -356,6 +357,6 @@ public class RDSStockBO_OTW implements ICommom_OTW {
             "secu_status = " + getSecu_status() +"," +
             "memo = " + getMemo() +"," +
             "update_time = " + getUpdate_time() +"," +
-    "]";
+         "]";
     }
 }

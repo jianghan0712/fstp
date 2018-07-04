@@ -1,16 +1,23 @@
 package com.purefun.fstp.example.bo;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
+
+import org.apache.ignite.cache.query.annotations.QuerySqlField;
+
 import com.purefun.fstp.core.bo.BaseBO;
 import com.purefun.fstp.core.tool.UUID;
+import com.purefun.fstp.core.tool.fstpbo;
 
-public class ExampleBO implements BaseBO  {	
-	public String uuid = UUID.createUuid();					
+@MappedSuperclass
+@fstpbo(boid = 6013L, destination = "fstp.example.bo.test2")
+public class ExampleBO extends BaseBO  {	
 	
-	public long boid = 6L;					
-		
-	public String destination = "fstp.core.example.publish";
-	
-	public String name = null;
-	
+	@QuerySqlField
+	public String name = "";
+	@QuerySqlField
 	public int age = 0;
+	
 }
