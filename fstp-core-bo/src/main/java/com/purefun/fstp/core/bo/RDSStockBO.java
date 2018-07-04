@@ -9,17 +9,12 @@ import javax.persistence.Table;
 import org.apache.ignite.cache.query.annotations.QuerySqlField;
 
 import com.purefun.fstp.core.tool.UUID;
+import com.purefun.fstp.core.tool.fstpbo;
 
 @Entity  
 @Table(name="RDS_STOCK") 
-public class RDSStockBO  implements BaseBO {	
-	@QuerySqlField(index=true)
-	@Id
-	public String uuid = UUID.createUuid();	
-	@QuerySqlField
-	public long boid = 1001L;
-	@QuerySqlField
-	public String destination = "fstp.ace.rds.server.stock";
+@fstpbo(boid = 1001L, destination = "fstp.ace.rds.server.stock")
+public class RDSStockBO extends BaseBO {	
 	@QuerySqlField(index=true)
 	public String product_id = "";
 	@QuerySqlField

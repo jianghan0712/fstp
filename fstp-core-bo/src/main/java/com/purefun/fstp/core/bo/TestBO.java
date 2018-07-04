@@ -9,17 +9,12 @@ import javax.persistence.Table;
 import org.apache.ignite.cache.query.annotations.QuerySqlField;
 
 import com.purefun.fstp.core.tool.UUID;
+import com.purefun.fstp.core.tool.fstpbo;
 
 @Entity  
 @Table(name="TestBO") 
-public class TestBO  implements BaseBO {
-	@QuerySqlField(index=true)
-	@Id
-	public String uuid = UUID.createUuid();	
-	@QuerySqlField
-	public long boid = 2L;				
-	@QuerySqlField
-	public String destination = "fstp.core.rpc.testone";
+@fstpbo(boid = 2L, destination = "fstp.core.rpc.testone")
+public class TestBO extends BaseBO {
 	@QuerySqlField
 	public String servername = "";
 	@QuerySqlField

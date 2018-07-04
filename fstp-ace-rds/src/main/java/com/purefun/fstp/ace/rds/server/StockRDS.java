@@ -87,20 +87,19 @@ public class StockRDS extends RDSBase{
     			RDSStockBO_OTW bo = new RDSStockBO_OTW(each);
     			Icache.put(null, each.getClass().getName(), bo.getBuilder().build().toByteArray());
     		}
-    		
-  		
+    			
     		log.info("load bo :product_id={}",each.product_id);
     		count++;
     	}
     	log.info("load data from DB to cache successful!!");
     	log.info("Count:{}",count);
 
-//    	SqlQuery sql = new SqlQuery<AffinityKey<String>, RDSStockBO>(RDSStockBO.class, "1=1").setArgs(0, 1000);	
-//    	QueryCursor<?> res = cache.query(sql);
-//    	for(Object each:res.getAll()) {
-//    		RDSStockBO a = (RDSStockBO) ((CacheEntryImpl<String, RDSStockBO>)each).getValue();
-//    		log.info("{}",a.secu_name_cn);
-//    	}
+		ICache cache = (ICache)Icache;
+		List<RDSStockBO> t = cache.query("product_id LIKE '900934.SH'", RDSStockBO.class);
+		for(RDSStockBO e:t) {
+			log.info("product_id = {}, sec_name_cn = {} ",e.product_id, e.secu_name_cn);
+		}
+		log.info("{}",t.size());
 	}
 	
 	class StockRDSSubListener extends RDSSubMessageListener{

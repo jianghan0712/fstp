@@ -19,38 +19,38 @@ public final class SourceStockBO_PRO {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     boolean hasUuid();
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     java.lang.String getUuid();
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     com.google.protobuf.ByteString
         getUuidBytes();
 
     /**
-     * <code>required sint64 boid = 2;</code>
+     * <code>optional sint64 boid = 2;</code>
      */
     boolean hasBoid();
     /**
-     * <code>required sint64 boid = 2;</code>
+     * <code>optional sint64 boid = 2;</code>
      */
     long getBoid();
 
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     boolean hasDestination();
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     java.lang.String getDestination();
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     com.google.protobuf.ByteString
         getDestinationBytes();
@@ -715,13 +715,13 @@ public final class SourceStockBO_PRO {
     public static final int UUID_FIELD_NUMBER = 1;
     private volatile java.lang.Object uuid_;
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     public boolean hasUuid() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     public java.lang.String getUuid() {
       java.lang.Object ref = uuid_;
@@ -738,7 +738,7 @@ public final class SourceStockBO_PRO {
       }
     }
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     public com.google.protobuf.ByteString
         getUuidBytes() {
@@ -757,13 +757,13 @@ public final class SourceStockBO_PRO {
     public static final int BOID_FIELD_NUMBER = 2;
     private long boid_;
     /**
-     * <code>required sint64 boid = 2;</code>
+     * <code>optional sint64 boid = 2;</code>
      */
     public boolean hasBoid() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required sint64 boid = 2;</code>
+     * <code>optional sint64 boid = 2;</code>
      */
     public long getBoid() {
       return boid_;
@@ -772,13 +772,13 @@ public final class SourceStockBO_PRO {
     public static final int DESTINATION_FIELD_NUMBER = 3;
     private volatile java.lang.Object destination_;
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     public boolean hasDestination() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     public java.lang.String getDestination() {
       java.lang.Object ref = destination_;
@@ -795,7 +795,7 @@ public final class SourceStockBO_PRO {
       }
     }
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     public com.google.protobuf.ByteString
         getDestinationBytes() {
@@ -1780,18 +1780,6 @@ public final class SourceStockBO_PRO {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasUuid()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasBoid()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasDestination()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -2905,15 +2893,6 @@ public final class SourceStockBO_PRO {
       }
 
       public final boolean isInitialized() {
-        if (!hasUuid()) {
-          return false;
-        }
-        if (!hasBoid()) {
-          return false;
-        }
-        if (!hasDestination()) {
-          return false;
-        }
         return true;
       }
 
@@ -2939,13 +2918,13 @@ public final class SourceStockBO_PRO {
 
       private java.lang.Object uuid_ = "";
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public boolean hasUuid() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public java.lang.String getUuid() {
         java.lang.Object ref = uuid_;
@@ -2962,7 +2941,7 @@ public final class SourceStockBO_PRO {
         }
       }
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public com.google.protobuf.ByteString
           getUuidBytes() {
@@ -2978,7 +2957,7 @@ public final class SourceStockBO_PRO {
         }
       }
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public Builder setUuid(
           java.lang.String value) {
@@ -2991,7 +2970,7 @@ public final class SourceStockBO_PRO {
         return this;
       }
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public Builder clearUuid() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -3000,7 +2979,7 @@ public final class SourceStockBO_PRO {
         return this;
       }
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public Builder setUuidBytes(
           com.google.protobuf.ByteString value) {
@@ -3015,19 +2994,19 @@ public final class SourceStockBO_PRO {
 
       private long boid_ ;
       /**
-       * <code>required sint64 boid = 2;</code>
+       * <code>optional sint64 boid = 2;</code>
        */
       public boolean hasBoid() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required sint64 boid = 2;</code>
+       * <code>optional sint64 boid = 2;</code>
        */
       public long getBoid() {
         return boid_;
       }
       /**
-       * <code>required sint64 boid = 2;</code>
+       * <code>optional sint64 boid = 2;</code>
        */
       public Builder setBoid(long value) {
         bitField0_ |= 0x00000002;
@@ -3036,7 +3015,7 @@ public final class SourceStockBO_PRO {
         return this;
       }
       /**
-       * <code>required sint64 boid = 2;</code>
+       * <code>optional sint64 boid = 2;</code>
        */
       public Builder clearBoid() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -3047,13 +3026,13 @@ public final class SourceStockBO_PRO {
 
       private java.lang.Object destination_ = "";
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public boolean hasDestination() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public java.lang.String getDestination() {
         java.lang.Object ref = destination_;
@@ -3070,7 +3049,7 @@ public final class SourceStockBO_PRO {
         }
       }
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public com.google.protobuf.ByteString
           getDestinationBytes() {
@@ -3086,7 +3065,7 @@ public final class SourceStockBO_PRO {
         }
       }
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public Builder setDestination(
           java.lang.String value) {
@@ -3099,7 +3078,7 @@ public final class SourceStockBO_PRO {
         return this;
       }
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public Builder clearDestination() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -3108,7 +3087,7 @@ public final class SourceStockBO_PRO {
         return this;
       }
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public Builder setDestinationBytes(
           com.google.protobuf.ByteString value) {
@@ -4979,27 +4958,27 @@ public final class SourceStockBO_PRO {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\023SourceStockBO.proto\"\335\005\n\rSourceStockBO\022" +
-      "\014\n\004uuid\030\001 \002(\t\022\014\n\004boid\030\002 \002(\022\022\023\n\013destinati" +
-      "on\030\003 \002(\t\022\017\n\007secu_id\030\004 \001(\t\022\014\n\004isin\030\005 \001(\t\022" +
-      "\032\n\022record_update_time\030\006 \001(\t\022\031\n\021secu_chin" +
-      "ese_name\030\007 \001(\t\022\031\n\021secu_english_name\030\010 \001(" +
-      "\t\022\024\n\014secu_base_id\030\t \001(\t\022\021\n\texch_type\030\n \001" +
-      "(\t\022\021\n\tsecu_type\030\013 \001(\t\022\025\n\rsecu_sub_type\030\014" +
-      " \001(\t\022\020\n\010currency\030\r \001(\t\022\026\n\016bond_par_value" +
-      "\030\016 \001(\001\022\027\n\017not_list_stkqty\030\017 \001(\t\022\027\n\017last_" +
-      "trade_date\030\020 \001(\t\022\021\n\tlist_date\030\021 \001(\t\022\026\n\016p" +
-      "roduct_set_id\030\022 \001(\t\022\020\n\010buy_unit\030\023 \001(\005\022\021\n" +
-      "\tsell_unit\030\024 \001(\005\022\027\n\017trade_low_limit\030\025 \001(" +
-      "\005\022\030\n\020trade_high_limit\030\026 \001(\005\022\027\n\017pre_close" +
-      "_price\030\027 \001(\001\022\022\n\ntick_price\030\030 \001(\001\022\030\n\020pric" +
-      "e_limit_type\030\031 \001(\t\022\030\n\020price_high_limit\030\032" +
-      " \001(\001\022\027\n\017price_low_limit\030\033 \001(\001\022\026\n\016ex_righ" +
-      "t_ratio\030\034 \001(\001\022\026\n\016dividend_price\030\035 \001(\001\022\026\n" +
-      "\016financing_flag\030\036 \001(\t\022\023\n\013margin_flag\030\037 \001" +
-      "(\t\022\023\n\013secu_status\030  \001(\t\022\014\n\004memo\030! \001(\tB1\n" +
-      "\034com.purefun.fstp.core.bo.proB\021SourceSto" +
-      "ckBO_PRO"
+      "\n\023SourceStockBO.proto\032\031google/protobuf/a" +
+      "ny.proto\"\335\005\n\rSourceStockBO\022\014\n\004uuid\030\001 \001(\t" +
+      "\022\014\n\004boid\030\002 \001(\022\022\023\n\013destination\030\003 \001(\t\022\017\n\007s" +
+      "ecu_id\030\004 \001(\t\022\014\n\004isin\030\005 \001(\t\022\032\n\022record_upd" +
+      "ate_time\030\006 \001(\t\022\031\n\021secu_chinese_name\030\007 \001(" +
+      "\t\022\031\n\021secu_english_name\030\010 \001(\t\022\024\n\014secu_bas" +
+      "e_id\030\t \001(\t\022\021\n\texch_type\030\n \001(\t\022\021\n\tsecu_ty" +
+      "pe\030\013 \001(\t\022\025\n\rsecu_sub_type\030\014 \001(\t\022\020\n\010curre" +
+      "ncy\030\r \001(\t\022\026\n\016bond_par_value\030\016 \001(\001\022\027\n\017not" +
+      "_list_stkqty\030\017 \001(\t\022\027\n\017last_trade_date\030\020 " +
+      "\001(\t\022\021\n\tlist_date\030\021 \001(\t\022\026\n\016product_set_id" +
+      "\030\022 \001(\t\022\020\n\010buy_unit\030\023 \001(\005\022\021\n\tsell_unit\030\024 " +
+      "\001(\005\022\027\n\017trade_low_limit\030\025 \001(\005\022\030\n\020trade_hi" +
+      "gh_limit\030\026 \001(\005\022\027\n\017pre_close_price\030\027 \001(\001\022" +
+      "\022\n\ntick_price\030\030 \001(\001\022\030\n\020price_limit_type\030" +
+      "\031 \001(\t\022\030\n\020price_high_limit\030\032 \001(\001\022\027\n\017price" +
+      "_low_limit\030\033 \001(\001\022\026\n\016ex_right_ratio\030\034 \001(\001" +
+      "\022\026\n\016dividend_price\030\035 \001(\001\022\026\n\016financing_fl" +
+      "ag\030\036 \001(\t\022\023\n\013margin_flag\030\037 \001(\t\022\023\n\013secu_st" +
+      "atus\030  \001(\t\022\014\n\004memo\030! \001(\tB1\n\034com.purefun." +
+      "fstp.core.bo.proB\021SourceStockBO_PRO"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5012,6 +4991,7 @@ public final class SourceStockBO_PRO {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.google.protobuf.AnyProto.getDescriptor(),
         }, assigner);
     internal_static_SourceStockBO_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -5019,6 +4999,7 @@ public final class SourceStockBO_PRO {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SourceStockBO_descriptor,
         new java.lang.String[] { "Uuid", "Boid", "Destination", "SecuId", "Isin", "RecordUpdateTime", "SecuChineseName", "SecuEnglishName", "SecuBaseId", "ExchType", "SecuType", "SecuSubType", "Currency", "BondParValue", "NotListStkqty", "LastTradeDate", "ListDate", "ProductSetId", "BuyUnit", "SellUnit", "TradeLowLimit", "TradeHighLimit", "PreClosePrice", "TickPrice", "PriceLimitType", "PriceHighLimit", "PriceLowLimit", "ExRightRatio", "DividendPrice", "FinancingFlag", "MarginFlag", "SecuStatus", "Memo", });
+    com.google.protobuf.AnyProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

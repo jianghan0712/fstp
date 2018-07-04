@@ -19,38 +19,38 @@ public final class RDSStockBO_PRO {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     boolean hasUuid();
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     java.lang.String getUuid();
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     com.google.protobuf.ByteString
         getUuidBytes();
 
     /**
-     * <code>required sint64 boid = 2;</code>
+     * <code>optional sint64 boid = 2;</code>
      */
     boolean hasBoid();
     /**
-     * <code>required sint64 boid = 2;</code>
+     * <code>optional sint64 boid = 2;</code>
      */
     long getBoid();
 
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     boolean hasDestination();
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     java.lang.String getDestination();
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     com.google.protobuf.ByteString
         getDestinationBytes();
@@ -572,13 +572,13 @@ public final class RDSStockBO_PRO {
     public static final int UUID_FIELD_NUMBER = 1;
     private volatile java.lang.Object uuid_;
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     public boolean hasUuid() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     public java.lang.String getUuid() {
       java.lang.Object ref = uuid_;
@@ -595,7 +595,7 @@ public final class RDSStockBO_PRO {
       }
     }
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     public com.google.protobuf.ByteString
         getUuidBytes() {
@@ -614,13 +614,13 @@ public final class RDSStockBO_PRO {
     public static final int BOID_FIELD_NUMBER = 2;
     private long boid_;
     /**
-     * <code>required sint64 boid = 2;</code>
+     * <code>optional sint64 boid = 2;</code>
      */
     public boolean hasBoid() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required sint64 boid = 2;</code>
+     * <code>optional sint64 boid = 2;</code>
      */
     public long getBoid() {
       return boid_;
@@ -629,13 +629,13 @@ public final class RDSStockBO_PRO {
     public static final int DESTINATION_FIELD_NUMBER = 3;
     private volatile java.lang.Object destination_;
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     public boolean hasDestination() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     public java.lang.String getDestination() {
       java.lang.Object ref = destination_;
@@ -652,7 +652,7 @@ public final class RDSStockBO_PRO {
       }
     }
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     public com.google.protobuf.ByteString
         getDestinationBytes() {
@@ -1370,18 +1370,6 @@ public final class RDSStockBO_PRO {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasUuid()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasBoid()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasDestination()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -2308,15 +2296,6 @@ public final class RDSStockBO_PRO {
       }
 
       public final boolean isInitialized() {
-        if (!hasUuid()) {
-          return false;
-        }
-        if (!hasBoid()) {
-          return false;
-        }
-        if (!hasDestination()) {
-          return false;
-        }
         return true;
       }
 
@@ -2341,13 +2320,13 @@ public final class RDSStockBO_PRO {
 
       private java.lang.Object uuid_ = "";
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public boolean hasUuid() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public java.lang.String getUuid() {
         java.lang.Object ref = uuid_;
@@ -2364,7 +2343,7 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public com.google.protobuf.ByteString
           getUuidBytes() {
@@ -2380,7 +2359,7 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public Builder setUuid(
           java.lang.String value) {
@@ -2393,7 +2372,7 @@ public final class RDSStockBO_PRO {
         return this;
       }
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public Builder clearUuid() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -2402,7 +2381,7 @@ public final class RDSStockBO_PRO {
         return this;
       }
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public Builder setUuidBytes(
           com.google.protobuf.ByteString value) {
@@ -2417,19 +2396,19 @@ public final class RDSStockBO_PRO {
 
       private long boid_ ;
       /**
-       * <code>required sint64 boid = 2;</code>
+       * <code>optional sint64 boid = 2;</code>
        */
       public boolean hasBoid() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required sint64 boid = 2;</code>
+       * <code>optional sint64 boid = 2;</code>
        */
       public long getBoid() {
         return boid_;
       }
       /**
-       * <code>required sint64 boid = 2;</code>
+       * <code>optional sint64 boid = 2;</code>
        */
       public Builder setBoid(long value) {
         bitField0_ |= 0x00000002;
@@ -2438,7 +2417,7 @@ public final class RDSStockBO_PRO {
         return this;
       }
       /**
-       * <code>required sint64 boid = 2;</code>
+       * <code>optional sint64 boid = 2;</code>
        */
       public Builder clearBoid() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -2449,13 +2428,13 @@ public final class RDSStockBO_PRO {
 
       private java.lang.Object destination_ = "";
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public boolean hasDestination() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public java.lang.String getDestination() {
         java.lang.Object ref = destination_;
@@ -2472,7 +2451,7 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public com.google.protobuf.ByteString
           getDestinationBytes() {
@@ -2488,7 +2467,7 @@ public final class RDSStockBO_PRO {
         }
       }
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public Builder setDestination(
           java.lang.String value) {
@@ -2501,7 +2480,7 @@ public final class RDSStockBO_PRO {
         return this;
       }
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public Builder clearDestination() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -2510,7 +2489,7 @@ public final class RDSStockBO_PRO {
         return this;
       }
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public Builder setDestinationBytes(
           com.google.protobuf.ByteString value) {
@@ -3893,22 +3872,23 @@ public final class RDSStockBO_PRO {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020RDSStockBO.proto\"\254\004\n\nRDSStockBO\022\014\n\004uui" +
-      "d\030\001 \002(\t\022\014\n\004boid\030\002 \002(\022\022\023\n\013destination\030\003 \002" +
-      "(\t\022\022\n\nproduct_id\030\004 \001(\t\022\024\n\014secu_name_cn\030\005" +
-      " \001(\t\022\024\n\014secu_name_en\030\006 \001(\t\022\021\n\texch_type\030" +
-      "\007 \001(\t\022\021\n\tsecu_type\030\010 \001(\t\022\025\n\rsecu_sub_typ" +
-      "e\030\t \001(\t\022\020\n\010currency\030\n \001(\t\022\021\n\tlist_date\030\013" +
-      " \001(\t\022\020\n\010buy_unit\030\014 \001(\005\022\021\n\tsell_unit\030\r \001(" +
-      "\005\022\027\n\017trade_low_limit\030\016 \001(\005\022\030\n\020trade_high" +
-      "_limit\030\017 \001(\005\022\027\n\017pre_close_price\030\020 \001(\001\022\022\n" +
-      "\ntick_price\030\021 \001(\001\022\030\n\020price_high_limit\030\022 " +
-      "\001(\001\022\027\n\017price_low_limit\030\023 \001(\001\022\026\n\016ex_right" +
-      "_ratio\030\024 \001(\001\022\026\n\016dividend_price\030\025 \001(\001\022\026\n\016" +
-      "financing_flag\030\026 \001(\t\022\023\n\013margin_flag\030\027 \001(" +
-      "\t\022\023\n\013secu_status\030\030 \001(\t\022\014\n\004memo\030\031 \001(\t\022\023\n\013" +
-      "update_time\030\032 \001(\tB.\n\034com.purefun.fstp.co" +
-      "re.bo.proB\016RDSStockBO_PRO"
+      "\n\020RDSStockBO.proto\032\031google/protobuf/any." +
+      "proto\"\254\004\n\nRDSStockBO\022\014\n\004uuid\030\001 \001(\t\022\014\n\004bo" +
+      "id\030\002 \001(\022\022\023\n\013destination\030\003 \001(\t\022\022\n\nproduct" +
+      "_id\030\004 \001(\t\022\024\n\014secu_name_cn\030\005 \001(\t\022\024\n\014secu_" +
+      "name_en\030\006 \001(\t\022\021\n\texch_type\030\007 \001(\t\022\021\n\tsecu" +
+      "_type\030\010 \001(\t\022\025\n\rsecu_sub_type\030\t \001(\t\022\020\n\010cu" +
+      "rrency\030\n \001(\t\022\021\n\tlist_date\030\013 \001(\t\022\020\n\010buy_u" +
+      "nit\030\014 \001(\005\022\021\n\tsell_unit\030\r \001(\005\022\027\n\017trade_lo" +
+      "w_limit\030\016 \001(\005\022\030\n\020trade_high_limit\030\017 \001(\005\022" +
+      "\027\n\017pre_close_price\030\020 \001(\001\022\022\n\ntick_price\030\021" +
+      " \001(\001\022\030\n\020price_high_limit\030\022 \001(\001\022\027\n\017price_" +
+      "low_limit\030\023 \001(\001\022\026\n\016ex_right_ratio\030\024 \001(\001\022" +
+      "\026\n\016dividend_price\030\025 \001(\001\022\026\n\016financing_fla" +
+      "g\030\026 \001(\t\022\023\n\013margin_flag\030\027 \001(\t\022\023\n\013secu_sta" +
+      "tus\030\030 \001(\t\022\014\n\004memo\030\031 \001(\t\022\023\n\013update_time\030\032" +
+      " \001(\tB.\n\034com.purefun.fstp.core.bo.proB\016RD" +
+      "SStockBO_PRO"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3921,6 +3901,7 @@ public final class RDSStockBO_PRO {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.google.protobuf.AnyProto.getDescriptor(),
         }, assigner);
     internal_static_RDSStockBO_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -3928,6 +3909,7 @@ public final class RDSStockBO_PRO {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RDSStockBO_descriptor,
         new java.lang.String[] { "Uuid", "Boid", "Destination", "ProductId", "SecuNameCn", "SecuNameEn", "ExchType", "SecuType", "SecuSubType", "Currency", "ListDate", "BuyUnit", "SellUnit", "TradeLowLimit", "TradeHighLimit", "PreClosePrice", "TickPrice", "PriceHighLimit", "PriceLowLimit", "ExRightRatio", "DividendPrice", "FinancingFlag", "MarginFlag", "SecuStatus", "Memo", "UpdateTime", });
+    com.google.protobuf.AnyProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

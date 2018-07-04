@@ -4,6 +4,7 @@ import com.purefun.fstp.core.bo.QueryRequestBO;
 import com.purefun.fstp.core.bo.pro.QueryRequestBO_PRO;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.purefun.fstp.core.bo.commom.ICommom_OTW;
+import com.google.protobuf.Any;
 
 public class QueryRequestBO_OTW implements ICommom_OTW {
     QueryRequestBO_PRO.QueryRequestBO.Builder builder = null;
@@ -21,25 +22,25 @@ public class QueryRequestBO_OTW implements ICommom_OTW {
         builder = QueryRequestBO_PRO.QueryRequestBO.newBuilder();
         bo= new QueryRequestBO();
         QueryRequestBO_PRO.QueryRequestBO receive = QueryRequestBO_PRO.QueryRequestBO.parseFrom(message);
-        setUuid(receive.getUuid());
-        setBoid(receive.getBoid());
-        setDestination(receive.getDestination());
         setRequestServiceName(receive.getRequestServiceName());
         setRespondServiceName(receive.getRespondServiceName());
         setQuerytopic(receive.getQuerytopic());
         setTempTopic(receive.getTempTopic());
+        setUuid(receive.getUuid());
+        setBoid(receive.getBoid());
+        setDestination(receive.getDestination());
     }
 
     public QueryRequestBO_OTW(QueryRequestBO bofrom){
         builder = QueryRequestBO_PRO.QueryRequestBO.newBuilder();
         bo= new QueryRequestBO();
-        setUuid(bofrom.uuid);
-        setBoid(bofrom.boid);
-        setDestination(bofrom.destination);
         setRequestServiceName(bofrom.requestServiceName);
         setRespondServiceName(bofrom.respondServiceName);
         setQuerytopic(bofrom.querytopic);
         setTempTopic(bofrom.tempTopic);
+        setUuid(bofrom.uuid);
+        setBoid(bofrom.boid);
+        setDestination(bofrom.destination);
     }
 
     public byte[] serial() {
@@ -47,40 +48,13 @@ public class QueryRequestBO_OTW implements ICommom_OTW {
     }
 
     @Override
-    public QueryRequestBO_PRO.QueryRequestBO.Builder getBuilder() { 
+    public com.google.protobuf.GeneratedMessageV3.Builder getBuilder() { 
         return builder;
     }
 
     @Override
     public QueryRequestBO getBo() { 
         return bo;
-    }
-
-    public java.lang.String getUuid() {
-        return builder.getUuid();
-    }
-
-    public void setUuid(java.lang.String uuid) {
-        bo.uuid = uuid;
-        builder.setUuid(uuid);
-    }
-
-    public long getBoid() {
-        return builder.getBoid();
-    }
-
-    public void setBoid(long boid) {
-        bo.boid = boid;
-        builder.setBoid(boid);
-    }
-
-    public java.lang.String getDestination() {
-        return builder.getDestination();
-    }
-
-    public void setDestination(java.lang.String destination) {
-        bo.destination = destination;
-        builder.setDestination(destination);
     }
 
     public java.lang.String getRequestServiceName() {
@@ -119,6 +93,33 @@ public class QueryRequestBO_OTW implements ICommom_OTW {
         builder.setTempTopic(tempTopic);
     }
 
+    public java.lang.String getUuid() {
+        return builder.getUuid();
+    }
+
+    public void setUuid(java.lang.String uuid) {
+        bo.uuid = uuid;
+        builder.setUuid(uuid);
+    }
+
+    public long getBoid() {
+        return builder.getBoid();
+    }
+
+    public void setBoid(long boid) {
+        bo.boid = boid;
+        builder.setBoid(boid);
+    }
+
+    public java.lang.String getDestination() {
+        return builder.getDestination();
+    }
+
+    public void setDestination(java.lang.String destination) {
+        bo.destination = destination;
+        builder.setDestination(destination);
+    }
+
     public String toString() {
         return "QueryRequestBO_OTW ["+
             "uuid = " + getUuid() +"," +
@@ -128,6 +129,6 @@ public class QueryRequestBO_OTW implements ICommom_OTW {
             "respondServiceName = " + getRespondServiceName() +"," +
             "querytopic = " + getQuerytopic() +"," +
             "tempTopic = " + getTempTopic() +"," +
-    "]";
+         "]";
     }
 }
