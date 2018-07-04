@@ -12,7 +12,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.purefun.fstp.core.bo.model.BOinstance;
-import com.purefun.fstp.core.ipc.qns.QNSService;
+
 import com.purefun.fstp.core.ipc.sub.PythonMessageListener;
 import com.purefun.fstp.core.ipc.sub.Subscriber;
 import com.purefun.fstp.core.logging.PLogger;
@@ -44,10 +44,7 @@ public class MonitorService extends PService{
 		super.start();
 		startHBService();
 		startQNSService();
-//		startQueryService();
 		log.info("{} start successful",serverName);	
-//		QueryRespond test = new QueryRespond(log, session, cache, serverName, "QueryTopic");
-//		test.publish();
 		
 //		log.info(ErrMap.get("00000000"));
 
@@ -69,7 +66,6 @@ public class MonitorService extends PService{
 		public void run() {
 			HBServer hb = new HBServer(log, session, Icache, MonitorService.this,"HBTopic");
 			hb.publish();
-
 		}	
 	}
 	

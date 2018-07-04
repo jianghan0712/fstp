@@ -7,7 +7,7 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<import resource="classpath*:comConf/CommonConfig.xml" />
-    	
+    <!--  <import resource="classpath*:resource/msgdef/*.xml" />	-->
     <bean id="MainServer" class="com.purefun.fstp.core.server.monitor.MonitorService">  
     	<!--  <constructor-arg name="serverName" value="MonitorService"></constructor-arg>-->
         <constructor-arg name="isServer" value="true"></constructor-arg>
@@ -16,7 +16,9 @@
        		<map>
        			<entry key="com.purefun.fstp.core.bo.TestBO"    		value="fstp.core.rpc.testone"/>
        			<entry key="com.purefun.fstp.core.bo.TestBO2"   		value="fstp.core.rpc.testtwo"/>
-       			<entry key="com.purefun.fstp.core.bo.TestBO3"   		value="fstp.core.rpc.testthree"/>    			
+       			<entry key="com.purefun.fstp.core.bo.TestBO3"   		value="fstp.core.rpc.testthree"/>  
+       			<entry key="com.purefun.fstp.example.bo.ExampleBO"   	value="fstp.example.bo"/>
+       			<entry key="com.purefun.fstp.example.bo.ExampleQnsBO"   value="fstp.example.bo.test"/>  			
        		</map>
        </property>  
        <property name="managerBOMap">

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.jms.BytesMessage;
 import javax.jms.JMSException;
@@ -18,7 +19,7 @@ import com.purefun.fstp.core.tool.RPCTool;
 
 public abstract class QnsMessageListener implements MessageListener {
 	public Logger log = null;
-	public List[] queryList = null;
+	public Map<String, List> queryMap = null;
 	
 	public QnsMessageListener(Logger log) {
 		this.log = log;
@@ -43,16 +44,15 @@ public abstract class QnsMessageListener implements MessageListener {
 	}
 	
 	public void onQuery() {
-		for(List each:queryList) {
-			if(each==null)
+		for(Map.Entry<String, List> e:queryMap.entrySet()) {//boName : List<bo>
+			if(e.getValue() == null)
 				continue;
-			log.info("{}",each.size());
-			doQueryTask(each);
+			doQueryTask(e);
 		}
 	}
 	
 	abstract protected void doSubscribe(byte[] objMsg) throws InvalidProtocolBufferException, JMSException;
 	
-	abstract protected void doQueryTask(List each);
+	abstract protected void doQueryTask(Map.Entry<String, List> each);
 
 }

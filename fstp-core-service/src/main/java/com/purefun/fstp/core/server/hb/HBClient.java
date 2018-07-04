@@ -12,9 +12,11 @@ import javax.jms.TextMessage;
 
 import org.slf4j.Logger;
 
+import com.purefun.fstp.core.bo.ServerStatsBO;
 import com.purefun.fstp.core.bo.commom.ICommom_OTW;
 import com.purefun.fstp.core.bo.otw.ServerStatsBO_OTW;
 import com.purefun.fstp.core.constant.RpcConstant;
+import com.purefun.fstp.core.tool.BoFactory;
 
 public class HBClient{
 	static Logger log = null;
@@ -30,6 +32,7 @@ public class HBClient{
 		this.log = log;
 		this.session = session;
 		this.msgdef = topic;
+		this.serverName = servername;
 		
 		if(session == null) {
 			log.error("There is no useful connect to broker");
@@ -69,7 +72,7 @@ public class HBClient{
             	}
 //            	log.info("[HB] Received: Monitor" );
             } else {
-            	log.info("can't connet to MonitorServer,server {} will exit",((ServerStatsBO_OTW)bo).getBuilder().getServername());
+            	log.info("can't connet to MonitorServer,server {} will exit",serverName);
             	System.exit(1);
             }       	        
 	        } catch (Exception exp) {
@@ -99,7 +102,7 @@ public class HBClient{
 		private void doShutDownWork(Session session,String serverName) {
 			Runtime.getRuntime().addShutdownHook(new Thread() {
 				  public void run(){
-					  ServerStatsBO_OTW bo = new ServerStatsBO_OTW();
+					  ServerStatsBO_OTW bo = (ServerStatsBO_OTW)BoFactory.createBo(ServerStatsBO.class);
 					  bo.setServername(serverName);
 					  bo.setStatus(RpcConstant.OFFLINE_SERVER);
 //					  ServerStatsBO bo = new ServerStatsBO(serverName, RpcConstant.OFFLINE_SERVER);

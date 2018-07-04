@@ -19,38 +19,38 @@ public final class QueryRequestBO_PRO {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     boolean hasUuid();
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     java.lang.String getUuid();
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     com.google.protobuf.ByteString
         getUuidBytes();
 
     /**
-     * <code>required sint64 boid = 2;</code>
+     * <code>optional sint64 boid = 2;</code>
      */
     boolean hasBoid();
     /**
-     * <code>required sint64 boid = 2;</code>
+     * <code>optional sint64 boid = 2;</code>
      */
     long getBoid();
 
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     boolean hasDestination();
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     java.lang.String getDestination();
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     com.google.protobuf.ByteString
         getDestinationBytes();
@@ -233,13 +233,13 @@ public final class QueryRequestBO_PRO {
     public static final int UUID_FIELD_NUMBER = 1;
     private volatile java.lang.Object uuid_;
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     public boolean hasUuid() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     public java.lang.String getUuid() {
       java.lang.Object ref = uuid_;
@@ -256,7 +256,7 @@ public final class QueryRequestBO_PRO {
       }
     }
     /**
-     * <code>required string uuid = 1;</code>
+     * <code>optional string uuid = 1;</code>
      */
     public com.google.protobuf.ByteString
         getUuidBytes() {
@@ -275,13 +275,13 @@ public final class QueryRequestBO_PRO {
     public static final int BOID_FIELD_NUMBER = 2;
     private long boid_;
     /**
-     * <code>required sint64 boid = 2;</code>
+     * <code>optional sint64 boid = 2;</code>
      */
     public boolean hasBoid() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required sint64 boid = 2;</code>
+     * <code>optional sint64 boid = 2;</code>
      */
     public long getBoid() {
       return boid_;
@@ -290,13 +290,13 @@ public final class QueryRequestBO_PRO {
     public static final int DESTINATION_FIELD_NUMBER = 3;
     private volatile java.lang.Object destination_;
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     public boolean hasDestination() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     public java.lang.String getDestination() {
       java.lang.Object ref = destination_;
@@ -313,7 +313,7 @@ public final class QueryRequestBO_PRO {
       }
     }
     /**
-     * <code>required string destination = 3;</code>
+     * <code>optional string destination = 3;</code>
      */
     public com.google.protobuf.ByteString
         getDestinationBytes() {
@@ -503,18 +503,6 @@ public final class QueryRequestBO_PRO {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasUuid()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasBoid()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasDestination()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -939,15 +927,6 @@ public final class QueryRequestBO_PRO {
       }
 
       public final boolean isInitialized() {
-        if (!hasUuid()) {
-          return false;
-        }
-        if (!hasBoid()) {
-          return false;
-        }
-        if (!hasDestination()) {
-          return false;
-        }
         return true;
       }
 
@@ -972,13 +951,13 @@ public final class QueryRequestBO_PRO {
 
       private java.lang.Object uuid_ = "";
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public boolean hasUuid() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public java.lang.String getUuid() {
         java.lang.Object ref = uuid_;
@@ -995,7 +974,7 @@ public final class QueryRequestBO_PRO {
         }
       }
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public com.google.protobuf.ByteString
           getUuidBytes() {
@@ -1011,7 +990,7 @@ public final class QueryRequestBO_PRO {
         }
       }
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public Builder setUuid(
           java.lang.String value) {
@@ -1024,7 +1003,7 @@ public final class QueryRequestBO_PRO {
         return this;
       }
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public Builder clearUuid() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -1033,7 +1012,7 @@ public final class QueryRequestBO_PRO {
         return this;
       }
       /**
-       * <code>required string uuid = 1;</code>
+       * <code>optional string uuid = 1;</code>
        */
       public Builder setUuidBytes(
           com.google.protobuf.ByteString value) {
@@ -1048,19 +1027,19 @@ public final class QueryRequestBO_PRO {
 
       private long boid_ ;
       /**
-       * <code>required sint64 boid = 2;</code>
+       * <code>optional sint64 boid = 2;</code>
        */
       public boolean hasBoid() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required sint64 boid = 2;</code>
+       * <code>optional sint64 boid = 2;</code>
        */
       public long getBoid() {
         return boid_;
       }
       /**
-       * <code>required sint64 boid = 2;</code>
+       * <code>optional sint64 boid = 2;</code>
        */
       public Builder setBoid(long value) {
         bitField0_ |= 0x00000002;
@@ -1069,7 +1048,7 @@ public final class QueryRequestBO_PRO {
         return this;
       }
       /**
-       * <code>required sint64 boid = 2;</code>
+       * <code>optional sint64 boid = 2;</code>
        */
       public Builder clearBoid() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -1080,13 +1059,13 @@ public final class QueryRequestBO_PRO {
 
       private java.lang.Object destination_ = "";
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public boolean hasDestination() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public java.lang.String getDestination() {
         java.lang.Object ref = destination_;
@@ -1103,7 +1082,7 @@ public final class QueryRequestBO_PRO {
         }
       }
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public com.google.protobuf.ByteString
           getDestinationBytes() {
@@ -1119,7 +1098,7 @@ public final class QueryRequestBO_PRO {
         }
       }
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public Builder setDestination(
           java.lang.String value) {
@@ -1132,7 +1111,7 @@ public final class QueryRequestBO_PRO {
         return this;
       }
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public Builder clearDestination() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -1141,7 +1120,7 @@ public final class QueryRequestBO_PRO {
         return this;
       }
       /**
-       * <code>required string destination = 3;</code>
+       * <code>optional string destination = 3;</code>
        */
       public Builder setDestinationBytes(
           com.google.protobuf.ByteString value) {
@@ -1520,12 +1499,13 @@ public final class QueryRequestBO_PRO {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024QueryRequestBO.proto\"\240\001\n\016QueryRequestB" +
-      "O\022\014\n\004uuid\030\001 \002(\t\022\014\n\004boid\030\002 \002(\022\022\023\n\013destina" +
-      "tion\030\003 \002(\t\022\032\n\022requestServiceName\030\004 \001(\t\022\032" +
-      "\n\022respondServiceName\030\005 \001(\t\022\022\n\nquerytopic" +
-      "\030\006 \001(\t\022\021\n\ttempTopic\030\007 \001(\tB2\n\034com.purefun" +
-      ".fstp.core.bo.proB\022QueryRequestBO_PRO"
+      "\n\024QueryRequestBO.proto\032\031google/protobuf/" +
+      "any.proto\"\240\001\n\016QueryRequestBO\022\014\n\004uuid\030\001 \001" +
+      "(\t\022\014\n\004boid\030\002 \001(\022\022\023\n\013destination\030\003 \001(\t\022\032\n" +
+      "\022requestServiceName\030\004 \001(\t\022\032\n\022respondServ" +
+      "iceName\030\005 \001(\t\022\022\n\nquerytopic\030\006 \001(\t\022\021\n\ttem" +
+      "pTopic\030\007 \001(\tB2\n\034com.purefun.fstp.core.bo" +
+      ".proB\022QueryRequestBO_PRO"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1538,6 +1518,7 @@ public final class QueryRequestBO_PRO {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.google.protobuf.AnyProto.getDescriptor(),
         }, assigner);
     internal_static_QueryRequestBO_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -1545,6 +1526,7 @@ public final class QueryRequestBO_PRO {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_QueryRequestBO_descriptor,
         new java.lang.String[] { "Uuid", "Boid", "Destination", "RequestServiceName", "RespondServiceName", "Querytopic", "TempTopic", });
+    com.google.protobuf.AnyProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

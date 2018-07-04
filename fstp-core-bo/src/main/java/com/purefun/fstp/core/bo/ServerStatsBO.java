@@ -1,15 +1,12 @@
 package com.purefun.fstp.core.bo;
 
 import com.purefun.fstp.core.tool.UUID;
+import com.purefun.fstp.core.tool.fstpbo;
 
-public class ServerStatsBO implements BaseBO  {		
-	public String uuid = UUID.createUuid();					
+@fstpbo(boid = 1L, destination = "fstp.core.manager.serverstatus")
+public class ServerStatsBO extends BaseBO  {		
 	
-	public long boid = 1L;					
-		
-	public String destination = "fstp.core.manager.serverstatus";
-	
-	public String servername = null;
+	public String servername = "";
 	
 	public int status = -1;		
 }

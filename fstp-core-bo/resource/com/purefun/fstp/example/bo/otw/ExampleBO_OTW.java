@@ -4,6 +4,7 @@ import com.purefun.fstp.example.bo.ExampleBO;
 import com.purefun.fstp.example.bo.pro.ExampleBO_PRO;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.purefun.fstp.core.bo.commom.ICommom_OTW;
+import com.google.protobuf.Any;
 
 public class ExampleBO_OTW implements ICommom_OTW {
     ExampleBO_PRO.ExampleBO.Builder builder = null;
@@ -21,21 +22,21 @@ public class ExampleBO_OTW implements ICommom_OTW {
         builder = ExampleBO_PRO.ExampleBO.newBuilder();
         bo= new ExampleBO();
         ExampleBO_PRO.ExampleBO receive = ExampleBO_PRO.ExampleBO.parseFrom(message);
+        setName(receive.getName());
+        setAge(receive.getAge());
         setUuid(receive.getUuid());
         setBoid(receive.getBoid());
         setDestination(receive.getDestination());
-        setName(receive.getName());
-        setAge(receive.getAge());
     }
 
     public ExampleBO_OTW(ExampleBO bofrom){
         builder = ExampleBO_PRO.ExampleBO.newBuilder();
         bo= new ExampleBO();
+        setName(bofrom.name);
+        setAge(bofrom.age);
         setUuid(bofrom.uuid);
         setBoid(bofrom.boid);
         setDestination(bofrom.destination);
-        setName(bofrom.name);
-        setAge(bofrom.age);
     }
 
     public byte[] serial() {
@@ -43,13 +44,31 @@ public class ExampleBO_OTW implements ICommom_OTW {
     }
 
     @Override
-    public ExampleBO_PRO.ExampleBO.Builder getBuilder() { 
+    public com.google.protobuf.GeneratedMessageV3.Builder getBuilder() { 
         return builder;
     }
 
     @Override
     public ExampleBO getBo() { 
         return bo;
+    }
+
+    public java.lang.String getName() {
+        return builder.getName();
+    }
+
+    public void setName(java.lang.String name) {
+        bo.name = name;
+        builder.setName(name);
+    }
+
+    public int getAge() {
+        return builder.getAge();
+    }
+
+    public void setAge(int age) {
+        bo.age = age;
+        builder.setAge(age);
     }
 
     public java.lang.String getUuid() {
@@ -79,24 +98,6 @@ public class ExampleBO_OTW implements ICommom_OTW {
         builder.setDestination(destination);
     }
 
-    public java.lang.String getName() {
-        return builder.getName();
-    }
-
-    public void setName(java.lang.String name) {
-        bo.name = name;
-        builder.setName(name);
-    }
-
-    public int getAge() {
-        return builder.getAge();
-    }
-
-    public void setAge(int age) {
-        bo.age = age;
-        builder.setAge(age);
-    }
-
     public String toString() {
         return "ExampleBO_OTW ["+
             "uuid = " + getUuid() +"," +
@@ -104,6 +105,6 @@ public class ExampleBO_OTW implements ICommom_OTW {
             "destination = " + getDestination() +"," +
             "name = " + getName() +"," +
             "age = " + getAge() +"," +
-    "]";
+         "]";
     }
 }

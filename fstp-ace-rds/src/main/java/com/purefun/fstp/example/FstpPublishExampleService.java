@@ -31,7 +31,7 @@ public class FstpPublishExampleService extends PService{
 			TestBO_OTW bo = new TestBO_OTW();
 			bo.setMsg("Hans");
 //			bo.setAge(i);
-			pub.publish(bo, 1, null);
+			pub.publish(bo, 1);
 		}
 	}
 	

@@ -7,11 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.purefun.fstp.core.tool.UUID;
+import com.purefun.fstp.core.tool.fstpbo;
 
-public class SourceStockBO  implements BaseBO {
-	public String uuid = UUID.createUuid();					
-	public long boid = 1501L;							
-	public String destination = "fstp.ace.rds.source.stock";	
+@fstpbo(boid = 1501L, destination = "fstp.ace.rds.source.stock")
+public class SourceStockBO extends BaseBO {
 	public String secu_id = "";
 	public String isin = "";
 	public String record_update_time = "";

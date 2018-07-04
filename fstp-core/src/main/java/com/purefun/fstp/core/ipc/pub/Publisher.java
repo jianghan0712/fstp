@@ -24,7 +24,7 @@ public class Publisher{
 		this.cache = cache;
 	}
 
-	public void publish(ICommom_OTW bo,int mode,String cacheName) {
+	public void publish(ICommom_OTW bo,int mode) {
 		if(session == null) {
 			log.error("There is no useful connect to broker");
 			return;
@@ -39,7 +39,7 @@ public class Publisher{
         	      	
             messageProducer.send(message);
             if(mode == PublishMode.PUBLISH_AND_DUR)
-            	durableInCache(bo, cacheName);
+            	durableInCache(bo);
             log.info("publish BO:[{}]",bo.toString());
             
 		} catch (JMSException e) {
@@ -48,8 +48,8 @@ public class Publisher{
 		} 
 	}
 	
-	public void durableInCache(ICommom_OTW bo, String cacheName) {
-		String mapName = bo.getBo().getClass().getName();
+	public void durableInCache(ICommom_OTW bo) {
+		String cacheName = bo.getBo().getClass().getName();
 		if(RCache.class.isInstance(cache))
 			cache.put(cacheName, bo.getUuid(), bo.getBuilder().build().toByteArray());
 		else if(ICache.class.isInstance(cache))

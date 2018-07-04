@@ -1,4 +1,4 @@
-package com.purefun.fstp.core.ipc.qns;
+package com.purefun.fstp.core.server.monitor;
 
 import java.util.Map;
 
@@ -97,9 +97,9 @@ public class QNSService{
 			if(destination.startsWith(start)) {
 				String boName = each.getKey();
 				if(result==null) {
-					result = boName;
+					result = boName + "|" + destination;
 				}else {
-					result = result + "," + boName;
+					result = result + "," + boName + "|" + destination;
 				}				
 			}
 		}

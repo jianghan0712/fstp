@@ -66,15 +66,17 @@ public class ICache implements ICommonCache{
 		cacheMap.putIfAbsent(cachecfg.getName(), this.ignite.getOrCreateCache(cachecfg));
 	}
 	
-	public <T> List<T> query(String cacheName, String condition) {
+	public <T> List<T> query(String condition, Class<T> clazz) {
 		SqlQuery sql = null;
 		if(condition==null) {
-			sql = new SqlQuery<AffinityKey<String>, T>(TestBO.class, "1=1");
+			sql = new SqlQuery<AffinityKey<String>, T>(clazz, "1=1");
 		}else {
-			sql = new SqlQuery<AffinityKey<String>, T>(TestBO.class, condition);
+			sql = new SqlQuery<AffinityKey<String>, T>(clazz, condition);
 		}
-		 	
-    	QueryCursor<?> res = cacheMap.get(cacheName).query(sql);
+		if(!cacheMap.containsKey(clazz.getName())) {
+			return null;
+		}
+    	QueryCursor<?> res = cacheMap.get(clazz.getName()).query(sql);
     	List<T> ret = new ArrayList<T>();
     	for(Object each:res.getAll()) {
     		T c = (T) ((CacheEntryImpl<String, T>)each).getValue();
