@@ -15,9 +15,6 @@ class RDSStockBO_OTW(ICommon_OTW):
             self.__setDataFromBO()
 
     def __setDataFromBO(self):
-        self._bo_pro.uuid = self._bo.uuid
-        self._bo_pro.boid = self._bo.boid
-        self._bo_pro.destination = self._bo.destination
         self._bo_pro.product_id = self._bo.product_id
         self._bo_pro.secu_name_cn = self._bo.secu_name_cn
         self._bo_pro.secu_name_en = self._bo.secu_name_en
@@ -41,11 +38,11 @@ class RDSStockBO_OTW(ICommon_OTW):
         self._bo_pro.secu_status = self._bo.secu_status
         self._bo_pro.memo = self._bo.memo
         self._bo_pro.update_time = self._bo.update_time
+        self._bo_pro.uuid = self._bo.uuid
+        self._bo_pro.boid = self._bo.boid
+        self._bo_pro.destination = self._bo.destination
 
     def __setDataFromPB(self):
-        self._bo.uuid = self._bo_pro.uuid
-        self._bo.boid = self._bo_pro.boid
-        self._bo.destination = self._bo_pro.destination
         self._bo.product_id = self._bo_pro.product_id
         self._bo.secu_name_cn = self._bo_pro.secu_name_cn
         self._bo.secu_name_en = self._bo_pro.secu_name_en
@@ -69,33 +66,15 @@ class RDSStockBO_OTW(ICommon_OTW):
         self._bo.secu_status = self._bo_pro.secu_status
         self._bo.memo = self._bo_pro.memo
         self._bo.update_time = self._bo_pro.update_time
+        self._bo.uuid = self._bo_pro.uuid
+        self._bo.boid = self._bo_pro.boid
+        self._bo.destination = self._bo_pro.destination
 
     def getBO(self):
         return self._bo
 
     def getProBO(self):
         return self._bo_pro
-
-    def getUuid(self):
-        return self._bo.uuid
-
-    def setUuid(self, uuid):
-        self._bo.uuid = uuid
-        self._bo_pro.uuid = uuid
-
-    def getBoid(self):
-        return self._bo.boid
-
-    def setBoid(self, boid):
-        self._bo.boid = boid
-        self._bo_pro.boid = boid
-
-    def getDestination(self):
-        return self._bo.destination
-
-    def setDestination(self, destination):
-        self._bo.destination = destination
-        self._bo_pro.destination = destination
 
     def getProduct_id(self):
         return self._bo.product_id
@@ -258,5 +237,26 @@ class RDSStockBO_OTW(ICommon_OTW):
         self._bo.update_time = update_time
         self._bo_pro.update_time = update_time
 
+    def getUuid(self):
+        return self._bo.uuid
+
+    def setUuid(self, uuid):
+        self._bo.uuid = uuid
+        self._bo_pro.uuid = uuid
+
+    def getBoid(self):
+        return self._bo.boid
+
+    def setBoid(self, boid):
+        self._bo.boid = boid
+        self._bo_pro.boid = boid
+
+    def getDestination(self):
+        return self._bo.destination
+
+    def setDestination(self, destination):
+        self._bo.destination = destination
+        self._bo_pro.destination = destination
+
     def toString(self):
-        return "RDSStockBO_OTW ["+"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"product_id = " + str(self.getProduct_id()) +"," +"secu_name_cn = " + str(self.getSecu_name_cn()) +"," +"secu_name_en = " + str(self.getSecu_name_en()) +"," +"exch_type = " + str(self.getExch_type()) +"," +"secu_type = " + str(self.getSecu_type()) +"," +"secu_sub_type = " + str(self.getSecu_sub_type()) +"," +"currency = " + str(self.getCurrency()) +"," +"list_date = " + str(self.getList_date()) +"," +"buy_unit = " + str(self.getBuy_unit()) +"," +"sell_unit = " + str(self.getSell_unit()) +"," +"trade_low_limit = " + str(self.getTrade_low_limit()) +"," +"trade_high_limit = " + str(self.getTrade_high_limit()) +"," +"pre_close_price = " + str(self.getPre_close_price()) +"," +"tick_price = " + str(self.getTick_price()) +"," +"price_high_limit = " + str(self.getPrice_high_limit()) +"," +"price_low_limit = " + str(self.getPrice_low_limit()) +"," +"ex_right_ratio = " + str(self.getEx_right_ratio()) +"," +"dividend_price = " + str(self.getDividend_price()) +"," +"financing_flag = " + str(self.getFinancing_flag()) +"," +"margin_flag = " + str(self.getMargin_flag()) +"," +"secu_status = " + str(self.getSecu_status()) +"," +"memo = " + str(self.getMemo()) +"," +"update_time = " + str(self.getUpdate_time()) +"," +"]"
+        return "RDSStockBO_OTW ["+"product_id = " + str(self.getProduct_id()) +"," +"secu_name_cn = " + str(self.getSecu_name_cn()) +"," +"secu_name_en = " + str(self.getSecu_name_en()) +"," +"exch_type = " + str(self.getExch_type()) +"," +"secu_type = " + str(self.getSecu_type()) +"," +"secu_sub_type = " + str(self.getSecu_sub_type()) +"," +"currency = " + str(self.getCurrency()) +"," +"list_date = " + str(self.getList_date()) +"," +"buy_unit = " + str(self.getBuy_unit()) +"," +"sell_unit = " + str(self.getSell_unit()) +"," +"trade_low_limit = " + str(self.getTrade_low_limit()) +"," +"trade_high_limit = " + str(self.getTrade_high_limit()) +"," +"pre_close_price = " + str(self.getPre_close_price()) +"," +"tick_price = " + str(self.getTick_price()) +"," +"price_high_limit = " + str(self.getPrice_high_limit()) +"," +"price_low_limit = " + str(self.getPrice_low_limit()) +"," +"ex_right_ratio = " + str(self.getEx_right_ratio()) +"," +"dividend_price = " + str(self.getDividend_price()) +"," +"financing_flag = " + str(self.getFinancing_flag()) +"," +"margin_flag = " + str(self.getMargin_flag()) +"," +"secu_status = " + str(self.getSecu_status()) +"," +"memo = " + str(self.getMemo()) +"," +"update_time = " + str(self.getUpdate_time()) +"," +"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"]"

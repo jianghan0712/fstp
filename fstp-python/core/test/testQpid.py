@@ -21,7 +21,6 @@
 import sys
 from qpid.messaging import *
 from time import sleep
-from core.bo import TestBO_pb2
 
 if len(sys.argv)<2:
     broker =  "localhost:5672" 
@@ -41,25 +40,23 @@ try:
     connection.open()
     session = connection.session()
    
-    sender = session.sender(address)
+#     sender = session.sender(address)
     receiver = session.receiver(address)
-    
-#     bo = TestBO_pb2.TestBO()
-#     bo.uuid = "1234";
-#     bo.boid = 3;
-#     bo.destination = "fstp.core.rpc.testone"
-#     bo.servername = "PythonService"
-#     bo.msg = "msg content"
-#     data = bo.SerializeToString()
 
-#     sender.send(Message(data));
+    while True:
+        msg = receiver.fetch()
+        print msg.content
+        print msg.reply_to
 
-    message = receiver.fetch()
-    target = TestBO_pb2.TestBO()
-    
-    target.ParseFromString(message.content)
-    print target.msg
-    session.acknowledge()
+        snd = None
+        try:
+            snd = session.sender("amq.topic/"+str(msg.reply_to))
+            snd.send("12345")
+        except SendError, e:
+            print e
+        if snd is not None:
+            snd.close()
+        session.acknowledge()
 
 except MessagingError,m:
     print m

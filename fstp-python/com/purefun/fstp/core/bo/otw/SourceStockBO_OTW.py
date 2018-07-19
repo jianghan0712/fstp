@@ -15,9 +15,6 @@ class SourceStockBO_OTW(ICommon_OTW):
             self.__setDataFromBO()
 
     def __setDataFromBO(self):
-        self._bo_pro.uuid = self._bo.uuid
-        self._bo_pro.boid = self._bo.boid
-        self._bo_pro.destination = self._bo.destination
         self._bo_pro.secu_id = self._bo.secu_id
         self._bo_pro.isin = self._bo.isin
         self._bo_pro.record_update_time = self._bo.record_update_time
@@ -48,11 +45,11 @@ class SourceStockBO_OTW(ICommon_OTW):
         self._bo_pro.margin_flag = self._bo.margin_flag
         self._bo_pro.secu_status = self._bo.secu_status
         self._bo_pro.memo = self._bo.memo
+        self._bo_pro.uuid = self._bo.uuid
+        self._bo_pro.boid = self._bo.boid
+        self._bo_pro.destination = self._bo.destination
 
     def __setDataFromPB(self):
-        self._bo.uuid = self._bo_pro.uuid
-        self._bo.boid = self._bo_pro.boid
-        self._bo.destination = self._bo_pro.destination
         self._bo.secu_id = self._bo_pro.secu_id
         self._bo.isin = self._bo_pro.isin
         self._bo.record_update_time = self._bo_pro.record_update_time
@@ -83,33 +80,15 @@ class SourceStockBO_OTW(ICommon_OTW):
         self._bo.margin_flag = self._bo_pro.margin_flag
         self._bo.secu_status = self._bo_pro.secu_status
         self._bo.memo = self._bo_pro.memo
+        self._bo.uuid = self._bo_pro.uuid
+        self._bo.boid = self._bo_pro.boid
+        self._bo.destination = self._bo_pro.destination
 
     def getBO(self):
         return self._bo
 
     def getProBO(self):
         return self._bo_pro
-
-    def getUuid(self):
-        return self._bo.uuid
-
-    def setUuid(self, uuid):
-        self._bo.uuid = uuid
-        self._bo_pro.uuid = uuid
-
-    def getBoid(self):
-        return self._bo.boid
-
-    def setBoid(self, boid):
-        self._bo.boid = boid
-        self._bo_pro.boid = boid
-
-    def getDestination(self):
-        return self._bo.destination
-
-    def setDestination(self, destination):
-        self._bo.destination = destination
-        self._bo_pro.destination = destination
 
     def getSecu_id(self):
         return self._bo.secu_id
@@ -321,5 +300,26 @@ class SourceStockBO_OTW(ICommon_OTW):
         self._bo.memo = memo
         self._bo_pro.memo = memo
 
+    def getUuid(self):
+        return self._bo.uuid
+
+    def setUuid(self, uuid):
+        self._bo.uuid = uuid
+        self._bo_pro.uuid = uuid
+
+    def getBoid(self):
+        return self._bo.boid
+
+    def setBoid(self, boid):
+        self._bo.boid = boid
+        self._bo_pro.boid = boid
+
+    def getDestination(self):
+        return self._bo.destination
+
+    def setDestination(self, destination):
+        self._bo.destination = destination
+        self._bo_pro.destination = destination
+
     def toString(self):
-        return "SourceStockBO_OTW ["+"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"secu_id = " + str(self.getSecu_id()) +"," +"isin = " + str(self.getIsin()) +"," +"record_update_time = " + str(self.getRecord_update_time()) +"," +"secu_chinese_name = " + str(self.getSecu_chinese_name()) +"," +"secu_english_name = " + str(self.getSecu_english_name()) +"," +"secu_base_id = " + str(self.getSecu_base_id()) +"," +"exch_type = " + str(self.getExch_type()) +"," +"secu_type = " + str(self.getSecu_type()) +"," +"secu_sub_type = " + str(self.getSecu_sub_type()) +"," +"currency = " + str(self.getCurrency()) +"," +"bond_par_value = " + str(self.getBond_par_value()) +"," +"not_list_stkqty = " + str(self.getNot_list_stkqty()) +"," +"last_trade_date = " + str(self.getLast_trade_date()) +"," +"list_date = " + str(self.getList_date()) +"," +"product_set_id = " + str(self.getProduct_set_id()) +"," +"buy_unit = " + str(self.getBuy_unit()) +"," +"sell_unit = " + str(self.getSell_unit()) +"," +"trade_low_limit = " + str(self.getTrade_low_limit()) +"," +"trade_high_limit = " + str(self.getTrade_high_limit()) +"," +"pre_close_price = " + str(self.getPre_close_price()) +"," +"tick_price = " + str(self.getTick_price()) +"," +"price_limit_type = " + str(self.getPrice_limit_type()) +"," +"price_high_limit = " + str(self.getPrice_high_limit()) +"," +"price_low_limit = " + str(self.getPrice_low_limit()) +"," +"ex_right_ratio = " + str(self.getEx_right_ratio()) +"," +"dividend_price = " + str(self.getDividend_price()) +"," +"financing_flag = " + str(self.getFinancing_flag()) +"," +"margin_flag = " + str(self.getMargin_flag()) +"," +"secu_status = " + str(self.getSecu_status()) +"," +"memo = " + str(self.getMemo()) +"," +"]"
+        return "SourceStockBO_OTW ["+"secu_id = " + str(self.getSecu_id()) +"," +"isin = " + str(self.getIsin()) +"," +"record_update_time = " + str(self.getRecord_update_time()) +"," +"secu_chinese_name = " + str(self.getSecu_chinese_name()) +"," +"secu_english_name = " + str(self.getSecu_english_name()) +"," +"secu_base_id = " + str(self.getSecu_base_id()) +"," +"exch_type = " + str(self.getExch_type()) +"," +"secu_type = " + str(self.getSecu_type()) +"," +"secu_sub_type = " + str(self.getSecu_sub_type()) +"," +"currency = " + str(self.getCurrency()) +"," +"bond_par_value = " + str(self.getBond_par_value()) +"," +"not_list_stkqty = " + str(self.getNot_list_stkqty()) +"," +"last_trade_date = " + str(self.getLast_trade_date()) +"," +"list_date = " + str(self.getList_date()) +"," +"product_set_id = " + str(self.getProduct_set_id()) +"," +"buy_unit = " + str(self.getBuy_unit()) +"," +"sell_unit = " + str(self.getSell_unit()) +"," +"trade_low_limit = " + str(self.getTrade_low_limit()) +"," +"trade_high_limit = " + str(self.getTrade_high_limit()) +"," +"pre_close_price = " + str(self.getPre_close_price()) +"," +"tick_price = " + str(self.getTick_price()) +"," +"price_limit_type = " + str(self.getPrice_limit_type()) +"," +"price_high_limit = " + str(self.getPrice_high_limit()) +"," +"price_low_limit = " + str(self.getPrice_low_limit()) +"," +"ex_right_ratio = " + str(self.getEx_right_ratio()) +"," +"dividend_price = " + str(self.getDividend_price()) +"," +"financing_flag = " + str(self.getFinancing_flag()) +"," +"margin_flag = " + str(self.getMargin_flag()) +"," +"secu_status = " + str(self.getSecu_status()) +"," +"memo = " + str(self.getMemo()) +"," +"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"]"

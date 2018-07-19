@@ -15,24 +15,38 @@ class ServerStatsBO_OTW(ICommon_OTW):
             self.__setDataFromBO()
 
     def __setDataFromBO(self):
+        self._bo_pro.servername = self._bo.servername
+        self._bo_pro.status = self._bo.status
         self._bo_pro.uuid = self._bo.uuid
         self._bo_pro.boid = self._bo.boid
         self._bo_pro.destination = self._bo.destination
-        self._bo_pro.servername = self._bo.servername
-        self._bo_pro.status = self._bo.status
 
     def __setDataFromPB(self):
+        self._bo.servername = self._bo_pro.servername
+        self._bo.status = self._bo_pro.status
         self._bo.uuid = self._bo_pro.uuid
         self._bo.boid = self._bo_pro.boid
         self._bo.destination = self._bo_pro.destination
-        self._bo.servername = self._bo_pro.servername
-        self._bo.status = self._bo_pro.status
 
     def getBO(self):
         return self._bo
 
     def getProBO(self):
         return self._bo_pro
+
+    def getServername(self):
+        return self._bo.servername
+
+    def setServername(self, servername):
+        self._bo.servername = servername
+        self._bo_pro.servername = servername
+
+    def getStatus(self):
+        return self._bo.status
+
+    def setStatus(self, status):
+        self._bo.status = status
+        self._bo_pro.status = status
 
     def getUuid(self):
         return self._bo.uuid
@@ -55,19 +69,5 @@ class ServerStatsBO_OTW(ICommon_OTW):
         self._bo.destination = destination
         self._bo_pro.destination = destination
 
-    def getServername(self):
-        return self._bo.servername
-
-    def setServername(self, servername):
-        self._bo.servername = servername
-        self._bo_pro.servername = servername
-
-    def getStatus(self):
-        return self._bo.status
-
-    def setStatus(self, status):
-        self._bo.status = status
-        self._bo_pro.status = status
-
     def toString(self):
-        return "ServerStatsBO_OTW ["+"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"servername = " + str(self.getServername()) +"," +"status = " + str(self.getStatus()) +"," +"]"
+        return "ServerStatsBO_OTW ["+"servername = " + str(self.getServername()) +"," +"status = " + str(self.getStatus()) +"," +"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"]"

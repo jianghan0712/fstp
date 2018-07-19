@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='QueryRequestBO.proto',
   package='com.purefun.fstp.core.bo',
   syntax='proto2',
-  serialized_pb=_b('\n\x14QueryRequestBO.proto\x12\x18\x63om.purefun.fstp.core.bo\"\xa0\x01\n\x0eQueryRequestBO\x12\x0c\n\x04uuid\x18\x01 \x02(\t\x12\x0c\n\x04\x62oid\x18\x02 \x02(\x12\x12\x13\n\x0b\x64\x65stination\x18\x03 \x02(\t\x12\x1a\n\x12requestServiceName\x18\x04 \x01(\t\x12\x1a\n\x12respondServiceName\x18\x05 \x01(\t\x12\x12\n\nquerytopic\x18\x06 \x01(\t\x12\x11\n\ttempTopic\x18\x07 \x01(\t')
+  serialized_pb=_b('\n\x14QueryRequestBO.proto\x12\x18\x63om.purefun.fstp.core.bo\"\xa0\x01\n\x0eQueryRequestBO\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x0c\n\x04\x62oid\x18\x02 \x01(\x12\x12\x13\n\x0b\x64\x65stination\x18\x03 \x01(\t\x12\x1a\n\x12requestServiceName\x18\x04 \x01(\t\x12\x1a\n\x12respondServiceName\x18\x05 \x01(\t\x12\x12\n\nquerytopic\x18\x06 \x01(\t\x12\x11\n\ttempTopic\x18\x07 \x01(\t')
 )
 
 
@@ -34,21 +34,21 @@ _QUERYREQUESTBO = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='uuid', full_name='com.purefun.fstp.core.bo.QueryRequestBO.uuid', index=0,
-      number=1, type=9, cpp_type=9, label=2,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='boid', full_name='com.purefun.fstp.core.bo.QueryRequestBO.boid', index=1,
-      number=2, type=18, cpp_type=2, label=2,
+      number=2, type=18, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='destination', full_name='com.purefun.fstp.core.bo.QueryRequestBO.destination', index=2,
-      number=3, type=9, cpp_type=9, label=2,
+      number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,

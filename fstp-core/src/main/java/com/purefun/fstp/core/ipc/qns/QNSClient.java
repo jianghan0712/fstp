@@ -12,6 +12,8 @@ import javax.jms.TextMessage;
 import org.slf4j.Logger;
 
 import com.purefun.fstp.core.bo.commom.ICommom_OTW;
+import com.purefun.fstp.core.bo.otw.QNSRespondBO_OTW;
+import com.purefun.fstp.core.tool.RPCTool;
 
 public class QNSClient{
 	static Logger log = null;
@@ -62,10 +64,18 @@ public class QNSClient{
         	
         	messageProducer.send(message);
         	
-        	TextMessage responseMessage = (TextMessage) messageConsumer.receive(5000);
+        	BytesMessage responseMessage = (BytesMessage)messageConsumer.receive(5000);
+//        	TextMessage responseMessage = (TextMessage) messageConsumer.receive(5000);
             if (responseMessage != null) {
-            	respond = responseMessage.getText();
-            	getTopics(respond);
+            	byte[] byteArray = new byte[1024];
+            	int len = -1;
+            	len = responseMessage.readBytes(byteArray);
+            	if(len == -1){ 
+            		return null;
+            	}
+            	QNSRespondBO_OTW respondbo = new QNSRespondBO_OTW(RPCTool.subBytes(byteArray, 0, len));
+//            	respond = responseMessage.getText();
+            	getTopics(respondbo.getRespond());
             } else {
             	log.info("query failure");
             }       	        

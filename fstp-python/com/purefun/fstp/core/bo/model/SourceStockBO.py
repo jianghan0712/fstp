@@ -3,9 +3,6 @@ import uuid
 class SourceStockBO(object):
 
     def __init__(self):
-        self.uuid = str(uuid.uuid1())
-        self.boid = 1501L
-        self.destination = "fstp.ace.rds.source.stock"
         self.secu_id = ''
         self.isin = ''
         self.record_update_time = ''
@@ -16,7 +13,7 @@ class SourceStockBO(object):
         self.secu_type = ''
         self.secu_sub_type = ''
         self.currency = ''
-        self.bond_par_value = 0
+        self.bond_par_value = 0L
         self.not_list_stkqty = ''
         self.last_trade_date = ''
         self.list_date = ''
@@ -25,14 +22,17 @@ class SourceStockBO(object):
         self.sell_unit = 0
         self.trade_low_limit = 0
         self.trade_high_limit = 0
-        self.pre_close_price = 0
-        self.tick_price = 0
+        self.pre_close_price = 0L
+        self.tick_price = 0L
         self.price_limit_type = ''
-        self.price_high_limit = 0
-        self.price_low_limit = 0
-        self.ex_right_ratio = 0
-        self.dividend_price = 0
+        self.price_high_limit = 0L
+        self.price_low_limit = 0L
+        self.ex_right_ratio = 0L
+        self.dividend_price = 0L
         self.financing_flag = ''
         self.margin_flag = ''
         self.secu_status = ''
         self.memo = ''
+        self.uuid = str(uuid.uuid1())
+        self.boid = 1501
+        self.destination = "fstp.ace.rds.source.stock"

@@ -36,7 +36,7 @@ public class FstpSubscribeExampleService extends PService{
 	private void doservice() {
 		// TODO Auto-generated method stub
 		Subscriber sub =  rpcfactory.createSubscriber();
-		sub.subscribe("fstp.example.bo.test2", new ExampleSubListener(log));
+		sub.subscribe("fstp.core.rpc.testone", new ExampleSubListener(log));
 	}
 	
 	public class ExampleSubListener extends SubMessageListener{
@@ -50,8 +50,10 @@ public class FstpSubscribeExampleService extends PService{
 		protected void doSubscribeTask(byte[] objMsg) {
 			// TODO Auto-generated method stub
 			try {
-				ExampleBO_OTW receiveBO = new ExampleBO_OTW(objMsg);
-				log.info("name = {}, age = {} ",receiveBO.getName(), receiveBO.getAge());
+//				ExampleBO_OTW receiveBO = new ExampleBO_OTW(objMsg);
+//				log.info("name = {}, age = {} ",receiveBO.getName(), receiveBO.getAge());
+				TestBO_OTW receiveBO = new TestBO_OTW(objMsg);
+				log.info("servicename = {}, msg = {} ",receiveBO.getServername(), receiveBO.getMsg());
 			} catch (InvalidProtocolBufferException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
