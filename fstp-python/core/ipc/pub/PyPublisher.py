@@ -10,18 +10,17 @@ class PyPublisher(object):
     '''
     classdocs
     '''
-    def __init__(self, session, log):
+    def __init__(self, session, log, cache):
         '''
         Constructor
         '''
         self.session = session
         self.log = log
+        self.cache = cache
         
     
     def publish(self, bo, durFlag = False, topicFormat = "amq.topic/"):
         if self.session is not None :
-            print bo.getDestination()
-            print topicFormat + str(bo.getDestination())
             sender = self.session.sender(topicFormat + str(bo.getDestination())) 
             
         data = bo.getProBO().SerializeToString()
@@ -31,7 +30,10 @@ class PyPublisher(object):
             self.durable(bo)
     
     def durable(self, bo):
-        pass
+        if self.cache is None:
+            self.log.info("cache is not init")
+        self.cache.put(bo.getBO().__class__.__name__, bo.getUuid(), bo)
+
             
         
         

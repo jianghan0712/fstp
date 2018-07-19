@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='QNSRequestBO.proto',
   package='com.purefun.fstp.core.bo',
   syntax='proto2',
-  serialized_pb=_b('\n\x12QNSRequestBO.proto\x12\x18\x63om.purefun.fstp.core.bo\"d\n\x0cQNSRequestBO\x12\x0c\n\x04uuid\x18\x01 \x02(\t\x12\x0c\n\x04\x62oid\x18\x02 \x02(\x12\x12\x13\n\x0b\x64\x65stination\x18\x03 \x02(\t\x12\x12\n\nservername\x18\x04 \x01(\t\x12\x0f\n\x07request\x18\x05 \x01(\t')
+  serialized_pb=_b('\n\x12QNSRequestBO.proto\x12\x18\x63om.purefun.fstp.core.bo\"d\n\x0cQNSRequestBO\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x0c\n\x04\x62oid\x18\x02 \x01(\x12\x12\x13\n\x0b\x64\x65stination\x18\x03 \x01(\t\x12\x12\n\nservername\x18\x04 \x01(\t\x12\x0f\n\x07request\x18\x05 \x01(\t')
 )
 
 
@@ -34,21 +34,21 @@ _QNSREQUESTBO = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='uuid', full_name='com.purefun.fstp.core.bo.QNSRequestBO.uuid', index=0,
-      number=1, type=9, cpp_type=9, label=2,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='boid', full_name='com.purefun.fstp.core.bo.QNSRequestBO.boid', index=1,
-      number=2, type=18, cpp_type=2, label=2,
+      number=2, type=18, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='destination', full_name='com.purefun.fstp.core.bo.QNSRequestBO.destination', index=2,
-      number=3, type=9, cpp_type=9, label=2,
+      number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,

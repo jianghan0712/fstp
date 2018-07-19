@@ -28,34 +28,11 @@ class SubListener(object):
         
     def onEvent(self):
         while self.receiver is not None:
-            message = self.receiver.fetch()
-            bo_otw = TestBO_OTW(message.content)
-#             target.ParseFromString(message.content)           
-            self.doTask(bo_otw)
+            message = self.receiver.fetch()     
+            self.doTask(message.content)
                 
     def init(self, Receiver):
         self.receiver = Receiver
         
-    def doTask(self, bo_otw):
-        self.log.info("Receive BO:",bo_otw.toString())
-        
-        
-#         self.listener.onEvent(message)
-#         listener = 
-    
-#     bo = TestBO_pb2.TestBO()
-#     bo.uuid = "1234";
-#     bo.boid = 3;
-#     bo.destination = "fstp.core.rpc.testone"
-#     bo.servername = "PythonService"
-#     bo.msg = "msg content"
-#     data = bo.SerializeToString()
-
-#     sender.send(Message(data));
-
-#     message = receiver.fetch()
-#     target = TestBO_pb2.TestBO()
-#     
-#     target.ParseFromString(message.content)
-#     print target.msg
-#     session.acknowledge()
+    def doTask(self, byteBo):  
+        pass      

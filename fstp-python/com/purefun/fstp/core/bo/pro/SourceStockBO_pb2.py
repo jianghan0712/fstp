@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='SourceStockBO.proto',
   package='com.purefun.fstp.core.bo',
   syntax='proto2',
-  serialized_pb=_b('\n\x13SourceStockBO.proto\x12\x18\x63om.purefun.fstp.core.bo\"\xdd\x05\n\rSourceStockBO\x12\x0c\n\x04uuid\x18\x01 \x02(\t\x12\x0c\n\x04\x62oid\x18\x02 \x02(\x12\x12\x13\n\x0b\x64\x65stination\x18\x03 \x02(\t\x12\x0f\n\x07secu_id\x18\x04 \x01(\t\x12\x0c\n\x04isin\x18\x05 \x01(\t\x12\x1a\n\x12record_update_time\x18\x06 \x01(\t\x12\x19\n\x11secu_chinese_name\x18\x07 \x01(\t\x12\x19\n\x11secu_english_name\x18\x08 \x01(\t\x12\x14\n\x0csecu_base_id\x18\t \x01(\t\x12\x11\n\texch_type\x18\n \x01(\t\x12\x11\n\tsecu_type\x18\x0b \x01(\t\x12\x15\n\rsecu_sub_type\x18\x0c \x01(\t\x12\x10\n\x08\x63urrency\x18\r \x01(\t\x12\x16\n\x0e\x62ond_par_value\x18\x0e \x01(\x01\x12\x17\n\x0fnot_list_stkqty\x18\x0f \x01(\t\x12\x17\n\x0flast_trade_date\x18\x10 \x01(\t\x12\x11\n\tlist_date\x18\x11 \x01(\t\x12\x16\n\x0eproduct_set_id\x18\x12 \x01(\t\x12\x10\n\x08\x62uy_unit\x18\x13 \x01(\x05\x12\x11\n\tsell_unit\x18\x14 \x01(\x05\x12\x17\n\x0ftrade_low_limit\x18\x15 \x01(\x05\x12\x18\n\x10trade_high_limit\x18\x16 \x01(\x05\x12\x17\n\x0fpre_close_price\x18\x17 \x01(\x01\x12\x12\n\ntick_price\x18\x18 \x01(\x01\x12\x18\n\x10price_limit_type\x18\x19 \x01(\t\x12\x18\n\x10price_high_limit\x18\x1a \x01(\x01\x12\x17\n\x0fprice_low_limit\x18\x1b \x01(\x01\x12\x16\n\x0e\x65x_right_ratio\x18\x1c \x01(\x01\x12\x16\n\x0e\x64ividend_price\x18\x1d \x01(\x01\x12\x16\n\x0e\x66inancing_flag\x18\x1e \x01(\t\x12\x13\n\x0bmargin_flag\x18\x1f \x01(\t\x12\x13\n\x0bsecu_status\x18  \x01(\t\x12\x0c\n\x04memo\x18! \x01(\t')
+  serialized_pb=_b('\n\x13SourceStockBO.proto\x12\x18\x63om.purefun.fstp.core.bo\"\xdd\x05\n\rSourceStockBO\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x0c\n\x04\x62oid\x18\x02 \x01(\x12\x12\x13\n\x0b\x64\x65stination\x18\x03 \x01(\t\x12\x0f\n\x07secu_id\x18\x04 \x01(\t\x12\x0c\n\x04isin\x18\x05 \x01(\t\x12\x1a\n\x12record_update_time\x18\x06 \x01(\t\x12\x19\n\x11secu_chinese_name\x18\x07 \x01(\t\x12\x19\n\x11secu_english_name\x18\x08 \x01(\t\x12\x14\n\x0csecu_base_id\x18\t \x01(\t\x12\x11\n\texch_type\x18\n \x01(\t\x12\x11\n\tsecu_type\x18\x0b \x01(\t\x12\x15\n\rsecu_sub_type\x18\x0c \x01(\t\x12\x10\n\x08\x63urrency\x18\r \x01(\t\x12\x16\n\x0e\x62ond_par_value\x18\x0e \x01(\x01\x12\x17\n\x0fnot_list_stkqty\x18\x0f \x01(\t\x12\x17\n\x0flast_trade_date\x18\x10 \x01(\t\x12\x11\n\tlist_date\x18\x11 \x01(\t\x12\x16\n\x0eproduct_set_id\x18\x12 \x01(\t\x12\x10\n\x08\x62uy_unit\x18\x13 \x01(\x05\x12\x11\n\tsell_unit\x18\x14 \x01(\x05\x12\x17\n\x0ftrade_low_limit\x18\x15 \x01(\x05\x12\x18\n\x10trade_high_limit\x18\x16 \x01(\x05\x12\x17\n\x0fpre_close_price\x18\x17 \x01(\x01\x12\x12\n\ntick_price\x18\x18 \x01(\x01\x12\x18\n\x10price_limit_type\x18\x19 \x01(\t\x12\x18\n\x10price_high_limit\x18\x1a \x01(\x01\x12\x17\n\x0fprice_low_limit\x18\x1b \x01(\x01\x12\x16\n\x0e\x65x_right_ratio\x18\x1c \x01(\x01\x12\x16\n\x0e\x64ividend_price\x18\x1d \x01(\x01\x12\x16\n\x0e\x66inancing_flag\x18\x1e \x01(\t\x12\x13\n\x0bmargin_flag\x18\x1f \x01(\t\x12\x13\n\x0bsecu_status\x18  \x01(\t\x12\x0c\n\x04memo\x18! \x01(\t')
 )
 
 
@@ -34,21 +34,21 @@ _SOURCESTOCKBO = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='uuid', full_name='com.purefun.fstp.core.bo.SourceStockBO.uuid', index=0,
-      number=1, type=9, cpp_type=9, label=2,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='boid', full_name='com.purefun.fstp.core.bo.SourceStockBO.boid', index=1,
-      number=2, type=18, cpp_type=2, label=2,
+      number=2, type=18, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='destination', full_name='com.purefun.fstp.core.bo.SourceStockBO.destination', index=2,
-      number=3, type=9, cpp_type=9, label=2,
+      number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,

@@ -50,16 +50,16 @@ public class FstpQueryExampleService extends PService{
 
 	private void doservice() {
 		// TODO Auto-generated method stub
-//		Query query =  rpcfactory.createQuery();//创建query
-//		QueryRequestBO_OTW bo = (QueryRequestBO_OTW)BoFactory.createBo(QueryRequestBO.class);//新建QueryRequestBO
-//		bo.setQuerytopic("fstp.example.bo.test2");//设置要查询的topic
-//		query.query(bo, new TestExample(log));
+		Query query =  rpcfactory.createQuery();//创建query
+		QueryRequestBO_OTW bo = (QueryRequestBO_OTW)BoFactory.createBo(QueryRequestBO.class);//新建QueryRequestBO
+		bo.setQuerytopic("fstp.example.bo.test2");//设置要查询的topic
+		query.query(bo, new TestExample(log));
 		
-		ICache cache = (ICache)Icache;
-		List<ExampleBO> t = cache.query( "age = 2", ExampleBO.class);
-		for(ExampleBO e:t) {
-			log.info("name = {}, age = {} ",e.name, e.age);
-		}
+//		ICache cache = (ICache)Icache;
+//		List<ExampleBO> t = cache.query( "age = 2", ExampleBO.class);
+//		for(ExampleBO e:t) {
+//			log.info("name = {}, age = {} ",e.name, e.age);
+//		}
 
 		
 	}
