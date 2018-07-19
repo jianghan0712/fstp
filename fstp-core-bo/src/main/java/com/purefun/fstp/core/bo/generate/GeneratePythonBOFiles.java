@@ -10,6 +10,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.lang.reflect.Field;
 
+import com.purefun.fstp.core.tool.fstpbo;
+
 public class GeneratePythonBOFiles {
 	PrintWriter myFileWriter;
 	private String myIndent = "";
@@ -130,7 +132,7 @@ public class GeneratePythonBOFiles {
 	private void genProFiles(File f) throws IOException {
 		// TODO Auto-generated method stub
 		String className = f.getName().substring(0,f.getName().indexOf("."));
-	
+		String fileName = f.getPath();
 		InputStream input = new FileInputStream(f);
 		InputStreamReader inp = new InputStreamReader(input,"UTF-8");
 		BufferedReader br = new BufferedReader (inp);
@@ -140,20 +142,41 @@ public class GeneratePythonBOFiles {
 		println("");
 		println(new StringBuilder().append("message ").append(className).append(" {").toString());
 				
+		String boName = fileName.substring(fileName.indexOf("com"), fileName.indexOf(".")).replace("\\", ".");
 		String line = null;
-		int count = 1;
-		while((line = br.readLine())!=null) {
-			if(-1 != line.indexOf("{"))
-				break;
+		String[] l = null;
+		String superclass = null;
+		Field[] fileds = null;
+		int count = 4;
+		
+		try {
+			fileds = Class.forName(boName).getFields();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-			 
-		while((line = br.readLine())!=null) {
-			if(-1 != line.indexOf(";")) {
-				println(analysis(line,count++).toString());
+		println(new StringBuilder(TAB).append("optional string uuid = 1;").toString());
+		println(new StringBuilder(TAB).append("optional sint64 boid = 2;").toString());
+		println(new StringBuilder(TAB).append("optional string destination = 3;").toString());
+			
+		for(Field e:fileds) {
+			if(e.getName().equalsIgnoreCase("uuid") || e.getName().equalsIgnoreCase("boid") ||e.getName().equalsIgnoreCase("destination"))
+				continue;//先设了该值
+			StringBuilder fin = new StringBuilder(TAB).append("optional ");
+			if(e.getType().equals(java.lang.String.class)) {
+				fin.append("string ").append(e.getName()).append(" = ").append(String.valueOf(count++)).append(";");
+			}else if(e.getType().equals(double.class)) {
+				fin.append("double ").append(e.getName()).append(" = ").append(String.valueOf(count++)).append(";");
+			}else if(e.getType().equals(long.class)) {
+				fin.append("sint64 ").append(e.getName()).append(" = ").append(String.valueOf(count++)).append(";");
+			}else if(e.getType().equals(boolean.class)) {
+				fin.append("bool ").append(e.getName()).append(" = ").append(String.valueOf(count++)).append(";");
+			}else if(e.getType().equals(float.class)) {
+				fin.append("float ").append(e.getName()).append(" = ").append(String.valueOf(count++)).append(";");
+			}else if(e.getType().equals(int.class)) {
+				fin.append("int32 ").append(e.getName()).append(" = ").append(String.valueOf(count++)).append(";");
 			}
-			if(-1 != line.indexOf("}")) {
-				break;
-			}
+			println(fin.toString());
 		}
 		
 		println("}");
@@ -167,7 +190,7 @@ public class GeneratePythonBOFiles {
 		String boClassName = bopackageName + "." + boName;
 		
 		Class bo = Class.forName(boClassName);
-		Field[] fields=bo.getDeclaredFields();
+		Field[] fields=bo.getFields();
 		
 		println(new StringBuilder("from core.common.ICommon_OTW import ICommon_OTW").toString());
 		println(new StringBuilder("from ").append(bopackageName).append(".pro import ").append(_pb2Name).toString());
@@ -283,7 +306,7 @@ public class GeneratePythonBOFiles {
 	private void genPyModel(File f) throws IOException, ClassNotFoundException {
 		// TODO Auto-generated method stub
 		String className = f.getName().substring(0,f.getName().indexOf("."));
-
+		String fileName = f.getPath();
 		InputStream input = new FileInputStream(f);
 		InputStreamReader inp = new InputStreamReader(input,"UTF-8");
 		BufferedReader br = new BufferedReader (inp);
@@ -292,66 +315,58 @@ public class GeneratePythonBOFiles {
 		println("");
 		println(new StringBuilder().append("class ").append(className).append("(object):").toString());
 		println("");
-		println(new StringBuilder().append(TAB).append("def __init__(self):").toString());		
+		println(new StringBuilder().append(TAB).append("def __init__(self):").toString());	
 				
+		String boName = fileName.substring(fileName.indexOf("com"), fileName.indexOf(".")).replace("\\", ".");
 		String line = null;
-		int count = 1;
-		while((line = br.readLine())!=null) {
-			if(-1 != line.indexOf("{"))
-				break;
+		String[] l = null;
+		String superclass = null;
+		Field[] fileds = null;
+		int count = 4;
+		
+		try {
+			fileds = Class.forName(boName).getFields();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-			 
+		
+		long boid = 0L;
+		String des = null;
+		
 		while((line = br.readLine())!=null) {
-			if(-1 != line.indexOf(";")) {			
-				println(analysis(line).toString());
+			if(-1 != line.indexOf("@fstpbo")) {			
+				String[] temp = line.substring(line.indexOf("(")+1, line.indexOf(")")).split(",");
+				System.out.println(temp[0]+"-----"+temp[1]);
+//				boid = 4L, destination = "fstp.core.manager.qnsrespond"
+				boid = Long.parseLong(temp[0].substring(temp[0].indexOf("=")+1, temp[0].indexOf("L")).trim());
+				des = temp[1].substring(temp[1].indexOf("=")+1).replace("\"", "").trim();
 			}
 			if(-1 != line.indexOf("}")) {
 				break;
 			}
-		}
-	}
-
-	private StringBuilder analysis(String line) {
-		// TODO Auto-generated method stub
-		line = line.replaceAll(";", "");
-		String[] str = line.trim().split(" "); 
-//		[0]		[1]	  [2]  [3]  [4]
-//		public String uuid = UUID.createUuid();
-		StringBuilder fin = new StringBuilder();
-		int len = str.length;
+		}	
 		
-		if(str[2].equalsIgnoreCase("uuid")) {
-			fin.append(TAB).append(TAB).append("self.uuid = str(uuid.uuid1())");
-		}else if (str[2].equalsIgnoreCase("boid")){
-			fin.append(TAB).append(TAB).append("self.boid = ").append(str[4]);
-		}else if (str[2].equalsIgnoreCase("destination"))
-			fin.append(TAB).append(TAB).append("self.destination = ").append(str[4]);
-		else {
-			if (len<=3) {
-				fin.append(TAB).append(TAB).append("self.").append(str[2]).append(" = ");
-				if(str[1].equalsIgnoreCase("double")) {
-					fin.append("0");
-				}else if(str[1].equalsIgnoreCase("float")) {
-					fin.append("0.0");
-				}else if(str[1].equalsIgnoreCase("long")) {
-					fin.append("0");
-				}else if(str[1].equalsIgnoreCase("String")) {
-					fin.append("\'\'");
-				}else if(str[1].equalsIgnoreCase("boolean")) {
-					fin.append("false");
-				}else if(str[1].equalsIgnoreCase("int")) {
-					fin.append("0");
-				}
-			}else {
-				if (str[4].equalsIgnoreCase("null")) {
-					fin.append(TAB).append(TAB).append("self.").append(str[2]).append(" = ").append("\'\'");
-				}else {
-					fin.append(TAB).append(TAB).append("self.").append(str[2]).append(" = ").append(str[4]);
-				}
-			}					
+		for(Field e:fileds) {
+			if(e.getName().equalsIgnoreCase("uuid")) {
+				println(new StringBuilder().append(TAB).append(TAB).append("self.uuid = str(uuid.uuid1())").toString());
+			}else if(e.getName().equalsIgnoreCase("boid")){
+				println(new StringBuilder().append(TAB).append(TAB).append("self.boid = ").append(boid).toString());
+			}else if(e.getName().equalsIgnoreCase("destination")){
+				println(new StringBuilder().append(TAB).append(TAB).append("self.destination = \"").append(des).append("\"").toString());
+			}else if(e.getType().equals(java.lang.String.class)){
+				println(new StringBuilder().append(TAB).append(TAB).append("self.").append(e.getName()).append(" = ''").toString());
+			}else if(e.getType().equals(double.class)){
+				println(new StringBuilder().append(TAB).append(TAB).append("self.").append(e.getName()).append(" = 0L").toString());
+			}else if(e.getType().equals(boolean.class)){
+				println(new StringBuilder().append(TAB).append(TAB).append("self.").append(e.getName()).append(" = False").toString());
+			}else if(e.getType().equals(float.class)){
+				println(new StringBuilder().append(TAB).append(TAB).append("self.").append(e.getName()).append(" = 0.0").toString());
+			}else if(e.getType().equals(int.class)){
+				println(new StringBuilder().append(TAB).append(TAB).append("self.").append(e.getName()).append(" = 0").toString());
+			}
 		}		
-		return fin;		
-	}	
+	}
 
 	private void genBuildFile(String fileName) {
 		String strCmd = "./resource/protoc.exe -I=./" + protofileDirectory + " --python_out=./" + builderfileDirectory + " ./" + protofileDirectory + fileName;  

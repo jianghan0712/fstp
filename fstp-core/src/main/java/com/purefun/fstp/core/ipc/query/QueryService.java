@@ -60,14 +60,21 @@ public class QueryService implements Runnable{
 	            	if(len == -1){ 
 	            		return;
 	            	}
+	            	
 					QueryRequestBO_OTW queryBO = new QueryRequestBO_OTW(RPCTool.subBytes(byteArray, 0, len));
 					List<byte[]> queResult = queryFromCache(queryBO);
+					Destination replyto = null;
+					if(queryBO.getTempTopic().equalsIgnoreCase("")) {
+						replyto = message.getJMSReplyTo();
+					}else {
+						replyto = session.createTopic(queryBO.getTempTopic());
+					}
 	            	if(queResult != null) {
 	            		log.info("receive QueryBO topic: {}.",queryBO.getQuerytopic());
 	            		for(byte[] eachbo:queResult) {
 		            		BytesMessage responseMessage = session.createBytesMessage();
 			            	responseMessage.writeBytes(eachbo);
-				        	messageProducer.send(message.getJMSReplyTo(), responseMessage, DeliveryMode.NON_PERSISTENT, Message.DEFAULT_PRIORITY, Message.DEFAULT_TIME_TO_LIVE);	        
+				        	messageProducer.send(replyto, responseMessage, DeliveryMode.NON_PERSISTENT, Message.DEFAULT_PRIORITY, Message.DEFAULT_TIME_TO_LIVE);	        
 		            	}
 	            		log.info("publish {} bo.",queResult.size());
 	            	}	            	            	

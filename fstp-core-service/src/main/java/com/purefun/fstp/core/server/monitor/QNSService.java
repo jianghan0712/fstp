@@ -13,8 +13,11 @@ import javax.jms.TextMessage;
 
 import org.slf4j.Logger;
 
+import com.purefun.fstp.core.bo.QNSRespondBO;
 import com.purefun.fstp.core.bo.otw.QNSRequestBO_OTW;
+import com.purefun.fstp.core.bo.otw.QNSRespondBO_OTW;
 import com.purefun.fstp.core.server.monitor.MonitorService;
+import com.purefun.fstp.core.tool.BoFactory;
 import com.purefun.fstp.core.tool.RPCTool;
 
 public class QNSService{
@@ -53,8 +56,13 @@ public class QNSService{
 	        	log.info("receive ServerName:{},QNSTopic:{}",receiveBO.getServername(),receiveBO.getRequest());
 	        	String reply = analysis(receiveBO.getRequest());
 	        	log.info(receiveBO.getRequest());
-	        	TextMessage responseMessage = session.createTextMessage(reply);
-	        	messageProducer.send(message.getJMSReplyTo(), responseMessage, DeliveryMode.NON_PERSISTENT, Message.DEFAULT_PRIORITY, Message.DEFAULT_TIME_TO_LIVE);	        
+	        	QNSRespondBO_OTW responseMessage = (QNSRespondBO_OTW) BoFactory.createBo(QNSRespondBO.class);
+	        	responseMessage.setRespond(reply);
+	        	
+	        	BytesMessage bytemessage = session.createBytesMessage();
+	        	bytemessage.writeBytes(responseMessage.getBuilder().build().toByteArray());
+//	        	TextMessage responseMessage = session.createTextMessage(reply);
+	        	messageProducer.send(message.getJMSReplyTo(), bytemessage, DeliveryMode.NON_PERSISTENT, Message.DEFAULT_PRIORITY, Message.DEFAULT_TIME_TO_LIVE);	        
 	        }
 	   } catch (Exception exp) {
 	           System.out.println("[SERVER] Caught exception, exiting.");

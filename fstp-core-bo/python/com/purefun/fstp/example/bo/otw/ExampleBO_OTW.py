@@ -15,24 +15,38 @@ class ExampleBO_OTW(ICommon_OTW):
             self.__setDataFromBO()
 
     def __setDataFromBO(self):
+        self._bo_pro.name = self._bo.name
+        self._bo_pro.age = self._bo.age
         self._bo_pro.uuid = self._bo.uuid
         self._bo_pro.boid = self._bo.boid
         self._bo_pro.destination = self._bo.destination
-        self._bo_pro.name = self._bo.name
-        self._bo_pro.age = self._bo.age
 
     def __setDataFromPB(self):
+        self._bo.name = self._bo_pro.name
+        self._bo.age = self._bo_pro.age
         self._bo.uuid = self._bo_pro.uuid
         self._bo.boid = self._bo_pro.boid
         self._bo.destination = self._bo_pro.destination
-        self._bo.name = self._bo_pro.name
-        self._bo.age = self._bo_pro.age
 
     def getBO(self):
         return self._bo
 
     def getProBO(self):
         return self._bo_pro
+
+    def getName(self):
+        return self._bo.name
+
+    def setName(self, name):
+        self._bo.name = name
+        self._bo_pro.name = name
+
+    def getAge(self):
+        return self._bo.age
+
+    def setAge(self, age):
+        self._bo.age = age
+        self._bo_pro.age = age
 
     def getUuid(self):
         return self._bo.uuid
@@ -55,19 +69,5 @@ class ExampleBO_OTW(ICommon_OTW):
         self._bo.destination = destination
         self._bo_pro.destination = destination
 
-    def getName(self):
-        return self._bo.name
-
-    def setName(self, name):
-        self._bo.name = name
-        self._bo_pro.name = name
-
-    def getAge(self):
-        return self._bo.age
-
-    def setAge(self, age):
-        self._bo.age = age
-        self._bo_pro.age = age
-
     def toString(self):
-        return "ExampleBO_OTW ["+"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"name = " + str(self.getName()) +"," +"age = " + str(self.getAge()) +"," +"]"
+        return "ExampleBO_OTW ["+"name = " + str(self.getName()) +"," +"age = " + str(self.getAge()) +"," +"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"]"

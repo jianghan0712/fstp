@@ -2,9 +2,9 @@ syntax = "proto2";
 package com.purefun.fstp.example.bo;
 
 message ExampleBO {
-    required string  uuid = 1;
-    required sint64  boid = 2;
-    required string  destination = 3;
-    optional string  name = 4;
-    optional int32  age = 5;
+    optional string uuid = 1;
+    optional sint64 boid = 2;
+    optional string destination = 3;
+    optional string name = 4;
+    optional int32 age = 5;
 }

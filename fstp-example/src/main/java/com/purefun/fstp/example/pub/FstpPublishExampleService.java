@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
+import com.purefun.fstp.core.bo.TestBO;
+import com.purefun.fstp.core.bo.otw.TestBO_OTW;
 import com.purefun.fstp.core.cache.ignitecache.ICache;
 import com.purefun.fstp.core.dur.ctl.CtlCommon;
 import com.purefun.fstp.core.ipc.PublishMode;
@@ -44,26 +46,34 @@ public class FstpPublishExampleService extends PService{
 			rdsCrud = Class.forName(rdsinfo.getRdsCrud());
 			repo = (ExampleQnsBORepository)beanFactory.getBean(rdsCrud);
 			
-//			for(int i = 0;i<3;i++) {
-//				ExampleBO_OTW bo = (ExampleBO_OTW) BoFactory.createBo(ExampleBO.class);
-//				bo.setName("Hans");
-//				bo.setAge(i);
-////				bo.setCompany("CICC");
-////				pub.publish(bo, PublishMode.PUBLISH_ONLY);
-//				pub.publish(bo, PublishMode.PUBLISH_AND_DUR);
-////				repo.save(bo.getBo());
-//				log.info("{}",bo.getBoid());
-//			}
 			for(int i = 0;i<3;i++) {
-				ExampleQnsBO_OTW bo = (ExampleQnsBO_OTW) BoFactory.createBo(ExampleQnsBO.class);
+				ExampleBO_OTW bo = (ExampleBO_OTW) BoFactory.createBo(ExampleBO.class);
 				bo.setName("Hans");
 				bo.setAge(i);
-				bo.setCompany("CICC");
+//				bo.setCompany("CICC");
 //				pub.publish(bo, PublishMode.PUBLISH_ONLY);
 				pub.publish(bo, PublishMode.PUBLISH_AND_DUR);
-				repo.save(bo.getBo());
+//				repo.save(bo.getBo());
 				log.info("{}",bo.getBoid());
 			}
+//			for(int i = 0;i<3;i++) {
+//				ExampleQnsBO_OTW bo = (ExampleQnsBO_OTW) BoFactory.createBo(ExampleQnsBO.class);
+//				bo.setName("Hans");
+//				bo.setAge(i);
+//				bo.setCompany("CICC");
+////				pub.publish(bo, PublishMode.PUBLISH_ONLY);
+//				pub.publish(bo, PublishMode.PUBLISH_AND_DUR);
+//				repo.save(bo.getBo());
+//				log.info("{}",bo.getBoid());
+//			}
+//			for(int i = 0;i<3;i++) {
+//				TestBO_OTW bo = (TestBO_OTW) BoFactory.createBo(TestBO.class);
+//				bo.setMsg(String.valueOf(i));
+//				bo.setServername("Publisher");
+//				pub.publish(bo, PublishMode.PUBLISH_AND_DUR);
+//				log.info("{}",bo.getBoid());
+//			}
+			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
