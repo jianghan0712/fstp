@@ -297,7 +297,11 @@ public class GeneratePythonBOFiles {
 			StringBuilder first = new StringBuilder(fieldName.substring(0, 1).toUpperCase());
 			StringBuilder last = new StringBuilder(fieldName.substring(1));
 			methodName.append(first).append(last);
-			all.append("\"").append(field.getName()).append(" = \" + str(self.").append(methodName).append("()) +").append("\",\" +");
+			if(!String.class.equals(field.getType())) {
+				all.append("\"").append(field.getName()).append(" = \" + str(self.").append(methodName).append("()) +").append("\",\" +");
+			}else {
+				all.append("\"").append(field.getName()).append(" = \" + self.").append(methodName).append("() +").append("\",\" +");
+			}
 		}
 		all.append("\"]\"");
 		println(all.toString());
@@ -357,13 +361,15 @@ public class GeneratePythonBOFiles {
 			}else if(e.getType().equals(java.lang.String.class)){
 				println(new StringBuilder().append(TAB).append(TAB).append("self.").append(e.getName()).append(" = ''").toString());
 			}else if(e.getType().equals(double.class)){
-				println(new StringBuilder().append(TAB).append(TAB).append("self.").append(e.getName()).append(" = 0L").toString());
+				println(new StringBuilder().append(TAB).append(TAB).append("self.").append(e.getName()).append(" = 0.0").toString());
 			}else if(e.getType().equals(boolean.class)){
 				println(new StringBuilder().append(TAB).append(TAB).append("self.").append(e.getName()).append(" = False").toString());
 			}else if(e.getType().equals(float.class)){
 				println(new StringBuilder().append(TAB).append(TAB).append("self.").append(e.getName()).append(" = 0.0").toString());
 			}else if(e.getType().equals(int.class)){
 				println(new StringBuilder().append(TAB).append(TAB).append("self.").append(e.getName()).append(" = 0").toString());
+			}else if(e.getType().equals(long.class)){
+				println(new StringBuilder().append(TAB).append(TAB).append("self.").append(e.getName()).append(" = 0L").toString());
 			}
 		}		
 	}

@@ -88,4 +88,4 @@ class QueryRequestBO_OTW(ICommon_OTW):
         self._bo_pro.destination = destination
 
     def toString(self):
-        return "QueryRequestBO_OTW ["+"requestServiceName = " + str(self.getRequestServiceName()) +"," +"respondServiceName = " + str(self.getRespondServiceName()) +"," +"querytopic = " + str(self.getQuerytopic()) +"," +"tempTopic = " + str(self.getTempTopic()) +"," +"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"]"
+        return "QueryRequestBO_OTW ["+"requestServiceName = " + self.getRequestServiceName() +"," +"respondServiceName = " + self.getRespondServiceName() +"," +"querytopic = " + self.getQuerytopic() +"," +"tempTopic = " + self.getTempTopic() +"," +"uuid = " + self.getUuid() +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + self.getDestination() +"," +"]"

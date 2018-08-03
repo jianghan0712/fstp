@@ -70,4 +70,4 @@ class ExampleBO_OTW(ICommon_OTW):
         self._bo_pro.destination = destination
 
     def toString(self):
-        return "ExampleBO_OTW ["+"name = " + str(self.getName()) +"," +"age = " + str(self.getAge()) +"," +"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"]"
+        return "ExampleBO_OTW ["+"name = " + self.getName() +"," +"age = " + str(self.getAge()) +"," +"uuid = " + self.getUuid() +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + self.getDestination() +"," +"]"

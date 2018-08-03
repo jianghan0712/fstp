@@ -79,4 +79,4 @@ class ExampleQnsBO_OTW(ICommon_OTW):
         self._bo_pro.destination = destination
 
     def toString(self):
-        return "ExampleQnsBO_OTW ["+"company = " + str(self.getCompany()) +"," +"name = " + str(self.getName()) +"," +"age = " + str(self.getAge()) +"," +"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"]"
+        return "ExampleQnsBO_OTW ["+"company = " + self.getCompany() +"," +"name = " + self.getName() +"," +"age = " + str(self.getAge()) +"," +"uuid = " + self.getUuid() +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + self.getDestination() +"," +"]"

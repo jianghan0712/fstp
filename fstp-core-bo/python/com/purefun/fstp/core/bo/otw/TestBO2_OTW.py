@@ -70,4 +70,4 @@ class TestBO2_OTW(ICommon_OTW):
         self._bo_pro.destination = destination
 
     def toString(self):
-        return "TestBO2_OTW ["+"servername = " + str(self.getServername()) +"," +"msg = " + str(self.getMsg()) +"," +"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"]"
+        return "TestBO2_OTW ["+"servername = " + self.getServername() +"," +"msg = " + self.getMsg() +"," +"uuid = " + self.getUuid() +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + self.getDestination() +"," +"]"
