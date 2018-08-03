@@ -37,3 +37,12 @@ class PyCache(object):
             self.log.info("cacheName  can't None")
             return None
         return self.get(cacheName = cacheName)
+    
+    def delCache(self, cacheName = None):
+        ret = False
+        if cacheName is None :
+#             self.log.info("cacheName  can't None")
+            ret = True
+        else:
+            ret = self.redis.delete(cacheName)
+        return ret

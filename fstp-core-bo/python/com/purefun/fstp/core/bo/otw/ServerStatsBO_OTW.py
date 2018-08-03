@@ -70,4 +70,4 @@ class ServerStatsBO_OTW(ICommon_OTW):
         self._bo_pro.destination = destination
 
     def toString(self):
-        return "ServerStatsBO_OTW ["+"servername = " + str(self.getServername()) +"," +"status = " + str(self.getStatus()) +"," +"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"]"
+        return "ServerStatsBO_OTW ["+"servername = " + self.getServername() +"," +"status = " + str(self.getStatus()) +"," +"uuid = " + self.getUuid() +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + self.getDestination() +"," +"]"
