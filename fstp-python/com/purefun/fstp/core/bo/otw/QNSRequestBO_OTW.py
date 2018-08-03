@@ -70,4 +70,4 @@ class QNSRequestBO_OTW(ICommon_OTW):
         self._bo_pro.destination = destination
 
     def toString(self):
-        return "QNSRequestBO_OTW ["+"servername = " + str(self.getServername()) +"," +"request = " + str(self.getRequest()) +"," +"uuid = " + str(self.getUuid()) +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + str(self.getDestination()) +"," +"]"
+        return "QNSRequestBO_OTW ["+"servername = " + self.getServername() +"," +"request = " + self.getRequest() +"," +"uuid = " + self.getUuid() +"," +"boid = " + str(self.getBoid()) +"," +"destination = " + self.getDestination() +"," +"]"

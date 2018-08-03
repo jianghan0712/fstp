@@ -25,9 +25,9 @@ class PyTestService(PyPService):
 #         self.querylistener = QueryServiceListener(self.session, self.cache, self.bomap, self.log)
 #         self.queryService = PyQueryService(self.bomap, self.session, self.cache, self.log, self.querylistener)
 #         self.queryService.createQueryService()
-        listner = mySubListener(self.log)
-        sub = PySubscriber(self.session, listner, self.log)
-        sub.subscribe("amq.topic/fstp.core.rpc.testone")
+#         listner = mySubListener(self.log)
+#         sub = PySubscriber(self.session, listner, self.log)
+#         sub.subscribe("amq.topic/fstp.core.rpc.testone")
         
         
     
@@ -47,7 +47,7 @@ class PyTestService(PyPService):
           
 #         3.pub 
 #         bo = TestBO_OTW() 
-#         self.pub = PyPublisher(self.session,self.log,self.cache)
+        
 #         self.pub.publish(bo,durFlag=True)
 
 #         4.query

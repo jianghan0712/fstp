@@ -6,6 +6,7 @@ from core.cache.PyCache import PyCache
 from com.purefun.fstp.core.bo.otw.QueryRequestBO_OTW import QueryRequestBO_OTW
 from core.ipc.sub.PySubscriber import PySubscriber,SubListener
 from core.ipc.query.PyQueryService import PyQueryService,QueryServiceListener
+from core.ipc.pub.PyPublisher import PyPublisher
 
 class PyPService(object):
     ''' 主服务类   '''
@@ -14,7 +15,7 @@ class PyPService(object):
         self.serviceName = serviceName
         self.property = PyProperty(serviceName, env, instance)
         self.log = None  
-#         self.log = PyPLogger.PyPLogger(PyPService)        
+        self.log = PyPLogger.PyPLogger(PyPService)        
         self.confDic = dict()                             #用户自定义的配置字典
         
         self.session = None        
@@ -75,6 +76,7 @@ class PyPService(object):
         self.session = self.qpid.createSession()       #初始化Qpid
         self.cache = PyCache(ip='localhost', port=6379, log=self.log)
         self.bomap = self.getConfigBean(section="bomap")
+        self.pub = PyPublisher(self.session,self.log,self.cache)
         self.log.info("initService successful")
 #         self.querylistener = QueryServiceListener(self.bomap, self.session, self.cache, self.log)
         
