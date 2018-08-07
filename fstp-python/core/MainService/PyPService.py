@@ -14,8 +14,7 @@ class PyPService(object):
     def __init__(self, serviceName, env, instance):
         self.serviceName = serviceName
         self.property = PyProperty(serviceName, env, instance)
-        self.log = None  
-        self.log = PyPLogger.PyPLogger(PyPService)        
+        self.log = None        
         self.confDic = dict()                             #用户自定义的配置字典
         
         self.session = None        

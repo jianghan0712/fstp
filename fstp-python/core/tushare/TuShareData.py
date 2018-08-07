@@ -8,6 +8,7 @@ import pandas as pd
 
 from core.MainService.PyPService import PyPService
 from com.purefun.fstp.tushare.bo.otw.StockBasicInfoBO_OTW import StockBasicInfoBO_OTW
+from core.log import PyPLogger
 from pandas.core.frame import DataFrame
 
 
@@ -26,6 +27,7 @@ class TuShareDataService(PyPService):
         self.__configUrl = url+'/config/'
         self.__resultUrl = url+'/result/'
         self.__basicData = '2012-01-01'
+        self.log = PyPLogger.PyPLogger(TuShareDataService) 
         
 
     def initService(self, isInit = False):
@@ -162,7 +164,7 @@ class TuShareDataService(PyPService):
         
         return industryConfig  
         
-    def getAllStockHis(self, start = '', end = '', isUpdate = False):
+    def getAllStockHis(self, start = '', end = '', isUpdate = False, breakStockCode = None):
         """
         :note: 获取股票历史数据，通过ts的get_k_data接口.根据config/industry里if_read=1的行业进行获取。startdate如果没有
                                             设置，使用basicDate = ‘2012-01-01’，结束日期默认为当日
@@ -170,6 +172,7 @@ class TuShareDataService(PyPService):
         :param start: start date
         :param end: end date
         :param isUpdate: 是更新数据取出本地数据
+        :param breakStockCode:因为某种原因，下载中断的stock code，再次执行时，从此断点开始更新。要与industry.csv的配置一致
         :return: 股票历史数据，当isUpdate=false时，优先去本地数据，如果本地没有，从ts获取
         """   
         stockMap = self.cache.getAll('StockBasicInfoBO') 
@@ -188,6 +191,13 @@ class TuShareDataService(PyPService):
                     continue
             group = group.set_index('code')
             for code in group.index:
+                if not breakStockCode is None:                    
+                    if code == breakStockCode:
+                        breakStockCode = None
+                    else:
+                        self.log.info('jump stock ', code)
+                        continue
+                
                 self.log.info('get code = ', code, ' history Bar')
                 self.getSinagleStockHis(industry = industry, stockCode = code, startDate = start, endDate = end, isUpdate = isUpdate)
     
@@ -226,11 +236,11 @@ class TuShareDataService(PyPService):
                 timeOld = datetime.datetime.strptime(temp1, '%Y-%m-%d')
                 start = (delta + timeOld).strftime('%Y-%m-%d')
                 finalStartDay = start
-        
-        if isUpdate == False or fileExists == False :
+                       
+        if isUpdate == False and fileExists == False :
             listdate = bo.getList_date()
             if len(listdate) < 2 :
-                self.log.info(stockCode, ' ', bo.getStockname().encode('utf-8'), '  is a preIPO stock')
+#                 self.log.info(stockCode, ' ', bo.getStockname().encode('utf-8'), '  is a preIPO stock')
                 return None
             
             listDay = datetime.datetime.strptime(listdate,'%Y-%m-%d')
@@ -250,16 +260,34 @@ class TuShareDataService(PyPService):
             else:
                 data.ix[0,'change'] =( data.ix[0,'close']-data.ix[0,'open'])/data.ix[0,'open']
                 data.to_csv(fileName, index=True, encoding='gbk') 
-            self.log.info('get or update ', stockCode, ' successful')  
-             
-            return data      
+            self.log.info('get or update ', stockCode, ' successful')             
+        elif isUpdate == False and fileExists == True : #如果是取出数据，直接从系统中获取对应数据   
+            data = pd.read_csv(fileName, encoding = 'gbk')
+            data = data.set_index('date')
+            head = None
+            tail = None
+            if not endDate == '':
+                tail = endDate         
+            if not startDate == '':
+                head = startDate
+                
+            if head is None and  tail is None:         
+                data = data[:]
+            elif head is None and not tail is  None:
+                data = data[:tail]
+            elif not head is None and tail is None:
+                data = data[head:]
+            else:
+                data = data[head:tail]
+              
+        return data      
 
 service = TuShareDataService(url='D:/tushareData', serviceName='TuShareDataService', env='DEV', instance='1')
 service.initService(isInit = False)
 service.startService()
-# service.getStockInfo('600001', '', '', False)
-
-service.getAllStockHis()
+data = service.getSinagleStockHis(stockCode = '000001', startDate='2014-01-01', endDate='2016-05-06', isUpdate = False)
+print data
+# service.getAllStockHis(breakStockCode = '300462')
 raw_input()     
 
 # t = a.getStockHis('000001')   
